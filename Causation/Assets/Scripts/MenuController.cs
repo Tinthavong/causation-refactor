@@ -7,17 +7,12 @@ public class MenuController : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene(4);
-    }
-
-    public void TestLevel()
-    {
         SceneManager.LoadScene(3);
     }
 
     public void CreditsScreen()
     {
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(4);
     }
 
     public void MainMenu()
@@ -29,5 +24,10 @@ public class MenuController : MonoBehaviour
     {
         Debug.Log("Quitting Game");
         Application.Quit();
+    }
+
+    public void LoadGame()
+    {
+        Debug.Log("Saved Game Loaded");
     }
 }
