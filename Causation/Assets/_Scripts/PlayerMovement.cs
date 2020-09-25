@@ -25,9 +25,6 @@ public class PlayerMovement : MonoBehaviour
 
     //Animation and design
     private bool facingRight;
-
-
-
     
     void Awake()
     {
