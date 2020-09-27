@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Interactables : MonoBehaviour
 {
@@ -23,13 +25,16 @@ public class Interactables : MonoBehaviour
 
 
     //nearObject is supposed to be the trigger object the player has just come into contact with
-    public GameObject nearObject;
+    private GameObject nearObject;
+    public Text textPrefab;
+    private GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        nearObject = collision.gameObject;
+
         //set the tag of nearObject to the tag of the collided item
-        nearObject = collision.GetComponent<GameObject>();
-        nearObject.transform.tag = collision.tag;
+        nearObject.tag = collision.gameObject.tag;
 
         //switch case to determine what to do for each tag
         switch (nearObject.tag)
@@ -41,24 +46,25 @@ public class Interactables : MonoBehaviour
                 Debug.Log("Object player is at is " + nearObject.tag);
                 break;
             case "Interact":
+                //If the object has the 'Interact' tag spawn in text above the player to show they can push a button to interact with object
+                SpawnText();
                 Debug.Log("Object player is at is " + nearObject.tag);
                 break;
             default:
                 Debug.Log("Not colliding with proper object");
                 break;
         }
-
-        Debug.Log(nearObject.tag);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    //TODO: Finish up this method. Much instantiate new text just above the players head. Text should just be 'W'
+    public void SpawnText()
     {
-    }
+        Text interactIndicator = Instantiate(textPrefab) as Text;
 
-    // Update is called once per frame
-    void Update()
-    {
+        interactIndicator.text = "'W'";
 
+        interactIndicator.transform.SetParent(playerObj.transform, false);
+        interactIndicator.transform.position = 
+            new Vector2(playerObj.transform.position.x, playerObj.transform.position.y);
     }
 }
