@@ -28,7 +28,7 @@ public class Interactables : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //set the tag of nearObject to the tag of the collided item
-        nearObject = collision.GetComponent<GameObject>();
+        nearObject = collision.gameObject;
         nearObject.transform.tag = collision.tag;
 
         //switch case to determine what to do for each tag
@@ -47,8 +47,6 @@ public class Interactables : MonoBehaviour
                 Debug.Log("Not colliding with proper object");
                 break;
         }
-
-        Debug.Log(nearObject.tag);
     }
 
     // Start is called before the first frame update

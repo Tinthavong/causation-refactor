@@ -28,16 +28,11 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject nearObject;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        nearObject = collision.GetComponent<GameObject>();
-        nearObject.transform.tag = collision.tag;
-    }
-
+    private bool isCrouched;
 
     void Awake()
     {
-
+        axisY = gameObject.transform.position.y; //axisY is set immediately to the player game object's y pos
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         rb.Sleep();
@@ -48,7 +43,9 @@ public class PlayerMovement : MonoBehaviour
     {
         //Tighter, specific controls might be better here in order to set the speed to 0 immediately when the key is lifted (an abrupt end to the animation)
         horizontal = Input.GetAxis("Horizontal");
-        animator.SetFloat("Speed", Mathf.Abs(horizontal != 0 ? horizontal : vertical)); //ternary, think of it like a boolean: (is horizontal != 0? if true then horizontal :else vertical)
+        animator.SetFloat("Speed", Mathf.Abs(horizontal != 0 ? horizontal : 0)); //ternary, think of it like a boolean: (is horizontal != 0? if true then horizontal value :else 0)
+
+       
     }
 
     void OnLanding() 
@@ -56,12 +53,13 @@ public class PlayerMovement : MonoBehaviour
         isJumping = false;
         rb.gravityScale = 0f;
         rb.Sleep();
-        axisY = transform.position.y;
+        transform.position = new Vector3(gameObject.transform.position.x, axisY);
+        Debug.Log("Landed at " + axisY);
     }
 
     private void FixedUpdate()
     {
-        if (horizontal != 0)
+        if (horizontal != 0 && !isCrouched)
         {
             Vector3 movement = new Vector3(horizontal * runSpeed, 0.0f, 0.0f);
             transform.position = transform.position + movement * Time.deltaTime;
@@ -69,20 +67,36 @@ public class PlayerMovement : MonoBehaviour
         Flip(horizontal);
 
         //reminder, axisY is the y coordinate that the player jumped from so once the player falls back down and their y position is less than or equal to it will stop falling 
-        if (transform.position.y <= axisY)
+        if (transform.position.y < axisY) //this doesn't make any sense, if it does 
         {
             OnLanding();
         }
         //jumping isn't perfect, the player model will continuously go down instead of staying at the value that it jumped from
 
-        if (Input.GetButton("Jump") && !isJumping)
+        if (Input.GetButton("Jump") && !isJumping && !isCrouched)
         {
             axisY = transform.position.y;
+            Debug.Log("Jumped at " + axisY);
             isJumping = true;
             rb.gravityScale = 1.5f;
             rb.WakeUp();
             rb.AddForce(new Vector2(0, jumpForce));
         }
+
+        vertical = Input.GetAxis("Vertical");
+        if (vertical < 0)
+        {
+            //make it so movement is stopped or forced into crouch walk
+            animator.SetBool("IsCrouched", true);
+            isCrouched = true;
+        }
+        else if (Input.GetAxis("Vertical") > -1)
+        {
+            //the "exit" time when not pressing the up key is too slow right now
+            animator.SetBool("IsCrouched", false);
+            isCrouched = false;
+        }
+
     }
 
     //Handles flipping the sprite across the x axis to show that movement direction has changed
