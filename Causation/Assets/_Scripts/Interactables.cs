@@ -27,7 +27,12 @@ public class Interactables : MonoBehaviour
     //nearObject is supposed to be the trigger object the player has just come into contact with
     private GameObject nearObject;
     public Text textPrefab;
-    private GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+    //private GameObject playerObj;
+
+    private void Start()
+    {
+       // playerObj = GameObject.FindGameObjectWithTag("Player");
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -47,7 +52,7 @@ public class Interactables : MonoBehaviour
                 break;
             case "Interact":
                 //If the object has the 'Interact' tag spawn in text above the player to show they can push a button to interact with object
-                SpawnText();
+              //  SpawnText();
                 Debug.Log("Object player is at is " + nearObject.tag);
                 break;
             default:
@@ -57,7 +62,7 @@ public class Interactables : MonoBehaviour
     }
 
     //TODO: Finish up this method. Much instantiate new text just above the players head. Text should just be 'W'
-    public void SpawnText()
+   /* public void SpawnText()
     {
         Text interactIndicator = Instantiate(textPrefab) as Text;
 
@@ -66,5 +71,5 @@ public class Interactables : MonoBehaviour
         interactIndicator.transform.SetParent(playerObj.transform, false);
         interactIndicator.transform.position = 
             new Vector2(playerObj.transform.position.x, playerObj.transform.position.y);
-    }
+    }*/
 }
