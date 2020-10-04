@@ -8,6 +8,7 @@ TagManager:
   - Object
   - Projectile
   - Interact
+  - ScrewPickUp
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Background
   - Character
   - Foreground
-  - 
+  - PickUp
   - 
   - 
   - 
