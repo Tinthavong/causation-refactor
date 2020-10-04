@@ -9,7 +9,11 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: LiberationSans SDF Material
   m_Shader: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
+<<<<<<< HEAD
   m_ShaderKeywords: 
+=======
+  m_ShaderKeywords: UNDERLAY_ON
+>>>>>>> UI-Work
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -34,7 +38,11 @@ Material:
     - _PerspectiveFilter: 0.875
     - _ScaleRatioA: 0.9
     - _ScaleRatioB: 1
+<<<<<<< HEAD
     - _ScaleRatioC: 0.73125
+=======
+    - _ScaleRatioC: 0.3498804
+>>>>>>> UI-Work
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -46,10 +54,17 @@ Material:
     - _StencilWriteMask: 255
     - _TextureHeight: 1024
     - _TextureWidth: 1024
+<<<<<<< HEAD
     - _UnderlayDilate: 0
     - _UnderlayOffsetX: 0
     - _UnderlayOffsetY: 0
     - _UnderlaySoftness: 0
+=======
+    - _UnderlayDilate: 0.09
+    - _UnderlayOffsetX: 1
+    - _UnderlayOffsetY: -1
+    - _UnderlaySoftness: 1
+>>>>>>> UI-Work
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
     - _WeightBold: 0.75
@@ -7798,6 +7813,11 @@ Texture2D:
   m_TextureFormat: 1
   m_MipCount: 1
   m_IsReadable: 0
+<<<<<<< HEAD
+=======
+  m_IgnoreMasterTextureLimit: 0
+  m_IsPreProcessed: 0
+>>>>>>> UI-Work
   m_StreamingMipmaps: 0
   m_StreamingMipmapsPriority: -92
   m_AlphaIsTransparency: 0
