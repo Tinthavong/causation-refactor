@@ -11,8 +11,6 @@ public class Enemy : MonoBehaviour
 
     public GameObject enemy;
 
-    public ReticlePointer bullet;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +21,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetButtonDown("Fire1"))
-        //{
-        //    TakeDamage(1);
-        //}
+        if (Input.GetButtonDown("Fire1"))
+        {
+            TakeDamage(1);
+        }
 
         if (currentHealth == 0)
         {
@@ -45,13 +43,5 @@ public class Enemy : MonoBehaviour
     void Death()
     {
         Destroy(enemy);
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject == bullet)
-        {
-            TakeDamage(1);
-        }
     }
 }
