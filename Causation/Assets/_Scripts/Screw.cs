@@ -7,7 +7,6 @@ public class Screw : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
         if (collision.gameObject.tag.Equals("Player"))
         {
             Currency.currencyValue = 1;

@@ -4,35 +4,39 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    //TODO:Add the animations code for enemy death (not first playable)
-
-    public int maxHealth;
+    public int maxHealth = 1;
     public int currentHealth;
 
-    //public GUIController healthBar;
-    //public GameObject enemy;
+    public GameObject enemy;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
-        //healthBar.SetMaxHealth(maxHealth);
     }
 
-    public void TakeDamage(int damage)
+    // Update is called once per frame
+    void Update()
     {
-        currentHealth -= damage;
+        if (Input.GetButtonDown("Fire1"))
+        {
+            TakeDamage(1);
+        }
 
-        if(currentHealth <= 0)
+        if (currentHealth == 0)
         {
             Death();
         }
 
-        //healthBar.SetHealth(currentHealth);
+    }
+
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
     }
 
     void Death()
     {
-        Destroy(gameObject);
+        Destroy(enemy);
     }
 }
