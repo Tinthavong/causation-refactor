@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int maxHealth = 5;
+    public int maxHealth = 1;
     public int currentHealth;
-
-    public HealthBar healthBar;
 
     public GameObject enemy;
 
@@ -15,7 +13,6 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -36,8 +33,6 @@ public class Enemy : MonoBehaviour
     void TakeDamage(int damage)
     {
         currentHealth -= damage;
-
-        healthBar.SetHealth(currentHealth);
     }
 
     void Death()
