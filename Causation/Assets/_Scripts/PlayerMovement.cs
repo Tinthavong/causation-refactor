@@ -63,10 +63,8 @@ public class PlayerMovement : MonoBehaviour
             Vector3 movement = new Vector3(horizontal * runSpeed, 0.0f, 0.0f);
             transform.position = transform.position + movement * Time.deltaTime;
         }
-        
         Flip(horizontal);
 
-        //TODO: Fix the jumping mechanic so that the player can just if they land on an object above or below their starting y value.
         //reminder, axisY is the y coordinate that the player jumped from so once the player falls back down and their y position is less than or equal to it will stop falling 
         if (transform.position.y < axisY) //this doesn't make any sense, if it does 
         {
@@ -97,7 +95,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsCrouched", false);
             isCrouched = false;
         }
-
     }
 
     //Handles flipping the sprite across the x axis to show that movement direction has changed
@@ -106,8 +103,10 @@ public class PlayerMovement : MonoBehaviour
         if (horizontal < 0 && !facingRight || horizontal > 0 && facingRight)
         {
             facingRight = !facingRight;
-            
-            transform.Rotate(0f, 180f, 0f);
+            Vector3 scale = transform.localScale;
+            scale.x *= -1;
+
+            transform.localScale = scale;
         }
     }
 }
