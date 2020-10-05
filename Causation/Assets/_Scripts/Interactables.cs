@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.PlayerLoop;
 
 public class Interactables : MonoBehaviour
 {
@@ -17,26 +20,45 @@ public class Interactables : MonoBehaviour
     /// </summary>
 
     //TODO: Create basic collision detector for the following tags:
-    //      Enemy, Object, and Interact
+    //      Enemy, Object, and Interact, Projectile
     //Collisions for Object should make it so character cannot move past object without jumping past (if possible) or not at all
-    //Collisions for Enemy and Projectile should register hits against player and take away health (Not Included in First Playable)
+    //Collisions for Enemy should register hits against player and take away health (Not Included in First Playable)
+    //Collisions for Projectile should be similar to enemy in the fact that it will cause damage and appropriate animations
     //Collisions for Interact should see if a player is at or near an object such as a sign or door that can be interacted with via the W key
 
 
 
     //nearObject is supposed to be the trigger object the player has just come into contact with
-    private GameObject nearObject;
-    public Text textPrefab;
-    //private GameObject playerObj;
+    public GameObject nearObject;
+    Vector3 objectPosition;
 
-    private void Start()
+    //Set these in inspector with appropriate prefabs of the same names
+    [SerializeField] private GameObject indicatorText;
+    [SerializeField] private TextMeshProUGUI signText;
+
+    //mean for the update check when player is pushing the W key
+    private bool isColliding;
+
+
+    //TODO: Figure out how to properply display sign text. Should display below sign in red text so player can visibly see it
+    private void FixedUpdate()
     {
-       // playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            if (isColliding = true && nearObject.tag != null)
+            {
+                objectPosition.y -= 2.5f;
+
+                Instantiate(signText, objectPosition, Quaternion.identity);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Assign nearObject and objectPosition to the object the player collides with
         nearObject = collision.gameObject;
+        objectPosition = nearObject.transform.position;
 
         //set the tag of nearObject to the tag of the collided item
         nearObject.tag = collision.gameObject.tag;
@@ -44,32 +66,48 @@ public class Interactables : MonoBehaviour
         //switch case to determine what to do for each tag
         switch (nearObject.tag)
         {
+            //TODO: Create a player script so that contact with objects tagged enemy can cause damage
             case "Enemy":
                 Debug.Log("Object player is at is " + nearObject.tag);
+                isColliding = true;
                 break;
             case "Object":
+                nearObject.GetComponent<PlayerMovement>().OnLanding();
                 Debug.Log("Object player is at is " + nearObject.tag);
+                isColliding = true;
                 break;
             case "Interact":
                 //If the object has the 'Interact' tag spawn in text above the player to show they can push a button to interact with object
-              //  SpawnText();
+                SpawnText(objectPosition);
                 Debug.Log("Object player is at is " + nearObject.tag);
+                isColliding = true;
                 break;
             default:
-                Debug.Log("Not colliding with proper object");
+                Debug.Log("Not colliding with tagged object");
+                isColliding = true;
                 break;
         }
     }
 
-    //TODO: Finish up this method. Much instantiate new text just above the players head. Text should just be 'W'
-   /* public void SpawnText()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        Text interactIndicator = Instantiate(textPrefab) as Text;
+        //Creates an array of objects with the "Text" tag for easy deletion
+        GameObject[] textObjects = GameObject.FindGameObjectsWithTag("Text");
 
-        interactIndicator.text = "'W'";
+        //Deletes everything with "Text" tag 
+        foreach (GameObject text in textObjects)
+        {
+            Destroy(text);
+        }
 
-        interactIndicator.transform.SetParent(playerObj.transform, false);
-        interactIndicator.transform.position = 
-            new Vector2(playerObj.transform.position.x, playerObj.transform.position.y);
-    }*/
+        nearObject = null;
+        isColliding = false;
+    }
+
+    public void SpawnText(Vector3 objectPosition)
+    {
+
+        objectPosition.y += 2.5f;
+        Instantiate(indicatorText, objectPosition, Quaternion.identity);
+    }
 }
