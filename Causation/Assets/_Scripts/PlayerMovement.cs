@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     //Jumping
     private float jumpForce = 300;
     private float axisY;
-    private bool isJumping;
+    public bool isJumping;
 
     //Movement Axes stash, vertical could go here as well if there was going to be vertical movement like a beat em up
     private float horizontal;
@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
         axisY = gameObject.transform.position.y; //axisY is set immediately to the player game object's y pos
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        rb.Sleep();
+        //rb.Sleep();
     }
 
     // Update is called once per frame
@@ -44,17 +44,16 @@ public class PlayerMovement : MonoBehaviour
         //Tighter, specific controls might be better here in order to set the speed to 0 immediately when the key is lifted (an abrupt end to the animation)
         horizontal = Input.GetAxis("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(horizontal != 0 ? horizontal : 0)); //ternary, think of it like a boolean: (is horizontal != 0? if true then horizontal value :else 0)
-
-       
     }
 
     void OnLanding() 
     {
         isJumping = false;
-        rb.gravityScale = 0f;
-        rb.Sleep();
-        transform.position = new Vector3(gameObject.transform.position.x, axisY);
-        Debug.Log("Landed at " + axisY);
+        
+        //rb.gravityScale = 0f;
+        //rb.Sleep();
+        //transform.position = new Vector3(gameObject.transform.position.x, axisY);
+        //Debug.Log("Landed at " + axisY);
     }
 
     private void FixedUpdate()
