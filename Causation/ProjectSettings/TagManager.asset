@@ -8,6 +8,11 @@ TagManager:
   - Object
   - Projectile
   - Interact
+<<<<<<< HEAD
+  - Text
+=======
+  - ScrewPickUp
+>>>>>>> 106c860028afc2a773e958f46f795529c3949846
   layers:
   - Default
   - TransparentFX
@@ -20,7 +25,7 @@ TagManager:
   - Background
   - Character
   - Foreground
-  - 
+  - PickUp
   - 
   - 
   - 
