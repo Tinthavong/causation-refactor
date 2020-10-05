@@ -8,6 +8,7 @@ TagManager:
   - Object
   - Projectile
   - Interact
+  - Text
   layers:
   - Default
   - TransparentFX
