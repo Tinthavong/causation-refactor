@@ -49,7 +49,7 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
-        this.gameObject.GetComponentInParent<GameObject>().active = false;
+        //this.gameObject.GetComponentInParent<GameObject>().active = false;
         
 
         //Bullet is created at bulletZone's position

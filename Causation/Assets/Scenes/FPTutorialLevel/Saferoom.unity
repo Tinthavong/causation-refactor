@@ -300,6 +300,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af8a5fa7d1ce35b419605b0ac12f2efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &542154674 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 878196903017099867, guid: 3e538a14d544a694cbb9eb1cb649280b,
+    type: 3}
+  m_PrefabInstance: {fileID: 878196902350296023}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &575972914
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,6 +414,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.96, y: 0.32}
   m_EdgeRadius: 0
+--- !u!1 &871376458 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 877424993388797136, guid: 3e538a14d544a694cbb9eb1cb649280b,
+    type: 3}
+  m_PrefabInstance: {fileID: 878196902350296023}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &871376465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871376458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35648d2a50c59894ca91b6aa6f656a38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7364781363387459371, guid: 041c325e3159f3a4495428b9a610563c,
+    type: 3}
+  bulletStart: {fileID: 542154674}
+  firerate: 2
 --- !u!1 &902469186
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,7 +1125,7 @@ PrefabInstance:
     - target: {fileID: 878196903017099864, guid: 3e538a14d544a694cbb9eb1cb649280b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.167
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 878196904265652906, guid: 3e538a14d544a694cbb9eb1cb649280b,
         type: 3}
