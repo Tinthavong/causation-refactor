@@ -303,10 +303,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 780720157818408, guid: 7b6b8480539c7fd489112745973d2799, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 780720157818408, guid: 7b6b8480539c7fd489112745973d2799, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 780720157818414, guid: 7b6b8480539c7fd489112745973d2799, type: 3}
       propertyPath: m_Name
       value: Demoman
       objectReference: {fileID: 0}
+    - target: {fileID: 780720157818415, guid: 7b6b8480539c7fd489112745973d2799, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7042140134747971946, guid: 6f209548d5931b14a8bb0eb1e3758e26,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b6b8480539c7fd489112745973d2799, type: 3}
 --- !u!1 &835586661

@@ -1,7 +1,106 @@
 fileFormatVersion: 2
 guid: 6f209548d5931b14a8bb0eb1e3758e26
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7042140134747971946
+    second: GrandpaIdle-Sheet_0
+  - first:
+      213: -4386155247508582236
+    second: GrandpaIdle-Sheet_1
+  - first:
+      213: 8979533710982274385
+    second: GrandpaIdle-Sheet_2
+  - first:
+      213: 6134617163179469869
+    second: GrandpaIdle-Sheet_3
+  - first:
+      213: 5240081288809869796
+    second: GrandpaIdle-Sheet_4
+  - first:
+      213: 1983627660833272023
+    second: GrandpaIdle-Sheet_5
+  - first:
+      213: -4834232277085970539
+    second: GrandpaIdle-Sheet_6
+  - first:
+      213: 7483535852714728257
+    second: GrandpaIdle-Sheet_7
+  - first:
+      213: 4736004886364573058
+    second: GrandpaIdle-Sheet_8
+  - first:
+      213: 6805564528461877697
+    second: GrandpaIdle-Sheet_9
+  - first:
+      213: 7086420404821667126
+    second: GrandpaIdle-Sheet_10
+  - first:
+      213: 1461135716684833298
+    second: GrandpaIdle-Sheet_11
+  - first:
+      213: -4176063313473500316
+    second: GrandpaIdle-Sheet_12
+  - first:
+      213: -3661824079422081695
+    second: GrandpaIdle-Sheet_13
+  - first:
+      213: 4229888113171676590
+    second: GrandpaIdle-Sheet_14
+  - first:
+      213: -4622215360779674774
+    second: GrandpaIdle-Sheet_15
+  - first:
+      213: -6763743941885296656
+    second: GrandpaIdle-Sheet_16
+  - first:
+      213: -4087524022381281265
+    second: GrandpaIdle-Sheet_17
+  - first:
+      213: 2345757197136304688
+    second: GrandpaIdle-Sheet_18
+  - first:
+      213: 4589761508191380375
+    second: GrandpaIdle-Sheet_19
+  - first:
+      213: -6398479717227883299
+    second: GrandpaIdle-Sheet_20
+  - first:
+      213: 314911545191823532
+    second: GrandpaIdle-Sheet_21
+  - first:
+      213: -8189897672514023929
+    second: GrandpaIdle-Sheet_22
+  - first:
+      213: 5227464531671997126
+    second: GrandpaIdle-Sheet_23
+  - first:
+      213: 5675987904202620605
+    second: GrandpaIdle-Sheet_24
+  - first:
+      213: 7013694954897681864
+    second: GrandpaIdle-Sheet_25
+  - first:
+      213: -4960969403227848914
+    second: GrandpaIdle-Sheet_26
+  - first:
+      213: -1595781654658894114
+    second: GrandpaIdle-Sheet_27
+  - first:
+      213: 7288697335321778604
+    second: GrandpaIdle-Sheet_28
+  - first:
+      213: -5416836356274225728
+    second: GrandpaIdle-Sheet_29
+  - first:
+      213: -8013032198309002710
+    second: GrandpaIdle-Sheet_30
+  - first:
+      213: 9199620601902565498
+    second: GrandpaIdle-Sheet_31
+  - first:
+      213: 5062219638605616000
+    second: GrandpaIdle-Sheet_32
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -31,7 +130,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -40,7 +139,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -64,7 +163,91 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -73,7 +256,700 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 2063
+        width: 98
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a61ac264425bab160800000000000000
+      internalID: 7042140134747971946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 2063
+        width: 99
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a0198e8a0f3123c0800000000000000
+      internalID: -4386155247508582236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 2063
+        width: 98
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15d5eb3a556bd9c70800000000000000
+      internalID: 8979533710982274385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1351
+        y: 2063
+        width: 98
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2ca35caec9822550800000000000000
+      internalID: 6134617163179469869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1751
+        y: 2063
+        width: 98
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e1fea54b2288b840800000000000000
+      internalID: 5240081288809869796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 2151
+        y: 2063
+        width: 98
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d03b9a09d2478b10800000000000000
+      internalID: 1983627660833272023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 1662
+        width: 98
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59f109a5b5b59ecb0800000000000000
+      internalID: -4834232277085970539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 1662
+        width: 99
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14b16f4653cdad760800000000000000
+      internalID: 7483535852714728257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 1662
+        width: 98
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28d464a0a5ba9b140800000000000000
+      internalID: 4736004886364573058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 1351
+        y: 1662
+        width: 98
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c118f691e8327e50800000000000000
+      internalID: 6805564528461877697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 1751
+        y: 1662
+        width: 99
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63da97e00d5085260800000000000000
+      internalID: 7086420404821667126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 2151
+        y: 1662
+        width: 98
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 212a2a1613ff64410800000000000000
+      internalID: 1461135716684833298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 1263
+        width: 98
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46b0fd8ca84ab06c0800000000000000
+      internalID: -4176063313473500316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 1263
+        width: 98
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1653314a6669e2dc0800000000000000
+      internalID: -3661824079422081695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 1263
+        width: 98
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eadbe39f3d493ba30800000000000000
+      internalID: 4229888113171676590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1351
+        y: 1263
+        width: 98
+        height: 226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6b9f517e979adfb0800000000000000
+      internalID: -4622215360779674774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 1751
+        y: 1263
+        width: 98
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fff93088ba5222a0800000000000000
+      internalID: -6763743941885296656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 2151
+        y: 1263
+        width: 98
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f00861bee823647c0800000000000000
+      internalID: -4087524022381281265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 863
+        width: 98
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03a10a01ebdcd8020800000000000000
+      internalID: 2345757197136304688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 863
+        width: 98
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 793228b26cb12bf30800000000000000
+      internalID: 4589761508191380375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 863
+        width: 98
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd4171809980437a0800000000000000
+      internalID: -6398479717227883299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 1351
+        y: 863
+        width: 98
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca8f3d2c16ace5400800000000000000
+      internalID: 314911545191823532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 1751
+        y: 863
+        width: 98
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70ec0037573a75e80800000000000000
+      internalID: -8189897672514023929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 2151
+        y: 863
+        width: 98
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ca53469b4fab8840800000000000000
+      internalID: 5227464531671997126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 462
+        width: 98
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbe396b1de825ce40800000000000000
+      internalID: 5675987904202620605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 462
+        width: 99
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cd20adb666a55160800000000000000
+      internalID: 7013694954897681864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 462
+        width: 98
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2fb503bc98172bb0800000000000000
+      internalID: -4960969403227848914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 1351
+        y: 462
+        width: 98
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed6b8f63a05aad9e0800000000000000
+      internalID: -1595781654658894114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 1751
+        y: 462
+        width: 99
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca9d03bfb97a62560800000000000000
+      internalID: 7288697335321778604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 2151
+        y: 462
+        width: 98
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cd7ad9980883d4b0800000000000000
+      internalID: -5416836356274225728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 63
+        width: 98
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a224606abadfbc090800000000000000
+      internalID: -8013032198309002710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 63
+        width: 98
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7884cc123e9baf70800000000000000
+      internalID: 9199620601902565498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandpaIdle-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 243
+        width: 7
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0831816c0fd904640800000000000000
+      internalID: 5062219638605616000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
