@@ -6,7 +6,8 @@ using TMPro;
 public class Shooting : MonoBehaviour
 {
     //bulletZone is an object that should be placed where the tip of the gun is for the character sprites/animations. This creates the projectiles
-    
+    public PlayerMovement playerRef;
+
     public TMP_Text ammoText;
     public int currentAmmo;
     public int maxAmmo = 6;
@@ -28,14 +29,18 @@ public class Shooting : MonoBehaviour
 
             if (Input.GetButtonDown("Fire1") && currentAmmo > 0)
             {
+                playerRef.isShooting = true;
+                Debug.Log(playerRef.isShooting);
                 if (currentAmmo == 0)
                 {
+                    playerRef.isShooting = false;
                     Debug.Log("Ammo is Empty");
                 }
                 else
                 {
                     Shoot();
                 }
+                playerRef.isShooting = false;
 
                 currentAmmo--;
             }
@@ -50,7 +55,6 @@ public class Shooting : MonoBehaviour
     void Shoot()
     {
         //this.gameObject.GetComponentInParent<GameObject>().active = false;
-        
 
         //Bullet is created at bulletZone's position
         GameObject b = Instantiate(bulletPrefab) as GameObject;

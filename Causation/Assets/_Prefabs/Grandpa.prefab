@@ -1,5 +1,57 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &412766497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 412766498}
+  - component: {fileID: 412766499}
+  m_Layer: 0
+  m_Name: CameraPointer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &412766498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412766497}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6329503269854218912}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &412766499
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412766497}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &1608212005108471358
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,6 +458,7 @@ Transform:
   - {fileID: 5461121866894639371}
   - {fileID: 1652375839560867055}
   - {fileID: 6780895355195847843}
+  - {fileID: 412766498}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -447,7 +500,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7042140134747971946, guid: 6f209548d5931b14a8bb0eb1e3758e26,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -476,6 +529,7 @@ MonoBehaviour:
   jumpForce: 350
   isJumping: 0
   nearObject: {fileID: 0}
+  isShooting: 0
 --- !u!95 &3250042007326366220
 Animator:
   serializedVersion: 3
@@ -515,7 +569,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &3827686487285619009
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -572,11 +626,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cdd1ddca19c3a448fdd776047b354c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRef: {fileID: 1873370227535185246}
   ammoText: {fileID: 0}
   currentAmmo: 0
   maxAmmo: 6
-  bulletPrefab: {fileID: 0}
-  bulletStart: {fileID: 0}
+  bulletPrefab: {fileID: 7364781363387459371, guid: 041c325e3159f3a4495428b9a610563c,
+    type: 3}
+  bulletStart: {fileID: 6986276860058609298}
 --- !u!114 &3192813347802364172
 MonoBehaviour:
   m_ObjectHideFlags: 0
