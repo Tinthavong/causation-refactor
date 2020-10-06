@@ -167,7 +167,7 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 10
   drop: {fileID: 7462346461303034108, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}
-  player: {fileID: 7684838778044472558, guid: 46f6a6380f7478d4ea6ff4e8136667ec, type: 3}
+  player: {fileID: 0}
 --- !u!114 &1450788241532060815
 MonoBehaviour:
   m_ObjectHideFlags: 0
