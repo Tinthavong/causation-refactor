@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
     public int maxHealth = 1;
     public int currentHealth;
 
+    public GameObject drop;
+
     private bool facingRight;
 
     //public GameObject enemy;
@@ -22,13 +24,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            TakeDamage(1);
-        }
-
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             Death();
         }
@@ -46,7 +42,11 @@ public class Enemy : MonoBehaviour
     void Death()
     {
         //Temporary death, needs animation and drops
-        Destroy(this);
+
+        GameObject d = Instantiate(drop) as GameObject;
+        d.transform.position = this.transform.position;
+
+        Destroy(this.gameObject);
     }
 
     //Checks player position and turns to face them
