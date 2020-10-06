@@ -1,25 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Shooting : MonoBehaviour
 {
     //bulletZone is an object that should be placed where the tip of the gun is for the character sprites/animations. This creates the projectiles
-    public Transform bulletZone;
+    
+    public TMP_Text ammoText;
+    public int currentAmmo;
+    public int maxAmmo = 6;
+
+    private float bulletSpeed = 200f;
     public GameObject bulletPrefab;
+    public GameObject bulletStart;
+
+    private void Start()
+    {
+        currentAmmo = maxAmmo;
+    }
 
     private void Update()
     {
-        //Left click shoots
-        if (Input.GetButtonDown("Fire1"))
+        if (ammoText.text != null)
         {
-            Shoot();
+            ammoText.text = currentAmmo.ToString();
+
+            if (Input.GetButtonDown("Fire1") && currentAmmo > 0)
+            {
+                if (currentAmmo == 0)
+                {
+                    Debug.Log("Ammo is Empty");
+                }
+                else
+                {
+                    Shoot();
+                }
+
+                currentAmmo--;
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                currentAmmo = maxAmmo;
+            }
         }
     }
 
     void Shoot()
     {
         //Bullet is created at bulletZone's position
-        Instantiate(bulletPrefab, bulletZone.position, bulletZone.rotation);
+        GameObject b = Instantiate(bulletPrefab) as GameObject;
+        b.transform.position = bulletStart.transform.position;
+        b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90f);
+        b.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletSpeed);
     }
 }
