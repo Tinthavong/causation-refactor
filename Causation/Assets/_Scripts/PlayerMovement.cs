@@ -49,7 +49,8 @@ public class PlayerMovement : MonoBehaviour
     public void OnLanding() 
     {
         isJumping = false;
-        
+        animator.SetBool("IsJumping", false);
+
         //rb.gravityScale = 0f;
         //rb.Sleep();
         //transform.position = new Vector3(gameObject.transform.position.x, axisY);
@@ -74,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButton("Jump") && !isJumping && !isCrouched)
         {
+            animator.SetBool("IsJumping", true);
             axisY = transform.position.y;
             Debug.Log("Jumped at " + axisY);
             isJumping = true;
