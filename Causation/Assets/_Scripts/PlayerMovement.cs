@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     //Jumping
-    private float jumpForce = 500;
+    private float jumpForce = 300;
     private float axisY;
     public bool isJumping;
 
