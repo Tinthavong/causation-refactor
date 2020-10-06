@@ -41,6 +41,9 @@ TextureImporter:
   - first:
       213: -1528982460783106036
     second: BadGuy1Death-Sheet_12
+  - first:
+      213: 7917149102928786033
+    second: BadGuy1Death-Sheet_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -201,12 +204,12 @@ TextureImporter:
       name: BadGuy1Death-Sheet_0
       rect:
         serializedVersion: 2
-        x: 230
-        y: 79
+        x: 231
+        y: 78
         width: 99
         height: 239
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -223,11 +226,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 626
-        y: 79
+        y: 78
         width: 103
         height: 239
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -248,7 +251,7 @@ TextureImporter:
         width: 111
         height: 239
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -269,7 +272,7 @@ TextureImporter:
         width: 107
         height: 251
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -277,27 +280,6 @@ TextureImporter:
       bones: []
       spriteID: ba5dbacf1434c6330800000000000000
       internalID: 3705410544110130603
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BadGuy1Death-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 1515
-        y: 295
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2d2c20143d60a7f0800000000000000
-      internalID: -603362279690588886
       vertices: []
       indices: 
       edges: []
@@ -311,7 +293,7 @@ TextureImporter:
         width: 222
         height: 182
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -319,69 +301,6 @@ TextureImporter:
       bones: []
       spriteID: d7de0c88e71255040800000000000000
       internalID: 4635648218791734653
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BadGuy1Death-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 1515
-        y: 282
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ed9118e6e8839a260800000000000000
-      internalID: 7109275671171504606
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BadGuy1Death-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 1531
-        y: 286
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 176a22c3c53cc6460800000000000000
-      internalID: 7236373502190855793
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BadGuy1Death-Sheet_8
-      rect:
-        serializedVersion: 2
-        x: 1503
-        y: 267
-        width: 23
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2d4a31574e2a57160800000000000000
-      internalID: 7022698296054621394
       vertices: []
       indices: 
       edges: []
@@ -395,7 +314,7 @@ TextureImporter:
         width: 223
         height: 179
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -416,7 +335,7 @@ TextureImporter:
         width: 239
         height: 74
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -437,7 +356,7 @@ TextureImporter:
         width: 239
         height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -458,7 +377,7 @@ TextureImporter:
         width: 248
         height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

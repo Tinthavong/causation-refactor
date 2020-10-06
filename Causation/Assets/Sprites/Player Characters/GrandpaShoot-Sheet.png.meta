@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 98028994a803fbb4aa609fb67c2ff5dd
+guid: cfd5c3d1bb47df549af6c3db4e6f4b5c
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -20,15 +20,6 @@ TextureImporter:
   - first:
       213: -7827999267238412202
     second: GrandpaShoot-Sheet_5
-  - first:
-      213: -3399201309421248010
-    second: GrandpaShoot-Sheet_6
-  - first:
-      213: 2135213561654356596
-    second: GrandpaShoot-Sheet_7
-  - first:
-      213: 873147168889219194
-    second: GrandpaShoot-Sheet_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -58,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -91,7 +82,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -103,67 +94,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: tvOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Lumin
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -175,7 +106,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -189,10 +120,10 @@ TextureImporter:
       name: GrandpaShoot-Sheet_0
       rect:
         serializedVersion: 2
-        x: 80
-        y: 480
-        width: 148
-        height: 232
+        x: 37
+        y: 231
+        width: 73
+        height: 113
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,10 +141,10 @@ TextureImporter:
       name: GrandpaShoot-Sheet_1
       rect:
         serializedVersion: 2
-        x: 480
-        y: 480
-        width: 148
-        height: 232
+        x: 230
+        y: 231
+        width: 73
+        height: 113
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,10 +162,10 @@ TextureImporter:
       name: GrandpaShoot-Sheet_2
       rect:
         serializedVersion: 2
-        x: 880
-        y: 480
-        width: 148
-        height: 232
+        x: 424
+        y: 231
+        width: 73
+        height: 113
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,10 +183,10 @@ TextureImporter:
       name: GrandpaShoot-Sheet_3
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 480
-        width: 188
-        height: 232
+        x: 617
+        y: 231
+        width: 69
+        height: 113
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -273,10 +204,10 @@ TextureImporter:
       name: GrandpaShoot-Sheet_4
       rect:
         serializedVersion: 2
-        x: 1676
-        y: 480
-        width: 136
-        height: 232
+        x: 808
+        y: 231
+        width: 67
+        height: 113
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -294,10 +225,10 @@ TextureImporter:
       name: GrandpaShoot-Sheet_5
       rect:
         serializedVersion: 2
-        x: 1840
-        y: 644
-        width: 8
-        height: 4
+        x: 32
+        y: 38
+        width: 51
+        height: 113
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -307,69 +238,6 @@ TextureImporter:
       bones: []
       spriteID: 6508c36142c5d5390800000000000000
       internalID: -7827999267238412202
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GrandpaShoot-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 1852
-        y: 628
-        width: 84
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6f167e73b6c93d0d0800000000000000
-      internalID: -3399201309421248010
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GrandpaShoot-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 1820
-        y: 628
-        width: 48
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 47a2106eb6dc1ad10800000000000000
-      internalID: 2135213561654356596
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GrandpaShoot-Sheet_8
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 80
-        width: 104
-        height: 232
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a78a74659ba0e1c00800000000000000
-      internalID: 873147168889219194
       vertices: []
       indices: 
       edges: []

@@ -49,6 +49,9 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
+        this.gameObject.GetComponentInParent<GameObject>().active = false;
+        
+
         //Bullet is created at bulletZone's position
         GameObject b = Instantiate(bulletPrefab) as GameObject;
         b.transform.position = bulletStart.transform.position;
