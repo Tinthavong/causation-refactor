@@ -12,7 +12,7 @@ public class DemoMan : MonoBehaviour
     void Start()
     {
         currentHealth = health;
-        healthBar.SetMaxHealth(health);
+        //healthBar.SetMaxHealth(health);
     }
 
     // Update is called once per frame

@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     //Player's running speed
     //An acceleration function might be cool, hold a horizontal direction down longer and you move faster?
-    private int runSpeed = 5;  
+    private int runSpeed = 5;
 
     [SerializeField]
     //Jumping
@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isCrouched;
 
+    public bool isShooting;
+
     void Awake()
     {
         axisY = gameObject.transform.position.y; //axisY is set immediately to the player game object's y pos
@@ -46,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(horizontal != 0 ? horizontal : 0)); //ternary, think of it like a boolean: (is horizontal != 0? if true then horizontal value :else 0)
     }
 
-    public void OnLanding() 
+    public void OnLanding()
     {
         isJumping = false;
         animator.SetBool("IsJumping", false);
@@ -96,6 +98,12 @@ public class PlayerMovement : MonoBehaviour
             //the "exit" time when not pressing the up key is too slow right now
             animator.SetBool("IsCrouched", false);
             isCrouched = false;
+        }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            //animator.SetBool("IsShooting", true);
+            animator.Play("GrandpaShoot");
         }
     }
 
