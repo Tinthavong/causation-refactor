@@ -30,4 +30,13 @@ public class MenuController : MonoBehaviour
     {
         Debug.Log("Saved Game Loaded");
     }
+
+    //IEnumerator LoadLevel(int levelIndex)
+    //{
+    //    transition.SetTrigger("Start");
+
+    //    yield return new WaitForSeconds(1);
+
+    //    SceneManager.LoadScene(levelIndex);
+    //}
 }
