@@ -1034,6 +1034,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyDemoMan
       objectReference: {fileID: 0}
+    - target: {fileID: 877424993388797137, guid: 3e538a14d544a694cbb9eb1cb649280b,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 877424993388797142, guid: 3e538a14d544a694cbb9eb1cb649280b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1094,6 +1099,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0.167
       objectReference: {fileID: 0}
+    - target: {fileID: 878196904265652906, guid: 3e538a14d544a694cbb9eb1cb649280b,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 196203212}
     m_RemovedComponents:
     - {fileID: 4754172794725284769, guid: 3e538a14d544a694cbb9eb1cb649280b, type: 3}
     - {fileID: 878196904102473777, guid: 3e538a14d544a694cbb9eb1cb649280b, type: 3}
