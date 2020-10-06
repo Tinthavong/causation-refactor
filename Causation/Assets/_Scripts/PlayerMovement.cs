@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         Flip(horizontal);
 
         //reminder, axisY is the y coordinate that the player jumped from so once the player falls back down and their y position is less than or equal to it will stop falling 
-        if (transform.position.y < axisY) //this doesn't make any sense, if it does 
+        if (rb.velocity.y == 0 && isJumping) //this doesn't make any sense, if it does 
         {
             OnLanding();
         }
