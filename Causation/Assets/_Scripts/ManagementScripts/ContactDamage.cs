@@ -10,8 +10,8 @@ public class ContactDamage : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            DemoMan player = collision.gameObject.GetComponent<DemoMan>();
-            player.TakeDamage(damage);
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            player.DamageCalc(damage);
             Debug.Log("Player took 1 damage");
             Death();
         }

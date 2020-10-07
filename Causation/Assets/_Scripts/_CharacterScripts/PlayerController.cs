@@ -1,23 +1,40 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : CharacterBase
 {
+    public PlayerController() //Constructor
+    {
+        Health = 5; //Arbitrary value?
+        displayedHealth = Health;//Displayed Health can be set in the inspector
+        Stamina = staminaActions;
+        //Enemies dont use ammo for now but if it breaks just set the amount here
+        Ammo = maxAmmo; //To avoid confusion, the Ammo property is like the previous currentAmmo variable
+        Currency = walletValue;
+    }
+
+    
+
+    //consider serializing private
+    [Header("UI References")]
+    public HealthBar healthBar; //I don't like the idea of having a type just for healthbar, redo later
+    public TMP_Text ammoText;
+    public int walletValue; //think  of a better name, but this has all of the player's screws/currency
+    public int maxAmmo = 6; //six-shooter by default, set in inspector otherwise
+
     Animator animator;
     Rigidbody2D rb; //rigidbody used for jumping
 
+    [Header("Movement Stats")]
     [SerializeField]
     //Player's running speed
     //An acceleration function might be cool, hold a horizontal direction down longer and you move faster?
-    private int runSpeed = 5;
-
-    [SerializeField]
+    public int runSpeed = 5;
     //Jumping
-    private float jumpForce = 600;
+    public float jumpForce = 600;
     private float axisY;
-    public bool isJumping;
 
     //Movement Axes stash, vertical could go here as well if there was going to be vertical movement like a beat em up
     private float horizontal;
@@ -27,13 +44,16 @@ public class PlayerMovement : MonoBehaviour
     private bool facingRight;
 
     public GameObject nearObject;
-
+    [Header("Player States")]
+    public bool isJumping;
     private bool isCrouched;
-
     public bool isShooting;
 
     void Awake()
     {
+        //Can hardcode displayed health here if necessary
+        //Apparently coding it at the top doesn't work so might have to do that. Otherwise be sure to set in inspector
+
         axisY = gameObject.transform.position.y; //axisY is set immediately to the player game object's y pos
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -43,20 +63,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ShootingBehavior();
         //Tighter, specific controls might be better here in order to set the speed to 0 immediately when the key is lifted (an abrupt end to the animation)
         horizontal = Input.GetAxis("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(horizontal != 0 ? horizontal : 0)); //ternary, think of it like a boolean: (is horizontal != 0? if true then horizontal value :else 0)
-    }
-
-    public void OnLanding()
-    {
-        isJumping = false;
-        animator.SetBool("IsJumping", false);
-
-        //rb.gravityScale = 0f;
-        //rb.Sleep();
-        //transform.position = new Vector3(gameObject.transform.position.x, axisY);
-        //Debug.Log("Landed at " + axisY);
     }
 
     private void FixedUpdate()
@@ -79,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("IsJumping", true);
             axisY = transform.position.y;
-           // Debug.Log("Jumped at " + axisY);
+            // Debug.Log("Jumped at " + axisY);
             isJumping = true;
             rb.gravityScale = 1.5f;
             rb.WakeUp();
@@ -92,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
             //make it so movement is stopped or forced into crouch walk
             animator.SetBool("IsCrouched", true);
             isCrouched = true;
-            if(isCrouched)//imagine using a nested if in the update method loooole
+            if (isCrouched)//imagine using a nested if in the update method loooole
             {
                 GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 1.45f);
                 GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, -0.4f);
@@ -115,8 +125,45 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void OnLanding()
+    {
+        isJumping = false;
+        animator.SetBool("IsJumping", false);
+    }
+
+    private void ShootingBehavior()
+    {
+        if (ammoText.text != null)
+        {
+            ammoText.text = Ammo.ToString();
+
+            if (Input.GetButtonDown("Fire1") && Ammo > 0)
+            {
+                if (Ammo == 0)
+                {
+                    Debug.Log("No Ammo Left!");//implement affordance, clicking sound or something
+                }
+                else
+                {
+                    Shoot();
+                    Ammo--;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Ammo = maxAmmo;
+            }
+        }
+    }
+
+    public override void DamageCalc(int damage)
+    {
+        base.DamageCalc(damage);
+        healthBar.SetHealth(displayedHealth);
+    }
+
     //Handles flipping the sprite across the x axis to show that movement direction has changed
-    private void Flip(float horizontal)
+     public override void Flip(float horizontal)
     {
         if (horizontal < 0 && !facingRight || horizontal > 0 && facingRight)
         {
@@ -126,5 +173,11 @@ public class PlayerMovement : MonoBehaviour
 
             transform.localScale = scale;
         }
+    }
+
+    public override void PostDeath()
+    {
+        //death animation here
+        throw new System.NotImplementedException();
     }
 }

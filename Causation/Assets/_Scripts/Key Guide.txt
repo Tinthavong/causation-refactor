@@ -1,0 +1,32 @@
+Hiya here's a little guide because of the big refactor.
+Many of the character related scripts were deleted and condensed.
+The following were removed:
+enemyshootingscript, reticlepointer, demoman, playermovement, shooting
+
+_CharacterScripts contains:
+characterbase - implements all of the shooting/attacks required for character attacks
+playercontroller - imeplements characterbase and uses playermovement
+
+EnemySpecific contains enemy and specific enemies (imagine a boss or whatever)
+
+
+ManagementScripts contains:
+BulletScript - behavior is still wonky but works for now
+
+CameraBehavior
+
+ContactDamage
+
+Interactable
+
+Parallax
+
+SceneTransition
+
+UXScripts
+HealthBar
+
+MenuController
+
+OptionsController
+

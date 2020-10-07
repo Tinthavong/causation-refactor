@@ -72,7 +72,7 @@ public class Interactables : MonoBehaviour
                 isColliding = true;
                 break;
             case "Object":
-                nearObject.GetComponent<PlayerMovement>().OnLanding();
+                nearObject.GetComponent<PlayerController>().OnLanding();
                 Debug.Log("Object player is at is " + nearObject.tag);
                 isColliding = true;
                 break;

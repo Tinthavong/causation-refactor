@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HealthBar : MonoBehaviour
 {
+    //Would like to make more generic, have this be playerHUD and combine with health, ammo, currency, specials, etc.
     public Slider fill;
     public Gradient healthIndicator;
     public Image HP;

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419731304394303833}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8, y: 0.2, z: 0}
+  m_LocalPosition: {x: 1.87, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3170384674644724543}
@@ -43,8 +43,7 @@ GameObject:
   - component: {fileID: 3170384674644724537}
   - component: {fileID: 3170384674644724538}
   - component: {fileID: 4857794454682944073}
-  - component: {fileID: 1450788241532060815}
-  - component: {fileID: 5304038972405612056}
+  - component: {fileID: 1075116973}
   m_Layer: 9
   m_Name: BadGuy1
   m_TagString: Enemy
@@ -165,27 +164,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da0f65341e70b954aba548091c012da0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  currentHealth: 10
-  drop: {fileID: 7462346461303034108, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}
-  player: {fileID: 0}
---- !u!114 &1450788241532060815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3170384674644724539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35648d2a50c59894ca91b6aa6f656a38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  displayedHealth: 5
+  staminaActions: 0
+  bulletSpeed: 400
   bulletPrefab: {fileID: 7364781363387459371, guid: 041c325e3159f3a4495428b9a610563c,
     type: 3}
-  bulletStart: {fileID: 1419731304394303833}
+  bulletSpawn: {fileID: 1419731304394303833}
+  dropValue: 0
+  drop: {fileID: 7462346461303034108, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}
+  player: {fileID: 0}
   firerate: 2
---- !u!114 &5304038972405612056
+--- !u!114 &1075116973
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
