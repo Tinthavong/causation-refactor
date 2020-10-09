@@ -145,8 +145,11 @@ public class PlayerController : CharacterBase
                 }
                 else
                 {
-                    Shoot();
-                    Ammo--;
+                    if (!PauseController.isPaused)
+                    {
+                        Shoot();
+                        Ammo--;
+                    } 
                 }
             }
             if (Input.GetKeyDown(KeyCode.R))
