@@ -361,11 +361,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 151
-        y: 2063
-        width: 98
-        height: 234
+        y: 2064
+        width: 118
+        height: 233
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -381,12 +381,12 @@ TextureImporter:
       name: GrandpaIdle-Sheet_1
       rect:
         serializedVersion: 2
-        x: 550
-        y: 2063
-        width: 99
+        x: 551
+        y: 2062
+        width: 118
         height: 238
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -403,11 +403,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 951
-        y: 2063
-        width: 98
-        height: 238
+        y: 2061
+        width: 118
+        height: 240
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -424,11 +424,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1351
-        y: 2063
-        width: 98
-        height: 238
+        y: 2061
+        width: 118
+        height: 240
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -445,11 +445,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1751
-        y: 2063
-        width: 98
-        height: 234
+        y: 2064
+        width: 118
+        height: 233
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -466,11 +466,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2151
-        y: 2063
-        width: 98
-        height: 238
+        y: 2061
+        width: 118
+        height: 240
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -487,11 +487,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 151
-        y: 1662
-        width: 98
-        height: 239
+        y: 1661
+        width: 118
+        height: 240
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -508,11 +508,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 551
-        y: 1662
-        width: 99
-        height: 239
+        y: 1661
+        width: 118
+        height: 240
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -529,11 +529,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 951
-        y: 1662
-        width: 98
+        y: 1664
+        width: 118
         height: 235
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -549,12 +549,12 @@ TextureImporter:
       name: GrandpaIdle-Sheet_9
       rect:
         serializedVersion: 2
-        x: 1351
-        y: 1662
-        width: 98
-        height: 239
+        x: 1349
+        y: 1661
+        width: 121
+        height: 240
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -571,11 +571,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1751
-        y: 1662
-        width: 99
-        height: 239
+        y: 1661
+        width: 118
+        height: 240
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -592,11 +592,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2151
-        y: 1662
-        width: 98
-        height: 239
+        y: 1661
+        width: 118
+        height: 240
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -614,10 +614,10 @@ TextureImporter:
         serializedVersion: 2
         x: 151
         y: 1263
-        width: 98
-        height: 234
+        width: 118
+        height: 236
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -635,10 +635,10 @@ TextureImporter:
         serializedVersion: 2
         x: 551
         y: 1263
-        width: 98
-        height: 234
+        width: 118
+        height: 236
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -656,10 +656,10 @@ TextureImporter:
         serializedVersion: 2
         x: 951
         y: 1263
-        width: 98
-        height: 234
+        width: 118
+        height: 236
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -677,10 +677,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1351
         y: 1263
-        width: 98
-        height: 226
+        width: 118
+        height: 237
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -698,10 +698,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1751
         y: 1263
-        width: 98
-        height: 231
+        width: 118
+        height: 236
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -719,10 +719,10 @@ TextureImporter:
         serializedVersion: 2
         x: 2151
         y: 1263
-        width: 98
-        height: 231
+        width: 118
+        height: 236
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -740,10 +740,10 @@ TextureImporter:
         serializedVersion: 2
         x: 151
         y: 863
-        width: 98
-        height: 234
+        width: 118
+        height: 236
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -761,10 +761,10 @@ TextureImporter:
         serializedVersion: 2
         x: 551
         y: 863
-        width: 98
-        height: 234
+        width: 118
+        height: 236
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -782,10 +782,10 @@ TextureImporter:
         serializedVersion: 2
         x: 951
         y: 863
-        width: 98
-        height: 234
+        width: 118
+        height: 237
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -802,11 +802,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1351
-        y: 863
-        width: 98
-        height: 238
+        y: 861
+        width: 118
+        height: 240
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -823,11 +823,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1751
-        y: 863
-        width: 98
-        height: 238
+        y: 861
+        width: 118
+        height: 240
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -843,12 +843,12 @@ TextureImporter:
       name: GrandpaIdle-Sheet_23
       rect:
         serializedVersion: 2
-        x: 2151
-        y: 863
-        width: 98
-        height: 238
+        x: 2148
+        y: 861
+        width: 125
+        height: 240
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -866,10 +866,10 @@ TextureImporter:
         serializedVersion: 2
         x: 151
         y: 462
-        width: 98
-        height: 235
+        width: 118
+        height: 238
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -886,11 +886,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 551
-        y: 462
-        width: 99
-        height: 239
+        y: 460
+        width: 118
+        height: 242
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -906,12 +906,12 @@ TextureImporter:
       name: GrandpaIdle-Sheet_26
       rect:
         serializedVersion: 2
-        x: 951
-        y: 462
-        width: 98
-        height: 239
+        x: 949
+        y: 461
+        width: 121
+        height: 240
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -928,11 +928,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1351
-        y: 462
-        width: 98
-        height: 239
+        y: 461
+        width: 118
+        height: 240
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -950,10 +950,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1751
         y: 462
-        width: 99
-        height: 235
+        width: 118
+        height: 238
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -969,12 +969,12 @@ TextureImporter:
       name: GrandpaIdle-Sheet_29
       rect:
         serializedVersion: 2
-        x: 2151
-        y: 462
-        width: 98
+        x: 2148
+        y: 464
+        width: 125
         height: 235
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -992,10 +992,10 @@ TextureImporter:
         serializedVersion: 2
         x: 151
         y: 63
-        width: 98
-        height: 234
+        width: 118
+        height: 236
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1013,10 +1013,10 @@ TextureImporter:
         serializedVersion: 2
         x: 551
         y: 63
-        width: 98
-        height: 234
+        width: 119
+        height: 235
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1024,27 +1024,6 @@ TextureImporter:
       bones: []
       spriteID: a7884cc123e9baf70800000000000000
       internalID: 9199620601902565498
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GrandpaIdle-Sheet_32
-      rect:
-        serializedVersion: 2
-        x: 663
-        y: 243
-        width: 7
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0831816c0fd904640800000000000000
-      internalID: 5062219638605616000
       vertices: []
       indices: 
       edges: []

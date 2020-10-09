@@ -268,9 +268,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1406
-        y: 82
-        width: 107
-        height: 251
+        y: 52
+        width: 131
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,13 +288,13 @@ TextureImporter:
       name: BadGuy1Death-Sheet_5
       rect:
         serializedVersion: 2
-        x: 1703
-        y: 123
-        width: 222
-        height: 182
+        x: 1700
+        y: 91
+        width: 225
+        height: 271
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 30}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -312,7 +312,7 @@ TextureImporter:
         x: 2071
         y: 82
         width: 223
-        height: 179
+        height: 239
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -333,7 +333,7 @@ TextureImporter:
         x: 2435
         y: 79
         width: 239
-        height: 74
+        height: 239
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -354,7 +354,7 @@ TextureImporter:
         x: 2827
         y: 79
         width: 239
-        height: 70
+        height: 239
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -375,7 +375,7 @@ TextureImporter:
         x: 3206
         y: 79
         width: 248
-        height: 70
+        height: 239
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
