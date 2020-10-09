@@ -24,7 +24,7 @@ public class BulletScript : MonoBehaviour
         else if (collision.tag == "Player")
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-            player.DamageCalc(1); //arbitrarily 1 but let's figure that out later
+            player.DamageCalc(1); //arbitrarily 1 but let's figure that out later, okay so the damage being set in this script means that the player and enemies should use different prefabs
             AudioSource.PlayClipAtPoint(this.GetComponent<AudioSource>().clip, this.transform.position);
         }
         Destroy(this.gameObject);
