@@ -152,10 +152,15 @@ public class PlayerController : CharacterBase
                     } 
                 }
             }
-            if (Input.GetKeyDown(KeyCode.R))
+
+            if (!PauseController.isPaused)
             {
-                Ammo = maxAmmo;
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    Ammo = maxAmmo;
+                }
             }
+            
         }
     }
 

@@ -5,12 +5,15 @@ using UnityEngine;
 public class PauseController : MonoBehaviour
 {
     public GameObject pauseScreen;
+    public GameObject HUD;
     public static bool isPaused = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        isPaused = false;
         pauseScreen.SetActive(false);
+        HUD.SetActive(true);
     }
 
     // Update is called once per frame
@@ -32,6 +35,7 @@ public class PauseController : MonoBehaviour
     void PauseGame()
     {
         pauseScreen.SetActive(true);
+        HUD.SetActive(false);
         Time.timeScale = 0f;
         isPaused = true;
     }
@@ -39,6 +43,7 @@ public class PauseController : MonoBehaviour
     public void ResumeGame()
     {
         pauseScreen.SetActive(false);
+        HUD.SetActive(true);
         Time.timeScale = 1f;
         isPaused = false;
     }

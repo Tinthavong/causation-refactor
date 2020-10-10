@@ -805,12 +805,12 @@ PrefabInstance:
     - target: {fileID: 3493381885816166706, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3493381885816166706, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3493381886030299023, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
@@ -822,10 +822,20 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3493381886030299023, guid: 1a928fbafddaf4c4091cae797bb281db,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3493381886632224435, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493381886632224435, guid: 1a928fbafddaf4c4091cae797bb281db,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3493381886632224439, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
@@ -1168,6 +1178,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e4afd5e9e52ea04ba54423c85f541a9, type: 3}
+--- !u!1 &1825226849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3493381886632224435, guid: 1a928fbafddaf4c4091cae797bb281db,
+    type: 3}
+  m_PrefabInstance: {fileID: 1206523651}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1837938955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1613,6 +1629,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 1897959549745023738, guid: ccea6d54384722949b4f9115f00fa8c7,
+        type: 3}
+      propertyPath: HUD
+      value: 
+      objectReference: {fileID: 1825226849}
     - target: {fileID: 1897959549745023739, guid: ccea6d54384722949b4f9115f00fa8c7,
         type: 3}
       propertyPath: m_LocalPosition.x
