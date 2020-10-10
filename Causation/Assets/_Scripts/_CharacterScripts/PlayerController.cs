@@ -91,7 +91,7 @@ public class PlayerController : CharacterBase
             axisY = transform.position.y;
             // Debug.Log("Jumped at " + axisY);
             isJumping = true;
-            rb.gravityScale = 1.5f;
+            //rb.gravityScale = 1.5f;
             rb.WakeUp();
             rb.AddForce(new Vector2(0, jumpForce));
         }
