@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7760117115984360447}
   - component: {fileID: 870383251}
   - component: {fileID: 870383250}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Screw
   m_TagString: ScrewPickUp
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2841568218029940513, guid: 686bbce7a59b10f4183399581b4e3bba,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

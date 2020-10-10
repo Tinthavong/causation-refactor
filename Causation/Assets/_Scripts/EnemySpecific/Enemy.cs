@@ -29,6 +29,9 @@ public class Enemy : CharacterBase
     private bool facingRight;
     private PlayerController player; //this can be private, pretty sure this works now
 
+    //I advise you delete this!
+    public bool canPunch;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +58,16 @@ public class Enemy : CharacterBase
             firerateWait = firerate;
         }
 
-        ElimCharacter();
+        if(isTooClose() && canPunch)
+        {
+            //animation play here
+            Strike();
+            //Insert a buffer time here so the enemy is not constantly striking the player
+
+        }
+
+
+        ElimCharacter();//Want to find some way for elimcharacter to be checked each time damage is taken, not on every frame like it is now
         
         
     }

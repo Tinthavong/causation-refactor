@@ -39,11 +39,17 @@ public abstract class CharacterBase : MonoBehaviour, IActions
 		set { _currency = value; }
 	}
 
-	[Header("Bullet References")]
-	//Shooting mechanics region
+	[Header("Combat References")]
+	//Combat mechanics region
+	//I think bullet damage should be defined here as well, it would make asset creation faster for enemies
+	//then IF the player has unique bullets with different damage then you can use the prefab damage values...
 	public float bulletSpeed = 400f;
 	public GameObject bulletPrefab; //should really just use raycasts and bullet sprites tbh
 	public GameObject bulletSpawn;
+	public Transform StrikeZone; //The collision area that has the player's melee weapon.
+	public float strikeRange = 0.5f;
+	public int strikeDamage = 1;
+	public LayerMask enemyLayers; //Player is the NPC's enemy and the enemy NPC is the player's... enemy
 
 	private void Start()
 	{
@@ -70,7 +76,6 @@ public abstract class CharacterBase : MonoBehaviour, IActions
 		}
 	}
 
-
 	public void Shoot()
 	{
 		//This block of code is why we should use raycasts 
@@ -88,6 +93,33 @@ public abstract class CharacterBase : MonoBehaviour, IActions
 			b.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletSpeed);
 		}
 	}
+
+	public void Strike() //Melee attack
+	{
+		//Reference for the person doing specific enemies, you would play the animation before the other logic here
+
+		//Might have to add a check for enemy layers and opposing tags
+		//Enemies in range of attack here
+		Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(StrikeZone.position, strikeRange, enemyLayers);
+
+		//Damage calculations
+		foreach(Collider2D enemy in hitEnemies)
+		{
+			enemy.GetComponent<CharacterBase>().DamageCalc(strikeDamage);
+			Debug.Log($"{gameObject.name} hit {enemy.name}");
+		}
+	}
+
+	//Did this with the camera, hopefully this works well if every character has one attached:
+	void OnDrawGizmosSelected()
+	{
+		if (StrikeZone == null)
+			return;
+
+		Gizmos.DrawWireSphere(StrikeZone.position, strikeRange);
+	}
+
+
 	public abstract void Flip(float value);
 
 	public abstract void PostDeath();//Item drop behavior or Game over screen  

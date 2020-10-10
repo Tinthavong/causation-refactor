@@ -9,7 +9,7 @@ public class Screw : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            Currency.currencyValue = 1;
+            Currency.currencyValue += 1;
             AudioSource.PlayClipAtPoint(this.GetComponent<AudioSource>().clip, this.transform.position);
             Destroy(gameObject);
         }  

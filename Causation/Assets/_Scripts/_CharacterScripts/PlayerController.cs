@@ -15,7 +15,7 @@ public class PlayerController : CharacterBase
         Currency = walletValue;
     }
 
-    
+
 
     //consider serializing private
     [Header("UI References")]
@@ -64,6 +64,7 @@ public class PlayerController : CharacterBase
     void Update()
     {
         ShootingBehavior();
+        StrikingBehavior();
         //Tighter, specific controls might be better here in order to set the speed to 0 immediately when the key is lifted (an abrupt end to the animation)
         horizontal = Input.GetAxis("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(horizontal != 0 ? horizontal : 0)); //ternary, think of it like a boolean: (is horizontal != 0? if true then horizontal value :else 0)
@@ -118,11 +119,14 @@ public class PlayerController : CharacterBase
             GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, 0f);
         }
 
+        //Redundant with shooting behavior, place this in there
         if (Input.GetButtonDown("Fire1"))
         {
             //animator.SetBool("IsShooting", true);
             animator.Play("GrandpaShoot");
         }
+
+
     }
 
     public void OnLanding()
@@ -130,6 +134,15 @@ public class PlayerController : CharacterBase
         isJumping = false;
         animator.SetBool("IsJumping", false);
     }
+
+    private void StrikingBehavior()
+    {
+        if (Input.GetButtonDown("Fire2"))//and a bool/state check that determines if the player is not already shooting
+        {
+            Strike();
+        }
+    }
+
 
     private void ShootingBehavior()
     {
@@ -149,7 +162,7 @@ public class PlayerController : CharacterBase
                     {
                         Shoot();
                         Ammo--;
-                    } 
+                    }
                 }
             }
 
@@ -160,7 +173,7 @@ public class PlayerController : CharacterBase
                     Ammo = maxAmmo;
                 }
             }
-            
+
         }
     }
 
@@ -171,7 +184,7 @@ public class PlayerController : CharacterBase
     }
 
     //Handles flipping the sprite across the x axis to show that movement direction has changed
-     public override void Flip(float horizontal)
+    public override void Flip(float horizontal)
     {
         if (horizontal < 0 && !facingRight || horizontal > 0 && facingRight)
         {
