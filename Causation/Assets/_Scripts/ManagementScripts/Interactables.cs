@@ -11,6 +11,7 @@ using UnityEngine.PlayerLoop;
 public class Interactables : MonoBehaviour
 {
     /// <summary>
+    /// Created by Tyler F
     /// The Interactables script is going to be designed with the ideas of how we want the character to interact with objects.
     /// *Important* This script is going to be attached directly to the player (and potentially Enemies/NPCs) and will search for tags nearby or directly in contact of the player.
     /// This will include stuff like:
@@ -66,7 +67,7 @@ public class Interactables : MonoBehaviour
         //switch case to determine what to do for each tag
         switch (nearObject.tag)
         {
-            //TODO: Create a player script so that contact with objects tagged enemy can cause damage
+            //TODO: Change tag system to determine simply objects that can be interacted with (like medkits and signs)
             case "Enemy":
                 Debug.Log("Object player is at is " + nearObject.tag);
                 isColliding = true;
