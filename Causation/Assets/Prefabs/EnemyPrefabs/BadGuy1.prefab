@@ -208,11 +208,10 @@ MonoBehaviour:
     m_Bits: 0
   dropValue: 0
   drops:
+  - drop: {fileID: 7462346461303034108, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}
+    weight: 1
   - drop: {fileID: 0}
-    weight: 0
-  - drop: {fileID: 0}
-    weight: 0
+    weight: 1
   firerate: 2
   sightRange: 10
   meleeRange: 2
-  canPunch: 0

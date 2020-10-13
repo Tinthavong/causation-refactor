@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DialogueController : MonoBehaviour
 {
-    public Text nameText;
-    public Text dialogueText;
+    public TMP_Text nameText;
+    public TMP_Text dialogueText;
     public Animator anim;
 
     private Queue<string> sentences;
