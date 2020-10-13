@@ -96,8 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 351aeff48233d904eba827806e8da5eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followObject: {fileID: 7684838778044472558, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
-    type: 3}
+  followObject: {fileID: 0}
   followOffset: {x: 5, y: 7}
   speed: 10
   verticalOffset: 2.78
