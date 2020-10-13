@@ -14,6 +14,7 @@ public class CameraBehaviors : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        followObject = FindObjectOfType<PlayerController>().gameObject;
         threshold = CalculateThreshold();
         rb = followObject.GetComponent<Rigidbody2D>();
     }
