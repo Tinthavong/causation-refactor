@@ -88,7 +88,8 @@ public class PlayerController : CharacterBase
 
         if (Input.GetButton("Jump") && !isJumping && !isCrouched)
         {
-            animator.SetBool("IsJumping", true);
+            //animator.SetBool("IsJumping", true);
+            animator.Play("GrandpaJump");
             axisY = transform.position.y;
             // Debug.Log("Jumped at " + axisY);
             isJumping = true;
@@ -105,6 +106,7 @@ public class PlayerController : CharacterBase
             isCrouched = true;
             if (isCrouched)//imagine using a nested if in the update method loooole
             {
+                //bulletspawn transform goes down with the player model
                 GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 1.45f);
                 GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, -0.4f);
             }
@@ -112,6 +114,7 @@ public class PlayerController : CharacterBase
         }
         else if (Input.GetAxis("Vertical") > -1)
         {
+            //bulletspawn goes back to normal
             //the "exit" time when not pressing the up key is too slow right now
             animator.SetBool("IsCrouched", false);
             isCrouched = false;
@@ -123,7 +126,7 @@ public class PlayerController : CharacterBase
         if (Input.GetButtonDown("Fire1"))
         {
             //animator.SetBool("IsShooting", true);
-            animator.Play("GrandpaShoot");
+         //   animator.Play("GrandpaShoot");
         }
 
 

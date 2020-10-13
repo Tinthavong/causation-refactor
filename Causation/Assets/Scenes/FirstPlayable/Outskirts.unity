@@ -794,13 +794,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248154238}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec91a2f4e1f9ba6459e77ee207c05170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1250631705}
   parallaxEffect: 0.1
+  lengths: []
+  startPoss: []
+  pxPerIndex: []
+  dist: []
+  parallaxedObjects: []
+  plainRepeat: 0
 --- !u!1 &417860501
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,13 +929,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483459097}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec91a2f4e1f9ba6459e77ee207c05170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1250631705}
   parallaxEffect: 0.3
+  lengths: []
+  startPoss: []
+  pxPerIndex: []
+  dist: []
+  parallaxedObjects: []
+  plainRepeat: 0
 --- !u!1 &522253711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,6 +1034,7 @@ GameObject:
   m_Component:
   - component: {fileID: 604480323}
   - component: {fileID: 604480322}
+  - component: {fileID: 604480324}
   m_Layer: 0
   m_Name: hideoutentrance
   m_TagString: Untagged
@@ -1094,6 +1107,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &604480324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604480321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec91a2f4e1f9ba6459e77ee207c05170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1250631705}
+  parallaxEffect: 0
+  lengths: []
+  startPoss: []
+  pxPerIndex: []
+  dist: []
+  parallaxedObjects:
+  - {fileID: 248154238}
+  - {fileID: 483459097}
+  - {fileID: 1300733721}
+  - {fileID: 1054173024}
+  plainRepeat: 1
 --- !u!1 &630836348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,6 +1334,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 196203213, guid: 7b6b8480539c7fd489112745973d2799, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 780720157818408, guid: 7b6b8480539c7fd489112745973d2799, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1345,7 +1386,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Demoman
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 196203215, guid: 7b6b8480539c7fd489112745973d2799, type: 3}
+    - {fileID: 4565456465432649571, guid: 7b6b8480539c7fd489112745973d2799, type: 3}
+    - {fileID: 196203213, guid: 7b6b8480539c7fd489112745973d2799, type: 3}
+    - {fileID: 5608614970963843423, guid: 7b6b8480539c7fd489112745973d2799, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7b6b8480539c7fd489112745973d2799, type: 3}
 --- !u!1 &875375474
 GameObject:
@@ -1531,13 +1576,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054173024}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec91a2f4e1f9ba6459e77ee207c05170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1250631705}
   parallaxEffect: 0.5
+  lengths: []
+  startPoss: []
+  pxPerIndex: []
+  dist: []
+  parallaxedObjects: []
+  plainRepeat: 0
 --- !u!1 &1086013304
 GameObject:
   m_ObjectHideFlags: 0
@@ -1859,19 +1910,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1300733721}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec91a2f4e1f9ba6459e77ee207c05170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1250631705}
   parallaxEffect: 0.4
---- !u!1 &1535332705 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1535332705, guid: 7b6b8480539c7fd489112745973d2799,
-    type: 3}
-  m_PrefabInstance: {fileID: 848574022}
-  m_PrefabAsset: {fileID: 0}
+  lengths: []
+  startPoss: []
+  pxPerIndex: []
+  dist: []
+  parallaxedObjects: []
+  plainRepeat: 0
 --- !u!1 &1815934870
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,6 +2322,11 @@ PrefabInstance:
         type: 3}
       propertyPath: followObject
       value: 
-      objectReference: {fileID: 1535332705}
+      objectReference: {fileID: 0}
+    - target: {fileID: 2606829749327834165, guid: 4bcefde5d6f8d5b4eb7b0e6414682151,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bcefde5d6f8d5b4eb7b0e6414682151, type: 3}
