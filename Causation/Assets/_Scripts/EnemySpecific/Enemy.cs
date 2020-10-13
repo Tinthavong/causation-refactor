@@ -13,11 +13,25 @@ public class Enemy : CharacterBase
         //Enemies dont use ammo for now but if it breaks just set the amount here
         Currency = dropValue;   
     }
+
+    //This internal class controls each droppable item set in the inspector (Set in prefabs unless it's a special enemy)
+    [Serializable]
+    public class EnemyDrops
+    {
+        public GameObject drop;
+        public int weight;
+        public EnemyDrops(GameObject d, int w)
+        {
+            drop = d;
+            weight = w;
+        }
+    }
     
     [Header("Enemy Drops")]
     //Consider making these private and serialized
     public int dropValue;
-    public GameObject drop; //Should drop items or money, just drops money for now
+    //List of EnemyDrops (explained above) to allow for multiple drops
+    public List<EnemyDrops> drops;
 
     [Header("Enemy Variables")]
     //Temp Shooting behavior
@@ -117,8 +131,40 @@ public class Enemy : CharacterBase
     public override void PostDeath()
     {
         //Temporary death, needs animation and drops
-        GameObject d = Instantiate(drop) as GameObject;
-        d.transform.position = this.transform.position;
+        //GameObject d = Instantiate(drop) as GameObject;
+        // d.transform.position = this.transform.position;
+
+        //Variables for the dynamic drop search
+        GameObject drop;
+        int totalweight = 0;
+        int rand;
+        int finder = 0;
+        System.Random random = new System.Random();
+
+        //Adds up total weight for use in RNG
+        foreach (EnemyDrops dr in drops)
+        {
+            totalweight += dr.weight;
+        }
+        rand = random.Next(totalweight);
+        
+        //Goes through each drop in the drops list, adds its weight and checks if it passed rand
+        //If it did, then that is the object that will drop on death
+        foreach(EnemyDrops dr in drops)
+        {
+            finder += dr.weight;
+            if(finder >= rand)
+            {
+                if(dr.drop == null)
+                {
+                    //If the drop chosen happens to be empty, this keeps it from exploding the game
+                    break;
+                }
+                drop = Instantiate(dr.drop) as GameObject;
+                drop.transform.position = this.transform.position;
+                break;
+            }
+        }
     }
 
     void Death()
