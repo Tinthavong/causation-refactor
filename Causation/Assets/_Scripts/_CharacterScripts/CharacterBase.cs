@@ -50,6 +50,7 @@ public abstract class CharacterBase : MonoBehaviour, IActions
 	public float strikeRange = 0.5f;
 	public int strikeDamage = 1;
 	public LayerMask enemyLayers; //Player is the NPC's enemy and the enemy NPC is the player's... enemy
+	public float enemySpeed = 8f; //This will control how fast an enemy moves, change in prefabs for each enemy type
 
 	private void Start()
 	{

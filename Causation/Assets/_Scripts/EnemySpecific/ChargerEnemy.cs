@@ -47,6 +47,7 @@ public class ChargerEnemy : CharacterBase
     private bool facingRight;
     private PlayerController player; //this can be private, pretty sure this works now
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +58,7 @@ public class ChargerEnemy : CharacterBase
     // Update is called once per frame
     void Update()
     {
+        
         //Controls where the enemy is looking
         if (isClose())
         {
@@ -88,7 +90,17 @@ public class ChargerEnemy : CharacterBase
     //Moves towards the player (unimplemented)
     public void RunTowards()
     {
-
+        if(facingRight && !isTooClose())
+        {
+            Vector3 movement = new Vector3(-enemySpeed, 0.0f, 0.0f);
+            transform.position = transform.position + movement * Time.deltaTime;
+        }
+        else if (!isTooClose())
+        {
+            Vector3 movement = new Vector3(enemySpeed, 0.0f, 0.0f);
+            transform.position = transform.position + movement * Time.deltaTime;
+        }
+        
     }
 
     //isClose and isTooClose are specific to gunslinger enemies, at least currently
