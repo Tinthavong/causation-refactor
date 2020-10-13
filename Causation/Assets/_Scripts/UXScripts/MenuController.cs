@@ -14,12 +14,12 @@ public class MenuController : MonoBehaviour
 
     public void CreditsScreen()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(2);
     }
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 
     public void QuitGame()
@@ -33,12 +33,12 @@ public class MenuController : MonoBehaviour
         Debug.Log("Saved Game Loaded");
     }
 
-    //IEnumerator LoadLevel(int levelIndex)
+    //IEnumerator Game()
     //{
-    //    transition.SetTrigger("Start");
+    //    anim.SetTrigger("Start");
 
     //    yield return new WaitForSeconds(1);
 
-    //    SceneManager.LoadScene(levelIndex);
+    //    SceneManager.LoadScene(5);
     //}
 }
