@@ -36,12 +36,12 @@ public class Enemy : CharacterBase
     [Header("Enemy Variables")]
     //Temp Shooting behavior
     public float firerate = 2f;
-    private float firerateWait = 0f;
+    protected float firerateWait = 0f;
     public int sightRange = 10;
     public int meleeRange = 2;
 
-    private bool facingRight;
-    private PlayerController player; //this can be private, pretty sure this works now
+    protected bool facingRight;
+    protected PlayerController player; //this can be private, pretty sure this works now
 
     // Start is called before the first frame update
     void Start()
