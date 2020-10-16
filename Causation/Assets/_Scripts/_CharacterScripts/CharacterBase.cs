@@ -72,8 +72,15 @@ public abstract class CharacterBase : MonoBehaviour, IActions
 		{
 			PostDeath();
 			//should avoid outright destroying the characters bc it should do an animation or whatever first, should use coroutine to delay this but for now:
-			Debug.Log($"Destroyed {gameObject.name}");
-			Destroy(gameObject);
+			if (gameObject.CompareTag("Enemy"))
+			{
+				Debug.Log($"Destroyed {gameObject.name}");
+				Destroy(gameObject); //I think it's best to not destroy the player object if there's going to be a death animation but we'll figure it out later - Tim
+			}
+			else
+			{
+				Debug.Log("Player death");
+			}
 		}
 	}
 

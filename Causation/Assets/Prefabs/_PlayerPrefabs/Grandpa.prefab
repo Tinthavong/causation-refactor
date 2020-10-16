@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 697618783331051722}
   - component: {fileID: 697618783331051717}
   - component: {fileID: 697618783331051716}
+  - component: {fileID: 515447292}
   m_Layer: 9
   m_Name: Grandpa
   m_TagString: Player
@@ -113,7 +114,7 @@ MonoBehaviour:
   displayedHealth: 5
   staminaActions: 0
   bulletSpeed: 400
-  bulletPrefab: {fileID: 7364781363387459371, guid: 041c325e3159f3a4495428b9a610563c,
+  bulletPrefab: {fileID: 2686942302785526997, guid: 31b12168567cb7c41a5434d410bae653,
     type: 3}
   bulletSpawn: {fileID: 697618783283838228}
   StrikeZone: {fileID: 697618782276726973}
@@ -122,6 +123,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 1024
+  enemySpeed: 8
   healthBar: {fileID: 0}
   ammoText: {fileID: 0}
   walletValue: 0
@@ -131,6 +133,7 @@ MonoBehaviour:
   nearObject: {fileID: 0}
   isJumping: 0
   isShooting: 0
+  LM: {fileID: 0}
 --- !u!114 &697618783331051720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,3 +258,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &515447292
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697618783331051719}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -1.09}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.18, y: 2.33}
+    newSize: {x: 0.98095804, y: 2.34}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.18, y: 0.12}
+  m_EdgeRadius: 0

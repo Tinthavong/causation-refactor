@@ -23,7 +23,6 @@ public class PlayerController : CharacterBase
     public TMP_Text ammoText;
     public int walletValue; //think  of a better name, but this has all of the player's screws/currency
     public int maxAmmo = 6; //six-shooter by default, set in inspector otherwise
-
     Animator animator;
     Rigidbody2D rb; //rigidbody used for jumping
 
@@ -33,7 +32,7 @@ public class PlayerController : CharacterBase
     //An acceleration function might be cool, hold a horizontal direction down longer and you move faster?
     public int runSpeed = 5;
     //Jumping
-    public float jumpForce = 600;
+    public float jumpForce = 700;
     private float axisY;
 
     //Movement Axes stash, vertical could go here as well if there was going to be vertical movement like a beat em up
@@ -48,6 +47,7 @@ public class PlayerController : CharacterBase
     public bool isJumping;
     private bool isCrouched;
     public bool isShooting;
+    public LevelManager LM;
 
     void Awake()
     {
@@ -80,7 +80,7 @@ public class PlayerController : CharacterBase
         Flip(horizontal);
 
         //reminder, axisY is the y coordinate that the player jumped from so once the player falls back down and their y position is less than or equal to it will stop falling 
-        if (rb.velocity.y == 0 && isJumping) //this doesn't make any sense, if it does 
+        if (rb.velocity.y <= 0 && isJumping) //this doesn't make any sense, if it does 
         {
             OnLanding();
         }
@@ -126,7 +126,7 @@ public class PlayerController : CharacterBase
         if (Input.GetButtonDown("Fire1"))
         {
             //animator.SetBool("IsShooting", true);
-         //   animator.Play("GrandpaShoot");
+            //   animator.Play("GrandpaShoot");
         }
 
 
@@ -134,8 +134,9 @@ public class PlayerController : CharacterBase
 
     public void OnLanding()
     {
-        isJumping = false;
-        animator.SetBool("IsJumping", false);
+        if (rb.velocity.y == 0) isJumping = false;
+        //This works but when jumping on crates it waits until the velocity is 0 before jump is allowed again
+        //A movement refactor and environmental system overwork is needed to fix this but i will do that last - Tim
     }
 
     private void StrikingBehavior()
@@ -184,6 +185,7 @@ public class PlayerController : CharacterBase
     {
         base.DamageCalc(damage);
         healthBar.SetHealth(displayedHealth);
+        ElimCharacter();
     }
 
     //Handles flipping the sprite across the x axis to show that movement direction has changed
@@ -199,9 +201,21 @@ public class PlayerController : CharacterBase
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Checkpoint"))
+        {
+            Time.timeScale = 0f;
+            LM.VictoryCheck();
+        }
+    }
+
+
     public override void PostDeath()
     {
         //death animation here
-        throw new System.NotImplementedException();
+        LM.GameOver();
+        enabled = false; //self-explanatory but this turns off the ability to move around with the player. we can pause the gameworld too, but this way still plays enemy animations if they're still around the player
+        GetComponent<CapsuleCollider2D>().enabled = false; //Dirty fix right now. The enemy should stop attacking if the player is dead anyways
     }
 }

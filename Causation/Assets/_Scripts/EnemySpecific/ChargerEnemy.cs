@@ -5,7 +5,6 @@ using System;
 
 public class ChargerEnemy : Enemy
 {
-
     //Let Trumpie know before making changes - mostly a copy of the Enemy class, but a new script isnt a huge undertaking as there will only be a few enemy types
     //Probably like 7 or so enemy scripts in total, bosses included in that number
     public ChargerEnemy() //constructor
@@ -15,7 +14,6 @@ public class ChargerEnemy : Enemy
         //Enemies dont use ammo for now but if it breaks just set the amount here
         Currency = dropValue;
     }
-    
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +25,6 @@ public class ChargerEnemy : Enemy
     // Update is called once per frame
     void Update()
     {
-        
         //Controls where the enemy is looking
         if (isClose())
         {
@@ -49,11 +46,7 @@ public class ChargerEnemy : Enemy
             //Firerate makes sense here as melee is this enemies only attack
             firerateWait = firerate;
         }
-
-
         ElimCharacter();//Want to find some way for elimcharacter to be checked each time damage is taken, not on every frame like it is now
-
-
     }
 
     //Moves towards the player (unimplemented)
@@ -68,12 +61,10 @@ public class ChargerEnemy : Enemy
         {
             Vector3 movement = new Vector3(enemySpeed, 0.0f, 0.0f);
             transform.position = transform.position + movement * Time.deltaTime;
-        }
-        
+        } 
     }
 
     //isClose and isTooClose are specific to gunslinger enemies, at least currently
-
     //Checks to see if the player object is within a certain distance
     private bool isClose()
     {
@@ -104,6 +95,7 @@ public class ChargerEnemy : Enemy
 
             transform.localScale = scale;
         }
+
         else if (player.transform.position.x >= this.transform.position.x && facingRight)
         {
             facingRight = false;
@@ -116,7 +108,6 @@ public class ChargerEnemy : Enemy
 
     void Death()
     {
-
         Destroy(this.gameObject);
     }
 }
