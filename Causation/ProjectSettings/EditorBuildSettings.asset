@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu Scenes/Main Menu Screen.unity
     guid: 62966aeae372a784e9b8a77a633b0a75
   - enabled: 1
-    path: Assets/Scenes/Grandpa's Levels/Gpa_LevelOne.unity
+    path: Assets/Scenes/Grandpa's Levels/trashme.unity
     guid: b8d9606dc13142e488d9b89247ea56b9
   - enabled: 1
     path: Assets/Scenes/Grandpa's Levels/Gpa_LevelThree.unity
