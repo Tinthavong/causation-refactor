@@ -129,7 +129,7 @@ MonoBehaviour:
   walletValue: 0
   maxAmmo: 6
   runSpeed: 9
-  jumpForce: 600
+  jumpForce: 750
   nearObject: {fileID: 0}
   isJumping: 0
   isShooting: 0
