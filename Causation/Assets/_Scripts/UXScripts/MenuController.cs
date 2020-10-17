@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
+    private int lastLoad;
     public void PlayGame()
     {
         Time.timeScale = 1f;
@@ -31,6 +32,11 @@ public class MenuController : MonoBehaviour
     public void LoadGame()
     {
         Debug.Log("Saved Game Loaded");
+    }
+
+    public void RestartGame()
+    {
+        lastLoad = PlayerPrefs.GetInt("SavedScene");
     }
 
     //IEnumerator Game()
