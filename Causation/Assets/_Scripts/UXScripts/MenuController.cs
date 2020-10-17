@@ -34,6 +34,10 @@ public class MenuController : MonoBehaviour
         Debug.Log("Saved Game Loaded");
     }
 
+    public void MissionSelect()
+    {
+        SceneManager.LoadScene(4);
+    }
     public void RestartGame()
     {
         Time.timeScale = 1f;
