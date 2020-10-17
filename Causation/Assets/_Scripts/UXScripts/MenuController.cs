@@ -37,6 +37,29 @@ public class MenuController : MonoBehaviour
     public void RestartGame()
     {
         lastLoad = PlayerPrefs.GetInt("SavedScene");
+        if (lastLoad != 0)
+        {
+            SceneManager.LoadScene(lastLoad);
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    public void NextLevel()
+    {
+
+        SceneManager.LoadScene("Gpa_LevelTwo");
+        //lastLoad = PlayerPrefs.GetInt("SavedScene");
+        //if (lastLoad != 0)
+        //{
+        //    SceneManager.LoadScene(lastLoad + 1);
+        //}
+        //else
+        //{
+        //    return;
+        //}
     }
 
     //IEnumerator Game()

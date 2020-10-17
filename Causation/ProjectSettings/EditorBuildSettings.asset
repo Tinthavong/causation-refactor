@@ -18,14 +18,23 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu Scenes/Main Menu Screen.unity
     guid: 62966aeae372a784e9b8a77a633b0a75
   - enabled: 1
-    path: Assets/Scenes/Grandpa's Levels/trashme.unity
-    guid: b8d9606dc13142e488d9b89247ea56b9
+    path: Assets/Scenes/Menu Scenes/MissionSelectionScreen.unity
+    guid: cdde473f88632c3449e176be0df2732f
+  - enabled: 1
+    path: Assets/Scenes/Grandpa's Levels/Gpa_LevelOne.unity
+    guid: 76a6ecc46f92a62449cfb2b836153101
+  - enabled: 1
+    path: Assets/Scenes/Grandpa's Levels/Gpa_LevelTwo.unity
+    guid: 2ab23ec5f469e5e42a1456556a251bc4
   - enabled: 1
     path: Assets/Scenes/Grandpa's Levels/Gpa_LevelThree.unity
     guid: e37b6663c34362945945e655d7e0b05e
   - enabled: 1
-    path: Assets/Scenes/Grandpa's Levels/Gpa_LevelTwo.unity
-    guid: 2ab23ec5f469e5e42a1456556a251bc4
+    path: Assets/Scenes/Menu Scenes/Death Screen.unity
+    guid: 9e5551c5a214bec4cb281b841a6160d8
+  - enabled: 1
+    path: Assets/Scenes/Menu Scenes/Victory Screen.unity
+    guid: c0d01c4895a19d348ac1c6bd35300262
   - enabled: 0
     path: Assets/Scenes/FirstPlayable/Saferoom.unity
     guid: fd3d3c04a6e72534f982d4d3c7488b47
