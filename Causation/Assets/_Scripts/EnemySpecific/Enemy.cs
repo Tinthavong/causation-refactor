@@ -54,32 +54,7 @@ public class Enemy : CharacterBase
     void Update()
     {
 
-        //Controls where the enemy is looking
-        //First in update to make sure bullet travels in correct direction
-        if (isClose())
-        {
-            Flip(0f);
-        }
-
-        //firerateWait changes based on fps time
-        firerateWait -= Time.deltaTime;
-        //if firerateWait is 0, time to fire and reset the wait
-        if (firerateWait <= 0 && isClose() && !isTooClose())
-        {
-
-            Shoot();
-
-            firerateWait = firerate;
-        }
-
-        if (firerateWait <= 0 && isTooClose())
-        {
-            //animation play here
-            Strike();
-            //Using firerate as the buffer for melee for consistency, might replace later
-            firerateWait = firerate;
-        }
-        ElimCharacter();//Want to find some way for elimcharacter to be checked each time damage is taken, not on every frame like it is now
+        
 
 
     }
@@ -96,7 +71,7 @@ public class Enemy : CharacterBase
         return false;
     }
 
-    //Unused currently, will be implemented with melee support
+    //Used for melee support
     private bool isTooClose()
     {
         if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) < meleeRange && player.displayedHealth > 0)
@@ -106,6 +81,7 @@ public class Enemy : CharacterBase
         return false;
     }
 
+    //Controls where the enemy is looking, always towards player
     public override void Flip(float dump) //dump because it doesn't matter but it's needed or errors
     {
         if (player.transform.position.x < this.transform.position.x && !facingRight)

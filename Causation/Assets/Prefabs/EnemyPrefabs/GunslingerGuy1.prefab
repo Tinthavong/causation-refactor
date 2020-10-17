@@ -72,9 +72,9 @@ GameObject:
   - component: {fileID: 3170384674644724536}
   - component: {fileID: 3170384674644724537}
   - component: {fileID: 3170384674644724538}
-  - component: {fileID: 4857794454682944073}
+  - component: {fileID: 6927494988432347581}
   m_Layer: 10
-  m_Name: BadGuy1
+  m_Name: GunslingerGuy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,7 +182,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4857794454682944073
+--- !u!114 &6927494988432347581
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,13 +191,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3170384674644724539}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da0f65341e70b954aba548091c012da0, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e771173d7462244cb53f6d4aea23118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   displayedHealth: 5
   staminaActions: 0
   bulletSpeed: 800
-  bulletPrefab: {fileID: 925700458712431568, guid: 968bd95b9d0bdcd44961c4e4005a974c,
+  bulletPrefab: {fileID: 7364781363387459371, guid: 041c325e3159f3a4495428b9a610563c,
     type: 3}
   bulletSpawn: {fileID: 1419731304394303833}
   StrikeZone: {fileID: 552969116}
