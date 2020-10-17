@@ -174,7 +174,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
-  characterSpeed: 50
+  enemySpeed: 7.5
   dropValue: 0
   drops:
   - drop: {fileID: 7462346461303034108, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}
