@@ -279,6 +279,7 @@ MonoBehaviour:
   - {fileID: 1250427116}
   hb: {fileID: 3493381887788234484}
   chb: {fileID: 0}
+  medkitNumber: 3
 --- !u!1 &3493381885816166707
 GameObject:
   m_ObjectHideFlags: 0
