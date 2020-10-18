@@ -16,6 +16,9 @@ public class Shotgunner : Enemy
     [Header("Special variables")]
     //Range before shotgunsplosion happens
     public int fireRange = 5;
+    //New bulletspawns for extra bullets
+    public GameObject bulletSpawn2;
+    public GameObject bulletSpawn3;
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +35,13 @@ public class Shotgunner : Enemy
             RunTowards();
         }
 
-        //HERE IS WHERE I STOPPED
-        //Going to implement a new shotgun specific shoot method that fires multiple shots in a small cone
-        //Afterwards will have a shotgunner prefab to attach to
+        //firerateWait changes based on fps time
+        firerateWait -= Time.deltaTime;
+        if (isCloseEnough() && firerateWait <= 0)
+        {
+            Shoot();
+            firerateWait = firerate;
+        }
     }
 
     public void RunTowards()
@@ -62,5 +69,40 @@ public class Shotgunner : Enemy
             return true;
         }
         return false;
+    }
+
+    //Shotgunner needs a new shoot method as it shoots in more than one direction, this method makes 3 bullets, two at an angle
+    //b shoots straight, c shoots above, d shoots below
+    private new void Shoot()
+    {
+        GameObject b = Instantiate(bulletPrefab) as GameObject;
+        GameObject c = Instantiate(bulletPrefab) as GameObject;
+        GameObject d = Instantiate(bulletPrefab) as GameObject;
+        b.transform.position = bulletSpawn.transform.position;
+        c.transform.position = bulletSpawn2.transform.position;
+        d.transform.position = bulletSpawn3.transform.position;
+        //Bullet object shifts position and rotation based on direction
+        if (gameObject.transform.localScale.x < 0)
+        {
+            b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90f);
+            b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletSpeed);
+            c.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 80f);
+            c.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletSpeed);
+            c.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (bulletSpeed/6));
+            d.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 100f);
+            d.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletSpeed);
+            d.GetComponent<Rigidbody2D>().AddForce(Vector2.down * (bulletSpeed/6));
+        }
+        else
+        {
+            b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90f);
+            b.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletSpeed);
+            c.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -80f);
+            c.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletSpeed);
+            c.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (bulletSpeed/6));
+            d.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -100f);
+            d.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletSpeed);
+            d.GetComponent<Rigidbody2D>().AddForce(Vector2.down * (bulletSpeed/6));
+        }
     }
 }
