@@ -35,6 +35,10 @@ public class PlayerController : CharacterBase
     public float jumpForce = 700;
     private float axisY;
 
+    float attackElapsedTime = 0;
+    public float attackDelay = 0.2f;
+    public GameObject[] bulletList;
+
     //Movement Axes stash, vertical could go here as well if there was going to be vertical movement like a beat em up
     private float horizontal;
     private float vertical;
@@ -48,6 +52,8 @@ public class PlayerController : CharacterBase
     private bool isCrouched;
     public bool isShooting;
     public LevelManager LM;
+    public int lives = 1; //get rid of this after testing
+    private bool isInvincible = false;
 
     void Awake()
     {
@@ -63,6 +69,19 @@ public class PlayerController : CharacterBase
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.T) && bulletPrefab != bulletList[1])
+        {
+            Ammo = maxAmmo; //right now the special bullet does not have a finite amount, would like to make finite before alpha deliverable
+            bulletPrefab = bulletList[1]; //this should use something more algorithmic. There are only two bullets right now, however
+        }
+        else if (Input.GetKeyDown(KeyCode.T) && bulletPrefab != bulletList[0])
+        {
+            Ammo = maxAmmo; //default ammo will have infinite
+            bulletPrefab = bulletList[0];
+        }
+
+        attackElapsedTime += Time.deltaTime;
         ShootingBehavior();
         StrikingBehavior();
         //Tighter, specific controls might be better here in order to set the speed to 0 immediately when the key is lifted (an abrupt end to the animation)
@@ -141,8 +160,10 @@ public class PlayerController : CharacterBase
 
     private void StrikingBehavior()
     {
-        if (Input.GetButtonDown("Fire2"))//and a bool/state check that determines if the player is not already shooting
+        if (Input.GetButtonDown("Fire2") && attackElapsedTime >= attackDelay)//and a bool/state check that determines if the player is not already shooting
         {
+            attackElapsedTime = 0; //It's the same principle as shooting and this SHOULD work but 
+            //going to spawn a red circle wherever strikezone is to show damage affordance
             Strike();
         }
     }
@@ -154,7 +175,7 @@ public class PlayerController : CharacterBase
         {
             ammoText.text = Ammo.ToString();
 
-            if (Input.GetButtonDown("Fire1") && Ammo > 0)
+            if (Input.GetButtonDown("Fire1") && Ammo > 0 && attackElapsedTime >= attackDelay)
             {
                 if (Ammo == 0)
                 {
@@ -164,6 +185,7 @@ public class PlayerController : CharacterBase
                 {
                     if (!PauseController.isPaused)
                     {
+                        attackElapsedTime = 0;
                         Shoot();
                         Ammo--;
                     }
@@ -183,9 +205,21 @@ public class PlayerController : CharacterBase
 
     public override void DamageCalc(int damage)
     {
+        if (isInvincible) return;
         base.DamageCalc(damage);
         healthBar.SetHealth(displayedHealth);
         ElimCharacter();
+
+        StartCoroutine(Invinciblity());
+    }
+
+    private IEnumerator Invinciblity()
+    {
+        isInvincible = true;
+        animator.Play("GrandpaDamage");
+        yield return new WaitForSeconds(1.5f);
+        animator.Play("GrandpaIdleNeut");
+        isInvincible = false;
     }
 
     //Handles flipping the sprite across the x axis to show that movement direction has changed
@@ -203,19 +237,34 @@ public class PlayerController : CharacterBase
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //should use switch/cases but that's for later
+        if (collision.CompareTag("Transition"))//I think this tag is fine for now
+        {
+            //Time.timeScale = 0f; If there are no panels then this is completely useless
+            LM.VictoryCheck();
+        }
+
         if (collision.CompareTag("Checkpoint"))
         {
-            Time.timeScale = 0f;
-            LM.VictoryCheck();
+            LM.flaggedCheckpoint = true; //be sure to reset all flags when restarting or changing levels
         }
     }
 
 
     public override void PostDeath()
     {
-        //death animation here
-        LM.GameOver();
-        enabled = false; //self-explanatory but this turns off the ability to move around with the player. we can pause the gameworld too, but this way still plays enemy animations if they're still around the player
-        GetComponent<CapsuleCollider2D>().enabled = false; //Dirty fix right now. The enemy should stop attacking if the player is dead anyways
+        if (lives > 0)
+        {
+            lives--;
+            displayedHealth = Health;
+            LM.RetryCheckpoint();
+        }
+        else
+        {
+            //death animation here
+            LM.GameOver();
+            enabled = false; //self-explanatory but this turns off the ability to move around with the player. we can pause the gameworld too, but this way still plays enemy animations if they're still around the player
+            GetComponent<CapsuleCollider2D>().enabled = false; //Dirty fix right now. The enemy should stop attacking if the player is dead anyways
+        }
     }
 }

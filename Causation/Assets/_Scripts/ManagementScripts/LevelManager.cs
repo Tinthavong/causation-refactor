@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {  //game over manager for both player wins and losses
-    public GameObject flaggedCheckPoint; //the last visited checkpoint, a flag is set that allows the player to respawn there
-    private bool checkpointFlag;
+    public GameObject checkpoint; //the last visited checkpoint, a flag is set that allows the player to respawn there
+    public bool flaggedCheckpoint;
 
     public GameObject victoryPoint;
 
@@ -33,15 +33,19 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene("Victory Screen");
     }
 
-    void Checkpoint()
+    public void RetryCheckpoint()//Retry from a checkpoint rather than from the beginning
     {
-        if(checkpointFlag)
+        if(flaggedCheckpoint)
         {
-
+            PlayerController pc = FindObjectOfType<PlayerController>();
+            pc.transform.position = checkpoint.transform.position;
+            //respawn enemies too?
+        }
+        else
+        {
+            return;
         }
     }
-
-
 
     // Start is called before the first frame update
     void Start()

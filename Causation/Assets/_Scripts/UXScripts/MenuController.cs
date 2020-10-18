@@ -47,6 +47,11 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    public void RetryLevel()
+    {
+        
+    }
+
     public void NextLevel()
     {
 
