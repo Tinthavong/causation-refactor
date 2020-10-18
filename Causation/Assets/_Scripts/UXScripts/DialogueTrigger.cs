@@ -14,7 +14,7 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!hasPlayed)
+        if (!hasPlayed && collision.CompareTag("Player"))
         {
             TriggerDialogue();
             Time.timeScale = 0f;

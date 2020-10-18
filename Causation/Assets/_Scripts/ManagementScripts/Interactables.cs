@@ -39,11 +39,12 @@ public class Interactables : MonoBehaviour
 
     //mean for the update check when player is pushing the W key
     private bool isColliding;
-
+    private bool transitionFlag = false;
 
     //TODO: Figure out how to properply display sign text. Should display below sign in red text so player can visibly see it
     private void FixedUpdate()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.W))
         {
             if (isColliding = true && nearObject.tag != null)
@@ -52,6 +53,15 @@ public class Interactables : MonoBehaviour
 
                 Instantiate(signText, objectPosition, Quaternion.identity);
             }
+        }*/
+
+        if (Input.GetKeyDown(KeyCode.W) && transitionFlag)
+        {
+            Camera mc = FindObjectOfType<Camera>();
+            gameObject.transform.position = GameObject.Find("ScreenTransitionB").transform.position;
+            Vector3 dummy = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
+            mc.transform.position = dummy;
+            transitionFlag = false; //no backtracking. also this implementation ain't great huh
         }
     }
 
@@ -82,6 +92,11 @@ public class Interactables : MonoBehaviour
                 SpawnText(objectPosition);
                 Debug.Log("Object player is at is " + nearObject.tag);
                 isColliding = true;
+                break;
+            case "Transition":
+                //If the object has the 'Interact' tag spawn in text above the player to show they can push a button to interact with object
+                SpawnText(objectPosition);
+                transitionFlag = true;
                 break;
             default:
                 Debug.Log("Not colliding with tagged object");

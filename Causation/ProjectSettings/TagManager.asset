@@ -12,6 +12,9 @@ TagManager:
   - ScrewPickUp
   - Transition
   - Checkpoint
+  - FinishLine
+  - Ledge
+  - Groundfloor
   layers:
   - Default
   - TransparentFX

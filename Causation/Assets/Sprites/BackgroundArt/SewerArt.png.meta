@@ -19,7 +19,7 @@ TextureImporter:
     second: SewerBlock
   - first:
       213: 6267805742554756825
-    second: SewerArt_5
+    second: SewerFloor3
   - first:
       213: 5633496576443440656
     second: Deco3
@@ -77,6 +77,9 @@ TextureImporter:
   - first:
       213: 4629500115553951374
     second: SewerArt_24
+  - first:
+      213: -5798651101220429581
+    second: SewerFloor2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -368,7 +371,7 @@ TextureImporter:
         serializedVersion: 2
         x: 840
         y: 240
-        width: 648
+        width: 216
         height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -442,6 +445,48 @@ TextureImporter:
       bones: []
       spriteID: 49ac1d23d704d2a80800000000000000
       internalID: -8490058816055817580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SewerFloor2
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 240
+        width: 216
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f02457cb8d078fa0800000000000000
+      internalID: -5798651101220429581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SewerFloor3
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 240
+        width: 216
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d631265d18bbf650800000000000000
+      internalID: 6267805742554756825
       vertices: []
       indices: 
       edges: []

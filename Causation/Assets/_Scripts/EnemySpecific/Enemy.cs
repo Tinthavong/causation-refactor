@@ -54,9 +54,6 @@ public class Enemy : CharacterBase
     void Update()
     {
 
-        
-
-
     }
 
     //isClose and isTooClose are specific to gunslinger enemies, at least currently

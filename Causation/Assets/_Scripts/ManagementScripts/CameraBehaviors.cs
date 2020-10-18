@@ -10,13 +10,27 @@ public class CameraBehaviors : MonoBehaviour
     private Vector2 threshold;
     private Rigidbody2D rb;
     public float verticalOffset = 2f;
+    private float defaultVert;
 
     // Start is called before the first frame update
     void Start()
     {
+        defaultVert = verticalOffset;
         followObject = FindObjectOfType<PlayerController>().gameObject;
         threshold = CalculateThreshold();
         rb = followObject.GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            verticalOffset -= 2f;
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            verticalOffset = defaultVert;
+        }
     }
 
     // Update is called once per frame

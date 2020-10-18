@@ -52,14 +52,14 @@ public class PlayerController : CharacterBase
     private bool isCrouched;
     public bool isShooting;
     public LevelManager LM;
-    public int lives = 1; //get rid of this after testing
     private bool isInvincible = false;
+    private bool canMove = true;
 
     void Awake()
     {
         //Can hardcode displayed health here if necessary
         //Apparently coding it at the top doesn't work so might have to do that. Otherwise be sure to set in inspector
-
+        LM = FindObjectOfType<LevelManager>();
         axisY = gameObject.transform.position.y; //axisY is set immediately to the player game object's y pos
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -69,86 +69,82 @@ public class PlayerController : CharacterBase
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.T) && bulletPrefab != bulletList[1])
+        if (canMove)
         {
-            Ammo = maxAmmo; //right now the special bullet does not have a finite amount, would like to make finite before alpha deliverable
-            bulletPrefab = bulletList[1]; //this should use something more algorithmic. There are only two bullets right now, however
-        }
-        else if (Input.GetKeyDown(KeyCode.T) && bulletPrefab != bulletList[0])
-        {
-            Ammo = maxAmmo; //default ammo will have infinite
-            bulletPrefab = bulletList[0];
-        }
+            if (Input.GetKeyDown(KeyCode.T) && bulletPrefab != bulletList[1])
+            {
+                Ammo = maxAmmo; //right now the special bullet does not have a finite amount, would like to make finite before alpha deliverable
+                bulletPrefab = bulletList[1]; //this should use something more algorithmic. There are only two bullets right now, however
+            }
+            else if (Input.GetKeyDown(KeyCode.T) && bulletPrefab != bulletList[0])
+            {
+                Ammo = maxAmmo; //default ammo will have infinite
+                bulletPrefab = bulletList[0];
+            }
 
-        attackElapsedTime += Time.deltaTime;
-        ShootingBehavior();
-        StrikingBehavior();
-        //Tighter, specific controls might be better here in order to set the speed to 0 immediately when the key is lifted (an abrupt end to the animation)
-        horizontal = Input.GetAxis("Horizontal");
-        animator.SetFloat("Speed", Mathf.Abs(horizontal != 0 ? horizontal : 0)); //ternary, think of it like a boolean: (is horizontal != 0? if true then horizontal value :else 0)
+            attackElapsedTime += Time.deltaTime;
+            ShootingBehavior();
+            StrikingBehavior();
+            //Tighter, specific controls might be better here in order to set the speed to 0 immediately when the key is lifted (an abrupt end to the animation)
+            horizontal = Input.GetAxis("Horizontal");
+            animator.SetFloat("Speed", Mathf.Abs(horizontal != 0 ? horizontal : 0)); //ternary, think of it like a boolean: (is horizontal != 0? if true then horizontal value :else 0)
+        }
     }
 
     private void FixedUpdate()
     {
-        if (horizontal != 0 && !isCrouched)
+        if (canMove)
         {
-            Vector3 movement = new Vector3(horizontal * runSpeed, 0.0f, 0.0f);
-            transform.position = transform.position + movement * Time.deltaTime;
-        }
-        Flip(horizontal);
-
-        //reminder, axisY is the y coordinate that the player jumped from so once the player falls back down and their y position is less than or equal to it will stop falling 
-        if (rb.velocity.y <= 0 && isJumping) //this doesn't make any sense, if it does 
-        {
-            OnLanding();
-        }
-        //jumping isn't perfect, the player model will continuously go down instead of staying at the value that it jumped from
-
-        if (Input.GetButton("Jump") && !isJumping && !isCrouched)
-        {
-            //animator.SetBool("IsJumping", true);
-            animator.Play("GrandpaJump");
-            axisY = transform.position.y;
-            // Debug.Log("Jumped at " + axisY);
-            isJumping = true;
-            //rb.gravityScale = 1.5f;
-            rb.WakeUp();
-            rb.AddForce(new Vector2(0, jumpForce));
-        }
-
-        vertical = Input.GetAxis("Vertical");
-        if (vertical < 0)
-        {
-            //make it so movement is stopped or forced into crouch walk
-            animator.SetBool("IsCrouched", true);
-            isCrouched = true;
-            if (isCrouched)//imagine using a nested if in the update method loooole
+            if (horizontal != 0 && !isCrouched)
             {
-                //bulletspawn transform goes down with the player model
-                GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 1.45f);
-                GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, -0.4f);
+                Vector3 movement = new Vector3(horizontal * runSpeed, 0.0f, 0.0f);
+                transform.position = transform.position + movement * Time.deltaTime;
+            }
+            Flip(horizontal);
+
+            //reminder, axisY is the y coordinate that the player jumped from so once the player falls back down and their y position is less than or equal to it will stop falling 
+            if (rb.velocity.y <= 0 && isJumping) //this doesn't make any sense, if it does 
+            {
+                OnLanding();
+            }
+            //jumping isn't perfect, the player model will continuously go down instead of staying at the value that it jumped from
+
+            if (Input.GetButton("Jump") && !isJumping && !isCrouched)
+            {
+                //animator.SetBool("IsJumping", true);
+                animator.Play("GrandpaJump");
+                axisY = transform.position.y;
+                // Debug.Log("Jumped at " + axisY);
+                isJumping = true;
+                //rb.gravityScale = 1.5f;
+                rb.WakeUp();
+                rb.AddForce(new Vector2(0, jumpForce));
             }
 
-        }
-        else if (Input.GetAxis("Vertical") > -1)
-        {
-            //bulletspawn goes back to normal
-            //the "exit" time when not pressing the up key is too slow right now
-            animator.SetBool("IsCrouched", false);
-            isCrouched = false;
-            GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 2.3f);
-            GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, 0f);
-        }
+            vertical = Input.GetAxis("Vertical");
+            if (vertical < 0)
+            {
+                //make it so movement is stopped or forced into crouch walk
+                animator.SetBool("IsCrouched", true);
+                isCrouched = true;
+                if (isCrouched)//imagine using a nested if in the update method loooole
+                {
+                    //bulletspawn transform goes down with the player model
+                    GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 1.45f);
+                    GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, -0.4f);
+                }
 
-        //Redundant with shooting behavior, place this in there
-        if (Input.GetButtonDown("Fire1"))
-        {
-            //animator.SetBool("IsShooting", true);
-            //   animator.Play("GrandpaShoot");
+            }
+            else if (Input.GetAxis("Vertical") > -1)
+            {
+                //bulletspawn goes back to normal
+                //the "exit" time when not pressing the up key is too slow right now
+                animator.SetBool("IsCrouched", false);
+                isCrouched = false;
+                GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 2.3f);
+                GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, 0f);
+            }
         }
-
-
     }
 
     public void OnLanding()
@@ -177,6 +173,7 @@ public class PlayerController : CharacterBase
 
             if (Input.GetButtonDown("Fire1") && Ammo > 0 && attackElapsedTime >= attackDelay)
             {
+                animator.Play("GrandpaShoot");
                 if (Ammo == 0)
                 {
                     Debug.Log("No Ammo Left!");//implement affordance, clicking sound or something
@@ -190,6 +187,7 @@ public class PlayerController : CharacterBase
                         Ammo--;
                     }
                 }
+                animator.SetBool("IsShooting", false);
             }
 
             if (!PauseController.isPaused)
@@ -209,16 +207,14 @@ public class PlayerController : CharacterBase
         base.DamageCalc(damage);
         healthBar.SetHealth(displayedHealth);
         ElimCharacter();
-
+        animator.PlayInFixedTime("GrandpaDamage", -1, 1f);
         StartCoroutine(Invinciblity());
     }
 
     private IEnumerator Invinciblity()
     {
         isInvincible = true;
-        animator.Play("GrandpaDamage");
         yield return new WaitForSeconds(1.5f);
-        animator.Play("GrandpaIdleNeut");
         isInvincible = false;
     }
 
@@ -238,7 +234,7 @@ public class PlayerController : CharacterBase
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //should use switch/cases but that's for later
-        if (collision.CompareTag("Transition"))//I think this tag is fine for now
+        if (collision.CompareTag("FinishLine"))//I think this tag is fine for now
         {
             //Time.timeScale = 0f; If there are no panels then this is completely useless
             LM.VictoryCheck();
@@ -253,18 +249,19 @@ public class PlayerController : CharacterBase
 
     public override void PostDeath()
     {
-        if (lives > 0)
-        {
-            lives--;
-            displayedHealth = Health;
-            LM.RetryCheckpoint();
-        }
-        else
-        {
-            //death animation here
-            LM.GameOver();
-            enabled = false; //self-explanatory but this turns off the ability to move around with the player. we can pause the gameworld too, but this way still plays enemy animations if they're still around the player
-            GetComponent<CapsuleCollider2D>().enabled = false; //Dirty fix right now. The enemy should stop attacking if the player is dead anyways
-        }
+        //LM.RetryCheckpoint();
+        //death animation here
+        LM.GameOver();
+        canMove = false; //self-explanatory but this turns off the ability to move around with the player. we can pause the gameworld too, but this way still plays enemy animations if they're still around the player
+        GetComponent<CapsuleCollider2D>().enabled = false; //Dirty fix right now. The enemy should stop attacking if the player is dead anyways
+    }
+
+    public void Replenish()
+    {
+        displayedHealth = Health;
+        healthBar.SetHealth(displayedHealth);
+        Ammo = maxAmmo;
+        canMove = true;
+        GetComponent<CapsuleCollider2D>().enabled = true;
     }
 }

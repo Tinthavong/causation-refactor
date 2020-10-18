@@ -42,6 +42,7 @@ public class Shotgunner : Enemy
             Shoot();
             firerateWait = firerate;
         }
+        ElimCharacter();//Want to find some way for elimcharacter to be checked each time damage is taken, not on every frame like it is now
     }
 
     public void RunTowards()
