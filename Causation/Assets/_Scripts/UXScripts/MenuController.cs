@@ -36,6 +36,7 @@ public class MenuController : MonoBehaviour
 
     public void RestartGame()
     {
+        Time.timeScale = 1f;
         lastLoad = PlayerPrefs.GetInt("SavedScene");
         if (lastLoad != 0)
         {
@@ -54,8 +55,8 @@ public class MenuController : MonoBehaviour
 
     public void NextLevel()
     {
-
-        SceneManager.LoadScene("Gpa_LevelTwo");
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(4);
         //lastLoad = PlayerPrefs.GetInt("SavedScene");
         //if (lastLoad != 0)
         //{
