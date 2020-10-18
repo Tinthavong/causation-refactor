@@ -54,9 +54,6 @@ public class Enemy : CharacterBase
     void Update()
     {
 
-        
-
-
     }
 
     //isClose and isTooClose are specific to gunslinger enemies, at least currently
@@ -120,7 +117,8 @@ public class Enemy : CharacterBase
         {
             totalweight += dr.weight;
         }
-        rand = random.Next(totalweight);
+        //+1 because .next returns a random int less than the provided number
+        rand = random.Next(totalweight+1);
 
         //Goes through each drop in the drops list, adds its weight and checks if it passed rand
         //If it did, then that is the object that will drop on death

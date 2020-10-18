@@ -197,7 +197,7 @@ MonoBehaviour:
   displayedHealth: 5
   staminaActions: 0
   bulletSpeed: 800
-  bulletPrefab: {fileID: 7364781363387459371, guid: 041c325e3159f3a4495428b9a610563c,
+  bulletPrefab: {fileID: 925700458712431568, guid: 968bd95b9d0bdcd44961c4e4005a974c,
     type: 3}
   bulletSpawn: {fileID: 1419731304394303833}
   StrikeZone: {fileID: 552969116}

@@ -59,5 +59,9 @@ public class DialogueController : MonoBehaviour
     void EndDialogue()
     {
         anim.SetBool("IsOpen", false);
+        if(Time.timeScale == 0f)
+        {
+            Time.timeScale = 1f;
+        }
     }
 }

@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-
     public int damage = 10;
-    public bool playerBullet; //Dirty quick fix, right now the player can get hurt by ttheir own bullets 
+    public bool playerBullet;
 
     //For now this simply assumes that every collision is with an enemy and will take away the appropriate amount of damage
     //we may want to eventually change this to accomodate collisions with destructible objects (if added)
@@ -21,6 +20,7 @@ public class BulletScript : MonoBehaviour
             AudioSource.PlayClipAtPoint(this.GetComponent<AudioSource>().clip, this.transform.position);
             Debug.Log("Enemy has been hit");
         }
+
         else if (collision.tag == "Player" && !playerBullet)
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
