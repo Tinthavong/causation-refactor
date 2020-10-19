@@ -10,24 +10,9 @@ using UnityEngine.PlayerLoop;
 
 public class Interactables : MonoBehaviour
 {
-    /// <summary>
-    /// Created by Tyler F
-    /// The Interactables script is going to be designed with the ideas of how we want the character to interact with objects.
-    /// *Important* This script is going to be attached directly to the player (and potentially Enemies/NPCs) and will search for tags nearby or directly in contact of the player.
-    /// This will include stuff like:
-    ///     -Collision detection between items like crates and platforms
-    ///     -Detection for if the player is in range of an NPC or Sign that can initiate dialogue as well
-    ///      as if the player is in the range of a door that can transition to a new scene.
-    /// </summary>
+    //Created by Tyler F
 
-    //TODO: Create basic collision detector for the following tags:
-    //      Enemy, Object, and Interact, Projectile
-    //Collisions for Object should make it so character cannot move past object without jumping past (if possible) or not at all
-    //Collisions for Enemy should register hits against player and take away health (Not Included in First Playable)
-    //Collisions for Projectile should be similar to enemy in the fact that it will cause damage and appropriate animations
-    //Collisions for Interact should see if a player is at or near an object such as a sign or door that can be interacted with via the W key
-
-
+    //Interactables has been changed to only search for objects lie boxes, signs, and scene transitions
 
     //nearObject is supposed to be the trigger object the player has just come into contact with
     public GameObject nearObject;
@@ -41,20 +26,8 @@ public class Interactables : MonoBehaviour
     private bool isColliding;
     private bool transitionFlag = false;
 
-    //TODO: Figure out how to properply display sign text. Should display below sign in red text so player can visibly see it
     private void FixedUpdate()
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            if (isColliding = true && nearObject.tag != null)
-            {
-                objectPosition.y -= 2.5f;
-
-                Instantiate(signText, objectPosition, Quaternion.identity);
-            }
-        }*/
-
         if (Input.GetKeyDown(KeyCode.W) && transitionFlag)
         {
             Camera mc = FindObjectOfType<Camera>();
@@ -77,11 +50,6 @@ public class Interactables : MonoBehaviour
         //switch case to determine what to do for each tag
         switch (nearObject.tag)
         {
-            //TODO: Change tag system to determine simply objects that can be interacted with (like medkits and signs)
-            case "Enemy":
-                Debug.Log("Object player is at is " + nearObject.tag);
-                isColliding = true;
-                break;
             case "Object":
                 nearObject.GetComponent<PlayerController>().OnLanding();
                 Debug.Log("Object player is at is " + nearObject.tag);
