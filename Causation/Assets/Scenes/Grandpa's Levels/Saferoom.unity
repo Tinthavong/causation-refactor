@@ -1323,6 +1323,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: BrickWall
       objectReference: {fileID: 0}
+    - target: {fileID: 6967478276807985987, guid: 424801342e3dea345949d3bdef61171b,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 197717173
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967478276807985987, guid: 424801342e3dea345949d3bdef61171b,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 424801342e3dea345949d3bdef61171b, type: 3}
 --- !u!1001 &8513920648321437084
