@@ -89,13 +89,6 @@ public class PlayerController : CharacterBase
             //Tighter, specific controls might be better here in order to set the speed to 0 immediately when the key is lifted (an abrupt end to the animation)
             horizontal = Input.GetAxis("Horizontal");
             animator.SetFloat("Speed", Mathf.Abs(horizontal != 0 ? horizontal : 0)); //ternary, think of it like a boolean: (is horizontal != 0? if true then horizontal value :else 0)
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (canMove)
-        {
             if (horizontal != 0 && !isCrouched)
             {
                 Vector3 movement = new Vector3(horizontal * runSpeed, 0.0f, 0.0f);
@@ -145,6 +138,11 @@ public class PlayerController : CharacterBase
                 GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 2.3f);
                 GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, 0f);
             }
+        } 
+        else if(!canMove)
+        {
+            animator.SetBool("IsDead", true);
+            animator.Play("GrandpaDeath");
         }
     }
 
@@ -248,6 +246,15 @@ public class PlayerController : CharacterBase
     }
 
 
+    public override void ElimCharacter()
+    {
+        if (displayedHealth <= 0)
+        {
+            Debug.Log("IF THIS SHOWS UP THEN IT PLAYED TECHNICALLY");
+            PostDeath();
+        }
+    }
+
     public override void PostDeath()
     {
         //LM.RetryCheckpoint();
@@ -259,6 +266,7 @@ public class PlayerController : CharacterBase
 
     public void Replenish()
     {
+        animator.SetBool("IsDead", false);
         displayedHealth = Health;
         healthBar.SetHealth(displayedHealth);
         Ammo = maxAmmo;
