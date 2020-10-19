@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameOverPanel = GameObject.Find("GameOverMenu");
+        GameOverPanel = GameObject.Find("GameOverScreen");
     }
 
     // Update is called once per frame

@@ -128,17 +128,29 @@ MonoBehaviour:
   ammoText: {fileID: 0}
   walletValue: 0
   maxAmmo: 6
-  runSpeed: 9
-  jumpForce: 750
+  deathScreen: {fileID: 0}
+  moveSpeed: 50
+  maxSpeed: 7
+  direction: {x: 0, y: 0}
+  jumpSpeed: 15
+  jumpDelay: 0.25
   attackDelay: 0.2
   bulletList:
   - {fileID: 2686942302785526997, guid: 31b12168567cb7c41a5434d410bae653, type: 3}
   - {fileID: 3784773981510655563, guid: 7876a21c748af864ca77fc10e8fe933d, type: 3}
   nearObject: {fileID: 0}
+  LM: {fileID: 0}
   isJumping: 0
   isShooting: 0
-  LM: {fileID: 0}
-  lives: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  onGround: 0
+  groundLength: 1.42
+  colliderOffset: {x: 0.49, y: 0, z: 0}
+  linearDrag: 4
+  gravity: 1
+  fallMultiplier: 5
 --- !u!114 &697618783331051720
 MonoBehaviour:
   m_ObjectHideFlags: 0

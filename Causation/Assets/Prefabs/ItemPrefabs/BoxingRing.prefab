@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7373250914844014933}
   - component: {fileID: 4038717443124770130}
   - component: {fileID: 9076145461616025683}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: BoxingRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
