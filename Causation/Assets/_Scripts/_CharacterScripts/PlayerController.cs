@@ -15,8 +15,6 @@ public class PlayerController : CharacterBase
         Currency = walletValue;
     }
 
-
-
     //consider serializing private
     [Header("UI References")]
     public HealthBar healthBar; //I don't like the idea of having a type just for healthbar, redo later
@@ -30,46 +28,61 @@ public class PlayerController : CharacterBase
     [Header("Movement Stats")]
     [SerializeField]
     //Player's running speed
-    //An acceleration function might be cool, hold a horizontal direction down longer and you move faster?
-    public int runSpeed = 5;
-    //Jumping
-    public float jumpForce = 700;
-    private float axisY;
+    public float moveSpeed = 10f;
+    public float maxSpeed = 7f;
+    public Vector2 direction;
+    private bool facingRight = true;
 
+    //Jumping
+    public float jumpSpeed = 15f;
+    public float jumpDelay = 0.25f;
+    private float jumpTimer;
+
+    //Attacking
     float attackElapsedTime = 0;
     public float attackDelay = 0.2f;
+
+    [Header("Components")]
     public GameObject[] bulletList;
-
-    //Movement Axes stash, vertical could go here as well if there was going to be vertical movement like a beat em up
-    private float horizontal;
-    private float vertical;
-
-    //Animation and design
-    private bool facingRight;
-
     public GameObject nearObject;
+    public LevelManager LM;
+
     [Header("Player States")]
     public bool isJumping;
     private bool isCrouched;
     public bool isShooting;
-    public LevelManager LM;
     private bool isInvincible = false;
     private bool canMove = true;
+
+    [Header("Collision and Physics")]
+    public LayerMask groundLayer;
+    public bool onGround = false;
+    public float groundLength = 0.6f;
+    public Vector3 colliderOffset;
+    //physics
+    public float linearDrag = 4f;
+    public float gravity = 1f;
+    public float fallMultiplier = 5f;
+
+
+    //reworked movement but here's the leftovers
+    private float vertical;
 
     void Awake()
     {
         //Can hardcode displayed health here if necessary
         //Apparently coding it at the top doesn't work so might have to do that. Otherwise be sure to set in inspector
         LM = FindObjectOfType<LevelManager>();
-        axisY = gameObject.transform.position.y; //axisY is set immediately to the player game object's y pos
+        //axisY = gameObject.transform.position.y; //axisY is set immediately to the player game object's y pos
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         //rb.Sleep();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
+        onGround = Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundLength, groundLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundLength, groundLayer);
         if (canMove)
         {
             if (Input.GetKeyDown(KeyCode.T) && bulletPrefab != bulletList[1])
@@ -86,37 +99,16 @@ public class PlayerController : CharacterBase
             attackElapsedTime += Time.deltaTime;
             ShootingBehavior();
             StrikingBehavior();
-            //Tighter, specific controls might be better here in order to set the speed to 0 immediately when the key is lifted (an abrupt end to the animation)
-            horizontal = Input.GetAxis("Horizontal");
-            animator.SetFloat("Speed", Mathf.Abs(horizontal != 0 ? horizontal : 0)); //ternary, think of it like a boolean: (is horizontal != 0? if true then horizontal value :else 0)
-            if (horizontal != 0 && !isCrouched)
-            {
-                Vector3 movement = new Vector3(horizontal * runSpeed, 0.0f, 0.0f);
-                transform.position = transform.position + movement * Time.deltaTime;
-            }
-            Flip(horizontal);
 
-            //reminder, axisY is the y coordinate that the player jumped from so once the player falls back down and their y position is less than or equal to it will stop falling 
-            if (rb.velocity.y <= 0 && isJumping) //this doesn't make any sense, if it does 
+            if (Input.GetButtonDown("Jump"))
             {
-                OnLanding();
+                jumpTimer = Time.time + jumpDelay;
             }
-            //jumping isn't perfect, the player model will continuously go down instead of staying at the value that it jumped from
 
-            if (Input.GetButton("Jump") && !isJumping && !isCrouched)
-            {
-                //animator.SetBool("IsJumping", true);
-                animator.Play("GrandpaJump");
-                axisY = transform.position.y;
-                // Debug.Log("Jumped at " + axisY);
-                isJumping = true;
-                //rb.gravityScale = 1.5f;
-                rb.WakeUp();
-                rb.AddForce(new Vector2(0, jumpForce));
-            }
+            direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
             vertical = Input.GetAxis("Vertical");
-            if (vertical < 0)
+            if (vertical < 0 && direction.x == 0)
             {
                 //make it so movement is stopped or forced into crouch walk
                 animator.SetBool("IsCrouched", true);
@@ -138,13 +130,88 @@ public class PlayerController : CharacterBase
                 GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 2.3f);
                 GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, 0f);
             }
-        } 
-        else if(!canMove)
+        }
+        else if (!canMove)
         {
             animator.SetBool("IsDead", true);
             animator.Play("GrandpaDeath");
         }
     }
+
+    private void FixedUpdate()
+    {
+        if (!isCrouched) moveCharacter(direction.x);
+
+        if (jumpTimer > Time.time && onGround && !isCrouched)
+        {
+            Jump();
+        }
+
+        modifyPhysics();
+    }
+
+    void moveCharacter(float horizontal)
+    {
+        rb.AddForce(Vector2.right * horizontal * moveSpeed);
+        //animator.SetFloat("Speed", Mathf.Abs(horizontal != 0 ? horizontal : 0));
+        if ((horizontal > 0 && !facingRight) || (horizontal < 0 && facingRight))
+        {
+            Flip(0f);
+        }
+
+        if (Mathf.Abs(rb.velocity.x) > maxSpeed)
+        {
+            rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
+        }
+        animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+    }
+
+    //Handles flipping the sprite across the x axis to show that movement direction has changed
+    public override void Flip(float horizontal)
+    {
+        facingRight = !facingRight;
+        transform.rotation = Quaternion.Euler(0, facingRight ? 0 : 180, 0);
+    }
+    void Jump()
+    {
+        animator.Play("GrandpaJump");
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+        rb.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+        jumpTimer = 0;
+    }
+
+    void modifyPhysics()
+    {
+        bool changingDirection = (direction.x > 0 && rb.velocity.x < 0) || (direction.x < 0 && rb.velocity.x > 0);
+
+        if (onGround)
+        {
+            if (Mathf.Abs(direction.x) < 0.4f || changingDirection)
+            {
+                rb.drag = linearDrag;
+            }
+            else
+            {
+                rb.drag = 0f;
+            }
+            rb.gravityScale = 0;
+        }
+        else
+        {
+            rb.gravityScale = gravity;
+            rb.drag = linearDrag * 0.15f;
+            if (rb.velocity.y < 0)
+            {
+                rb.gravityScale = gravity * fallMultiplier;
+            }
+            else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+            {
+                rb.gravityScale = gravity * (fallMultiplier / 2);
+            }
+        }
+    }
+
+
 
     public void OnLanding()
     {
@@ -162,7 +229,6 @@ public class PlayerController : CharacterBase
             Strike();
         }
     }
-
 
     private void ShootingBehavior()
     {
@@ -216,18 +282,7 @@ public class PlayerController : CharacterBase
         isInvincible = false;
     }
 
-    //Handles flipping the sprite across the x axis to show that movement direction has changed
-    public override void Flip(float horizontal)
-    {
-        if (horizontal < 0 && !facingRight || horizontal > 0 && facingRight)
-        {
-            facingRight = !facingRight;
-            Vector3 scale = transform.localScale;
-            scale.x *= -1;
 
-            transform.localScale = scale;
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -272,5 +327,12 @@ public class PlayerController : CharacterBase
         Ammo = maxAmmo;
         canMove = true;
         GetComponent<CapsuleCollider2D>().enabled = true;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position + colliderOffset, transform.position + colliderOffset + Vector3.down * groundLength);
+        Gizmos.DrawLine(transform.position - colliderOffset, transform.position - colliderOffset + Vector3.down * groundLength);
+
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2059570134560119570}
   - component: {fileID: 2059570134560119572}
   - component: {fileID: 2059570134560119573}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: warehousesketch 1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 2059570134584180713}
   - component: {fileID: 2059570134584180715}
   - component: {fileID: 2059570134584180712}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: warehousesketch 1_2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2059570134983770390}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

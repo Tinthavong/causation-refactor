@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2691093365917061750}
   - component: {fileID: 4689910063837769986}
   - component: {fileID: 221890459}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RedFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
