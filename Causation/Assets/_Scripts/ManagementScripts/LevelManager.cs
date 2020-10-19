@@ -14,9 +14,6 @@ public class LevelManager : MonoBehaviour
     public GameObject GameOverPanel;
     public GameObject victoryPanel;
 
-
-    
-
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +33,17 @@ public class LevelManager : MonoBehaviour
         //Spawn the game over panels or UI game object here
         //The player script disables movement but if you want to pause the gameworld then i imagine it could be done right here
         //Debug.Log("Game over!");
-        GameOverPanel.SetActive(true);
+        //GameOverPanel.SetActive(true);
+        SetActiveChildren(GameOverPanel.transform, true);
+    }
+
+    private void SetActiveChildren(Transform transform, bool value)
+    {
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(value);
+            SetActiveChildren(child, value);
+        }
     }
 
     public void VictoryCheck()
@@ -56,7 +63,8 @@ public class LevelManager : MonoBehaviour
         Vector3 camerapoint = new Vector3(pc.transform.position.x, pc.transform.position.y, -10);
         mc.transform.position = camerapoint;
         pc.Replenish();
-        GameOverPanel.SetActive(false);
+        SetActiveChildren(GameOverPanel.transform, false);
+        //GameOverPanel.SetActive(false);
         //respawn enemies too?
     }
 }

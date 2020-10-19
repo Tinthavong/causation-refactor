@@ -198,7 +198,6 @@ public class PlayerController : CharacterBase
                     Ammo = maxAmmo;
                 }
             }
-
         }
     }
 
@@ -243,6 +242,7 @@ public class PlayerController : CharacterBase
 
         if (collision.CompareTag("Checkpoint"))
         {
+            LM.checkpoint.GetComponent<SpriteRenderer>().color = Color.green;
             LM.flaggedCheckpoint = true; //be sure to reset all flags when restarting or changing levels
         }
     }
