@@ -301,15 +301,6 @@ public class PlayerController : CharacterBase
     }
 
 
-    public override void ElimCharacter()
-    {
-        if (displayedHealth <= 0)
-        {
-            Debug.Log("IF THIS SHOWS UP THEN IT PLAYED TECHNICALLY");
-            PostDeath();
-        }
-    }
-
     public override void PostDeath()
     {
         //LM.RetryCheckpoint();
@@ -321,7 +312,6 @@ public class PlayerController : CharacterBase
 
     public void Replenish()
     {
-        animator.SetBool("IsDead", false);
         displayedHealth = Health;
         healthBar.SetHealth(displayedHealth);
         Ammo = maxAmmo;

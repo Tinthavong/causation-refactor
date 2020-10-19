@@ -13,13 +13,11 @@ public class LevelManager : MonoBehaviour
     public GameObject levelLoader;
     public GameObject GameOverPanel;
     public GameObject victoryPanel;
-    private GameObject hudRef;
 
     // Start is called before the first frame update
     void Start()
     {
-        hudRef = GameObject.Find("HUDElements");
-        GameOverPanel = GameObject.Find("GameOverScreen");
+        GameOverPanel = GameObject.Find("GameOverMenu");
     }
 
     // Update is called once per frame
@@ -36,7 +34,6 @@ public class LevelManager : MonoBehaviour
         //The player script disables movement but if you want to pause the gameworld then i imagine it could be done right here
         //Debug.Log("Game over!");
         //GameOverPanel.SetActive(true);
-        SetActiveChildren(hudRef.transform, false);
         SetActiveChildren(GameOverPanel.transform, true);
     }
 
@@ -67,7 +64,6 @@ public class LevelManager : MonoBehaviour
         mc.transform.position = camerapoint;
         pc.Replenish();
         SetActiveChildren(GameOverPanel.transform, false);
-        SetActiveChildren(hudRef.transform, true);
         //GameOverPanel.SetActive(false);
         //respawn enemies too?
     }
