@@ -49,8 +49,16 @@ public class Shotgunner : Enemy
     {
         if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) >= fireRange)
         {
-            Vector3 movement = new Vector3(-enemySpeed, 0.0f, 0.0f);
-            transform.position = transform.position + movement * Time.deltaTime;
+            if(facingRight)
+            {
+                Vector3 movement = new Vector3(-enemySpeed, 0.0f, 0.0f);
+                transform.position = transform.position + movement * Time.deltaTime;
+            }
+            else
+            {
+                Vector3 movement = new Vector3(enemySpeed, 0.0f, 0.0f);
+                transform.position = transform.position + movement * Time.deltaTime;
+            }
         }
     }
 
