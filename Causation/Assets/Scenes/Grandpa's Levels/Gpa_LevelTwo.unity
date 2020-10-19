@@ -12450,17 +12450,17 @@ PrefabInstance:
     - target: {fileID: 3493381885816166706, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3493381885816166706, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3493381886030299023, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3493381886030299023, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
@@ -12500,7 +12500,7 @@ PrefabInstance:
     - target: {fileID: 3493381886632224435, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3493381886632224439, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
@@ -12674,6 +12674,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a928fbafddaf4c4091cae797bb281db, type: 3}
+--- !u!114 &2076283158 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3493381887788234484, guid: 1a928fbafddaf4c4091cae797bb281db,
+    type: 3}
+  m_PrefabInstance: {fileID: 2076283157}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af8a5fa7d1ce35b419605b0ac12f2efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2076283159 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3493381886361415919, guid: 1a928fbafddaf4c4091cae797bb281db,
+    type: 3}
+  m_PrefabInstance: {fileID: 2076283157}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2100784678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12851,12 +12875,12 @@ PrefabInstance:
         type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2076283158}
     - target: {fileID: 697618783331051721, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
         type: 3}
       propertyPath: ammoText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2076283159}
     - target: {fileID: 697618783331051726, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
         type: 3}
       propertyPath: m_LocalPosition.x
