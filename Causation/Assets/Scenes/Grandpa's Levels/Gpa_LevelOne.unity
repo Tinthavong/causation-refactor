@@ -7782,7 +7782,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-<<<<<<< Updated upstream
     - target: {fileID: 1427820706785261324, guid: 3b6cb70b5da29c248a3b30608266f1a2,
         type: 3}
       propertyPath: m_SortingOrder
@@ -7817,12 +7816,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -24.32
-=======
-    - target: {fileID: 2269485639618293395, guid: 3b6cb70b5da29c248a3b30608266f1a2,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -24.64
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 5222924327897339890, guid: 3b6cb70b5da29c248a3b30608266f1a2,
         type: 3}
