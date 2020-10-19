@@ -153,7 +153,7 @@ MonoBehaviour:
   drops:
   - drop: {fileID: 7462346461303034108, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}
     weight: 1
-  - drop: {fileID: 8447659566477842827, guid: eb3c9fb493c98bb458f67505eb176b91, type: 3}
+  - drop: {fileID: 0}
     weight: 1
   firerate: 2
   sightRange: 10
