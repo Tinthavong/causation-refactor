@@ -79,7 +79,6 @@ public class PlayerController : CharacterBase
         //rb.Sleep();
     }
 
-
     private void Update()
     {
         onGround = Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundLength, groundLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundLength, groundLayer);
@@ -155,7 +154,7 @@ public class PlayerController : CharacterBase
         rb.AddForce(Vector2.right * horizontal * moveSpeed);
         //animator.SetFloat("Speed", Mathf.Abs(horizontal != 0 ? horizontal : 0));
         if ((horizontal > 0 && !facingRight) || (horizontal < 0 && facingRight))
-        {
+        {   
             Flip(0f);
         }
 
@@ -170,8 +169,9 @@ public class PlayerController : CharacterBase
     public override void Flip(float horizontal)
     {
         facingRight = !facingRight;
-        transform.rotation = Quaternion.Euler(0, facingRight ? 0 : 180, 0);
+        transform.rotation = Quaternion.Euler(0, facingRight ? 0 : 180, 0);      
     }
+
     void Jump()
     {
         animator.Play("GrandpaJump");
@@ -265,6 +265,24 @@ public class PlayerController : CharacterBase
         }
     }
 
+    public override void Shoot()
+    {
+        //This block of code is why we should use raycasts 
+        GameObject b = Instantiate(bulletPrefab) as GameObject;
+        b.transform.position = bulletSpawn.transform.position;
+        //Bullet object shifts position and rotation based on direction
+        if (!facingRight)
+        {
+            b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90f);
+            b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletSpeed);
+        }
+        else if (facingRight)
+        {
+            b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90f);
+            b.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletSpeed);
+        }
+    }
+
     public override void DamageCalc(int damage)
     {
         if (isInvincible) return;
@@ -281,8 +299,6 @@ public class PlayerController : CharacterBase
         yield return new WaitForSeconds(1.5f);
         isInvincible = false;
     }
-
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

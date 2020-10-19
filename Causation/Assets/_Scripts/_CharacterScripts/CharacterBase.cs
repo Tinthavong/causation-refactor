@@ -84,7 +84,7 @@ public abstract class CharacterBase : MonoBehaviour, IActions
 		}
 	}
 
-	public void Shoot()
+	public virtual void Shoot()
 	{
 		//This block of code is why we should use raycasts 
 		GameObject b = Instantiate(bulletPrefab) as GameObject;
