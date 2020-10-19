@@ -132,7 +132,6 @@ public class PlayerController : CharacterBase
         }
         else if (!canMove)
         {
-            animator.SetBool("IsDead", true);
             animator.Play("GrandpaDeath");
         }
     }

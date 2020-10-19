@@ -15,6 +15,7 @@ public class MedkitController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        chb = GameObject.Find("Grandpa").GetComponent<CharacterBase>();
         for (int i = 0; i <= 2; i++)
         {
             medkits[i].gameObject.SetActive(true);

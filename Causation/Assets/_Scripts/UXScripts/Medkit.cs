@@ -6,6 +6,11 @@ using UnityEngine.Audio;
 public class Medkit : MonoBehaviour
 {
     public MedkitController mkc;
+    private void Start()
+    {
+        mkc = GameObject.Find("MedkitCounter").GetComponent<MedkitController>();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals("Player"))
