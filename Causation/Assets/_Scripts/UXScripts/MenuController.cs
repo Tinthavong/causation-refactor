@@ -17,17 +17,17 @@ public class MenuController : MonoBehaviour
     {
         Time.timeScale = 1f;
         PauseController.isPaused = false;
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(2);
     }
 
     public void CreditsScreen()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(8);
     }
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
@@ -43,7 +43,7 @@ public class MenuController : MonoBehaviour
 
     public void MissionSelect()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(2);
     }
     public void RestartGame()
     {
@@ -62,7 +62,7 @@ public class MenuController : MonoBehaviour
     public void Retry() //Meant to retry from checkpoint rather than restart/reload the whole scene
     {
         LevelManager LM = FindObjectOfType<LevelManager>();
-        if(LM.flaggedCheckpoint)
+        if (LM.flaggedCheckpoint)
         {
             LM.RetryCheckpoint();
         }

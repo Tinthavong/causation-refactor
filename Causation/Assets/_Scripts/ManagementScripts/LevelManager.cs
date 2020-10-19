@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         hudRef = GameObject.Find("HUDElements");
-        GameOverPanel = GameObject.Find("GameOverMenu");
+        GameOverPanel = GameObject.Find("GameOverScreen");
     }
 
     // Update is called once per frame
