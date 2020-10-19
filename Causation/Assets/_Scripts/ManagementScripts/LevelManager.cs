@@ -13,12 +13,10 @@ public class LevelManager : MonoBehaviour
     public GameObject levelLoader;
     public GameObject GameOverPanel;
     public GameObject victoryPanel;
-    GameObject hudRef;
 
     // Start is called before the first frame update
     void Start()
     {
-        hudRef = GameObject.Find("HUDElements");
         GameOverPanel = GameObject.Find("GameOverMenu");
     }
 
@@ -37,7 +35,6 @@ public class LevelManager : MonoBehaviour
         //Debug.Log("Game over!");
         //GameOverPanel.SetActive(true);
         SetActiveChildren(GameOverPanel.transform, true);
-        SetActiveChildren(hudRef.transform, false);
     }
 
     private void SetActiveChildren(Transform transform, bool value)
@@ -65,7 +62,6 @@ public class LevelManager : MonoBehaviour
         pc.transform.position = checkpoint.transform.position;
         Vector3 camerapoint = new Vector3(pc.transform.position.x, pc.transform.position.y, -10);
         mc.transform.position = camerapoint;
-        SetActiveChildren(hudRef.transform, true);
         pc.Replenish();
         SetActiveChildren(GameOverPanel.transform, false);
         //GameOverPanel.SetActive(false);
