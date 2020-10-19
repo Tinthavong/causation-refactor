@@ -25,6 +25,7 @@ public class PlayerController : CharacterBase
     public int maxAmmo = 6; //six-shooter by default, set in inspector otherwise
     Animator animator;
     Rigidbody2D rb; //rigidbody used for jumping
+    public GameObject deathScreen;
 
     [Header("Movement Stats")]
     [SerializeField]

@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
     private int lastLoad;
+    private int loadNextScene;
+
+    private void Start()
+    {
+        loadNextScene = SceneManager.GetActiveScene().buildIndex + 1;
+    }
+
     public void PlayGame()
     {
         Time.timeScale = 1f;
@@ -68,7 +75,7 @@ public class MenuController : MonoBehaviour
     public void NextLevel()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(loadNextScene);
         //lastLoad = PlayerPrefs.GetInt("SavedScene");
         //if (lastLoad != 0)
         //{
