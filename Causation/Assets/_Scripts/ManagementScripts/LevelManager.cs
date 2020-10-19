@@ -12,7 +12,22 @@ public class LevelManager : MonoBehaviour
     public GameObject victoryPoint;
     public GameObject levelLoader;
     public GameObject GameOverPanel;
+    public GameObject victoryPanel;
 
+
+    
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        GameOverPanel = GameObject.Find("GameOverMenu");
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     //called in the player controller class to pause gameplay and remove player controls
     //also spawns the unity UI object/panel that shows gameover buttons like, retry, restart, quit, mainmenu etc 
@@ -21,17 +36,15 @@ public class LevelManager : MonoBehaviour
         //Spawn the game over panels or UI game object here
         //The player script disables movement but if you want to pause the gameworld then i imagine it could be done right here
         //Debug.Log("Game over!");
-        //SceneManager.LoadScene("Death Screen");
         GameOverPanel.SetActive(true);
     }
-
 
     public void VictoryCheck()
     {
         //Spawn the victory screen here or the transition or whatever you had in mind
         //The player script disables movement but if you want to pause the gameworld then i imagine it could be done right here
         //Debug.Log("You win!");
-        SceneManager.LoadScene("Victory Screen");
+        victoryPanel.SetActive(true);
     }
 
     public void RetryCheckpoint()//Retry from a checkpoint rather than from the beginning
@@ -45,17 +58,5 @@ public class LevelManager : MonoBehaviour
         pc.Replenish();
         GameOverPanel.SetActive(false);
         //respawn enemies too?
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        GameOverPanel = GameObject.Find("GameOverPanel");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
