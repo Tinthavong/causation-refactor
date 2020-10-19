@@ -25,7 +25,7 @@ public class MissionSelection : MonoBehaviour
     public void Mission1()
     {
         selection = 1;
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(3);
     }
 
     public void Mission2()
@@ -36,13 +36,12 @@ public class MissionSelection : MonoBehaviour
             level1.enabled = false;
             level2.enabled = true;
             level3.enabled = false;
-            SceneManager.LoadScene(6);
+            SceneManager.LoadScene(4);
         }
-        
     }
 
     public void Mission3()
     {
-        SceneManager.LoadScene(7);
+        SceneManager.LoadScene(5);
     }
 }
