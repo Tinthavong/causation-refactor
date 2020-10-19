@@ -4805,12 +4805,12 @@ PrefabInstance:
     - target: {fileID: 2606829749327834164, guid: 4bcefde5d6f8d5b4eb7b0e6414682151,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 279.8
       objectReference: {fileID: 0}
     - target: {fileID: 2606829749327834164, guid: 4bcefde5d6f8d5b4eb7b0e6414682151,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 26.8
       objectReference: {fileID: 0}
     - target: {fileID: 2606829749327834164, guid: 4bcefde5d6f8d5b4eb7b0e6414682151,
         type: 3}
@@ -5090,6 +5090,12 @@ Transform:
   m_Father: {fileID: 400404629}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &815720656 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1061948294190832742, guid: 1a928fbafddaf4c4091cae797bb281db,
+    type: 3}
+  m_PrefabInstance: {fileID: 1216243202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &817952475
 GameObject:
   m_ObjectHideFlags: 0
@@ -7413,6 +7419,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1873057853, guid: 1a928fbafddaf4c4091cae797bb281db, type: 3}
+      propertyPath: chb
+      value: 
+      objectReference: {fileID: 2044171960}
+    - target: {fileID: 1061948294190832742, guid: 1a928fbafddaf4c4091cae797bb281db,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3181024144350290024, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
       propertyPath: m_IsActive
@@ -7548,20 +7563,13 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9068758957519176396, guid: 1a928fbafddaf4c4091cae797bb281db,
+        type: 3}
+      propertyPath: m_TagString
+      value: FinishLine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a928fbafddaf4c4091cae797bb281db, type: 3}
---- !u!1 &1216243203 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9068758957519176396, guid: 1a928fbafddaf4c4091cae797bb281db,
-    type: 3}
-  m_PrefabInstance: {fileID: 1216243202}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1216243204 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3195127217691777587, guid: 1a928fbafddaf4c4091cae797bb281db,
-    type: 3}
-  m_PrefabInstance: {fileID: 1216243202}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1232776557
 GameObject:
   m_ObjectHideFlags: 0
@@ -11432,6 +11440,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1870168199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6859306757046551705, guid: 1a928fbafddaf4c4091cae797bb281db,
+    type: 3}
+  m_PrefabInstance: {fileID: 1216243202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1870600616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12455,6 +12469,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2107721202}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2044171960 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 697618783331051721, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 2107721202}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044171953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b5c115a377c2e74bb9f64ab88443514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2057376109
 GameObject:
   m_ObjectHideFlags: 0
@@ -12805,12 +12831,12 @@ PrefabInstance:
     - target: {fileID: 697618783331051726, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.25
+      value: 278.25
       objectReference: {fileID: 0}
     - target: {fileID: 697618783331051726, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.5
+      value: 26.75
       objectReference: {fileID: 0}
     - target: {fileID: 697618783331051726, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
         type: 3}
@@ -13569,8 +13595,8 @@ MonoBehaviour:
   flaggedCheckpoint: 0
   victoryPoint: {fileID: 5222924328296803293}
   levelLoader: {fileID: 5222924329939031178}
-  GameOverPanel: {fileID: 1216243204}
-  victoryPanel: {fileID: 1216243203}
+  GameOverPanel: {fileID: 1870168199}
+  victoryPanel: {fileID: 815720656}
 --- !u!1 &5222924329563383686
 GameObject:
   m_ObjectHideFlags: 0
