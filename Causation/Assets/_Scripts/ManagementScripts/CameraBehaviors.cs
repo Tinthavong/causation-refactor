@@ -23,19 +23,6 @@ public class CameraBehaviors : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            verticalOffset -= 2f;
-        }
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            verticalOffset = defaultVert;
-        }
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
         //Vector2 follow = Vector2(followObject.transform.position.x, followObject.transform.position.y + verticalOffset);
         float followX = followObject.transform.position.x;
         float followY = followObject.transform.position.y + verticalOffset;
@@ -55,6 +42,21 @@ public class CameraBehaviors : MonoBehaviour
         }
         float moveSpeed = rb.velocity.magnitude > speed ? rb.velocity.magnitude : speed;
         transform.position = Vector3.MoveTowards(transform.position, newPosition, moveSpeed * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            verticalOffset -= 2f;
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            verticalOffset = defaultVert;
+        }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+       
     }
 
     private Vector3 CalculateThreshold()

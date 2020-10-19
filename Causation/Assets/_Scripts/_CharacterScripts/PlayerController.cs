@@ -89,13 +89,6 @@ public class PlayerController : CharacterBase
             //Tighter, specific controls might be better here in order to set the speed to 0 immediately when the key is lifted (an abrupt end to the animation)
             horizontal = Input.GetAxis("Horizontal");
             animator.SetFloat("Speed", Mathf.Abs(horizontal != 0 ? horizontal : 0)); //ternary, think of it like a boolean: (is horizontal != 0? if true then horizontal value :else 0)
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (canMove)
-        {
             if (horizontal != 0 && !isCrouched)
             {
                 Vector3 movement = new Vector3(horizontal * runSpeed, 0.0f, 0.0f);
@@ -146,6 +139,10 @@ public class PlayerController : CharacterBase
                 GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, 0f);
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
     }
 
     public void OnLanding()
@@ -206,6 +203,11 @@ public class PlayerController : CharacterBase
         if (isInvincible) return;
         base.DamageCalc(damage);
         healthBar.SetHealth(displayedHealth);
+        if (displayedHealth == 0)
+        {
+            Debug.Log("Why aren't you playing");
+            animator.Play("GrandpaDeath");
+        }
         ElimCharacter();
         animator.PlayInFixedTime("GrandpaDamage", -1, 1f);
         StartCoroutine(Invinciblity());
@@ -251,7 +253,6 @@ public class PlayerController : CharacterBase
     public override void PostDeath()
     {
         //LM.RetryCheckpoint();
-        //death animation here
         LM.GameOver();
         canMove = false; //self-explanatory but this turns off the ability to move around with the player. we can pause the gameworld too, but this way still plays enemy animations if they're still around the player
         GetComponent<CapsuleCollider2D>().enabled = false; //Dirty fix right now. The enemy should stop attacking if the player is dead anyways
