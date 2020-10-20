@@ -84,6 +84,8 @@ public class PlayerController : CharacterBase
         onGround = Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundLength, groundLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundLength, groundLayer);
         if (canMove)
         {
+            //extract out into a method but for the meanwhile
+            //This allows changing bullet types
             if (Input.GetKeyDown(KeyCode.T) && bulletPrefab != bulletList[1])
             {
                 Ammo = maxAmmo; //right now the special bullet does not have a finite amount, would like to make finite before alpha deliverable
@@ -105,7 +107,9 @@ public class PlayerController : CharacterBase
             }
 
             direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
+            
+            //extract out into a method but for the meanwhile
+            //This allows crouching
             vertical = Input.GetAxis("Vertical");
             if (vertical < 0 && direction.x == 0)
             {
@@ -132,6 +136,7 @@ public class PlayerController : CharacterBase
         }
         else if (!canMove)
         {
+            animator.SetBool("IsDead", true);
             animator.Play("GrandpaDeath");
         }
     }
@@ -210,15 +215,6 @@ public class PlayerController : CharacterBase
         }
     }
 
-
-
-    public void OnLanding()
-    {
-        if (rb.velocity.y == 0) isJumping = false;
-        //This works but when jumping on crates it waits until the velocity is 0 before jump is allowed again
-        //A movement refactor and environmental system overwork is needed to fix this but i will do that last - Tim
-    }
-
     private void StrikingBehavior()
     {
         if (Input.GetButtonDown("Fire2") && attackElapsedTime >= attackDelay)//and a bool/state check that determines if the player is not already shooting
@@ -292,6 +288,14 @@ public class PlayerController : CharacterBase
         StartCoroutine(Invinciblity());
     }
 
+    public override void ElimCharacter()
+    {
+        if (displayedHealth <= 0)
+        {
+            PostDeath();
+        }
+    }
+
     private IEnumerator Invinciblity()
     {
         isInvincible = true;
@@ -305,6 +309,7 @@ public class PlayerController : CharacterBase
         if (collision.CompareTag("FinishLine"))//I think this tag is fine for now
         {
             //Time.timeScale = 0f; If there are no panels then this is completely useless
+            Time.timeScale = 0f;
             LM.VictoryCheck();
         }
 
@@ -318,8 +323,6 @@ public class PlayerController : CharacterBase
 
     public override void PostDeath()
     {
-        //LM.RetryCheckpoint();
-        //death animation here
         LM.GameOver();
         canMove = false; //self-explanatory but this turns off the ability to move around with the player. we can pause the gameworld too, but this way still plays enemy animations if they're still around the player
         GetComponent<CapsuleCollider2D>().enabled = false; //Dirty fix right now. The enemy should stop attacking if the player is dead anyways
@@ -327,6 +330,7 @@ public class PlayerController : CharacterBase
 
     public void Replenish()
     {
+        animator.SetBool("IsDead", false);
         displayedHealth = Health;
         healthBar.SetHealth(displayedHealth);
         Ammo = maxAmmo;
