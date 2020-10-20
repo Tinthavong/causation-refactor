@@ -25,16 +25,18 @@ public class Interactables : MonoBehaviour
     //mean for the update check when player is pushing the W key
     private bool isColliding;
     private bool transitionFlag = false;
+    private int hardLock = 1;
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && transitionFlag)
+        if (Input.GetKeyDown(KeyCode.W) && transitionFlag && hardLock > 0)
         {
             Camera mc = FindObjectOfType<Camera>();
             gameObject.transform.position = GameObject.Find("ScreenTransitionB").transform.position;
             Vector3 dummy = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
             mc.transform.position = dummy;
             transitionFlag = false; //no backtracking. also this implementation ain't great huh
+            hardLock--;
         }
     }
 

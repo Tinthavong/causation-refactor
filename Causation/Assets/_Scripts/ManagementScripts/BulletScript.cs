@@ -19,7 +19,7 @@ public class BulletScript : MonoBehaviour
                     Enemy enemy = collision.GetComponent<Enemy>();
                     enemy.DamageCalc(damage);
                     AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip, transform.position);
-                    Debug.Log("Enemy has been hit");
+                    //Debug.Log("Enemy has been hit");
                 }
 
                 Destroy(gameObject);

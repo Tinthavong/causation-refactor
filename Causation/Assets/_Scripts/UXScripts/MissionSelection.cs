@@ -15,54 +15,57 @@ public class MissionSelection : MonoBehaviour
     public Image padlock1;
     public Image padlock2;
 
+    //private void Start()
+    //{
+    //    if (selection == 0)
+    //    {
+    //        level1.enabled = true;
+    //        level2.enabled = false;
+    //        level3.enabled = false;
+    //        padlock1.enabled = true;
+    //        padlock2.enabled = true;
+    //    }
+    //    else if (selection == 1)
+    //    {
+    //        level1.enabled = true;
+    //        level2.enabled = true;
+    //        level3.enabled = false;
+    //        padlock1.enabled = false;
+    //        padlock2.enabled = true;
+    //    }
+    //    else if (selection == 2)
+    //    {
+    //        level1.enabled = true;
+    //        level2.enabled = true;
+    //        level3.enabled = true;
+    //        padlock1.enabled = false;
+    //        padlock2.enabled = false;
+    //    }
+    //}
+
     private void Start()
     {
-        if (selection == 0)
-        {
-            level1.enabled = true;
-            level2.enabled = false;
-            level3.enabled = false;
-            padlock1.enabled = true;
-            padlock2.enabled = true;
-        }
-        else if (selection == 1)
-        {
-            level1.enabled = true;
-            level2.enabled = true;
-            level3.enabled = false;
-            padlock1.enabled = false;
-            padlock2.enabled = true;
-        }
-        else if (selection == 2)
-        {
-            level1.enabled = true;
-            level2.enabled = true;
-            level3.enabled = true;
-            padlock1.enabled = false;
-            padlock2.enabled = false;
-        }
+
+        level1.enabled = true;
+        level2.enabled = true;
+        level3.enabled = true;
+        padlock1.enabled = false;
+        padlock2.enabled = false;
+
     }
 
     public void Mission1()
     {
-        selection = 1;
         SceneManager.LoadScene(3);
     }
 
     public void Mission2()
     {
-        if (selection == 1)
-        {
-            selection = 2;
-            SceneManager.LoadScene(4);
-        }
+        SceneManager.LoadScene(4);
     }
 
     public void Mission3()
     {
-        if (selection == 2)
-        {
-            SceneManager.LoadScene(5);
-        }
+        SceneManager.LoadScene(5);
     }
 }
