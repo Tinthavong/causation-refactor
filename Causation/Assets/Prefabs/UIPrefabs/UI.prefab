@@ -2150,6 +2150,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3493381886632224439}
     m_Modifications:
+    - target: {fileID: 663429059489373236, guid: ac982bcabc4c86347b8a3f0bd78d6a4d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MissionSelect
+      objectReference: {fileID: 0}
     - target: {fileID: 3171586363568524151, guid: ac982bcabc4c86347b8a3f0bd78d6a4d,
         type: 3}
       propertyPath: m_Name

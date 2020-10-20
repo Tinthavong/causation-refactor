@@ -44,7 +44,11 @@ public class Medkit : MonoBehaviour
 
                 AudioSource.PlayClipAtPoint(this.GetComponent<AudioSource>().clip, this.transform.position);
                 Destroy(gameObject);
-            }          
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
