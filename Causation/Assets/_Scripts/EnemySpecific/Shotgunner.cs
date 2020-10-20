@@ -5,6 +5,7 @@ using System;
 
 public class Shotgunner : Enemy
 {
+    Animator animator;
     public Shotgunner() //constructor
     {
         Health = displayedHealth; //Displayed Health can be set in the inspector
@@ -23,6 +24,7 @@ public class Shotgunner : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerController>();
     }
 
@@ -32,6 +34,7 @@ public class Shotgunner : Enemy
         if(isClose())
         {
             Flip(0);
+            animator.SetBool("IsChasing", true);
             RunTowards();
         }
 
@@ -39,10 +42,23 @@ public class Shotgunner : Enemy
         firerateWait -= Time.deltaTime;
         if (isCloseEnough() && firerateWait <= 0)
         {
+            animator.SetBool("IsChasing", false);
+            animator.Play("Attack");
             Shoot();
             firerateWait = firerate;
         }
+
+        if (!isClose() || player.displayedHealth <= 0)
+        {
+            animator.SetBool("IsChasing", false);
+        }
         ElimCharacter();//Want to find some way for elimcharacter to be checked each time damage is taken, not on every frame like it is now
+    }
+
+    public override void DamageCalc(int damage)
+    {
+        animator.Play("Damaged");
+        base.DamageCalc(damage);
     }
 
     public void RunTowards()

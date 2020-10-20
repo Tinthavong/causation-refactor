@@ -54,7 +54,7 @@ public abstract class CharacterBase : MonoBehaviour, IActions
 
 	private void Start()
 	{
-		displayedHealth = Health;
+		Health = displayedHealth;
 	}
 
 	public virtual void DamageCalc(int damage)
@@ -102,7 +102,7 @@ public abstract class CharacterBase : MonoBehaviour, IActions
 		}
 	}
 
-	public void Strike() //Melee attack
+	public virtual void Strike() //Melee attack
 	{
 		//Reference for the person doing specific enemies, you would play the animation before the other logic here
 

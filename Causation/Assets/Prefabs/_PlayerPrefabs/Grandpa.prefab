@@ -1,5 +1,86 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1647267372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1647267374}
+  - component: {fileID: 1647267373}
+  m_Layer: 0
+  m_Name: revolver_crouch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1647267374
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647267372}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.50666666, y: -0.5366665, z: -5.188497}
+  m_LocalScale: {x: 0.41666666, y: 0.41666666, z: 1}
+  m_Children: []
+  m_Father: {fileID: 697618783331051726}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1647267373
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647267372}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1964901103
+  m_SortingLayer: 2
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 513b8b8a1831ee142b1da93096da8050, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.54, y: 0.89}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &697618782276726972
 GameObject:
   m_ObjectHideFlags: 0
@@ -28,7 +109,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697618783331051726}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &697618783283838228
 GameObject:
@@ -54,11 +135,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 697618783283838228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.09, y: 0.23, z: 0}
+  m_LocalPosition: {x: 1, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697618783331051726}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &697618783331051719
 GameObject:
@@ -75,7 +156,7 @@ GameObject:
   - component: {fileID: 697618783331051722}
   - component: {fileID: 697618783331051717}
   - component: {fileID: 697618783331051716}
-  - component: {fileID: 515447292}
+  - component: {fileID: 1333353128784466762}
   m_Layer: 9
   m_Name: Grandpa
   m_TagString: Player
@@ -94,6 +175,7 @@ Transform:
   m_LocalPosition: {x: -2.88, y: -3.51, z: 5.188497}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children:
+  - {fileID: 1647267374}
   - {fileID: 697618783283838229}
   - {fileID: 697618782276726973}
   m_Father: {fileID: 0}
@@ -111,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5c115a377c2e74bb9f64ab88443514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayedHealth: 5
+  displayedHealth: 10
   staminaActions: 0
   bulletSpeed: 800
   bulletPrefab: {fileID: 2686942302785526997, guid: 31b12168567cb7c41a5434d410bae653,
@@ -142,6 +224,7 @@ MonoBehaviour:
   LM: {fileID: 0}
   isJumping: 0
   isShooting: 0
+  canMove: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 8192
@@ -151,6 +234,7 @@ MonoBehaviour:
   linearDrag: 4
   gravity: 1
   fallMultiplier: 5
+  tempRevolver: {fileID: 1647267372}
 --- !u!114 &697618783331051720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,8 +359,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &515447292
-BoxCollider2D:
+--- !u!68 &1333353128784466762
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -288,16 +372,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.038645357, y: -1.09}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.18, y: 2.33}
-    newSize: {x: 0.98095804, y: 2.34}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.8009077, y: 0.119999886}
+  m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.40023744, y: -1.1428889}
+  - {x: -0.055738375, y: -1.1428889}
+  - {x: 0.30630267, y: -1.1409668}
+  - {x: 0.40018404, y: -1.1400311}

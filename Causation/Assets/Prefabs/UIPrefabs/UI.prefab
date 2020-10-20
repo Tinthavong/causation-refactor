@@ -1307,9 +1307,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 5
+  m_MaxValue: 10
   m_WholeNumbers: 1
-  m_Value: 5
+  m_Value: 10
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1337,7 +1337,7 @@ MonoBehaviour:
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 13107
-    ctime1: 39321
+    ctime1: 31997
     ctime2: 65535
     ctime3: 65535
     ctime4: 0
@@ -1793,7 +1793,7 @@ PrefabInstance:
     - target: {fileID: 3181024144462984482, guid: 6282f1ab1274cf14db646114b95e817f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4982034602296511505, guid: 6282f1ab1274cf14db646114b95e817f,
         type: 3}

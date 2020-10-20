@@ -5,10 +5,12 @@ using TMPro;
 
 public class PlayerController : CharacterBase
 {
+
     public PlayerController() //Constructor
     {
-        Health = 5; //Arbitrary value?
-        displayedHealth = Health;//Displayed Health can be set in the inspector
+       //Health = 10; //Arbitrary value?
+        Health = displayedHealth;
+        //displayedHealth = Health;//Displayed Health can be set in the inspector
         Stamina = staminaActions;
         //Enemies dont use ammo for now but if it breaks just set the amount here
         Ammo = maxAmmo; //To avoid confusion, the Ammo property is like the previous currentAmmo variable
@@ -52,7 +54,7 @@ public class PlayerController : CharacterBase
     private bool isCrouched;
     public bool isShooting;
     private bool isInvincible = false;
-    private bool canMove = true;
+    public bool canMove = true;
 
     [Header("Collision and Physics")]
     public LayerMask groundLayer;
@@ -67,9 +69,12 @@ public class PlayerController : CharacterBase
 
     //reworked movement but here's the leftovers
     private float vertical;
+    [SerializeField]
+    private GameObject tempRevolver; //necessary to show that there is a revolver when crouched
 
     void Awake()
     {
+        healthBar.SetHealth(displayedHealth);
         //Can hardcode displayed health here if necessary
         //Apparently coding it at the top doesn't work so might have to do that. Otherwise be sure to set in inspector
         LM = FindObjectOfType<LevelManager>();
@@ -118,7 +123,8 @@ public class PlayerController : CharacterBase
                 isCrouched = true;
                 if (isCrouched)//imagine using a nested if in the update method loooole
                 {
-                    //bulletspawn transform goes down with the player model
+                    tempRevolver.SetActive(true);
+                    bulletSpawn.transform.localPosition = new Vector3(1, -0.5f, 0);
                     GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 1.45f);
                     GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, -0.4f);
                 }
@@ -128,8 +134,10 @@ public class PlayerController : CharacterBase
             {
                 //bulletspawn goes back to normal
                 //the "exit" time when not pressing the up key is too slow right now
+                tempRevolver.SetActive(false);
                 animator.SetBool("IsCrouched", false);
                 isCrouched = false;
+                bulletSpawn.transform.localPosition = new Vector3(1, 0.25f, 0);
                 GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 2.3f);
                 GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, 0f);
             }
@@ -138,6 +146,7 @@ public class PlayerController : CharacterBase
         {
             animator.SetBool("IsDead", true);
             animator.Play("GrandpaDeath");
+            rb.Sleep();
         }
     }
 
@@ -233,7 +242,7 @@ public class PlayerController : CharacterBase
 
             if (Input.GetButtonDown("Fire1") && Ammo > 0 && attackElapsedTime >= attackDelay)
             {
-                animator.Play("GrandpaShoot");
+                    if(!isCrouched) animator.Play("GrandpaShoot"); //if not crouched yada yada yada
                 if (Ammo == 0)
                 {
                     Debug.Log("No Ammo Left!");//implement affordance, clicking sound or something
@@ -330,6 +339,7 @@ public class PlayerController : CharacterBase
 
     public void Replenish()
     {
+        rb.WakeUp();
         animator.SetBool("IsDead", false);
         displayedHealth = Health;
         healthBar.SetHealth(displayedHealth);

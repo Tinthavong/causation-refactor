@@ -5,7 +5,8 @@ using System;
 
 public class ChargerEnemy : Enemy
 {
-    //Let Trumpie know before making changes - mostly a copy of the Enemy class, but a new script isnt a huge undertaking as there will only be a few enemy types
+    Animator animator;
+
     //Probably like 7 or so enemy scripts in total, bosses included in that number
     public ChargerEnemy() //constructor
     {
@@ -18,6 +19,7 @@ public class ChargerEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerController>();
         //This should use an actual find method/algorithm instead of just knowing where the player is - maybe later down the line, but this works for now
     }
@@ -36,17 +38,31 @@ public class ChargerEnemy : Enemy
         //if firerateWait is 0, time to strike and reset the wait
         if (isClose() && !isTooClose())
         {
+            animator.SetBool("IsChasing", true);
             RunTowards();
         }
 
-        if (firerateWait <= 0 && isTooClose())
+        if (firerateWait <= 0 && isTooClose() && player.displayedHealth > 1)
         {
-            //animation play here
+            animator.SetBool("IsChasing", false);
+            animator.SetBool("IsAttacking", true);
             Strike();
             //Firerate makes sense here as melee is this enemies only attack
             firerateWait = firerate;
         }
-        ElimCharacter();//Want to find some way for elimcharacter to be checked each time damage is taken, not on every frame like it is now
+
+        if(!isTooClose() || player.displayedHealth <= 0)
+        {
+            animator.SetBool("IsAttacking", false);
+        }
+
+        ElimCharacter();
+    }
+
+    public override void DamageCalc(int damage)
+    {
+        animator.Play("Damaged");
+        base.DamageCalc(damage);
     }
 
     //Moves towards the player (unimplemented)

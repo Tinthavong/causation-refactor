@@ -141,7 +141,6 @@ public class Enemy : CharacterBase
 
     void Death()
     {
-
         Destroy(this.gameObject);
     }
 }
