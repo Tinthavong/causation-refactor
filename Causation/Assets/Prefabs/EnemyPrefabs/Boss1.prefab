@@ -188,7 +188,7 @@ MonoBehaviour:
   sightRange: 10
   meleeRange: 4
   phaseRate: 4
-  bulletsFiredStop: 8
+  bulletsFiredStop: 5
   gatlingStartLeft: {fileID: 2423452158960239851}
   gatlingStartRight: {fileID: 7341399522014326304}
   gatlingStartLeft2: {fileID: 4766882336092679406}

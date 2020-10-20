@@ -33,7 +33,7 @@ public class MedkitController : MonoBehaviour
             
             medkits[medkitNumber].gameObject.SetActive(false);
 
-            chb.displayedHealth += 1;
+            chb.displayedHealth += 3;
 
             hb.SetHealth(chb.displayedHealth);
 

@@ -254,9 +254,9 @@ MonoBehaviour:
   dropValue: 0
   drops:
   - drop: {fileID: 7462346461303034108, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}
-    weight: 1
+    weight: 8
   - drop: {fileID: 8447659566477842827, guid: eb3c9fb493c98bb458f67505eb176b91, type: 3}
-    weight: 1
+    weight: 2
   firerate: 2
   sightRange: 10
   meleeRange: 2

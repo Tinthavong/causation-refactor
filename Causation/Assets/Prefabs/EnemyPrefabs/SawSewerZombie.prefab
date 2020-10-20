@@ -134,14 +134,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8732481dc906b6e4e80e865ba6220d15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayedHealth: 5
+  displayedHealth: 7
   staminaActions: 0
   bulletSpeed: 400
   bulletPrefab: {fileID: 0}
   bulletSpawn: {fileID: 0}
   StrikeZone: {fileID: 3831851303298223714}
   strikeRange: 0.5
-  strikeDamage: 1
+  strikeDamage: 5
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
@@ -149,9 +149,9 @@ MonoBehaviour:
   dropValue: 0
   drops:
   - drop: {fileID: 7462346461303034108, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}
-    weight: 1
+    weight: 5
   - drop: {fileID: 8447659566477842827, guid: eb3c9fb493c98bb458f67505eb176b91, type: 3}
-    weight: 1
+    weight: 5
   firerate: 1
   sightRange: 10
   meleeRange: 2

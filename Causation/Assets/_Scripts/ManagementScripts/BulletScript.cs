@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    public int damage = 10;
+    public int damage;
     public bool playerBullet;
 
     //For now this simply assumes that every collision is with an enemy and will take away the appropriate amount of damage
@@ -28,7 +28,7 @@ public class BulletScript : MonoBehaviour
                 if (!playerBullet)
                 {
                     PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-                    player.DamageCalc(1); //arbitrarily 1 but let's figure that out later, okay so the damage being set in this script means that the player and enemies should use different prefabs
+                    player.DamageCalc(damage); //arbitrarily 1 but let's figure that out later, okay so the damage being set in this script means that the player and enemies should use different prefabs
                     AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip, transform.position);
                 }
 
