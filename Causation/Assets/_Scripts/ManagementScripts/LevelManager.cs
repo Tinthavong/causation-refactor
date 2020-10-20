@@ -13,10 +13,12 @@ public class LevelManager : MonoBehaviour
     public GameObject levelLoader;
     public GameObject GameOverPanel;
     public GameObject victoryPanel;
+    private GameObject hudRef;
 
     // Start is called before the first frame update
     void Start()
     {
+        hudRef = GameObject.Find("HUDElements");
         GameOverPanel = GameObject.Find("GameOverScreen");
     }
 
@@ -34,6 +36,7 @@ public class LevelManager : MonoBehaviour
         //The player script disables movement but if you want to pause the gameworld then i imagine it could be done right here
         //Debug.Log("Game over!");
         //GameOverPanel.SetActive(true);
+        SetActiveChildren(hudRef.transform, false);
         SetActiveChildren(GameOverPanel.transform, true);
     }
 
@@ -51,6 +54,7 @@ public class LevelManager : MonoBehaviour
         //Spawn the victory screen here or the transition or whatever you had in mind
         //The player script disables movement but if you want to pause the gameworld then i imagine it could be done right here
         //Debug.Log("You win!");
+        SetActiveChildren(hudRef.transform, false);
         victoryPanel.SetActive(true);
     }
 
@@ -63,8 +67,8 @@ public class LevelManager : MonoBehaviour
         Vector3 camerapoint = new Vector3(pc.transform.position.x, pc.transform.position.y, -10);
         mc.transform.position = camerapoint;
         pc.Replenish();
+        SetActiveChildren(hudRef.transform, true);
         SetActiveChildren(GameOverPanel.transform, false);
-        //GameOverPanel.SetActive(false);
         //respawn enemies too?
     }
 }
