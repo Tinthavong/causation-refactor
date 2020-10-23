@@ -116,6 +116,8 @@ public abstract class CharacterBase : MonoBehaviour, IActions
 			enemy.GetComponent<CharacterBase>().DamageCalc(strikeDamage);
 			Debug.Log($"{gameObject.name} hit {enemy.name}");
 		}
+
+		FindObjectOfType<SFXManager>().PlayAudio("Melee");
 	}
 
 	//Did this with the camera, hopefully this works well if every character has one attached:

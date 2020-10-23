@@ -8,7 +8,7 @@ public class PlayerController : CharacterBase
 
     public PlayerController() //Constructor
     {
-       //Health = 10; //Arbitrary value?
+        //Health = 10; //Arbitrary value?
         Health = displayedHealth;
         //displayedHealth = Health;//Displayed Health can be set in the inspector
         Stamina = staminaActions;
@@ -74,6 +74,11 @@ public class PlayerController : CharacterBase
 
     void Awake()
     {
+        if (Time.timeScale <= 0f)
+        {
+            Time.timeScale = 1f;
+        }
+
         healthBar.SetHealth(displayedHealth);
         //Can hardcode displayed health here if necessary
         //Apparently coding it at the top doesn't work so might have to do that. Otherwise be sure to set in inspector
@@ -112,7 +117,7 @@ public class PlayerController : CharacterBase
             }
 
             direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            
+
             //extract out into a method but for the meanwhile
             //This allows crouching
             vertical = Input.GetAxis("Vertical");
@@ -152,7 +157,10 @@ public class PlayerController : CharacterBase
 
     private void FixedUpdate()
     {
-        if (!isCrouched) moveCharacter(direction.x);
+        if (!isCrouched)
+        {
+            moveCharacter(direction.x);
+        }
 
         if (jumpTimer > Time.time && onGround && !isCrouched)
         {
@@ -167,7 +175,7 @@ public class PlayerController : CharacterBase
         rb.AddForce(Vector2.right * horizontal * moveSpeed);
         //animator.SetFloat("Speed", Mathf.Abs(horizontal != 0 ? horizontal : 0));
         if ((horizontal > 0 && !facingRight) || (horizontal < 0 && facingRight))
-        {   
+        {
             Flip(0f);
         }
 
@@ -175,6 +183,7 @@ public class PlayerController : CharacterBase
         {
             rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
         }
+
         animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
     }
 
@@ -182,7 +191,7 @@ public class PlayerController : CharacterBase
     public override void Flip(float horizontal)
     {
         facingRight = !facingRight;
-        transform.rotation = Quaternion.Euler(0, facingRight ? 0 : 180, 0);      
+        transform.rotation = Quaternion.Euler(0, facingRight ? 0 : 180, 0);
     }
 
     void Jump()
@@ -242,7 +251,7 @@ public class PlayerController : CharacterBase
 
             if (Input.GetButtonDown("Fire1") && Ammo > 0 && attackElapsedTime >= attackDelay)
             {
-                    if(!isCrouched) animator.Play("GrandpaShoot"); //if not crouched yada yada yada
+                if (!isCrouched) animator.Play("GrandpaShoot"); //if not crouched yada yada yada
                 if (Ammo == 0)
                 {
                     Debug.Log("No Ammo Left!");//implement affordance, clicking sound or something
@@ -271,6 +280,8 @@ public class PlayerController : CharacterBase
 
     public override void Shoot()
     {
+        FindObjectOfType<SFXManager>().PlayAudio("Gunshot");
+
         //This block of code is why we should use raycasts 
         GameObject b = Instantiate(bulletPrefab) as GameObject;
         b.transform.position = bulletSpawn.transform.position;

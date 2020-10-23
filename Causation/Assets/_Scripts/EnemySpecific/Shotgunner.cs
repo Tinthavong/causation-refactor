@@ -100,6 +100,8 @@ public class Shotgunner : Enemy
     //b shoots straight, c shoots above, d shoots below
     private new void Shoot()
     {
+        FindObjectOfType<SFXManager>().PlayAudio("Gunshot");
+
         GameObject b = Instantiate(bulletPrefab) as GameObject;
         GameObject c = Instantiate(bulletPrefab) as GameObject;
         GameObject d = Instantiate(bulletPrefab) as GameObject;

@@ -39,6 +39,8 @@ public class Gunslinger : Enemy
             animator.Play("Attack");
             Shoot();
             firerateWait = firerate;
+
+            FindObjectOfType<SFXManager>().PlayAudio("Gunshot");
         }
 
         //this is only necessary if they will move. right now they are all stationary.

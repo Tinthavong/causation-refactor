@@ -42,7 +42,8 @@ public class Medkit : MonoBehaviour
                         }
                 }
 
-                AudioSource.PlayClipAtPoint(this.GetComponent<AudioSource>().clip, this.transform.position);
+                FindObjectOfType<SFXManager>().PlayAudio("Pickup");
+
                 Destroy(gameObject);
             }
             else

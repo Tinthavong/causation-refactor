@@ -18,8 +18,6 @@ public class BulletScript : MonoBehaviour
                 {
                     Enemy enemy = collision.GetComponent<Enemy>();
                     enemy.DamageCalc(damage);
-                    AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip, transform.position);
-                    //Debug.Log("Enemy has been hit");
                 }
 
                 Destroy(gameObject);
@@ -28,8 +26,7 @@ public class BulletScript : MonoBehaviour
                 if (!playerBullet)
                 {
                     PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-                    player.DamageCalc(damage); //arbitrarily 1 but let's figure that out later, okay so the damage being set in this script means that the player and enemies should use different prefabs
-                    AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip, transform.position);
+                    player.DamageCalc(damage);
                 }
 
                 Destroy(gameObject);
@@ -38,5 +35,7 @@ public class BulletScript : MonoBehaviour
                 Destroy(gameObject);
                 break;
         }
+
+        FindObjectOfType<SFXManager>().PlayAudio("Damage");
     }
 }
