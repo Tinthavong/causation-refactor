@@ -10,9 +10,7 @@ using UnityEngine.PlayerLoop;
 
 public class Interactables : MonoBehaviour
 {
-    //Created by Tyler F
-
-    //Interactables has been changed to only search for objects lie boxes, signs, and scene transitions
+    //Interactables has been changed to only search for objects like boxes, signs, and scene transitions
 
     //nearObject is supposed to be the trigger object the player has just come into contact with
     public GameObject nearObject;
