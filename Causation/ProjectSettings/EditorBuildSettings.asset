@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Menu Scenes/Splash Screen.unity
-    guid: 8853db826304afd43bebaaf1f42560c5
   - enabled: 1
     path: Assets/Scenes/Menu Scenes/Studio Screen.unity
     guid: 10ee39ed4b143e94b93b3f4221bb3144
@@ -24,20 +21,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Grandpa's Levels/Gpa_LevelTwo.unity
     guid: e37b6663c34362945945e655d7e0b05e
   - enabled: 1
-    path: Assets/Scenes/Grandpa's Levels/Gpa_LevelThree.unity
-    guid: 2ab23ec5f469e5e42a1456556a251bc4
+    path: Assets/Scenes/Son's Levels/Son_LevelOne.unity
+    guid: 387f70fc6a51fa14d8453c4469fd9993
   - enabled: 1
-    path: Assets/Scenes/Menu Scenes/Death Screen.unity
-    guid: 9e5551c5a214bec4cb281b841a6160d8
+    path: Assets/Scenes/Son's Levels/Son_LevelTwo.unity
+    guid: 40c7e5ece63cc4d47b303c4185d5cf57
   - enabled: 1
-    path: Assets/Scenes/Menu Scenes/Victory Screen.unity
-    guid: c0d01c4895a19d348ac1c6bd35300262
+    path: Assets/Scenes/Daughter's Levels/Dtr_LevelOne.unity
+    guid: 9254e5e7944d3374ca0f2de99b683688
+  - enabled: 1
+    path: Assets/Scenes/Daughter's Levels/Dtr_LevelTwo.unity
+    guid: ecf59b82fd936d64ea2147127b33d01d
   - enabled: 0
     path: Assets/Scenes/FirstPlayable/Saferoom.unity
     guid: fd3d3c04a6e72534f982d4d3c7488b47
-  - enabled: 0
-    path: Assets/Scenes/FirstPlayable/MovementDemo.unity
-    guid: 44aff28055b7efa498919a7ebbb9b6f2
   - enabled: 1
     path: Assets/Scenes/Menu Scenes/Credits Screen.unity
     guid: 7d93acec50807bb4d8bca5883a701e0a
