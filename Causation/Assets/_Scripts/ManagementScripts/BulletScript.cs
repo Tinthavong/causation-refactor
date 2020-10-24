@@ -18,6 +18,7 @@ public class BulletScript : MonoBehaviour
                 {
                     Enemy enemy = collision.GetComponent<Enemy>();
                     enemy.DamageCalc(damage);
+                    Debug.Log("Enemy has been hit");
                 }
 
                 Destroy(gameObject);
@@ -27,6 +28,8 @@ public class BulletScript : MonoBehaviour
                 {
                     PlayerController player = collision.gameObject.GetComponent<PlayerController>();
                     player.DamageCalc(damage);
+                    Debug.Log("player has been hit");
+
                 }
 
                 Destroy(gameObject);

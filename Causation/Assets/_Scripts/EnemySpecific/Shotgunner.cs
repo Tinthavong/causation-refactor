@@ -6,6 +6,7 @@ using System;
 public class Shotgunner : Enemy
 {
     Animator animator;
+    Rigidbody2D rb;
     public Shotgunner() //constructor
     {
         Health = displayedHealth; //Displayed Health can be set in the inspector
@@ -24,8 +25,10 @@ public class Shotgunner : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerController>();
+        animator.SetBool("IsShotgunner", true);
     }
 
     // Update is called once per frame
@@ -67,13 +70,17 @@ public class Shotgunner : Enemy
         {
             if(facingRight)
             {
-                Vector3 movement = new Vector3(-enemySpeed, 0.0f, 0.0f);
-                transform.position = transform.position + movement * Time.deltaTime;
+                Vector2 movement = new Vector2(-enemySpeed, 0.0f);
+                rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+
+                //transform.position = transform.position + movement * Time.deltaTime;
             }
             else
             {
-                Vector3 movement = new Vector3(enemySpeed, 0.0f, 0.0f);
-                transform.position = transform.position + movement * Time.deltaTime;
+                Vector2 movement = new Vector2(enemySpeed, 0.0f);
+                rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+
+                // transform.position = transform.position + movement * Time.deltaTime;
             }
         }
     }

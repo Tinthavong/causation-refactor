@@ -51,7 +51,7 @@ public class PlayerController : CharacterBase
 
     [Header("Player States")]
     public bool isJumping;
-    private bool isCrouched;
+    private bool isCrouched = false;
     public bool isShooting;
     private bool isInvincible = false;
     public bool canMove = true;
@@ -65,7 +65,8 @@ public class PlayerController : CharacterBase
     public float linearDrag = 4f;
     public float gravity = 1f;
     public float fallMultiplier = 5f;
-
+    private int playerLayer, platformLayer;
+    public float jumpDownTime = 2f;
 
     //reworked movement but here's the leftovers
     private float vertical;
@@ -80,13 +81,12 @@ public class PlayerController : CharacterBase
         }
 
         healthBar.SetHealth(displayedHealth);
-        //Can hardcode displayed health here if necessary
-        //Apparently coding it at the top doesn't work so might have to do that. Otherwise be sure to set in inspector
         LM = FindObjectOfType<LevelManager>();
-        //axisY = gameObject.transform.position.y; //axisY is set immediately to the player game object's y pos
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        //rb.Sleep();
+        playerLayer = LayerMask.NameToLayer("Player");
+        platformLayer = LayerMask.NameToLayer("Platform");
+
     }
 
     private void Update()
@@ -111,17 +111,21 @@ public class PlayerController : CharacterBase
             ShootingBehavior();
             StrikingBehavior();
 
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump") && !Input.GetKey(KeyCode.S))
             {
                 jumpTimer = Time.time + jumpDelay;
             }
+            else if (Input.GetButton("Jump") && Input.GetKey(KeyCode.S))
+            {
+                StartCoroutine("JumpDown");
+            }
 
             direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
 
-            //extract out into a method but for the meanwhile
+
             //This allows crouching
-            vertical = Input.GetAxis("Vertical");
-            if (vertical < 0 && direction.x == 0)
+            if (Input.GetKeyDown(KeyCode.S))
             {
                 //make it so movement is stopped or forced into crouch walk
                 animator.SetBool("IsCrouched", true);
@@ -129,23 +133,23 @@ public class PlayerController : CharacterBase
                 if (isCrouched)//imagine using a nested if in the update method loooole
                 {
                     tempRevolver.SetActive(true);
-                    bulletSpawn.transform.localPosition = new Vector3(1, -0.5f, 0);
+                    bulletSpawn.transform.localPosition = new Vector3(0.85f, -0.4f, 0);
                     GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 1.45f);
                     GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, -0.4f);
                 }
-
             }
-            else if (Input.GetAxis("Vertical") > -1)
+            else if (Input.GetKeyUp(KeyCode.S))
             {
                 //bulletspawn goes back to normal
                 //the "exit" time when not pressing the up key is too slow right now
                 tempRevolver.SetActive(false);
                 animator.SetBool("IsCrouched", false);
                 isCrouched = false;
-                bulletSpawn.transform.localPosition = new Vector3(1, 0.25f, 0);
+                bulletSpawn.transform.localPosition = new Vector3(0.85f, 0.5f, 0);
                 GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 2.3f);
                 GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, 0f);
             }
+
         }
         else if (!canMove)
         {
@@ -153,6 +157,15 @@ public class PlayerController : CharacterBase
             animator.Play("GrandpaDeath");
             rb.Sleep();
         }
+    }
+
+    IEnumerator JumpDown()
+    {
+        Physics2D.IgnoreLayerCollision(playerLayer, platformLayer, true);
+        onGround = false;
+        yield return new WaitForSeconds(jumpDownTime);
+        Physics2D.IgnoreLayerCollision(playerLayer, platformLayer, false);
+        onGround = true;
     }
 
     private void FixedUpdate()
@@ -183,8 +196,6 @@ public class PlayerController : CharacterBase
         {
             rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
         }
-
-        animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
     }
 
     //Handles flipping the sprite across the x axis to show that movement direction has changed
@@ -339,7 +350,6 @@ public class PlayerController : CharacterBase
             LM.flaggedCheckpoint = true; //be sure to reset all flags when restarting or changing levels
         }
     }
-
 
     public override void PostDeath()
     {

@@ -6,6 +6,7 @@ using System;
 public class ChargerEnemy : Enemy
 {
     Animator animator;
+    Rigidbody2D rb;
 
     //Probably like 7 or so enemy scripts in total, bosses included in that number
     public ChargerEnemy() //constructor
@@ -19,6 +20,7 @@ public class ChargerEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerController>();
         //This should use an actual find method/algorithm instead of just knowing where the player is - maybe later down the line, but this works for now
@@ -70,13 +72,18 @@ public class ChargerEnemy : Enemy
     {
         if(facingRight && !isTooClose())
         {
-            Vector3 movement = new Vector3(-enemySpeed, 0.0f, 0.0f);
-            transform.position = transform.position + movement * Time.deltaTime;
+            Vector2 movement = new Vector2(-enemySpeed, 0.0f);
+            rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+
+            //transform.position = transform.position + movement * Time.deltaTime;
+
         }
         else if (!isTooClose())
         {
-            Vector3 movement = new Vector3(enemySpeed, 0.0f, 0.0f);
-            transform.position = transform.position + movement * Time.deltaTime;
+            Vector2 movement = new Vector2(enemySpeed, 0.0f);
+            rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+
+           // transform.position = transform.position + movement * Time.deltaTime;
         } 
     }
 
