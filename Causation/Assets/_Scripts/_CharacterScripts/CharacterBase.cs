@@ -39,6 +39,12 @@ public abstract class CharacterBase : MonoBehaviour, IActions
 		set { _currency = value; }
 	}
 
+	[Header("Ground stuff")]
+	public LayerMask groundLayer;
+	public bool onGround = false;
+	public float groundLength = 0.6f;
+	public Vector3 colliderOffset;
+
 	[Header("Combat References")]
 	//Combat mechanics region
 	//I think bullet damage should be defined here as well, it would make asset creation faster for enemies
