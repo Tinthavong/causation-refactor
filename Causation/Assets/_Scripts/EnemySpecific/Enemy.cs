@@ -81,6 +81,13 @@ public class Enemy : CharacterBase
         return false;
     }
 
+    //Controls if ai will allow the enemy to chase the player if they are on a different y level
+    public bool canSeeThruFloor(bool floorHacks)
+    {
+        //prep for implementation
+        return false;
+    }
+
     //Controls where the enemy is looking, always towards player
     public override void Flip(float dump) //dump because it doesn't matter but it's needed or errors
     {
@@ -89,6 +96,7 @@ public class Enemy : CharacterBase
             facingRight = true;
             Vector3 scale = transform.localScale;
             scale.x *= -1;
+            colliderOffset.x *= -1;
 
             transform.localScale = scale;
         }
@@ -97,6 +105,7 @@ public class Enemy : CharacterBase
             facingRight = false;
             Vector3 scale = transform.localScale;
             scale.x *= -1;
+            colliderOffset.x *= -1;
 
             transform.localScale = scale;
         }

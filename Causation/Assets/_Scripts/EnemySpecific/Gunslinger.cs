@@ -25,6 +25,8 @@ public class Gunslinger : Enemy
     // Update is called once per frame
     void Update()
     {
+        onGround = (Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundLength, groundLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundLength, groundLayer));
+
         //Controls where the enemy is looking
         //First in update to make sure bullet travels in correct direction
         if (isClose())

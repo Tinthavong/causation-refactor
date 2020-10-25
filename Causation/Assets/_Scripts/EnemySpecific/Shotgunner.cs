@@ -34,7 +34,9 @@ public class Shotgunner : Enemy
     // Update is called once per frame
     void Update()
     {
-        if(isClose())
+        onGround = (Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundLength, groundLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundLength, groundLayer));
+
+        if (isClose())
         {
             Flip(0);
             animator.SetBool("IsChasing", true);
@@ -62,14 +64,14 @@ public class Shotgunner : Enemy
     {
         if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) >= fireRange)
         {
-            if(facingRight)
+            if(facingRight && onGround)
             {
                 Vector2 movement = new Vector2(-enemySpeed, 0.0f);
                 rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
 
                 //transform.position = transform.position + movement * Time.deltaTime;
             }
-            else
+            else if(onGround)
             {
                 Vector2 movement = new Vector2(enemySpeed, 0.0f);
                 rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);

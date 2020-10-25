@@ -28614,6 +28614,16 @@ PrefabInstance:
       propertyPath: enemySpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5060461837252918812, guid: 96d72b277360aaf4cb2befc4eb2588cd,
+        type: 3}
+      propertyPath: colliderOffset.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5060461837252918812, guid: 96d72b277360aaf4cb2befc4eb2588cd,
+        type: 3}
+      propertyPath: colliderOffset.x
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96d72b277360aaf4cb2befc4eb2588cd, type: 3}
 --- !u!4 &6634542292956917705 stripped
