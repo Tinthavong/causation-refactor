@@ -5,8 +5,7 @@ using System;
 
 public class Shotgunner : Enemy
 {
-    Animator animator;
-    Rigidbody2D rb;
+    
     public Shotgunner() //constructor
     {
         Health = displayedHealth; //Displayed Health can be set in the inspector
@@ -25,6 +24,7 @@ public class Shotgunner : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        floorHax = false;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerController>();
@@ -58,12 +58,6 @@ public class Shotgunner : Enemy
         ElimCharacter();//Want to find some way for elimcharacter to be checked each time damage is taken, not on every frame like it is now
     }
 
-    public override void DamageCalc(int damage)
-    {
-        animator.Play("Damaged");
-        base.DamageCalc(damage);
-    }
-
     public void RunTowards()
     {
         if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) >= fireRange)
@@ -85,16 +79,7 @@ public class Shotgunner : Enemy
         }
     }
 
-    private bool isClose() 
-    {
-        if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) < sightRange && player.displayedHealth > 0) //Dirty fix. Stop, he's already dead!
-        {
-            return true;
-        }
-        return false;
-    }
-
-    private bool isCloseEnough()//Shotguns are never too close hehehehehe
+    private bool isCloseEnough()//Shotguns are never isTooClose() hehehehehe
     {
         if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) <= fireRange && player.displayedHealth > 0) 
         {

@@ -5,9 +5,6 @@ using System;
 
 public class ChargerEnemy : Enemy
 {
-    Animator animator;
-    Rigidbody2D rb;
-
     //Probably like 7 or so enemy scripts in total, bosses included in that number
     public ChargerEnemy() //constructor
     {
@@ -20,6 +17,7 @@ public class ChargerEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        floorHax = true;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerController>();
@@ -61,13 +59,7 @@ public class ChargerEnemy : Enemy
         ElimCharacter();
     }
 
-    public override void DamageCalc(int damage)
-    {
-        animator.Play("Damaged");
-        base.DamageCalc(damage);
-    }
-
-    //Moves towards the player (unimplemented)
+    //Moves towards the player - Needs a bug fix for vertical movement, currently kinda just glides over to the player before falling
     public void RunTowards()
     {
         if(facingRight && !isTooClose())
@@ -85,48 +77,6 @@ public class ChargerEnemy : Enemy
 
            // transform.position = transform.position + movement * Time.deltaTime;
         } 
-    }
-
-    //isClose and isTooClose are specific to gunslinger enemies, at least currently
-    //Checks to see if the player object is within a certain distance
-    private bool isClose()
-    {
-        if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) < sightRange)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    //Unused currently, will be implemented with melee support
-    private bool isTooClose()
-    {
-        if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) < meleeRange)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public override void Flip(float dump) //dump because it doesn't matter but it's needed or errors
-    {
-        if (player.transform.position.x < this.transform.position.x && !facingRight)
-        {
-            facingRight = true;
-            Vector3 scale = transform.localScale;
-            scale.x *= -1;
-
-            transform.localScale = scale;
-        }
-
-        else if (player.transform.position.x >= this.transform.position.x && facingRight)
-        {
-            facingRight = false;
-            Vector3 scale = transform.localScale;
-            scale.x *= -1;
-
-            transform.localScale = scale;
-        }
     }
 
     void Death()

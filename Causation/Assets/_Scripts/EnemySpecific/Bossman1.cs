@@ -20,8 +20,8 @@ public class Bossman1 : Enemy
     // Start is called before the first frame update
 
     [Header("Special Variables")]
-    //Boss will go through phases one by one in a pattern
-    private int phase = 0;
+    //Boss will go through phases one by one in a pattern: is public as testing will be easier
+    public int phase = 0;
     //New phase timers to allow for transitions to new phases, allowing damage to be done in between phases
     private float phaseRateWait = 0f;
     public float phaseRate = 4f;
@@ -40,6 +40,9 @@ public class Bossman1 : Enemy
 
     void Start()
     {
+        floorHax = true;
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerController>();
         //Gets initial position for the bullets
         gatlingCurrentLeft = gatlingStartLeft.transform.position;
@@ -109,27 +112,17 @@ public class Bossman1 : Enemy
         ElimCharacter();//Want to find some way for elimcharacter to be checked each time damage is taken, not on every frame like it is now
     }
 
-    //Used for close range lasers
-    private bool isTooClose()
-    {
-        if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) < meleeRange && player.displayedHealth > 0)
-        {
-            return true;
-        }
-        return false;
-    }
-
     private void minorMovement()
     {
         if(player.transform.position.x < transform.position.x)
         {
-            Vector3 movement = new Vector3(-enemySpeed, 0.0f, 0.0f);
-            transform.position = transform.position + movement * Time.deltaTime;
+            Vector2 movement = new Vector2(-enemySpeed, 0.0f);
+            rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
         }
         else
         {
-            Vector3 movement = new Vector3(enemySpeed, 0.0f, 0.0f);
-            transform.position = transform.position + movement * Time.deltaTime;
+            Vector2 movement = new Vector2(enemySpeed, 0.0f);
+            rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
         }
     }
 

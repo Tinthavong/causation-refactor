@@ -5,7 +5,6 @@ using System;
 
 public class Gunslinger : Enemy
 {
-    Animator animator;
     public Gunslinger() //constructor
     {
         Health = displayedHealth; //Displayed Health can be set in the inspector
@@ -16,6 +15,8 @@ public class Gunslinger : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        floorHax = false;
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerController>();
         animator.SetBool("IsShotgunner", false);
@@ -60,25 +61,5 @@ public class Gunslinger : Enemy
         }*/
 
         ElimCharacter();//Want to find some way for elimcharacter to be checked each time damage is taken, not on every frame like it is now
-    }
-
-    //Checks to see if the player object is within a certain distance
-    private bool isClose()
-    {
-        if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) < sightRange && player.displayedHealth > 0) //Dirty fix. Stop, he's already dead!
-        {
-            return true;
-        }
-        return false;
-    }
-
-    //Used for melee support
-    private bool isTooClose()
-    {
-        if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) < meleeRange && player.displayedHealth > 0)
-        {
-            return true;
-        }
-        return false;
     }
 }
