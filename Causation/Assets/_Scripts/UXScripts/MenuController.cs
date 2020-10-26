@@ -9,12 +9,12 @@ public class MenuController : MonoBehaviour
     private int lastLoad;
     private int loadNextScene;
     public Animator anim;
-    //public GameObject fadeCanvas;
+    public Canvas fadeCanvas;
 
     private void Start()
     {
         loadNextScene = SceneManager.GetActiveScene().buildIndex + 1;
-        //anim.SetBool("Fade", false);
+        anim.SetBool("Transition", true);
         //fadeCanvas.SetActive(true);
     }
 
@@ -95,9 +95,9 @@ public class MenuController : MonoBehaviour
 
     IEnumerator LoadNextScene(int levelIndex)
     {
-        anim.SetBool("Fade", true);
+        anim.SetBool("Transition", true);
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
 
         SceneManager.LoadScene(levelIndex);
     }

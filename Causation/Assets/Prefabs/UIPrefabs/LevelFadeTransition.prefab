@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8614466266833936200}
   m_Layer: 0
-  m_Name: Transitions
+  m_Name: LevelFadeTransition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
