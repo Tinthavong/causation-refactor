@@ -17,7 +17,6 @@ public class ChargerEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        floorHax = true;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerController>();
@@ -37,13 +36,13 @@ public class ChargerEnemy : Enemy
         //firerateWait changes based on fps time
         firerateWait -= Time.deltaTime;
         //if firerateWait is 0, time to strike and reset the wait
-        if (isClose() && !isTooClose())
+        if (isClose() && !isTooClose() && vertRangeSeesPlayer() && onGround)
         {
             animator.SetBool("IsChasing", true);
             RunTowards();
         }
 
-        if (firerateWait <= 0 && isTooClose() && player.displayedHealth > 1)
+        if (firerateWait <= 0 && isTooClose() && player.displayedHealth > 1 && vertRangeSeesPlayer())
         {
             animator.SetBool("IsChasing", false);
             animator.SetBool("IsAttacking", true);
@@ -63,7 +62,7 @@ public class ChargerEnemy : Enemy
     //Moves towards the player - Needs a bug fix for vertical movement, currently kinda just glides over to the player before falling
     public void RunTowards()
     {
-        if(facingRight && !isTooClose() && onGround)
+        if(facingRight)
         {
             Vector2 movement = new Vector2(-enemySpeed, 0.0f);
             rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
@@ -71,7 +70,7 @@ public class ChargerEnemy : Enemy
             //transform.position = transform.position + movement * Time.deltaTime;
 
         }
-        else if (!isTooClose() && onGround)
+        else
         {
             Vector2 movement = new Vector2(enemySpeed, 0.0f);
             rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);

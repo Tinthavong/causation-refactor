@@ -39,7 +39,8 @@ public class Enemy : CharacterBase
     protected float firerateWait = 0f;
     public int sightRange = 10;
     public int meleeRange = 2;
-    public bool floorHax; //Used to determine if an enemy will react to players if they arent on the same y level
+    public bool floorHax = false; //Used to determine if an enemy will react to players if they arent on the same y level
+    public float verticalSight = 2.5f;
     
     protected bool facingRight;
     protected PlayerController player; //this can be private, pretty sure this works now
@@ -81,10 +82,16 @@ public class Enemy : CharacterBase
         return false;
     }
 
-    //Controls if ai will allow the enemy to chase the player if they are on a different y level
-    public bool canSeeThruFloor(bool floorHacks)
+    public bool vertRangeSeesPlayer()
     {
-        //prep for implementation
+        if(floorHax)
+        {
+            return true;
+        }
+        else if(Math.Abs(transform.position.y - player.transform.position.y) <= verticalSight)
+        {
+            return true;
+        }
         return false;
     }
 

@@ -40,7 +40,6 @@ public class Bossman1 : Enemy
 
     void Start()
     {
-        floorHax = true;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerController>();

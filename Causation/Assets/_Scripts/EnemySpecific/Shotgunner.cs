@@ -24,7 +24,6 @@ public class Shotgunner : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        floorHax = false;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerController>();
@@ -39,13 +38,16 @@ public class Shotgunner : Enemy
         if (isClose())
         {
             Flip(0);
-            animator.SetBool("IsChasing", true);
-            RunTowards();
+            if(vertRangeSeesPlayer())
+            {
+                animator.SetBool("IsChasing", true);
+                RunTowards();
+            }
         }
 
         //firerateWait changes based on fps time
         firerateWait -= Time.deltaTime;
-        if (isCloseEnough() && firerateWait <= 0)
+        if (isCloseEnough() && firerateWait <= 0 && vertRangeSeesPlayer())
         {
             animator.SetBool("IsChasing", false);
             animator.Play("Attack");

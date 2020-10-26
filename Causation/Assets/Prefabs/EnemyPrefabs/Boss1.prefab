@@ -193,7 +193,8 @@ MonoBehaviour:
   firerate: 0.3
   sightRange: 10
   meleeRange: 4
-  floorHax: 0
+  floorHax: 1
+  verticalSight: 3
   phase: 0
   phaseRate: 4
   bulletsFiredStop: 5

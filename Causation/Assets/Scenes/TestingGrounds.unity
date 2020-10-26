@@ -27643,6 +27643,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 675676554}
     m_Modifications:
+    - target: {fileID: 5529824715602500325, guid: 8ba23277cde198647b985fcb24afb467,
+        type: 3}
+      propertyPath: verticalSight
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529824715602500325, guid: 8ba23277cde198647b985fcb24afb467,
+        type: 3}
+      propertyPath: floorHax
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5529824715602500328, guid: 8ba23277cde198647b985fcb24afb467,
         type: 3}
       propertyPath: m_Name

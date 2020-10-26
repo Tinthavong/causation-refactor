@@ -15,7 +15,6 @@ public class Gunslinger : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        floorHax = false;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerController>();
@@ -37,7 +36,7 @@ public class Gunslinger : Enemy
         //firerateWait changes based on fps time
         firerateWait -= Time.deltaTime;
         //if firerateWait is 0, time to fire and reset the wait
-        if (firerateWait <= 0 && isClose() && !isTooClose() && player.displayedHealth > 0 )
+        if (firerateWait <= 0 && isClose() && !isTooClose() && player.displayedHealth > 0 && vertRangeSeesPlayer())
         {
             animator.Play("Attack");
             Shoot();
