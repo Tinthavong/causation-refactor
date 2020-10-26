@@ -2,22 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
     private int lastLoad;
     private int loadNextScene;
+    public Animator anim;
+    //public GameObject fadeCanvas;
 
     private void Start()
     {
         loadNextScene = SceneManager.GetActiveScene().buildIndex + 1;
+        //anim.SetBool("Fade", false);
+        //fadeCanvas.SetActive(true);
     }
 
     public void PlayGame()
     {
         Time.timeScale = 1f;
         PauseController.isPaused = false;
-        SceneManager.LoadScene(2);
+        //SceneManager.LoadScene(2);
+        StartCoroutine(LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     public void CreditsScreen()
@@ -43,7 +49,7 @@ public class MenuController : MonoBehaviour
 
     public void MissionSelect()
     {
-        SceneManager.LoadScene(2);
+        StartCoroutine(LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
     public void RestartGame()
     {
@@ -87,12 +93,12 @@ public class MenuController : MonoBehaviour
         //}
     }
 
-    //IEnumerator Game()
-    //{
-    //    anim.SetTrigger("Start");
+    IEnumerator LoadNextScene(int levelIndex)
+    {
+        anim.SetBool("Fade", true);
 
-    //    yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5);
 
-    //    SceneManager.LoadScene(5);
-    //}
+        SceneManager.LoadScene(levelIndex);
+    }
 }

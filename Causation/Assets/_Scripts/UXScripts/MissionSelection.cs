@@ -12,6 +12,8 @@ public class MissionSelection : MonoBehaviour
     public TMP_Text eraText;
     public Image cover;
     public Button backButton;
+    public Animator anim;
+    public GameObject fadeCanvas;
 
     [Header("Grandpa's Missions")]
     public Button era1;
@@ -38,6 +40,8 @@ public class MissionSelection : MonoBehaviour
 
     private void Start()
     {
+        anim.SetBool("Fade", true);
+        //fadeCanvas.SetActive(true);
         //Start of game
         if (iterations == 0)
         {
@@ -148,8 +152,9 @@ public class MissionSelection : MonoBehaviour
         {
             iterations = 2;
         }
+        StartCoroutine(LoadNextScene(4));
         
-        SceneManager.LoadScene(4);
+        //SceneManager.LoadScene(4);
     }
 
     public void Mission3()
@@ -190,5 +195,14 @@ public class MissionSelection : MonoBehaviour
         }
 
         SceneManager.LoadScene(8);
+    }
+
+    IEnumerator LoadNextScene(int levelIndex)
+    {
+        anim.SetBool("Fade", true);
+
+        yield return new WaitForSeconds(5);
+
+        SceneManager.LoadScene(levelIndex);
     }
 }

@@ -22,7 +22,7 @@ public class Interactables : MonoBehaviour
 
     //mean for the update check when player is pushing the W key
     private bool isColliding;
-    private bool transitionFlag = false;
+    public static bool transitionFlag = false;
     private int hardLock = 1;
 
     private void Update()
