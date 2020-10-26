@@ -39,9 +39,13 @@ public class Enemy : CharacterBase
     protected float firerateWait = 0f;
     public int sightRange = 10;
     public int meleeRange = 2;
-
+    public bool floorHax = false; //Used to determine if an enemy will react to players if they arent on the same y level
+    public float verticalSight = 2.5f;
+    
     protected bool facingRight;
     protected PlayerController player; //this can be private, pretty sure this works now
+    protected Animator animator;
+    protected Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
@@ -59,7 +63,7 @@ public class Enemy : CharacterBase
     //isClose and isTooClose are specific to gunslinger enemies, at least currently
 
     //Checks to see if the player object is within a certain distance
-    private bool isClose()
+    public bool isClose()//shouldve made these public long time ago, but they are now
     {
         if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) < sightRange && player.displayedHealth > 0) //Dirty fix. Stop, he's already dead!
         {
@@ -69,9 +73,22 @@ public class Enemy : CharacterBase
     }
 
     //Used for melee support
-    private bool isTooClose()
+    public bool isTooClose()//shouldve made these public long time ago, but they are now
     {
         if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) < meleeRange && player.displayedHealth > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool vertRangeSeesPlayer()
+    {
+        if(floorHax)
+        {
+            return true;
+        }
+        else if(Math.Abs(transform.position.y - player.transform.position.y) <= verticalSight)
         {
             return true;
         }
@@ -86,6 +103,7 @@ public class Enemy : CharacterBase
             facingRight = true;
             Vector3 scale = transform.localScale;
             scale.x *= -1;
+            colliderOffset.x *= -1;
 
             transform.localScale = scale;
         }
@@ -94,9 +112,20 @@ public class Enemy : CharacterBase
             facingRight = false;
             Vector3 scale = transform.localScale;
             scale.x *= -1;
+            colliderOffset.x *= -1;
 
             transform.localScale = scale;
         }
+    }
+
+    public override void DamageCalc(int damage)
+    {
+        if(animator != null)
+        {
+            animator.Play("Damaged");
+        }
+        
+        base.DamageCalc(damage);
     }
 
     public override void PostDeath()

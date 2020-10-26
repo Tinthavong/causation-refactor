@@ -57,10 +57,6 @@ public class PlayerController : CharacterBase
     public bool canMove = true;
 
     [Header("Collision and Physics")]
-    public LayerMask groundLayer;
-    public bool onGround = false;
-    public float groundLength = 0.6f;
-    public Vector3 colliderOffset;
     //physics
     public float linearDrag = 4f;
     public float gravity = 1f;

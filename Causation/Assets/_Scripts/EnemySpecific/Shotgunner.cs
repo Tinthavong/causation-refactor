@@ -5,8 +5,7 @@ using System;
 
 public class Shotgunner : Enemy
 {
-    Animator animator;
-    Rigidbody2D rb;
+    
     public Shotgunner() //constructor
     {
         Health = displayedHealth; //Displayed Health can be set in the inspector
@@ -34,16 +33,21 @@ public class Shotgunner : Enemy
     // Update is called once per frame
     void Update()
     {
-        if(isClose())
+        onGround = (Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundLength, groundLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundLength, groundLayer));
+
+        if (isClose())
         {
             Flip(0);
-            animator.SetBool("IsChasing", true);
-            RunTowards();
+            if(vertRangeSeesPlayer())
+            {
+                animator.SetBool("IsChasing", true);
+                RunTowards();
+            }
         }
 
         //firerateWait changes based on fps time
         firerateWait -= Time.deltaTime;
-        if (isCloseEnough() && firerateWait <= 0)
+        if (isCloseEnough() && firerateWait <= 0 && vertRangeSeesPlayer())
         {
             animator.SetBool("IsChasing", false);
             animator.Play("Attack");
@@ -58,24 +62,18 @@ public class Shotgunner : Enemy
         ElimCharacter();//Want to find some way for elimcharacter to be checked each time damage is taken, not on every frame like it is now
     }
 
-    public override void DamageCalc(int damage)
-    {
-        animator.Play("Damaged");
-        base.DamageCalc(damage);
-    }
-
     public void RunTowards()
     {
         if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) >= fireRange)
         {
-            if(facingRight)
+            if(facingRight && onGround)
             {
                 Vector2 movement = new Vector2(-enemySpeed, 0.0f);
                 rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
 
                 //transform.position = transform.position + movement * Time.deltaTime;
             }
-            else
+            else if(onGround)
             {
                 Vector2 movement = new Vector2(enemySpeed, 0.0f);
                 rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
@@ -85,16 +83,7 @@ public class Shotgunner : Enemy
         }
     }
 
-    private bool isClose() 
-    {
-        if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) < sightRange && player.displayedHealth > 0) //Dirty fix. Stop, he's already dead!
-        {
-            return true;
-        }
-        return false;
-    }
-
-    private bool isCloseEnough()//Shotguns are never too close hehehehehe
+    private bool isCloseEnough()//Shotguns are never isTooClose() hehehehehe
     {
         if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) <= fireRange && player.displayedHealth > 0) 
         {

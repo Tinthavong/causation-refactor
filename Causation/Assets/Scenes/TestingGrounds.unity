@@ -27643,6 +27643,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 675676554}
     m_Modifications:
+    - target: {fileID: 5529824715602500325, guid: 8ba23277cde198647b985fcb24afb467,
+        type: 3}
+      propertyPath: verticalSight
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529824715602500325, guid: 8ba23277cde198647b985fcb24afb467,
+        type: 3}
+      propertyPath: floorHax
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5529824715602500328, guid: 8ba23277cde198647b985fcb24afb467,
         type: 3}
       propertyPath: m_Name
@@ -28613,6 +28623,16 @@ PrefabInstance:
         type: 3}
       propertyPath: enemySpeed
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5060461837252918812, guid: 96d72b277360aaf4cb2befc4eb2588cd,
+        type: 3}
+      propertyPath: colliderOffset.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5060461837252918812, guid: 96d72b277360aaf4cb2befc4eb2588cd,
+        type: 3}
+      propertyPath: colliderOffset.x
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96d72b277360aaf4cb2befc4eb2588cd, type: 3}

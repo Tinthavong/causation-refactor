@@ -197,6 +197,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayedHealth: 5
   staminaActions: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 57344
+  onGround: 0
+  groundLength: 1.42
+  colliderOffset: {x: 0.5, y: 0.1, z: 0}
   bulletSpeed: 800
   bulletPrefab: {fileID: 925700458712431568, guid: 968bd95b9d0bdcd44961c4e4005a974c,
     type: 3}
@@ -217,6 +223,8 @@ MonoBehaviour:
   firerate: 2
   sightRange: 10
   meleeRange: 2
+  floorHax: 0
+  verticalSight: 2.5
 --- !u!50 &840296245
 Rigidbody2D:
   serializedVersion: 4
