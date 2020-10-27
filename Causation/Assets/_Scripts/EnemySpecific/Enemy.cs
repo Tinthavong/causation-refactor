@@ -41,7 +41,9 @@ public class Enemy : CharacterBase
     public int meleeRange = 2;
     public bool floorHax = false; //Used to determine if an enemy will react to players if they arent on the same y level
     public float verticalSight = 2.5f;
-    
+
+    public bool isBox = false; //temporary for boxes, i know it's dirty but i don't want to copy/paste the item drops for no reason
+
     protected bool facingRight;
     protected PlayerController player; //this can be private, pretty sure this works now
     protected Animator animator;
@@ -57,7 +59,7 @@ public class Enemy : CharacterBase
     // Update is called once per frame
     void Update()
     {
-
+        if (isBox) ElimCharacter();
     }
 
     //isClose and isTooClose are specific to gunslinger enemies, at least currently

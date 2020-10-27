@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerController : CharacterBase
 {
@@ -21,8 +22,10 @@ public class PlayerController : CharacterBase
     [Header("UI References")]
     public HealthBar healthBar; //I don't like the idea of having a type just for healthbar, redo later
     public TMP_Text ammoText;
+    public Image ammoDisplay; //probably temporary, i have a better idea
     public int walletValue; //think  of a better name, but this has all of the player's screws/currency
-    public int maxAmmo = 6; //six-shooter by default, set in inspector otherwise
+    public int maxAmmo = 6; //six-shooter by default, set in inspector otherwise - set with weapon types
+
     Animator animator;
     Rigidbody2D rb; //rigidbody used for jumping
     public GameObject deathScreen;
@@ -43,6 +46,7 @@ public class PlayerController : CharacterBase
     //Attacking
     float attackElapsedTime = 0;
     public float attackDelay = 0.2f;
+    public float fireDelay = 1f;
 
     [Header("Components")]
     public GameObject[] bulletList;
@@ -67,7 +71,9 @@ public class PlayerController : CharacterBase
     //reworked movement but here's the leftovers
     private float vertical;
     [SerializeField]
-    private GameObject tempRevolver; //necessary to show that there is a revolver when crouched
+    private GameObject tempRevolver, tempPunch; //necessary to show that there is a revolver when crouched or to show that a punch is happening
+    public bool isBurstFire = false; //extremely lazy implementation: false = default revolver true = burst fire SMG
+    private int shotAmount = 1; //shoots 1 bullet by default, changes for burst fire
 
     void Awake()
     {
@@ -76,6 +82,7 @@ public class PlayerController : CharacterBase
             Time.timeScale = 1f;
         }
 
+        WeaponTypeAssign();
         healthBar.SetHealth(displayedHealth);
         LM = FindObjectOfType<LevelManager>();
         animator = GetComponent<Animator>();
@@ -94,11 +101,13 @@ public class PlayerController : CharacterBase
             //This allows changing bullet types
             if (Input.GetKeyDown(KeyCode.T) && bulletPrefab != bulletList[1])
             {
+                ammoDisplay.sprite = bulletList[1].GetComponent<SpriteRenderer>().sprite;
                 Ammo = maxAmmo; //right now the special bullet does not have a finite amount, would like to make finite before alpha deliverable
                 bulletPrefab = bulletList[1]; //this should use something more algorithmic. There are only two bullets right now, however
             }
             else if (Input.GetKeyDown(KeyCode.T) && bulletPrefab != bulletList[0])
             {
+                ammoDisplay.sprite = bulletList[0].GetComponent<SpriteRenderer>().sprite;
                 Ammo = maxAmmo; //default ammo will have infinite
                 bulletPrefab = bulletList[0];
             }
@@ -244,9 +253,13 @@ public class PlayerController : CharacterBase
     {
         if (Input.GetButtonDown("Fire2") && attackElapsedTime >= attackDelay)//and a bool/state check that determines if the player is not already shooting
         {
-            attackElapsedTime = 0; //It's the same principle as shooting and this SHOULD work but 
-            //going to spawn a red circle wherever strikezone is to show damage affordance
+            attackElapsedTime = 0;
+            tempPunch.SetActive(true);
             Strike();
+        }
+        if(attackElapsedTime>0)
+        {
+            tempPunch.SetActive(false);
         }
     }
 
@@ -267,9 +280,12 @@ public class PlayerController : CharacterBase
                 {
                     if (!PauseController.isPaused)
                     {
+                        for (int i = 0; i < shotAmount; i++)
+                        {
+                            Invoke("Shoot", (fireDelay * i));
+                            Ammo--;
+                        }
                         attackElapsedTime = 0;
-                        Shoot();
-                        Ammo--;
                     }
                 }
                 animator.SetBool("IsShooting", false);
@@ -285,10 +301,29 @@ public class PlayerController : CharacterBase
         }
     }
 
+    private void WeaponTypeAssign() //Ammo capacity will be assigned depending on what type of gun it is, single shot, burst fire, etc (burst fire has a higher capacity)
+    {
+        //assigns ammo capacity, weapon firing type
+        //if revolver ammo is 6 if smg ammo is 15
+        //also set attack delay here?
+        //needs to be heavily refined
+
+        if (isBurstFire)
+        {
+            shotAmount = 3;
+            maxAmmo = 15; //smg/burstfire guns
+            fireDelay = 0.05f;
+            bulletSpeed = 1500f;
+            attackDelay = 0.5f;
+        }
+        else
+            return;
+    }
+
     public override void Shoot()
     {
         FindObjectOfType<SFXManager>().PlayAudio("Gunshot");
-
+        //switch cases for firing modes
         //This block of code is why we should use raycasts 
         GameObject b = Instantiate(bulletPrefab) as GameObject;
         b.transform.position = bulletSpawn.transform.position;
