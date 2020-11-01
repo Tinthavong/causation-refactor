@@ -56,24 +56,41 @@ public class ChargerEnemy : Enemy
             animator.SetBool("IsAttacking", false);
         }
 
+        //Makes the enemy horizontal speed lower while falling
+        if (!onGround)
+        {
+            Vector2 airBrake = new Vector2(-(rb.velocity.x / 2), 0.0f);
+            rb.AddForce(airBrake);
+        }
+
         ElimCharacter();
     }
 
-    //Moves towards the player - Needs a bug fix for vertical movement, currently kinda just glides over to the player before falling
+    //Moves towards the player
     public void RunTowards()
     {
-        if(facingRight)
+        if(facingRight && onGround)
         {
             Vector2 movement = new Vector2(-enemySpeed, 0.0f);
-            rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+            //rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+
+            if (rb.velocity.x >= -enemySpeed)
+            {
+                rb.AddForce(movement);
+            }
 
             //transform.position = transform.position + movement * Time.deltaTime;
 
         }
-        else
+        else if(onGround)
         {
             Vector2 movement = new Vector2(enemySpeed, 0.0f);
-            rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+            //rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+
+            if(rb.velocity.x <= enemySpeed)
+            {
+                rb.AddForce(movement);
+            }
 
            // transform.position = transform.position + movement * Time.deltaTime;
         } 

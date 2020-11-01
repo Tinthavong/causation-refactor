@@ -59,6 +59,14 @@ public class Shotgunner : Enemy
         {
             animator.SetBool("IsChasing", false);
         }
+
+        //Makes the enemy horizontal speed lower drastically while falling
+        if(!onGround)
+        {
+            Vector2 airBrake = new Vector2(-(rb.velocity.x/4), 0.0f);
+            rb.AddForce(airBrake);
+        }
+
         ElimCharacter();//Want to find some way for elimcharacter to be checked each time damage is taken, not on every frame like it is now
     }
 
@@ -69,14 +77,20 @@ public class Shotgunner : Enemy
             if(facingRight && onGround)
             {
                 Vector2 movement = new Vector2(-enemySpeed, 0.0f);
-                rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+                if (rb.velocity.x >= -enemySpeed)
+                {
+                    rb.AddForce(movement);
+                }
 
                 //transform.position = transform.position + movement * Time.deltaTime;
             }
             else if(onGround)
             {
                 Vector2 movement = new Vector2(enemySpeed, 0.0f);
-                rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+                if (rb.velocity.x <= enemySpeed)
+                {
+                    rb.AddForce(movement);
+                }
 
                 // transform.position = transform.position + movement * Time.deltaTime;
             }
