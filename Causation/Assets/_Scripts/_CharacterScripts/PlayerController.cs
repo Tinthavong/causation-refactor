@@ -48,6 +48,8 @@ public class PlayerController : CharacterBase
     public float attackDelay = 0.2f;
     public float fireDelay = 1f;
 
+    private int i = 0;
+
     [Header("Components")]
     public GameObject[] bulletList;
     public GameObject nearObject;
@@ -92,6 +94,24 @@ public class PlayerController : CharacterBase
 
     }
 
+    private void ChangeBullets()
+    {
+        if (i != bulletList.Length)
+        {
+            i++;
+            ammoDisplay.sprite = bulletList[i].GetComponent<SpriteRenderer>().sprite;
+            Ammo = maxAmmo; //right now the special bullet does not have a finite amount, would like to make finite before alpha deliverable
+            bulletPrefab = bulletList[i]; //this should use something more algorithmic. There are only two bullets right now, however
+        }
+        else
+        {
+            i = 0;
+            ammoDisplay.sprite = bulletList[i].GetComponent<SpriteRenderer>().sprite;
+            Ammo = maxAmmo;
+            bulletPrefab = bulletList[i];
+        }
+    }
+
     private void Update()
     {
         onGround = Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundLength, groundLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundLength, groundLayer);
@@ -99,17 +119,9 @@ public class PlayerController : CharacterBase
         {
             //extract out into a method but for the meanwhile
             //This allows changing bullet types
-            if (Input.GetKeyDown(KeyCode.T) && bulletPrefab != bulletList[1])
+            if (Input.GetKeyDown(KeyCode.T))
             {
-                ammoDisplay.sprite = bulletList[1].GetComponent<SpriteRenderer>().sprite;
-                Ammo = maxAmmo; //right now the special bullet does not have a finite amount, would like to make finite before alpha deliverable
-                bulletPrefab = bulletList[1]; //this should use something more algorithmic. There are only two bullets right now, however
-            }
-            else if (Input.GetKeyDown(KeyCode.T) && bulletPrefab != bulletList[0])
-            {
-                ammoDisplay.sprite = bulletList[0].GetComponent<SpriteRenderer>().sprite;
-                Ammo = maxAmmo; //default ammo will have infinite
-                bulletPrefab = bulletList[0];
+                ChangeBullets();
             }
 
             attackElapsedTime += Time.deltaTime;
@@ -257,7 +269,7 @@ public class PlayerController : CharacterBase
             tempPunch.SetActive(true);
             Strike();
         }
-        if(attackElapsedTime>0)
+        if (attackElapsedTime > 0)
         {
             tempPunch.SetActive(false);
         }

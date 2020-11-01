@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    public int damage;
+    [SerializeField]
+    private int damage;
+
     public bool playerBullet;
+    public bool isExplosive;
+
+    Enemy enemy;
 
     //For now this simply assumes that every collision is with an enemy and will take away the appropriate amount of damage
     //we may want to eventually change this to accomodate collisions with destructible objects (if added)
@@ -16,9 +22,19 @@ public class BulletScript : MonoBehaviour
             case "Enemy":
                 if (playerBullet)
                 {
-                    Enemy enemy = collision.GetComponent<Enemy>();
-                    enemy.DamageCalc(damage);
-                    Debug.Log("Enemy has been hit");
+                    enemy = collision.GetComponent<Enemy>();
+
+                    if (isExplosive)
+                    {
+                        enemy.DamageCalc(damage);
+                        Debug.Log("Enemy has been hit");
+                        Knockback();
+                    }
+                    else
+                    {
+                        enemy.DamageCalc(damage);
+                        Debug.Log("Enemy has been hit");
+                    }
                 }
 
                 Destroy(gameObject);
@@ -40,5 +56,13 @@ public class BulletScript : MonoBehaviour
         }
 
         FindObjectOfType<SFXManager>().PlayAudio("Damage");
+    }
+
+    private void Knockback()
+    {
+        if(enemy.facingRight)
+        {
+            //enemy.GetComponent<Rigidbody2D>().AddForce();
+        }
     }
 }

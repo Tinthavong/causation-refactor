@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {  //game over manager for both player wins and losses
     public GameObject checkpoint; //the last visited checkpoint, a flag is set that allows the player to respawn there
-    public bool flaggedCheckpoint;
+    public bool flaggedCheckpoint = false;
 
     public GameObject victoryPoint;
     public GameObject levelLoader;

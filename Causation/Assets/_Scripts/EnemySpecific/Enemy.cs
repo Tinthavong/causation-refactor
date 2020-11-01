@@ -44,7 +44,9 @@ public class Enemy : CharacterBase
 
     public bool isBox = false; //temporary for boxes, i know it's dirty but i don't want to copy/paste the item drops for no reason
 
-    protected bool facingRight;
+    [HideInInspector]
+    public bool facingRight;
+
     protected PlayerController player; //this can be private, pretty sure this works now
     protected Animator animator;
     protected Rigidbody2D rb;
