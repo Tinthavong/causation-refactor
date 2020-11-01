@@ -29,13 +29,18 @@ public class Interactables : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W) && transitionFlag && hardLock > 0)
         {
-            Camera mc = FindObjectOfType<Camera>();
-            gameObject.transform.position = GameObject.Find("ScreenTransitionB").transform.position;
-            Vector3 dummy = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
-            mc.transform.position = dummy;
-            transitionFlag = false; //no backtracking. also this implementation ain't great huh
-            hardLock--;
+            Invoke("TeleportTransition", 1f);
         }
+    }
+
+    private void TeleportTransition()
+    {
+        Camera mc = FindObjectOfType<Camera>();
+        gameObject.transform.position = GameObject.Find("ScreenTransitionB").transform.position;
+        Vector3 dummy = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
+        mc.transform.position = dummy;
+        transitionFlag = false; //no backtracking. also this implementation ain't great huh
+        hardLock--;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

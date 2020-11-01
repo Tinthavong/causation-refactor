@@ -40,6 +40,7 @@ public class Bossman1 : Enemy
 
     void Start()
     {
+        bulletRefSpeed = bulletPrefab.GetComponent<BulletScript>().bulletSpeed;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerController>();
@@ -201,8 +202,8 @@ public class Bossman1 : Enemy
         b.transform.position = gatlingCurrentLeft;
         c.transform.position = gatlingCurrentRight;
         b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90f);
-        b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * -bulletSpeed);
+        b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * -bulletRefSpeed);
         c.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90f);
-        c.GetComponent<Rigidbody2D>().AddForce(Vector2.right * -bulletSpeed);
+        c.GetComponent<Rigidbody2D>().AddForce(Vector2.right * -bulletRefSpeed);
     }
 }

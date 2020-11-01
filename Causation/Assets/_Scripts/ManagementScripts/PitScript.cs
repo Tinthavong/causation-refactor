@@ -14,12 +14,13 @@ public class PitScript : MonoBehaviour
     private void Start()
     {
         //respawnPOS = gameObject.GetComponent<PlayerController>().transform.position;
-        respawnPOS = player.transform.position;
+        //respawnPOS = player.transform.position;
+        //Debug.Log(respawnPOS);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        LevelManager checkpoint = collision.GetComponent<LevelManager>();
+        LevelManager checkpoint = FindObjectOfType<LevelManager>();
 
         switch(collision.tag)
         {
@@ -27,6 +28,7 @@ public class PitScript : MonoBehaviour
                 Destroy(gameObject);
                 break;
             case "Player":
+                player = collision.GetComponent<PlayerController>();
                 if (checkpoint.flaggedCheckpoint == true)
                 {
                     respawnPOS = checkpoint.transform.position;

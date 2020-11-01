@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7593620453588913833}
   - component: {fileID: 1103408116246727985}
   - component: {fileID: 936995806132722743}
-  - component: {fileID: 2602683854731612361}
+  - component: {fileID: -5912055220080581547}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Projectile
@@ -131,7 +131,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2602683854731612361
+--- !u!114 &-5912055220080581547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,5 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9559646edad233b43b25919df6b621ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  playerBullet: 1
+  damage: 0
+  bulletSpeed: 400
+  playerBullet: 0
+  isExplosive: 0

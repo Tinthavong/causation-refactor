@@ -6,14 +6,10 @@ using UnityEngine.UI;
 
 public class PlayerController : CharacterBase
 {
-
     public PlayerController() //Constructor
     {
-        //Health = 10; //Arbitrary value?
         Health = displayedHealth;
-        //displayedHealth = Health;//Displayed Health can be set in the inspector
         Stamina = staminaActions;
-        //Enemies dont use ammo for now but if it breaks just set the amount here
         Ammo = maxAmmo; //To avoid confusion, the Ammo property is like the previous currentAmmo variable
         Currency = walletValue;
     }
@@ -48,7 +44,10 @@ public class PlayerController : CharacterBase
     public float attackDelay = 0.2f;
     public float fireDelay = 1f;
 
+    //This is for the temporary bullet swapping system
     private int i = 0;
+    public bool isBurstFire = false; //extremely lazy implementation: false = default revolver true = burst fire SMG
+    private int shotAmount = 1; //shoots 1 bullet by default, changes for burst fire
 
     [Header("Components")]
     public GameObject[] bulletList;
@@ -74,9 +73,7 @@ public class PlayerController : CharacterBase
     private float vertical;
     [SerializeField]
     private GameObject tempRevolver, tempPunch; //necessary to show that there is a revolver when crouched or to show that a punch is happening
-    public bool isBurstFire = false; //extremely lazy implementation: false = default revolver true = burst fire SMG
-    private int shotAmount = 1; //shoots 1 bullet by default, changes for burst fire
-
+    
     void Awake()
     {
         if (Time.timeScale <= 0f)
@@ -140,11 +137,11 @@ public class PlayerController : CharacterBase
             direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
 
-
             //This allows crouching
             if (Input.GetKeyDown(KeyCode.S))
             {
                 //make it so movement is stopped or forced into crouch walk
+                animator.Play("GrandpaCrouch");
                 animator.SetBool("IsCrouched", true);
                 isCrouched = true;
                 if (isCrouched)//imagine using a nested if in the update method loooole
@@ -168,11 +165,12 @@ public class PlayerController : CharacterBase
             }
 
         }
-        else if (!canMove)
+        else if (!canMove && displayedHealth <= 0)
         {
             animator.SetBool("IsDead", true);
             animator.Play("GrandpaDeath");
-            rb.Sleep();
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+            //rb.Sleep();
         }
     }
 
@@ -203,7 +201,6 @@ public class PlayerController : CharacterBase
     void moveCharacter(float horizontal)
     {
         rb.AddForce(Vector2.right * horizontal * moveSpeed);
-        //animator.SetFloat("Speed", Mathf.Abs(horizontal != 0 ? horizontal : 0));
         if ((horizontal > 0 && !facingRight) || (horizontal < 0 && facingRight))
         {
             Flip(0f);
@@ -325,7 +322,7 @@ public class PlayerController : CharacterBase
             shotAmount = 3;
             maxAmmo = 15; //smg/burstfire guns
             fireDelay = 0.05f;
-            bulletSpeed = 1500f;
+            bulletPrefab.GetComponent<BulletScript>().bulletSpeed = 1500f;
             attackDelay = 0.5f;
         }
         else
@@ -343,12 +340,12 @@ public class PlayerController : CharacterBase
         if (!facingRight)
         {
             b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90f);
-            b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletSpeed);
+            b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
         }
         else if (facingRight)
         {
             b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90f);
-            b.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletSpeed);
+            b.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
         }
     }
 
@@ -403,7 +400,8 @@ public class PlayerController : CharacterBase
 
     public void Replenish()
     {
-        rb.WakeUp();
+        //rb.WakeUp();
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         animator.SetBool("IsDead", false);
         displayedHealth = Health;
         healthBar.SetHealth(displayedHealth);

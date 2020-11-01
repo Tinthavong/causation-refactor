@@ -8,6 +8,7 @@ public class BulletScript : MonoBehaviour
     [SerializeField]
     private int damage;
 
+    public float bulletSpeed = 400f;
     public bool playerBullet;
     public bool isExplosive;
 

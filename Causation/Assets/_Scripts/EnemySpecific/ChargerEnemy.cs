@@ -42,7 +42,7 @@ public class ChargerEnemy : Enemy
             RunTowards();
         }
 
-        if (firerateWait <= 0 && isTooClose() && player.displayedHealth > 1 && vertRangeSeesPlayer())
+        if (firerateWait <= 0 && isTooClose() && player.displayedHealth > 0 && vertRangeSeesPlayer())
         {
             animator.SetBool("IsChasing", false);
             animator.SetBool("IsAttacking", true);
@@ -51,7 +51,7 @@ public class ChargerEnemy : Enemy
             firerateWait = firerate;
         }
 
-        if(!isTooClose() || player.displayedHealth <= 0)
+        if (!isTooClose() || player.displayedHealth <= 0)
         {
             animator.SetBool("IsAttacking", false);
         }
@@ -62,14 +62,32 @@ public class ChargerEnemy : Enemy
             Vector2 airBrake = new Vector2(-(rb.velocity.x / 2), 0.0f);
             rb.AddForce(airBrake);
         }
-
-        ElimCharacter();
+        //ElimCharacter();
+        /*
+        if (displayedHealth < 0)
+        {
+            animator.SetBool("IsAttacking", false);
+            animator.SetBool("IsChasing", false);
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        */
     }
+
+    //Can this be inherited?
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Projectile"))
+        {
+            ElimCharacter();
+        }
+    }
+
 
     //Moves towards the player
     public void RunTowards()
     {
-        if(facingRight && onGround)
+        if (facingRight && onGround)
         {
             Vector2 movement = new Vector2(-enemySpeed, 0.0f);
             //rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
@@ -82,18 +100,18 @@ public class ChargerEnemy : Enemy
             //transform.position = transform.position + movement * Time.deltaTime;
 
         }
-        else if(onGround)
+        else if (onGround)
         {
             Vector2 movement = new Vector2(enemySpeed, 0.0f);
             //rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
 
-            if(rb.velocity.x <= enemySpeed)
+            if (rb.velocity.x <= enemySpeed)
             {
                 rb.AddForce(movement);
             }
 
-           // transform.position = transform.position + movement * Time.deltaTime;
-        } 
+            // transform.position = transform.position + movement * Time.deltaTime;
+        }
     }
 
     void Death()
