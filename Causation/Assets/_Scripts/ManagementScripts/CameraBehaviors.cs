@@ -9,7 +9,7 @@ public class CameraBehaviors : MonoBehaviour
     public float speed = 3f;
     private Vector2 threshold;
     private Rigidbody2D rb;
-    public float verticalOffset = 2f;
+    public float verticalOffset;
     private float defaultVert;
 
     // Start is called before the first frame update

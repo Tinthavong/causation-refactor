@@ -1292,6 +1292,21 @@ PrefabInstance:
       propertyPath: followObject
       value: 
       objectReference: {fileID: 1918235987}
+    - target: {fileID: 2606829749327834165, guid: 4bcefde5d6f8d5b4eb7b0e6414682151,
+        type: 3}
+      propertyPath: verticalOffset
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2606829749327834165, guid: 4bcefde5d6f8d5b4eb7b0e6414682151,
+        type: 3}
+      propertyPath: followOffset.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2606829749327834165, guid: 4bcefde5d6f8d5b4eb7b0e6414682151,
+        type: 3}
+      propertyPath: followOffset.y
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bcefde5d6f8d5b4eb7b0e6414682151, type: 3}
 --- !u!1 &1812439588
