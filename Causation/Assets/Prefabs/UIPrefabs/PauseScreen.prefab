@@ -244,7 +244,6 @@ GameObject:
   - component: {fileID: 1897959549745023737}
   - component: {fileID: 1897959549745023718}
   - component: {fileID: 1897959549745023738}
-  - component: {fileID: 1897959549745023741}
   - component: {fileID: 4177355556779577443}
   m_Layer: 5
   m_Name: PauseScreen
@@ -348,18 +347,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseScreen: {fileID: 1897959551111114149}
   HUD: {fileID: 0}
---- !u!114 &1897959549745023741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1897959549745023719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c673e7dd4451de4398facfc0a28d24a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4177355556779577443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,7 +479,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1897959549745023741}
+      - m_Target: {fileID: 1897959549745023738}
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -1068,7 +1055,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1897959549745023741}
+      - m_Target: {fileID: 1897959549745023738}
         m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:

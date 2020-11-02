@@ -44,6 +44,7 @@ public class MenuController : MonoBehaviour
 
     public void LoadGame()
     {
+        SceneManager.LoadScene(2);
         Debug.Log("Saved Game Loaded");
     }
 

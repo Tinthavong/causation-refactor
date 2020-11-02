@@ -8,10 +8,14 @@ using TMPro;
 
 public class MissionSelection : MonoBehaviour
 {
-    public static int iterations = 6;
+    public static int iterations;
     public TMP_Text eraText;
     public Image cover;
     public Button backButton;
+    public TMP_Text currencyText;
+    public TMP_Text iterationText;
+    public int currency;
+    private int value = 1;
     public Animator anim;
     public Canvas fadeCanvas;
 
@@ -42,6 +46,19 @@ public class MissionSelection : MonoBehaviour
     {
         anim.SetBool("Transition", false);
         //fadeCanvas.SetActive(true);
+
+        currencyText.text = currency.ToString();
+        iterationText.text = "Iteration: " + iterations;
+
+        if (SaveManager.instance.hasLoaded)
+        {
+            currency = SaveManager.instance.gameData.currency;
+        }
+        else
+        {
+            SaveManager.instance.gameData.currency = currency;
+        }
+
         //Start of game
         if (iterations == 0)
         {
@@ -136,6 +153,11 @@ public class MissionSelection : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        currencyText.text = currency.ToString();
+    }
+
     public void Mission1()
     {
         if (iterations != 6)
@@ -195,6 +217,30 @@ public class MissionSelection : MonoBehaviour
         }
 
         SceneManager.LoadScene(8);
+    }
+
+    public void GainCurrency()
+    {
+        currency += value;
+        currencyText.text = currency.ToString();
+
+        SaveManager.instance.gameData.currency = currency;
+
+        SaveManager.instance.Save();
+
+        Debug.Log("Currency: " + currency);
+    }
+
+    public void GainIteration()
+    {
+        iterations += value;
+        iterationText.text = "Iteration: " + iterations.ToString();
+
+        SaveManager.instance.gameData.iteration = iterations;
+        SaveManager.instance.Save();
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 
     IEnumerator LoadNextScene(int levelIndex)

@@ -4139,5 +4139,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuFadeTransition
       objectReference: {fileID: 0}
+    - target: {fileID: 8885402466494626279, guid: a7f15cec97a1c7544865b57f8ea4eccf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7f15cec97a1c7544865b57f8ea4eccf, type: 3}
