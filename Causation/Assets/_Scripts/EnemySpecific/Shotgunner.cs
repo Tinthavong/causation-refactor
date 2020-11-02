@@ -21,9 +21,11 @@ public class Shotgunner : Enemy
     public GameObject bulletSpawn2;
     public GameObject bulletSpawn3;
 
+    //private float bulletRefSpeed; //Bullet reference speed
     // Start is called before the first frame update
     void Start()
     {
+        bulletRefSpeed = bulletPrefab.GetComponent<BulletScript>().bulletSpeed;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerController>();
@@ -59,7 +61,24 @@ public class Shotgunner : Enemy
         {
             animator.SetBool("IsChasing", false);
         }
-        ElimCharacter();//Want to find some way for elimcharacter to be checked each time damage is taken, not on every frame like it is now
+
+        //Makes the enemy horizontal speed lower drastically while falling
+        if(!onGround)
+        {
+            Vector2 airBrake = new Vector2(-(rb.velocity.x/4), 0.0f);
+            rb.AddForce(airBrake);
+        }
+
+        //ElimCharacter();//Want to find some way for elimcharacter to be checked each time damage is taken, not on every frame like it is now
+    }
+
+    //Can this be inherited?
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Projectile"))
+        {
+            ElimCharacter();
+        }
     }
 
     public void RunTowards()
@@ -69,14 +88,20 @@ public class Shotgunner : Enemy
             if(facingRight && onGround)
             {
                 Vector2 movement = new Vector2(-enemySpeed, 0.0f);
-                rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+                if (rb.velocity.x >= -enemySpeed)
+                {
+                    rb.AddForce(movement);
+                }
 
                 //transform.position = transform.position + movement * Time.deltaTime;
             }
             else if(onGround)
             {
                 Vector2 movement = new Vector2(enemySpeed, 0.0f);
-                rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+                if (rb.velocity.x <= enemySpeed)
+                {
+                    rb.AddForce(movement);
+                }
 
                 // transform.position = transform.position + movement * Time.deltaTime;
             }
@@ -108,24 +133,24 @@ public class Shotgunner : Enemy
         if (gameObject.transform.localScale.x < 0)
         {
             b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90f);
-            b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletSpeed);
+            b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletRefSpeed);
             c.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 80f);
-            c.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletSpeed);
-            c.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (bulletSpeed/6));
+            c.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletRefSpeed);
+            c.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (bulletRefSpeed / 6));
             d.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 100f);
-            d.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletSpeed);
-            d.GetComponent<Rigidbody2D>().AddForce(Vector2.down * (bulletSpeed/6));
+            d.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletRefSpeed);
+            d.GetComponent<Rigidbody2D>().AddForce(Vector2.down * (bulletRefSpeed / 6));
         }
         else
         {
             b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90f);
-            b.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletSpeed);
+            b.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletRefSpeed);
             c.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -80f);
-            c.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletSpeed);
-            c.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (bulletSpeed/6));
+            c.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletRefSpeed);
+            c.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (bulletRefSpeed / 6));
             d.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -100f);
-            d.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletSpeed);
-            d.GetComponent<Rigidbody2D>().AddForce(Vector2.down * (bulletSpeed/6));
+            d.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletRefSpeed);
+            d.GetComponent<Rigidbody2D>().AddForce(Vector2.down * (bulletRefSpeed / 6));
         }
     }
 }

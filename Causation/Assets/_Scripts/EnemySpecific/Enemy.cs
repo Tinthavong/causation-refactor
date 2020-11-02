@@ -32,6 +32,7 @@ public class Enemy : CharacterBase
     public int dropValue;
     //List of EnemyDrops (explained above) to allow for multiple drops
     public List<EnemyDrops> drops;
+    private int dropOnce = 1; //Quick bandaid fix for making sure items are only dropped once
 
     [Header("Enemy Variables")]
     //Temp Shooting behavior
@@ -42,16 +43,19 @@ public class Enemy : CharacterBase
     public bool floorHax = false; //Used to determine if an enemy will react to players if they arent on the same y level
     public float verticalSight = 2.5f;
 
-    public bool isBox = false; //temporary for boxes, i know it's dirty but i don't want to copy/paste the item drops for no reason
+    [HideInInspector]
+    public bool facingRight;
 
-    protected bool facingRight;
     protected PlayerController player; //this can be private, pretty sure this works now
     protected Animator animator;
     protected Rigidbody2D rb;
 
+    public float enemySpeed = 8f; //This will control how fast an enemy moves, change in prefabs for each enemy type
+    public float bulletRefSpeed;
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(bulletRefSpeed);
         player = FindObjectOfType<PlayerController>();
         //This should use an actual find method/algorithm instead of just knowing where the player is
     }
@@ -59,7 +63,7 @@ public class Enemy : CharacterBase
     // Update is called once per frame
     void Update()
     {
-        if (isBox) ElimCharacter();
+
     }
 
     //isClose and isTooClose are specific to gunslinger enemies, at least currently
@@ -86,11 +90,11 @@ public class Enemy : CharacterBase
 
     public bool vertRangeSeesPlayer()
     {
-        if(floorHax)
+        if (floorHax)
         {
             return true;
         }
-        else if(Math.Abs(transform.position.y - player.transform.position.y) <= verticalSight)
+        else if (Math.Abs(transform.position.y - player.transform.position.y) <= verticalSight)
         {
             return true;
         }
@@ -122,17 +126,35 @@ public class Enemy : CharacterBase
 
     public override void DamageCalc(int damage)
     {
-        if(animator != null)
+        if (animator != null)
         {
             animator.Play("Damaged");
         }
-        
+
         base.DamageCalc(damage);
+    }
+
+    public override void ElimCharacter()
+    {
+        //this might be too simple but for now checking if the health is at or below 0 might be enough
+        if (displayedHealth <= 0)
+        {
+            PostDeath();
+            //should avoid outright destroying the characters bc it should do an animation or whatever first, should use coroutine to delay this but for now:
+
+            Debug.Log($"Destroyed {gameObject.name}");
+            gameObject.GetComponent<Animator>().SetBool("IsAttacking", false);
+            gameObject.GetComponent<Animator>().SetBool("IsChasing", false);
+            gameObject.GetComponent<Animator>().SetTrigger("IsDead");
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+            gameObject.GetComponent<Enemy>().enabled = false;
+            //Destroy(gameObject); //Commented out for now, destroying the game object is too abrupt.
+        }
     }
 
     public override void PostDeath()
     {
-        //Temporary death, needs animation and drops
         //GameObject d = Instantiate(drop) as GameObject;
         // d.transform.position = this.transform.position;
 
@@ -149,23 +171,27 @@ public class Enemy : CharacterBase
             totalweight += dr.weight;
         }
         //+1 because .next returns a random int less than the provided number
-        rand = random.Next(totalweight+1);
+        rand = random.Next(totalweight + 1);
 
         //Goes through each drop in the drops list, adds its weight and checks if it passed rand
         //If it did, then that is the object that will drop on death
-        foreach (EnemyDrops dr in drops)
+        if (dropOnce > 0)
         {
-            finder += dr.weight;
-            if (finder >= rand)
+            dropOnce = 0;
+            foreach (EnemyDrops dr in drops)
             {
-                if (dr.drop == null)
+                finder += dr.weight;
+                if (finder >= rand)
                 {
-                    //If the drop chosen happens to be empty, this keeps it from exploding the game
+                    if (dr.drop == null)
+                    {
+                        //If the drop chosen happens to be empty, this keeps it from exploding the game
+                        break;
+                    }
+                    drop = Instantiate(dr.drop) as GameObject;
+                    drop.transform.position = this.transform.position;
                     break;
                 }
-                drop = Instantiate(dr.drop) as GameObject;
-                drop.transform.position = this.transform.position;
-                break;
             }
         }
     }

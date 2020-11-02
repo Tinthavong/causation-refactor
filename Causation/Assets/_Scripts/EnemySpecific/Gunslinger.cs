@@ -15,6 +15,7 @@ public class Gunslinger : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        bulletRefSpeed = bulletPrefab.GetComponent<BulletScript>().bulletSpeed;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerController>();
@@ -61,6 +62,23 @@ public class Gunslinger : Enemy
             firerateWait = firerate;
         }*/
 
-        ElimCharacter();//Want to find some way for elimcharacter to be checked each time damage is taken, not on every frame like it is now
+        //ElimCharacter();//Want to find some way for elimcharacter to be checked each time damage is taken, not on every frame like it is now
+        /*
+        if (displayedHealth < 0)
+        {
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        }*/
     }
+
+
+    //Can this be inherited?
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Projectile"))
+        {
+            ElimCharacter();
+        }
+    }
+
 }

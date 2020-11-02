@@ -27004,8 +27004,14 @@ PrefabInstance:
     - target: {fileID: 697618783331051721, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
         type: 3}
       propertyPath: isBurstFire
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 697618783331051721, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 2686942302785526997, guid: 31b12168567cb7c41a5434d410bae653,
+        type: 3}
     - target: {fileID: 697618783331051726, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27505,35 +27511,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 2858888394917238102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da0f65341e70b954aba548091c012da0, type: 3}
+  m_Script: {fileID: 11500000, guid: 75cba1722046cb7439ac6bc8e1a159bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayedHealth: 5
+  displayedHealth: 1
   staminaActions: 0
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
   onGround: 0
   groundLength: 0.6
   colliderOffset: {x: 0, y: 0, z: 0}
-  bulletSpeed: 0
   bulletPrefab: {fileID: 0}
   bulletSpawn: {fileID: 0}
   StrikeZone: {fileID: 0}
-  strikeRange: 0.5
-  strikeDamage: 1
+  strikeRange: 0
+  strikeDamage: 0
   enemyLayers:
     serializedVersion: 2
     m_Bits: 0
-  enemySpeed: 8
   dropValue: 0
-  drops: []
+  drops:
+  - drop: {fileID: 7462346461303034108, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}
+    weight: 0
   firerate: 2
   sightRange: 10
   meleeRange: 2
   floorHax: 0
   verticalSight: 2.5
-  isBox: 1
+  facingRight: 0
+  enemySpeed: 8
+  bulletRefSpeed: 0
 --- !u!212 &2858888394917238104
 SpriteRenderer:
   m_ObjectHideFlags: 0
