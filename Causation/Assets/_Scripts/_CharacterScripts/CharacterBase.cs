@@ -39,7 +39,7 @@ public abstract class CharacterBase : MonoBehaviour, IActions
 		set { _currency = value; }
 	}
 
-	[Header("Ground stuff")]
+	[Header("Ground Check")]
 	public LayerMask groundLayer;
 	public bool onGround = false;
 	public float groundLength = 0.6f;
