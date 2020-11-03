@@ -3483,6 +3483,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &713345887 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1061948294190832742, guid: 1a928fbafddaf4c4091cae797bb281db,
+    type: 3}
+  m_PrefabInstance: {fileID: 583034470}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &769263434
 GameObject:
   m_ObjectHideFlags: 0
@@ -3619,12 +3625,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8113370127342094954, guid: 3e4afd5e9e52ea04ba54423c85f541a9,
     type: 3}
   m_PrefabInstance: {fileID: 1401458380}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &876753939 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9068758957519176396, guid: 1a928fbafddaf4c4091cae797bb281db,
-    type: 3}
-  m_PrefabInstance: {fileID: 583034470}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &888747908
 PrefabInstance:
@@ -4030,6 +4030,11 @@ PrefabInstance:
       propertyPath: ammoText
       value: 
       objectReference: {fileID: 583034472}
+    - target: {fileID: 697618783331051721, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
+        type: 3}
+      propertyPath: ammoDisplay
+      value: 
+      objectReference: {fileID: 2094852589}
     - target: {fileID: 697618783331051726, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
         type: 3}
       propertyPath: m_RootOrder
@@ -9157,6 +9162,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac681a69b2f08434e96a1f3b03b2ebcf, type: 3}
+--- !u!114 &2094852589 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3493381887846697232, guid: 1a928fbafddaf4c4091cae797bb281db,
+    type: 3}
+  m_PrefabInstance: {fileID: 583034470}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2099742388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10231,7 +10248,7 @@ MonoBehaviour:
   victoryPoint: {fileID: 6422663057342814771}
   levelLoader: {fileID: 6422663058985051492}
   GameOverPanel: {fileID: 0}
-  victoryPanel: {fileID: 876753939}
+  victoryPanel: {fileID: 713345887}
 --- !u!1 &6422663057977863746
 GameObject:
   m_ObjectHideFlags: 0

@@ -57,6 +57,8 @@ public class Bossman1 : Enemy
         //This fires regardless of the phase, bad player no get close
         if (firerateWait <= 0 && isTooClose())
         {
+            animator.SetBool("IsMoving", false);
+            animator.SetBool("IsLasering", true);
             LaserShot();
             firerateWait = firerate;
         }
@@ -65,9 +67,11 @@ public class Bossman1 : Enemy
         {
             phaseRateWait -= Time.deltaTime;
             //Minor movement
+            animator.SetBool("IsLasering", false);
+            animator.SetBool("IsShooting", false);
             animator.SetBool("IsMoving", true);
             minorMovement();
-            
+
         }
 
         if (phaseRateWait <= 0)
@@ -75,10 +79,9 @@ public class Bossman1 : Enemy
             //phase is changed in the phaseengage method
             isInPhase = true;
             phaseRateWait = phaseRate;
-            
         }
 
-        if(isInPhase)
+        if (isInPhase)
         {
             switch (phase)
             {
@@ -96,7 +99,7 @@ public class Bossman1 : Enemy
             }
         }
 
-        if(bulletsFired >= bulletsFiredStop)
+        if (bulletsFired >= bulletsFiredStop)
         {
             phase += 1;
             if (phase >= 3)
@@ -105,17 +108,46 @@ public class Bossman1 : Enemy
             }
             isInPhase = false;
             bulletsFired = 0;
-            
+
         }
+    }
 
-        
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Projectile"))
+        {
+            ElimCharacter();
+        }
+    }
 
-        ElimCharacter();//Want to find some way for elimcharacter to be checked each time damage is taken, not on every frame like it is now
+    public override void ElimCharacter()
+    {
+        //this might be too simple but for now checking if the health is at or below 0 might be enough
+        if (displayedHealth <= 0)
+        {
+            PostDeath(); //might override and display the victory screen instead
+            //should avoid outright destroying the characters bc it should do an animation or whatever first, should use coroutine to delay this but for now:
+
+            gameObject.GetComponent<Animator>().SetBool("IsLasering", false);
+            gameObject.GetComponent<Animator>().SetBool("IsShooting", false);
+            gameObject.GetComponent<Animator>().SetBool("IsMoving", false);
+            gameObject.GetComponent<Animator>().SetTrigger("IsDead");
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            gameObject.GetComponent<Enemy>().enabled = false;
+            //Destroy(gameObject); //Commented out for now, destroying the game object is too abrupt.
+        }
+    }
+
+    public override void PostDeath()
+    {
+        PlayerController pc = FindObjectOfType<PlayerController>();
+        pc.LM.VictoryCheck();
     }
 
     private void minorMovement()
     {
-        if(player.transform.position.x < transform.position.x)
+        if (player.transform.position.x < transform.position.x)
         {
             Vector2 movement = new Vector2(-enemySpeed, 0.0f);
             rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
@@ -133,13 +165,15 @@ public class Bossman1 : Enemy
         //Firerate needs to be set really low for this to work well:  will shoot predetermined amount of bullets then end the phase
         //while(bulletsFired < bulletsFiredStop)
         //{
-            if(firerateWait <= 0)
-            {
-                Shoot();
-                bulletsFired += 1;
-                firerateWait = firerate;
-            }
-            
+        if (firerateWait <= 0)
+        {
+            animator.SetBool("IsMoving", false);
+            animator.SetBool("IsShooting", true);
+            Shoot();
+            bulletsFired += 1;
+            firerateWait = firerate;
+        }
+
         //}
     }
 
@@ -160,7 +194,7 @@ public class Bossman1 : Enemy
     private void changeGatlingHeight()
     {
         //basically just the animation as well as moving the gatlingStart's
-        if(gatlingCurrentLeft == gatlingStartLeft.transform.position)
+        if (gatlingCurrentLeft == gatlingStartLeft.transform.position)
         {
             gatlingCurrentLeft = gatlingStartLeft2.transform.position;
             gatlingCurrentRight = gatlingStartRight2.transform.position;
@@ -194,7 +228,7 @@ public class Bossman1 : Enemy
         //Uses strike as it accomplishes the same goal
         //animator.Play("Lasers");
         Strike();
-        
+
     }
 
     private new void Shoot()
