@@ -45,6 +45,7 @@ public class Enemy : CharacterBase
 
     [HideInInspector]
     public bool facingRight;
+    public bool isChasing = false;
 
     protected PlayerController player; //this can be private, pretty sure this works now
     protected Animator animator;
@@ -155,9 +156,6 @@ public class Enemy : CharacterBase
 
     public override void PostDeath()
     {
-        //GameObject d = Instantiate(drop) as GameObject;
-        // d.transform.position = this.transform.position;
-
         //Variables for the dynamic drop search
         GameObject drop;
         int totalweight = 0;
@@ -185,7 +183,7 @@ public class Enemy : CharacterBase
                 {
                     if (dr.drop == null)
                     {
-                        //If the drop chosen happens to be empty, this keeps it from exploding the game
+                        //If the drop chosen happens to be empty, this allows it to have no drop without breaking the game
                         break;
                     }
                     drop = Instantiate(dr.drop) as GameObject;
@@ -193,6 +191,15 @@ public class Enemy : CharacterBase
                     break;
                 }
             }
+        }
+    }
+
+    //Method that controls the death of enemies, finally able to move ElimCharacter() out of each individual enemy script
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Projectile"))
+        {
+            ElimCharacter();
         }
     }
 

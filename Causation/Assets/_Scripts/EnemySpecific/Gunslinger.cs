@@ -40,7 +40,7 @@ public class Gunslinger : Enemy
         //firerateWait changes based on fps time
         firerateWait -= Time.deltaTime;
         //if firerateWait is 0, time to fire and reset the wait
-        if (firerateWait <= 0 && isClose() && !isTooClose() && player.displayedHealth > 0 && vertRangeSeesPlayer() && !isCrouched)
+        if (firerateWait <= 0 && isClose() && !isTooClose() && player.displayedHealth > 0 && vertRangeSeesPlayer() && isCrouched)
         {
             animator.Play("Attack");
             Shoot();
@@ -48,7 +48,15 @@ public class Gunslinger : Enemy
             FindObjectOfType<SFXManager>().PlayAudio("Gunshot");
 
             //random chance to crouch? but for now"
-            Invoke("Crouching", 2f);
+            //Invoke("Crouching", 2f);
+
+            //Changed it so he crouches until he shoots, then crouches again halfway through his firerate
+            CrouchUp();
+        }
+
+        if(!isCrouched && firerateWait < (firerate/2))
+        {
+            Crouching();
         }
 
         //this is only necessary if they will move. right now they are all stationary.
@@ -56,6 +64,8 @@ public class Gunslinger : Enemy
         {
             animator.SetBool("IsChasing", false);
         }
+
+        //Can we remove this large comment?
 
         //Consider making melee animations for the hybrid character
         /*
@@ -76,7 +86,7 @@ public class Gunslinger : Enemy
         }*/
     }
 
-    //I don't like having two separate methods, combine them into one later
+    //I don't like having two separate methods, combine them into one later.  It may be better to have them separate in order to have more control of it
     private void Crouching()
     {
         isCrouched = true;
@@ -98,15 +108,6 @@ public class Gunslinger : Enemy
             tempCrouchIndicator.transform.localPosition = new Vector2(0.75f, 0.75f);
             GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 2.4f);
             GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, 0f);
-        }
-    }
-
-    //Can this be inherited?
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Projectile"))
-        {
-            ElimCharacter();
         }
     }
 }

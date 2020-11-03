@@ -93,17 +93,17 @@ public class BossEngineer : Enemy
 
     private void chargerAI()
     {
-
+        //Run close and melee for larger damage than normal
     }
 
     private void shotgunAI()
     {
-
+        //Run close and fire a shotgun of bullets
     }
 
     private void gunslingerAI()
     {
-
+        //Shoot from far away faster than an normal rifleman
     }
 
 }

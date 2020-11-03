@@ -76,7 +76,7 @@ public class Bossman1 : Enemy
 
         if (phaseRateWait <= 0)
         {
-            //phase is changed in the phaseengage method
+            //phase is changed when a bullets fired threshold is met
             isInPhase = true;
             phaseRateWait = phaseRate;
         }
@@ -112,14 +112,7 @@ public class Bossman1 : Enemy
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Projectile"))
-        {
-            ElimCharacter();
-        }
-    }
-
+    //Overridden elimcharacter method to account for unique animation names - can be standardized to allow for inheritance
     public override void ElimCharacter()
     {
         //this might be too simple but for now checking if the health is at or below 0 might be enough
@@ -204,6 +197,9 @@ public class Bossman1 : Enemy
             gatlingCurrentLeft = gatlingStartLeft.transform.position;
             gatlingCurrentRight = gatlingStartRight.transform.position;
         }
+
+        //Need to change the location of the gatlings during this method, as well as animation for the change
+
     }
     private void changeGatlingHeight(int pos)
     {
@@ -218,6 +214,9 @@ public class Bossman1 : Enemy
             gatlingCurrentLeft = gatlingStartLeft2.transform.position;
             gatlingCurrentRight = gatlingStartRight2.transform.position;
         }
+
+        //Need to change the location of the gatlings during this method, as well as animation for the change
+
     }
 
     //Happens whenever player gets close, hopefully how ive coded it it will activate even in the middle of a phase
@@ -228,6 +227,8 @@ public class Bossman1 : Enemy
         //Uses strike as it accomplishes the same goal
         //animator.Play("Lasers");
         Strike();
+
+        //I need to make use of the laser art ive been given for this boss
 
     }
 

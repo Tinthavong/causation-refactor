@@ -5,7 +5,6 @@ using System;
 
 public class ChargerEnemy : Enemy
 {
-    //Probably like 7 or so enemy scripts in total, bosses included in that number
     public ChargerEnemy() //constructor
     {
         Health = displayedHealth; //Displayed Health can be set in the inspector
@@ -39,12 +38,14 @@ public class ChargerEnemy : Enemy
         if (isClose() && !isTooClose() && vertRangeSeesPlayer() && onGround)
         {
             animator.SetBool("IsChasing", true);
+            isChasing = true;
             RunTowards();
         }
 
         if (firerateWait <= 0 && isTooClose() && player.displayedHealth > 0 && vertRangeSeesPlayer())
         {
             animator.SetBool("IsChasing", false);
+            isChasing = false;
             animator.SetBool("IsAttacking", true);
             Strike();
             //Firerate makes sense here as melee is this enemies only attack
@@ -62,27 +63,7 @@ public class ChargerEnemy : Enemy
             Vector2 airBrake = new Vector2(-(rb.velocity.x / 2), 0.0f);
             rb.AddForce(airBrake);
         }
-        //ElimCharacter();
-        /*
-        if (displayedHealth < 0)
-        {
-            animator.SetBool("IsAttacking", false);
-            animator.SetBool("IsChasing", false);
-            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
-            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-        }
-        */
     }
-
-    //Can this be inherited?
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Projectile"))
-        {
-            ElimCharacter();
-        }
-    }
-
 
     //Moves towards the player
     public void RunTowards()
@@ -120,10 +101,5 @@ public class ChargerEnemy : Enemy
         Gizmos.DrawLine(transform.position + colliderOffset, transform.position + colliderOffset + Vector3.down * groundLength);
         Gizmos.DrawLine(transform.position - colliderOffset, transform.position - colliderOffset + Vector3.down * groundLength);
 
-    }
-
-    void Death()
-    {
-        Destroy(this.gameObject);
     }
 }

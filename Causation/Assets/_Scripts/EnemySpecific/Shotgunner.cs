@@ -43,6 +43,7 @@ public class Shotgunner : Enemy
             if(vertRangeSeesPlayer())
             {
                 animator.SetBool("IsChasing", true);
+                isChasing = true;
                 RunTowards();
             }
         }
@@ -52,6 +53,7 @@ public class Shotgunner : Enemy
         if (isCloseEnough() && firerateWait <= 0 && vertRangeSeesPlayer())
         {
             animator.SetBool("IsChasing", false);
+            isChasing = false;
             animator.Play("Attack");
             Shoot();
             firerateWait = firerate;
@@ -68,17 +70,6 @@ public class Shotgunner : Enemy
             Vector2 airBrake = new Vector2(-(rb.velocity.x/4), 0.0f);
             rb.AddForce(airBrake);
         }
-
-        //ElimCharacter();//Want to find some way for elimcharacter to be checked each time damage is taken, not on every frame like it is now
-    }
-
-    //Can this be inherited?
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Projectile"))
-        {
-            ElimCharacter();
-        }
     }
 
     public void RunTowards()
@@ -92,8 +83,6 @@ public class Shotgunner : Enemy
                 {
                     rb.AddForce(movement);
                 }
-
-                //transform.position = transform.position + movement * Time.deltaTime;
             }
             else if(onGround)
             {
@@ -102,8 +91,6 @@ public class Shotgunner : Enemy
                 {
                     rb.AddForce(movement);
                 }
-
-                // transform.position = transform.position + movement * Time.deltaTime;
             }
         }
     }
