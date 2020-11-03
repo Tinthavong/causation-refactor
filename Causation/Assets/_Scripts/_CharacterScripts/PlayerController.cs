@@ -45,12 +45,14 @@ public class PlayerController : CharacterBase
     public float fireDelay = 1f;
 
     //This is for the temporary bullet swapping system
-    private int i = 0;
     public bool isBurstFire = false; //extremely lazy implementation: false = default revolver true = burst fire SMG
     private int shotAmount = 1; //shoots 1 bullet by default, changes for burst fire
 
     [Header("Components")]
     public GameObject[] bulletList;
+    private int bulletTypeCount;
+    public int bulletIndex = 0;
+
     public GameObject nearObject;
     public LevelManager LM;
 
@@ -73,7 +75,7 @@ public class PlayerController : CharacterBase
     private float vertical;
     [SerializeField]
     private GameObject tempRevolver, tempPunch; //necessary to show that there is a revolver when crouched or to show that a punch is happening
-    
+
     void Awake()
     {
         if (Time.timeScale <= 0f)
@@ -81,31 +83,36 @@ public class PlayerController : CharacterBase
             Time.timeScale = 1f;
         }
 
+        bulletTypeCount = (bulletList.Length - 1); //Sets the maximum amount of varied bullets depending the prefabs set in the inspector
+        bulletPrefab = bulletList[0]; //The default bullet is 0, hardcoding that should be okay
+
         WeaponTypeAssign();
+
         healthBar.SetHealth(displayedHealth);
         LM = FindObjectOfType<LevelManager>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         playerLayer = LayerMask.NameToLayer("Player");
         platformLayer = LayerMask.NameToLayer("Platform");
-
     }
 
     private void ChangeBullets()
     {
-        if (i != bulletList.Length)
+        //switch-case might be best for cycling through multiple bullet types
+        //In this case, 0 != 1 (2 total bullet types)
+        if(bulletIndex < bulletTypeCount)
         {
-            i++;
-            ammoDisplay.sprite = bulletList[i].GetComponent<SpriteRenderer>().sprite;
-            Ammo = maxAmmo; //right now the special bullet does not have a finite amount, would like to make finite before alpha deliverable
-            bulletPrefab = bulletList[i]; //this should use something more algorithmic. There are only two bullets right now, however
+            bulletIndex++; //bullet is set to 1
+            ammoDisplay.sprite = bulletList[bulletIndex].GetComponent<SpriteRenderer>().sprite;
+            Ammo = maxAmmo; //right now the special bullet does not have a finite amount, would like to make finite before gold deliverable
+            bulletPrefab = bulletList[bulletIndex]; //this should use something more algorithmic. There are only two bullets right now, however
         }
-        else
+        else if(bulletIndex >= bulletTypeCount)
         {
-            i = 0;
-            ammoDisplay.sprite = bulletList[i].GetComponent<SpriteRenderer>().sprite;
+            bulletIndex--; //for now this is back to default, will have to properly cycle through things later
+            ammoDisplay.sprite = bulletList[bulletIndex].GetComponent<SpriteRenderer>().sprite;
             Ammo = maxAmmo;
-            bulletPrefab = bulletList[i];
+            bulletPrefab = bulletList[bulletIndex];
         }
     }
 
@@ -272,7 +279,8 @@ public class PlayerController : CharacterBase
         }
     }
 
-    private void ShootingBehavior()
+    //Old and for reference, going to delete before beta delivered
+    private void Old_ShootingBehavior()
     {
         if (ammoText.text != null)
         {
@@ -306,6 +314,37 @@ public class PlayerController : CharacterBase
                 {
                     Ammo = maxAmmo;
                 }
+            }
+        }
+    }
+
+    //Simplified and still worked.
+    private void ShootingBehavior()
+    {
+        if (ammoText.text != null)
+        {
+            ammoText.text = Ammo.ToString();
+
+            if (Input.GetButtonDown("Fire1") && Ammo > 0 && attackElapsedTime >= attackDelay)
+            {
+                if (!isCrouched) animator.Play("GrandpaShoot");
+                for (int i = 0; i < shotAmount; i++)
+                {
+                    Invoke("Shoot", (fireDelay * i));
+                    Ammo--;
+                }
+                attackElapsedTime = 0;
+                animator.SetBool("IsShooting", false);
+            }
+
+            else if(Input.GetButtonDown("Fire1") && Ammo == 0)
+            {
+                Debug.Log("No Ammo Left!");//implement affordance, clicking sound or something
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Ammo = maxAmmo;
             }
         }
     }

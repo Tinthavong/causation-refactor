@@ -5,6 +5,9 @@ using System;
 
 public class Gunslinger : Enemy
 {
+    public bool isCrouched;
+    public GameObject tempCrouchIndicator;
+
     public Gunslinger() //constructor
     {
         Health = displayedHealth; //Displayed Health can be set in the inspector
@@ -37,13 +40,15 @@ public class Gunslinger : Enemy
         //firerateWait changes based on fps time
         firerateWait -= Time.deltaTime;
         //if firerateWait is 0, time to fire and reset the wait
-        if (firerateWait <= 0 && isClose() && !isTooClose() && player.displayedHealth > 0 && vertRangeSeesPlayer())
+        if (firerateWait <= 0 && isClose() && !isTooClose() && player.displayedHealth > 0 && vertRangeSeesPlayer() && !isCrouched)
         {
             animator.Play("Attack");
             Shoot();
             firerateWait = firerate;
-
             FindObjectOfType<SFXManager>().PlayAudio("Gunshot");
+
+            //random chance to crouch? but for now"
+            Invoke("Crouching", 2f);
         }
 
         //this is only necessary if they will move. right now they are all stationary.
@@ -71,6 +76,30 @@ public class Gunslinger : Enemy
         }*/
     }
 
+    //I don't like having two separate methods, combine them into one later
+    private void Crouching()
+    {
+        isCrouched = true;
+        //Crouching behavior, just needs to be used
+        if (isCrouched)
+        {
+            tempCrouchIndicator.transform.localPosition = new Vector2(0.75f, 0.0f);
+            GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 1.55f);
+            GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, -0.5f);
+        }
+        Invoke("CrouchUp", 2f);
+    }
+
+    private void CrouchUp()
+    {
+        isCrouched = false;
+        if (!isCrouched)
+        {
+            tempCrouchIndicator.transform.localPosition = new Vector2(0.75f, 0.75f);
+            GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 2.4f);
+            GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, 0f);
+        }
+    }
 
     //Can this be inherited?
     private void OnTriggerEnter2D(Collider2D collision)

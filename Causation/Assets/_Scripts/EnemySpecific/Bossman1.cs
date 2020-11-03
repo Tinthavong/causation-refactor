@@ -65,6 +65,7 @@ public class Bossman1 : Enemy
         {
             phaseRateWait -= Time.deltaTime;
             //Minor movement
+            animator.SetBool("IsMoving", true);
             minorMovement();
             
         }
@@ -191,6 +192,7 @@ public class Bossman1 : Enemy
         //create laser objects that destroy themselves after a short time
 
         //Uses strike as it accomplishes the same goal
+        //animator.Play("Lasers");
         Strike();
         
     }
@@ -201,9 +203,9 @@ public class Bossman1 : Enemy
         GameObject c = Instantiate(bulletPrefab) as GameObject;
         b.transform.position = gatlingCurrentLeft;
         c.transform.position = gatlingCurrentRight;
-        b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90f);
+        b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0f);
         b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * -bulletRefSpeed);
-        c.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90f);
+        c.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0f);
         c.GetComponent<Rigidbody2D>().AddForce(Vector2.right * -bulletRefSpeed);
     }
 }

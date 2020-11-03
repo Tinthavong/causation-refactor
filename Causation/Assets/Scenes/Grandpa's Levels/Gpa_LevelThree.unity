@@ -3252,6 +3252,12 @@ PrefabInstance:
       propertyPath: bulletsFiredStop
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: -2938857642199241958, guid: 388bf8577fa45ec43a5e2fc92eaffb19,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 21626982181193520, guid: ec1226b51444e2c4c9d4cce6705d1712,
+        type: 3}
     - target: {fileID: 2146712795453138170, guid: 388bf8577fa45ec43a5e2fc92eaffb19,
         type: 3}
       propertyPath: m_Name
