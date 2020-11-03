@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5688852432641330226}
   m_Layer: 0
   m_Name: EnemyBullet
-  m_TagString: Projectile
+  m_TagString: EnProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: -1964901103
   m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 3a37ad9fd8ae27d438a45043272f3b56, type: 3}
+  m_Sprite: {fileID: -9136901373799878502, guid: 6f31896a36cbfcf4e97e0036ae2392a1,
+    type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +102,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.96, y: 0.96}
+    oldSize: {x: 0.45, y: 0.75}
     newSize: {x: 0.96, y: 0.96}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -145,5 +146,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   bulletSpeed: 1400
-  playerBullet: 0
   isExplosive: 0

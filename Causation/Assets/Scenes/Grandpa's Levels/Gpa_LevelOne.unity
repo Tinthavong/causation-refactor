@@ -27749,25 +27749,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 675676554}
     m_Modifications:
-    - target: {fileID: 4004720124247143342, guid: 8ba23277cde198647b985fcb24afb467,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5529824715602500328, guid: 8ba23277cde198647b985fcb24afb467,
         type: 3}
       propertyPath: m_Name
       value: Rifleman
-      objectReference: {fileID: 0}
-    - target: {fileID: 5529824715602500330, guid: 8ba23277cde198647b985fcb24afb467,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5529824715602500330, guid: 8ba23277cde198647b985fcb24afb467,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5529824715602500332, guid: 8ba23277cde198647b985fcb24afb467,
         type: 3}

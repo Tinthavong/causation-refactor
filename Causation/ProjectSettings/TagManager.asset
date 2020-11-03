@@ -15,6 +15,7 @@ TagManager:
   - FinishLine
   - Ledge
   - Groundfloor
+  - EnProjectile
   layers:
   - Default
   - TransparentFX

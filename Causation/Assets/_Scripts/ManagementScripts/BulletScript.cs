@@ -8,10 +8,11 @@ public class BulletScript : MonoBehaviour
     [SerializeField]
     private int damage;
 
-    private float thrust = 1000f;
+    public float knockBackAmount = 3f;
 
     public float bulletSpeed = 400f;
     public bool isExplosive;
+    public bool isPlayerBullet;
 
     Enemy enemy;
 
@@ -22,20 +23,22 @@ public class BulletScript : MonoBehaviour
         switch (collision.tag)
         {
             case "Enemy":
-                enemy = collision.GetComponent<Enemy>();
-
-                if (isExplosive)
+                if (isPlayerBullet)
                 {
-                    enemy.DamageCalc(damage);
-                    Debug.Log("Enemy has been hit");
-                    Knockback();
-                }
-                else
-                {
-                    enemy.DamageCalc(damage);
-                    Debug.Log("Enemy has been hit");
-                }
+                    enemy = collision.GetComponent<Enemy>();
 
+                    if (isExplosive)
+                    {
+                        enemy.DamageCalc(damage);
+                        Debug.Log("Enemy has been hit");
+                        Knockback();
+                    }
+                    else
+                    {
+                        enemy.DamageCalc(damage);
+                        Debug.Log("Enemy has been hit");
+                    }
+                }
                 Destroy(gameObject);
                 break;
             case "Player":
@@ -60,15 +63,15 @@ public class BulletScript : MonoBehaviour
 
     private void Knockback()
     {
+        //Vector2 knockback = new Vector2(knockBackAmount, 1f);
         //enemy = enemy.GetComponent<>();
-
         if(enemy.facingRight)
         {
-            enemy.GetComponent<Rigidbody2D>().AddForce(enemy.transform.forward * thrust, ForceMode2D.Impulse);
+            enemy.GetComponent<Rigidbody2D>().velocity = new Vector2(knockBackAmount, 1f);
         }
         else
         {
-            enemy.GetComponent<Rigidbody2D>().AddForce(enemy.transform.forward * -thrust, ForceMode2D.Impulse);
+            enemy.GetComponent<Rigidbody2D>().velocity = new Vector2(-knockBackAmount, 1f);
         }
     }
 }
