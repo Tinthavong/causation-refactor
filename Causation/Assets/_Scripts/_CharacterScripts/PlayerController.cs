@@ -96,17 +96,15 @@ public class PlayerController : CharacterBase
         if (i != bulletList.Length)
         {
             i++;
-            ammoDisplay.sprite = bulletList[i].GetComponent<SpriteRenderer>().sprite;
-            Ammo = maxAmmo; //right now the special bullet does not have a finite amount, would like to make finite before alpha deliverable
-            bulletPrefab = bulletList[i]; //this should use something more algorithmic. There are only two bullets right now, however
         }
         else
         {
             i = 0;
-            ammoDisplay.sprite = bulletList[i].GetComponent<SpriteRenderer>().sprite;
-            Ammo = maxAmmo;
-            bulletPrefab = bulletList[i];
         }
+
+        ammoDisplay.sprite = bulletList[i].GetComponent<SpriteRenderer>().sprite;
+        Ammo = maxAmmo; //right now the special bullet does not have a finite amount, would like to make finite before alpha deliverable
+        bulletPrefab = bulletList[i];
     }
 
     private void Update()

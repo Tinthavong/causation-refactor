@@ -13,9 +13,7 @@ public class PitScript : MonoBehaviour
 
     private void Start()
     {
-        //respawnPOS = gameObject.GetComponent<PlayerController>().transform.position;
-        //respawnPOS = player.transform.position;
-        //Debug.Log(respawnPOS);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -29,18 +27,21 @@ public class PitScript : MonoBehaviour
                 break;
             case "Player":
                 player = collision.GetComponent<PlayerController>();
+
                 if (checkpoint.flaggedCheckpoint == true)
                 {
-                    respawnPOS = checkpoint.transform.position;
-                    player.transform.position = respawnPOS;
+                    respawnPOS = checkpoint.checkpoint.transform.position;
                 }
-                else if (checkpoint.flaggedCheckpoint == false)
-                {
-                    player.transform.position = respawnPOS;
-                }
+
+                player.transform.position = respawnPOS;
+
+                Camera camera = FindObjectOfType<Camera>();
+                camera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -10);
 
                 player.DamageCalc(damage);
                 break;
         }
+
+        Debug.Log(respawnPOS);
     }
 }
