@@ -114,6 +114,10 @@ public class PlayerController : CharacterBase
             Ammo = maxAmmo;
             bulletPrefab = bulletList[bulletIndex];
         }
+
+        ammoDisplay.sprite = bulletList[i].GetComponent<SpriteRenderer>().sprite;
+        Ammo = maxAmmo; //right now the special bullet does not have a finite amount, would like to make finite before alpha deliverable
+        bulletPrefab = bulletList[i];
     }
 
     private void Update()

@@ -8,8 +8,9 @@ public class BulletScript : MonoBehaviour
     [SerializeField]
     private int damage;
 
+    private float thrust = 1000f;
+
     public float bulletSpeed = 400f;
-    public bool playerBullet;
     public bool isExplosive;
 
     Enemy enemy;
@@ -21,33 +22,26 @@ public class BulletScript : MonoBehaviour
         switch (collision.tag)
         {
             case "Enemy":
-                if (playerBullet)
-                {
-                    enemy = collision.GetComponent<Enemy>();
+                enemy = collision.GetComponent<Enemy>();
 
-                    if (isExplosive)
-                    {
-                        enemy.DamageCalc(damage);
-                        Debug.Log("Enemy has been hit");
-                        Knockback();
-                    }
-                    else
-                    {
-                        enemy.DamageCalc(damage);
-                        Debug.Log("Enemy has been hit");
-                    }
+                if (isExplosive)
+                {
+                    enemy.DamageCalc(damage);
+                    Debug.Log("Enemy has been hit");
+                    Knockback();
+                }
+                else
+                {
+                    enemy.DamageCalc(damage);
+                    Debug.Log("Enemy has been hit");
                 }
 
                 Destroy(gameObject);
                 break;
             case "Player":
-                if (!playerBullet)
-                {
-                    PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-                    player.DamageCalc(damage);
-                    Debug.Log("player has been hit");
-
-                }
+                PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+                player.DamageCalc(damage);
+                Debug.Log("player has been hit");
 
                 Destroy(gameObject);
                 break;
@@ -59,11 +53,22 @@ public class BulletScript : MonoBehaviour
         FindObjectOfType<SFXManager>().PlayAudio("Damage");
     }
 
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
     private void Knockback()
     {
+        //enemy = enemy.GetComponent<>();
+
         if(enemy.facingRight)
         {
-            //enemy.GetComponent<Rigidbody2D>().AddForce();
+            enemy.GetComponent<Rigidbody2D>().AddForce(enemy.transform.forward * thrust, ForceMode2D.Impulse);
+        }
+        else
+        {
+            enemy.GetComponent<Rigidbody2D>().AddForce(enemy.transform.forward * -thrust, ForceMode2D.Impulse);
         }
     }
 }
