@@ -67,11 +67,11 @@ public class BulletScript : MonoBehaviour
         //enemy = enemy.GetComponent<>();
         if(enemy.facingRight)
         {
-            enemy.GetComponent<Rigidbody2D>().velocity = new Vector2(knockBackAmount, 1f);
+            enemy.GetComponent<Rigidbody2D>().velocity = new Vector2(knockBackAmount, 3f);
         }
         else
         {
-            enemy.GetComponent<Rigidbody2D>().velocity = new Vector2(-knockBackAmount, 1f);
+            enemy.GetComponent<Rigidbody2D>().velocity = new Vector2(-knockBackAmount, 3f);
         }
     }
 }
