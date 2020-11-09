@@ -211,6 +211,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1282228592088925691, guid: 78aca9cedd3eac24b9009f2cec6d0c18,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 108
+      objectReference: {fileID: 0}
     - target: {fileID: 1756977645870712542, guid: 78aca9cedd3eac24b9009f2cec6d0c18,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -339,7 +344,12 @@ PrefabInstance:
     - target: {fileID: 6614993670224878591, guid: 78aca9cedd3eac24b9009f2cec6d0c18,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7517995583706772012, guid: 78aca9cedd3eac24b9009f2cec6d0c18,
+        type: 3}
+      propertyPath: m_Name
+      value: CheckpointRetryBTN
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78aca9cedd3eac24b9009f2cec6d0c18, type: 3}

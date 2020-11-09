@@ -83,9 +83,8 @@ public class PlayerController : CharacterBase
             Time.timeScale = 1f;
         }
 
-        bulletTypeCount = (bulletList.Length - 1); //Sets the maximum amount of varied bullets depending the prefabs set in the inspector
+        bulletTypeCount = (bulletList.Length); //Sets the maximum amount of varied bullets depending the prefabs set in the inspector
         bulletPrefab = bulletList[0]; //The default bullet is 0, hardcoding that should be okay
-
         WeaponTypeAssign();
 
         healthBar.SetHealth(displayedHealth);
@@ -99,20 +98,35 @@ public class PlayerController : CharacterBase
     private void ChangeBullets()
     {
         //switch-case might be best for cycling through multiple bullet types
-        //In this case, 0 != 1 (2 total bullet types)
-        if(bulletIndex < bulletTypeCount)
+        switch (bulletIndex)
         {
-            bulletIndex++; //bullet is set to 1
-            ammoDisplay.sprite = bulletList[bulletIndex].GetComponent<SpriteRenderer>().sprite;
-            Ammo = maxAmmo; //right now the special bullet does not have a finite amount, would like to make finite before gold deliverable
-            bulletPrefab = bulletList[bulletIndex]; //this should use something more algorithmic. There are only two bullets right now, however
-        }
-        else if(bulletIndex >= bulletTypeCount)
-        {
-            bulletIndex--; //for now this is back to default, will have to properly cycle through things later
-            ammoDisplay.sprite = bulletList[bulletIndex].GetComponent<SpriteRenderer>().sprite;
-            Ammo = maxAmmo;
-            bulletPrefab = bulletList[bulletIndex];
+            case 0:
+                bulletIndex++;
+                ammoDisplay.sprite = bulletList[bulletIndex].GetComponent<SpriteRenderer>().sprite;
+                Ammo = maxAmmo;
+                bulletPrefab = bulletList[bulletIndex];
+                break;
+
+            case 1:
+                bulletIndex++;
+                ammoDisplay.sprite = bulletList[bulletIndex].GetComponent<SpriteRenderer>().sprite;
+                Ammo = maxAmmo;
+                bulletPrefab = bulletList[bulletIndex];
+                break;
+
+            case 2:
+                bulletIndex = 0; //last bullet, goes back to the original default bullet
+                ammoDisplay.sprite = bulletList[bulletIndex].GetComponent<SpriteRenderer>().sprite;
+                Ammo = maxAmmo;
+                bulletPrefab = bulletList[bulletIndex];
+                break;
+
+            default:
+                bulletIndex = 0;
+                ammoDisplay.sprite = bulletList[bulletIndex].GetComponent<SpriteRenderer>().sprite;
+                Ammo = maxAmmo;
+                bulletPrefab = bulletList[bulletIndex];
+                break;
         }
     }
 
@@ -145,12 +159,13 @@ public class PlayerController : CharacterBase
             animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
 
             //This allows crouching
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.S) && onGround)
             {
                 //make it so movement is stopped or forced into crouch walk
                 animator.Play("GrandpaCrouch");
                 animator.SetBool("IsCrouched", true);
                 isCrouched = true;
+                rb.velocity = new Vector2(0f, 0f);
                 if (isCrouched)//imagine using a nested if in the update method loooole
                 {
                     tempRevolver.SetActive(true);
@@ -177,7 +192,6 @@ public class PlayerController : CharacterBase
             animator.SetBool("IsDead", true);
             animator.Play("GrandpaDeath");
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
-            //rb.Sleep();
         }
     }
 
@@ -279,45 +293,6 @@ public class PlayerController : CharacterBase
         }
     }
 
-    //Old and for reference, going to delete before beta delivered
-    private void Old_ShootingBehavior()
-    {
-        if (ammoText.text != null)
-        {
-            ammoText.text = Ammo.ToString();
-
-            if (Input.GetButtonDown("Fire1") && Ammo > 0 && attackElapsedTime >= attackDelay)
-            {
-                if (!isCrouched) animator.Play("GrandpaShoot"); //if not crouched yada yada yada
-                if (Ammo == 0)
-                {
-                    Debug.Log("No Ammo Left!");//implement affordance, clicking sound or something
-                }
-                else
-                {
-                    if (!PauseController.isPaused)
-                    {
-                        for (int i = 0; i < shotAmount; i++)
-                        {
-                            Invoke("Shoot", (fireDelay * i));
-                            Ammo--;
-                        }
-                        attackElapsedTime = 0;
-                    }
-                }
-                animator.SetBool("IsShooting", false);
-            }
-
-            if (!PauseController.isPaused)
-            {
-                if (Input.GetKeyDown(KeyCode.R))
-                {
-                    Ammo = maxAmmo;
-                }
-            }
-        }
-    }
-
     //Simplified and still worked.
     private void ShootingBehavior()
     {
@@ -337,7 +312,7 @@ public class PlayerController : CharacterBase
                 animator.SetBool("IsShooting", false);
             }
 
-            else if(Input.GetButtonDown("Fire1") && Ammo == 0)
+            else if (Input.GetButtonDown("Fire1") && Ammo == 0)
             {
                 Debug.Log("No Ammo Left!");//implement affordance, clicking sound or something
             }
@@ -361,7 +336,7 @@ public class PlayerController : CharacterBase
             shotAmount = 3;
             maxAmmo = 15; //smg/burstfire guns
             fireDelay = 0.05f;
-            bulletPrefab.GetComponent<BulletScript>().bulletSpeed = 1500f;
+            //bulletPrefab.GetComponent<BulletScript>().bulletSpeed = 1500f;
             attackDelay = 0.5f;
         }
         else
@@ -428,7 +403,15 @@ public class PlayerController : CharacterBase
             LM.checkpoint.GetComponent<SpriteRenderer>().color = Color.green;
             LM.flaggedCheckpoint = true; //be sure to reset all flags when restarting or changing levels
         }
+
+        if (collision.CompareTag("ScrewPickUp"))
+        {
+            walletValue++; //screws have a default value of 1 anyways
+
+            LM.CheckpointCostCheck(gameObject.GetComponent<PlayerController>());
+        }
     }
+
 
     public override void PostDeath()
     {
@@ -440,6 +423,7 @@ public class PlayerController : CharacterBase
     public void Replenish()
     {
         //rb.WakeUp();
+        LM.CheckpointCostCheck(gameObject.GetComponent<PlayerController>());
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         animator.SetBool("IsDead", false);
         displayedHealth = Health;

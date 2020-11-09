@@ -5,6 +5,7 @@ using System;
 
 public class ChargerEnemy : Enemy
 {
+
     public ChargerEnemy() //constructor
     {
         Health = displayedHealth; //Displayed Health can be set in the inspector
@@ -24,7 +25,7 @@ public class ChargerEnemy : Enemy
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         onGround = (Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundLength, groundLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundLength, groundLayer));
         //Controls where the enemy is looking
         if (isClose())
@@ -65,7 +66,7 @@ public class ChargerEnemy : Enemy
         }
     }
 
-    //Moves towards the player
+    /*Moves towards the player
     public void RunTowards()
     {
         if (facingRight && onGround)
@@ -73,7 +74,11 @@ public class ChargerEnemy : Enemy
             Vector2 movement = new Vector2(-enemySpeed, 0.0f);
             //rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
 
-            if (rb.velocity.x >= -enemySpeed)
+            if (rb.velocity.x <= -enemySpeed)
+            {
+                rb.velocity = movement;
+            }
+            else if (rb.velocity.x >= -enemySpeed)
             {
                 rb.AddForce(movement);
             }
@@ -85,15 +90,18 @@ public class ChargerEnemy : Enemy
         {
             Vector2 movement = new Vector2(enemySpeed, 0.0f);
             //rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
-
-            if (rb.velocity.x <= enemySpeed)
+            if (rb.velocity.x >= -enemySpeed)
+            {
+                rb.velocity = movement;
+            }
+            else if (rb.velocity.x <= enemySpeed)
             {
                 rb.AddForce(movement);
             }
 
             // transform.position = transform.position + movement * Time.deltaTime;
         }
-    }
+    }*/
 
     private void OnDrawGizmos()
     {
