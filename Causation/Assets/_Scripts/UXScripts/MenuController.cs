@@ -8,6 +8,7 @@ public class MenuController : MonoBehaviour
 {
     private int lastLoad;
     private int loadNextScene;
+    public static bool isNewGame;
     public Animator anim;
     public Canvas fadeCanvas;
 
@@ -15,14 +16,15 @@ public class MenuController : MonoBehaviour
     {
         loadNextScene = SceneManager.GetActiveScene().buildIndex + 1;
         anim.SetBool("Transition", true);
-        //fadeCanvas.SetActive(true);
+        isNewGame = false;
     }
 
-    public void PlayGame()
+    public void NewGame()
     {
+        fadeCanvas.gameObject.SetActive(true);
         Time.timeScale = 1f;
         PauseController.isPaused = false;
-        //SceneManager.LoadScene(2);
+        isNewGame = true;
         StartCoroutine(LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
@@ -44,14 +46,19 @@ public class MenuController : MonoBehaviour
 
     public void LoadGame()
     {
-        SceneManager.LoadScene(2);
+        fadeCanvas.gameObject.SetActive(true);
+        Time.timeScale = 1f;
+        PauseController.isPaused = false;
+        StartCoroutine(LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1));
         Debug.Log("Saved Game Loaded");
     }
 
     public void MissionSelect()
     {
-        StartCoroutine(LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1));
+        SceneManager.LoadScene(2);
+        //StartCoroutine(LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
+
     public void RestartGame()
     {
         Time.timeScale = 1f;
@@ -98,7 +105,7 @@ public class MenuController : MonoBehaviour
     {
         anim.SetBool("Transition", true);
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
 
         SceneManager.LoadScene(levelIndex);
     }

@@ -5,6 +5,7 @@ using TMPro;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
+using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
@@ -18,18 +19,6 @@ public class SaveManager : MonoBehaviour
     {
         instance = this;
         Load();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void Save()
@@ -74,6 +63,8 @@ public class SaveManager : MonoBehaviour
         if (File.Exists(savePath + "/" + gameData.saveName + ".dat"))
         {
             File.Delete(savePath + "/" + gameData.saveName + ".dat");
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
             Debug.Log("Saved data has been cleared");
         }

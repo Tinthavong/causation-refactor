@@ -14,10 +14,11 @@ public class MissionSelection : MonoBehaviour
     public Button backButton;
     public TMP_Text currencyText;
     public TMP_Text iterationText;
+    public TMP_Text message;
     public int currency;
-    private int value = 1;
     public Animator anim;
     public Canvas fadeCanvas;
+    public GameObject saveMenu;
 
     [Header("Grandpa's Missions")]
     public Button era1;
@@ -45,10 +46,29 @@ public class MissionSelection : MonoBehaviour
     private void Start()
     {
         anim.SetBool("Transition", false);
-        //fadeCanvas.SetActive(true);
+
+        UpdateCurrency();
+        UpdateIteration();
+
+        iterations = SaveManager.instance.gameData.iteration;
+        currency = SaveManager.instance.gameData.currency;
 
         currencyText.text = currency.ToString();
         iterationText.text = "Iteration: " + iterations;
+
+        saveMenu.SetActive(false);
+        fadeCanvas.gameObject.SetActive(false);
+
+        if (MenuController.isNewGame == true)
+        {
+            SaveManager.instance.gameData.currency = 0;
+            SaveManager.instance.gameData.iteration = 0;
+            //SaveManager.instance.DeleteSavedData();
+
+            SaveManager.instance.Save();
+
+            MenuController.isNewGame = false;
+        }
 
         if (SaveManager.instance.hasLoaded)
         {
@@ -164,7 +184,7 @@ public class MissionSelection : MonoBehaviour
         {
             iterations = 1;
         }
-
+        Currency.walletValue = SaveManager.instance.gameData.currency;
         SceneManager.LoadScene(3);
     }
 
@@ -174,9 +194,9 @@ public class MissionSelection : MonoBehaviour
         {
             iterations = 2;
         }
-        StartCoroutine(LoadNextScene(4));
+        //StartCoroutine(LoadNextScene(4));
         
-        //SceneManager.LoadScene(4);
+        SceneManager.LoadScene(4);
     }
 
     public void Mission3()
@@ -219,28 +239,36 @@ public class MissionSelection : MonoBehaviour
         SceneManager.LoadScene(8);
     }
 
-    public void GainCurrency()
+    void UpdateCurrency()
     {
-        currency += value;
-        currencyText.text = currency.ToString();
+        currency = SaveManager.instance.gameData.currency + PlayerController.walletValue;
 
         SaveManager.instance.gameData.currency = currency;
-
         SaveManager.instance.Save();
-
-        Debug.Log("Currency: " + currency);
     }
 
-    public void GainIteration()
+    void UpdateIteration()
     {
-        iterations += value;
-        iterationText.text = "Iteration: " + iterations.ToString();
-
         SaveManager.instance.gameData.iteration = iterations;
         SaveManager.instance.Save();
+    }
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    public void SaveGame()
+    {
+        SaveManager.instance.gameData.currency = currency;
+        SaveManager.instance.gameData.iteration = iterations;
+        message.text = "Game has been saved";
+        SaveManager.instance.Save();
+        saveMenu.SetActive(false);
+    }
 
+    public void ClearSaveData()
+    {
+        saveMenu.SetActive(false);
+
+        SaveManager.instance.DeleteSavedData();
+
+        SceneManager.LoadScene(1);
     }
 
     IEnumerator LoadNextScene(int levelIndex)
@@ -251,4 +279,5 @@ public class MissionSelection : MonoBehaviour
 
         SceneManager.LoadScene(levelIndex);
     }
+
 }
