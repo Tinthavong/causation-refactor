@@ -10,16 +10,20 @@ public class Currency : MonoBehaviour
     //but all this does is update some text on the screen - no utility
     public static int currencyValue;
     TMP_Text currency;
+    PlayerController playerRef;
 
     // Start is called before the first frame update
     void Start()
     {
         currency = GetComponent<TMP_Text>();
+        playerRef = FindObjectOfType<PlayerController>();
     }
 
+
+    //This can probably be put into the collision
     // Update is called once per frame
     void Update()
     {
-        currency.text = currencyValue.ToString();
+        currency.text = playerRef.walletValue.ToString(); //try having this update on collision, otherwise this lkogic isn't so bad
     }
 }
