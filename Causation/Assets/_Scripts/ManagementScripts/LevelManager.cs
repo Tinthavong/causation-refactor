@@ -64,7 +64,7 @@ public class LevelManager : MonoBehaviour
 
         if (canRetry == true)
         {
-            pc.walletValue = (pc.walletValue - checkpointCost); 
+            Currency.walletValue = (Currency.walletValue - checkpointCost); 
             //A "replenish" function for playercontroller might be best for using checkpoints
             Camera mc = FindObjectOfType<Camera>();
             pc.transform.position = checkpoint.transform.position;

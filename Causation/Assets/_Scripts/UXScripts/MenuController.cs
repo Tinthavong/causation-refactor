@@ -56,7 +56,6 @@ public class MenuController : MonoBehaviour
     public void MissionSelect()
     {
         SceneManager.LoadScene(2);
-        //StartCoroutine(LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     public void RestartGame()

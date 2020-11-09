@@ -19,7 +19,7 @@ public class PlayerController : CharacterBase
     public HealthBar healthBar; //I don't like the idea of having a type just for healthbar, redo later
     public TMP_Text ammoText;
     public Image ammoDisplay; //probably temporary, i have a better idea
-    public static int walletValue; //think  of a better name, but this has all of the player's screws/currency
+    public int walletValue; //think  of a better name, but this has all of the player's screws/currency
     public int maxAmmo = 6; //six-shooter by default, set in inspector otherwise - set with weapon types
 
     Animator animator;

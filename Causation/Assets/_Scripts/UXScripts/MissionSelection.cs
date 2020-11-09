@@ -194,7 +194,6 @@ public class MissionSelection : MonoBehaviour
         {
             iterations = 2;
         }
-        //StartCoroutine(LoadNextScene(4));
         
         SceneManager.LoadScene(4);
     }
@@ -241,7 +240,7 @@ public class MissionSelection : MonoBehaviour
 
     void UpdateCurrency()
     {
-        currency = SaveManager.instance.gameData.currency + PlayerController.walletValue;
+        currency = SaveManager.instance.gameData.currency + Currency.walletValue;
 
         SaveManager.instance.gameData.currency = currency;
         SaveManager.instance.Save();
