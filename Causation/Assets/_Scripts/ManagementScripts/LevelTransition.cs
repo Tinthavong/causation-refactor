@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,22 +8,31 @@ public class LevelTransition : MonoBehaviour
 {
     public Animator fade;
     public Canvas fadeCanvas;
-    private int playOnce = 1;
-    PlayerController pc;
+    private int playSize = 0;
+    private int i;
 
+    private GameObject[] screenTransitions;
+
+    PlayerController pc;
 
     private void Start()
     {
         pc = FindObjectOfType<PlayerController>();
+
+        //Grab the # of transitions in the level and set the number to i
+        screenTransitions = GameObject.FindGameObjectsWithTag("Transition");
+        i = screenTransitions.Length;
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && Interactables.transitionFlag && playOnce != 0)
+        //So long as playSize != i the animation will play
+        //This is a dirty fix and we might want to think about making it cleaner later
+        if (Input.GetKeyDown(KeyCode.W) && Interactables.transitionFlag && playSize != i)
         {
             pc.GetComponent<Animator>().SetFloat("Speed", 0);
             pc.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
             //StartCoroutine(Loading());
-            playOnce = 0;
+            playSize++;
             StartCoroutine(LoadNextScene());
         }
     }

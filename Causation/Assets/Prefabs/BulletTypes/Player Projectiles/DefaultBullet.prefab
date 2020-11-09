@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  knockBackAmount: 3
-  bulletSpeed: 1000
+  knockBackAmount: 0
+  bulletSpeed: 750
   isExplosive: 0
   isPlayerBullet: 1
