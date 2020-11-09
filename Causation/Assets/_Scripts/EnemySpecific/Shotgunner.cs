@@ -44,7 +44,10 @@ public class Shotgunner : Enemy
             {
                 animator.SetBool("IsChasing", true);
                 isChasing = true;
-                RunTowards();
+                if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) >= fireRange)
+                {
+                    RunTowards();
+                }
             }
         }
 
@@ -72,14 +75,18 @@ public class Shotgunner : Enemy
         }
     }
 
-    public void RunTowards()
+   /* public void RunTowards()
     {
         if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) >= fireRange)
         {
             if(facingRight && onGround)
             {
                 Vector2 movement = new Vector2(-enemySpeed, 0.0f);
-                if (rb.velocity.x >= -enemySpeed)
+                if (rb.velocity.x <= -enemySpeed)
+                {
+                    rb.velocity = movement;
+                }
+                else if (rb.velocity.x >= -enemySpeed)
                 {
                     rb.AddForce(movement);
                 }
@@ -87,13 +94,17 @@ public class Shotgunner : Enemy
             else if(onGround)
             {
                 Vector2 movement = new Vector2(enemySpeed, 0.0f);
-                if (rb.velocity.x <= enemySpeed)
+                if (rb.velocity.x >= -enemySpeed)
+                {
+                    rb.velocity = movement;
+                }
+                else if (rb.velocity.x <= enemySpeed)
                 {
                     rb.AddForce(movement);
                 }
             }
         }
-    }
+    }*/
 
     private bool isCloseEnough()//Shotguns are never isTooClose() hehehehehe
     {

@@ -125,6 +125,34 @@ public class Enemy : CharacterBase
         }
     }
 
+    public void RunTowards()
+    {
+        if (facingRight && onGround)
+        {
+            Vector2 movement = new Vector2(-enemySpeed, 0.0f);
+            if (rb.velocity.x <= -enemySpeed)
+            {
+                rb.velocity = movement;
+            }
+            else if (rb.velocity.x >= -enemySpeed)
+            {
+                rb.AddForce(movement);
+            }
+        }
+        else if (onGround)
+        {
+            Vector2 movement = new Vector2(enemySpeed, 0.0f);
+            if (rb.velocity.x >= -enemySpeed)
+            {
+                rb.velocity = movement;
+            }
+            else if (rb.velocity.x <= enemySpeed)
+            {
+                rb.AddForce(movement);
+            }
+        }
+    }
+
     public override void DamageCalc(int damage)
     {
         if (animator != null)

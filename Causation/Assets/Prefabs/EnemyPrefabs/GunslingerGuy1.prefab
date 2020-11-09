@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419731304394303833}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.87, y: 1.04, z: 0}
+  m_LocalPosition: {x: 1.1, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3170384674644724543}
@@ -203,7 +203,6 @@ MonoBehaviour:
   onGround: 0
   groundLength: 1.42
   colliderOffset: {x: 0.5, y: 0.1, z: 0}
-  bulletSpeed: 800
   bulletPrefab: {fileID: 925700458712431568, guid: 968bd95b9d0bdcd44961c4e4005a974c,
     type: 3}
   bulletSpawn: {fileID: 1419731304394303833}
@@ -213,7 +212,6 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
-  enemySpeed: 8
   dropValue: 0
   drops:
   - drop: {fileID: 7462346461303034108, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}
@@ -225,6 +223,12 @@ MonoBehaviour:
   meleeRange: 2
   floorHax: 0
   verticalSight: 2.5
+  facingRight: 0
+  isChasing: 0
+  enemySpeed: 8
+  bulletRefSpeed: 0
+  isCrouched: 0
+  tempCrouchIndicator: {fileID: 0}
 --- !u!50 &840296245
 Rigidbody2D:
   serializedVersion: 4
