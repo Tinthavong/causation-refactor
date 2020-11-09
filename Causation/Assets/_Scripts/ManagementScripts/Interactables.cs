@@ -22,8 +22,17 @@ public class Interactables : MonoBehaviour
 
     //mean for the update check when player is pushing the W key
     private bool isColliding;
+
     public static bool transitionFlag = false;
     private int hardLock = 1;
+    private int i = 1;
+    private GameObject[] screenTransitions;
+
+    private void Start()
+    {
+        //Number of appropriate screen transitions is found at start
+        screenTransitions = GameObject.FindGameObjectsWithTag("Transition");
+    }
 
     private void Update()
     {
@@ -33,14 +42,47 @@ public class Interactables : MonoBehaviour
         }
     }
 
+    //Since some levels may have multiple screen transitions this is a very rough way of handling that
     private void TeleportTransition()
     {
         Camera mc = FindObjectOfType<Camera>();
-        gameObject.transform.position = GameObject.Find("ScreenTransitionB").transform.position;
-        Vector3 dummy = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
-        mc.transform.position = dummy;
-        transitionFlag = false; //no backtracking. also this implementation ain't great huh
-        hardLock--;
+
+        //i is increased and compared here and corresponds to which transition the player should be sent to
+        switch (i)
+        {
+            case 0:
+                //When duplicating transitions the second transition of the two (in this case between A & B) should be chosen
+                gameObject.transform.position = GameObject.Find("ScreenTransitionB").transform.position;
+                Vector3 dummy = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
+                mc.transform.position = dummy;
+                transitionFlag = false; //no backtracking. also this implementation ain't great huh
+
+                //Always increase i
+                i++;
+                break;
+            case 1:
+                gameObject.transform.position = GameObject.Find("ScreenTransitionD").transform.position;
+                dummy = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
+                mc.transform.position = dummy;
+                transitionFlag = false; //no backtracking. also this implementation ain't great huh
+
+                i++;
+                break;
+            case 2:
+                gameObject.transform.position = GameObject.Find("ScreenTransitionF").transform.position;
+                dummy = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
+                mc.transform.position = dummy;
+                transitionFlag = false; //no backtracking. also this implementation ain't great huh
+
+                i++;
+                break;
+        }
+
+        if (i == screenTransitions.Length)
+        {
+            hardLock--;
+            i = 0;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

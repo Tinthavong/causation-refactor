@@ -336,7 +336,7 @@ public class PlayerController : CharacterBase
             shotAmount = 3;
             maxAmmo = 15; //smg/burstfire guns
             fireDelay = 0.05f;
-            bulletPrefab.GetComponent<BulletScript>().bulletSpeed = 1500f;
+            //bulletPrefab.GetComponent<BulletScript>().bulletSpeed = 1500f;
             attackDelay = 0.5f;
         }
         else

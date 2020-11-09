@@ -8795,6 +8795,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2686942302785526997, guid: 31b12168567cb7c41a5434d410bae653,
         type: 3}
+    - target: {fileID: 697618783331051721, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
+        type: 3}
+      propertyPath: maxAmmo
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 697618783331051726, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
         type: 3}
       propertyPath: m_LocalPosition.x

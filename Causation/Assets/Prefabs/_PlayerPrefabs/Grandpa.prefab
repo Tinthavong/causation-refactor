@@ -228,6 +228,8 @@ MonoBehaviour:
   - {fileID: 2686942302785526997, guid: 31b12168567cb7c41a5434d410bae653, type: 3}
   - {fileID: 3784773981510655563, guid: 7876a21c748af864ca77fc10e8fe933d, type: 3}
   - {fileID: 2360415090640999253, guid: 8aa89e85b5e1ebc4bb5108e1490eec1e, type: 3}
+  - {fileID: 7403371841988002607, guid: f4e2937219e40b8419966c81a6d3d9a1, type: 3}
+  bulletIndex: 0
   nearObject: {fileID: 0}
   LM: {fileID: 0}
   isJumping: 0
