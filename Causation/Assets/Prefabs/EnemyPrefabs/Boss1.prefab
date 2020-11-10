@@ -238,7 +238,7 @@ MonoBehaviour:
   gatlingStartRight2: {fileID: 6437148778061276276}
   laserStartLeft: {fileID: 2117029511416925376}
   laserStartRight: {fileID: 3176810633132376498}
-  laserBeam: {fileID: 3067972385498588301, guid: 73b205124d9245a4390ff6c7b84bf0d7,
+  laserBeam: {fileID: 3067972385498588301, guid: 6f10d5468945a3a47a9e73898c5848c9,
     type: 3}
 --- !u!1 &2423452158960239851
 GameObject:
