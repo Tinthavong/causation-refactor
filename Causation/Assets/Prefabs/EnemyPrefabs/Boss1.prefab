@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2117029511416925376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1045044840103972509}
+  m_Layer: 10
+  m_Name: LaserLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1045044840103972509
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117029511416925376}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: 0.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2146712795453138171}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2146712795453138170
 GameObject:
   m_ObjectHideFlags: 0
@@ -37,6 +67,8 @@ Transform:
   - {fileID: 1421868679998129894}
   - {fileID: 4446843158537248799}
   - {fileID: 5682095838689645865}
+  - {fileID: 1045044840103972509}
+  - {fileID: 5997237281040403398}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -136,7 +168,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4362794, y: 2.575463}
+  m_Size: {x: 1, y: 2.575463}
   m_EdgeRadius: 0
 --- !u!95 &1306586417
 Animator:
@@ -177,8 +209,7 @@ MonoBehaviour:
   onGround: 0
   groundLength: 1.42
   colliderOffset: {x: 0.49, y: 0, z: 0}
-  bulletSpeed: 800
-  bulletPrefab: {fileID: 925700458712431568, guid: 968bd95b9d0bdcd44961c4e4005a974c,
+  bulletPrefab: {fileID: 3537313983619063192, guid: 720ae319742098a4f831727628623ac5,
     type: 3}
   bulletSpawn: {fileID: 0}
   StrikeZone: {fileID: 5682095838689645865}
@@ -187,14 +218,17 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
-  enemySpeed: 1
   dropValue: 0
   drops: []
   firerate: 0.3
   sightRange: 10
-  meleeRange: 4
+  meleeRange: 6
   floorHax: 1
   verticalSight: 3
+  facingRight: 0
+  isChasing: 0
+  enemySpeed: 1
+  bulletRefSpeed: 0
   phase: 0
   phaseRate: 4
   bulletsFiredStop: 5
@@ -202,6 +236,10 @@ MonoBehaviour:
   gatlingStartRight: {fileID: 7341399522014326304}
   gatlingStartLeft2: {fileID: 4766882336092679406}
   gatlingStartRight2: {fileID: 6437148778061276276}
+  laserStartLeft: {fileID: 2117029511416925376}
+  laserStartRight: {fileID: 3176810633132376498}
+  laserBeam: {fileID: 3067972385498588301, guid: 73b205124d9245a4390ff6c7b84bf0d7,
+    type: 3}
 --- !u!1 &2423452158960239851
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,6 +269,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2146712795453138171}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3176810633132376498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5997237281040403398}
+  m_Layer: 10
+  m_Name: LaserRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5997237281040403398
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3176810633132376498}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2146712795453138171}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4431301978037102771
 GameObject:

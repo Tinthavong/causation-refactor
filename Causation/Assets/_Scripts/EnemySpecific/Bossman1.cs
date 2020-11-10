@@ -35,6 +35,9 @@ public class Bossman1 : Enemy
     public GameObject gatlingStartRight;
     public GameObject gatlingStartLeft2;
     public GameObject gatlingStartRight2;
+    public GameObject laserStartLeft;
+    public GameObject laserStartRight;
+    public GameObject laserBeam;
     private Vector3 gatlingCurrentLeft;
     private Vector3 gatlingCurrentRight;
 
@@ -62,7 +65,7 @@ public class Bossman1 : Enemy
             LaserShot();
             firerateWait = firerate;
         }
-
+        
         if (!isInPhase)
         {
             phaseRateWait -= Time.deltaTime;
@@ -224,11 +227,22 @@ public class Bossman1 : Enemy
     {
         //create laser objects that destroy themselves after a short time
 
-        //Uses strike as it accomplishes the same goal
+        //Might keep strike here as it will ensure damage gets dealt
         //animator.Play("Lasers");
         Strike();
 
         //I need to make use of the laser art ive been given for this boss
+
+        GameObject b = Instantiate(laserBeam) as GameObject;
+        GameObject c = Instantiate(laserBeam) as GameObject;
+        b.transform.position = laserStartLeft.transform.position;
+        c.transform.position = laserStartRight.transform.position;
+        b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -55f);
+        b.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletRefSpeed);
+        b.GetComponent<Rigidbody2D>().AddForce(Vector2.down * bulletRefSpeed * 1.3f);
+        c.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 55f);
+        c.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletRefSpeed);
+        c.GetComponent<Rigidbody2D>().AddForce(Vector2.down * bulletRefSpeed * 1.3f);
 
     }
 
@@ -242,5 +256,19 @@ public class Bossman1 : Enemy
         b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * -bulletRefSpeed);
         c.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0f);
         c.GetComponent<Rigidbody2D>().AddForce(Vector2.right * -bulletRefSpeed);
+    }
+
+    //Special strike for boss to literally just not have it constantly play the melee sound
+    public override void Strike() //Melee attack
+    {
+        //Enemies in range of attack here
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(StrikeZone.position, strikeRange, enemyLayers);
+
+        //Damage calculations
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<CharacterBase>().DamageCalc(strikeDamage);
+            Debug.Log($"{gameObject.name} hit {enemy.name}");
+        }
     }
 }
