@@ -56,7 +56,6 @@ public class Enemy : CharacterBase
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(bulletRefSpeed);
         player = FindObjectOfType<PlayerController>();
         //This should use an actual find method/algorithm instead of just knowing where the player is
     }

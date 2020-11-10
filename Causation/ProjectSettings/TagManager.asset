@@ -26,10 +26,10 @@ TagManager:
   - 
   - 
   - Background
+  - PickUp
   - Player
   - Enemy
   - Foreground
-  - PickUp
   - Ground
   - Platform
   - Props

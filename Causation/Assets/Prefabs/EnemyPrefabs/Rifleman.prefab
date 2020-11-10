@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4004720124247143342}
   - component: {fileID: 4004720124247143337}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: TempCrouchShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5529824715602500329}
   - component: {fileID: 4644472267265354746}
   - component: {fileID: 5529824715602500325}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Rifleman
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ MonoBehaviour:
   strikeDamage: 1
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
   dropValue: 0
   drops:
   - drop: {fileID: 7462346461303034108, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}
@@ -267,6 +267,7 @@ MonoBehaviour:
   floorHax: 0
   verticalSight: 2.5
   facingRight: 0
+  isChasing: 0
   enemySpeed: 8
   bulletRefSpeed: 0
   isCrouched: 0
@@ -280,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7440679235487183439}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: PunchZone
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -310,7 +311,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1107398326809693965}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: BulletStart
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}

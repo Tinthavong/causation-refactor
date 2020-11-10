@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1273325937887394890}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: PunchZone
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4203190106920490220}
   - component: {fileID: 1273325937600100579}
   - component: {fileID: 4203190106920490219}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Brawler
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -193,7 +193,6 @@ MonoBehaviour:
   onGround: 0
   groundLength: 1.42
   colliderOffset: {x: 0.5, y: 0.1, z: 0}
-  bulletSpeed: 400
   bulletPrefab: {fileID: 0}
   bulletSpawn: {fileID: 0}
   StrikeZone: {fileID: 1273325937887394890}
@@ -201,8 +200,7 @@ MonoBehaviour:
   strikeDamage: 4
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 512
-  enemySpeed: 7.5
+    m_Bits: 1024
   dropValue: 0
   drops:
   - drop: {fileID: 7462346461303034108, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}
@@ -214,3 +212,7 @@ MonoBehaviour:
   meleeRange: 2
   floorHax: 1
   verticalSight: 2.5
+  facingRight: 0
+  isChasing: 0
+  enemySpeed: 7.5
+  bulletRefSpeed: 0

@@ -11,16 +11,21 @@ public class PlayerController : CharacterBase
         Health = displayedHealth;
         Stamina = staminaActions;
         Ammo = maxAmmo; //To avoid confusion, the Ammo property is like the previous currentAmmo variable
-        Currency = walletValue;
+       // Currency = walletValue;
     }
 
     //consider serializing private
     [Header("UI References")]
     public HealthBar healthBar; //I don't like the idea of having a type just for healthbar, redo later
-    public TMP_Text ammoText;
+    public TMP_Text ammoText; //current ammo
+    public TMP_Text ammoTotalText; //available ammo
+
     public Image ammoDisplay; //probably temporary, i have a better idea
-    public int walletValue; //think  of a better name, but this has all of the player's screws/currency
-    public int maxAmmo = 6; //six-shooter by default, set in inspector otherwise - set with weapon types
+   // public int walletValue;
+
+
+
+
 
     Animator animator;
     Rigidbody2D rb; //rigidbody used for jumping
@@ -52,6 +57,11 @@ public class PlayerController : CharacterBase
     public GameObject[] bulletList;
     private int bulletTypeCount;
     public int bulletIndex = 0;
+    public int maxAmmo = 6; //six-shooter by default, set in inspector otherwise for burstfire
+    private int shotsFired = 0;
+
+    public int[] remainingAmmo;
+
 
     public GameObject nearObject;
     public LevelManager LM;
@@ -97,36 +107,190 @@ public class PlayerController : CharacterBase
 
     private void ChangeBullets()
     {
-        //switch-case might be best for cycling through multiple bullet types
+        shotsFired = 0;
         switch (bulletIndex)
         {
-            case 0:
+            //this cycles around that's why it seems backwards
+            case 0: //blue
                 bulletIndex++;
                 ammoDisplay.sprite = bulletList[bulletIndex].GetComponent<SpriteRenderer>().sprite;
-                Ammo = maxAmmo;
                 bulletPrefab = bulletList[bulletIndex];
+                Debug.Log(remainingAmmo[bulletIndex]);
+
+                if (remainingAmmo[bulletIndex] >= maxAmmo)
+                {
+                    Ammo = maxAmmo;
+                    ammoTotalText.text = remainingAmmo[bulletIndex].ToString();
+                }
+
+                if (remainingAmmo[bulletIndex] <= 0)
+                {
+                    Debug.Log(remainingAmmo[bulletIndex]);
+                    Ammo = 0; //that is to say, 0
+                    ammoTotalText.text = "0";
+                }
                 break;
 
-            case 1:
+            case 1: //red
                 bulletIndex++;
                 ammoDisplay.sprite = bulletList[bulletIndex].GetComponent<SpriteRenderer>().sprite;
-                Ammo = maxAmmo;
                 bulletPrefab = bulletList[bulletIndex];
+                Debug.Log(remainingAmmo[bulletIndex]);
+                if (remainingAmmo[bulletIndex] >= maxAmmo)
+                {
+                    Ammo = maxAmmo;
+                    ammoTotalText.text = remainingAmmo[bulletIndex].ToString();
+                }
+
+                if (remainingAmmo[bulletIndex] <= 0)
+                {
+                    Debug.Log(remainingAmmo[bulletIndex]);
+                    Ammo = 0; //that is to say, 0
+                    ammoTotalText.text = "0";
+                }
                 break;
 
-            case 2:
-                bulletIndex = 0; //last bullet, goes back to the original default bullet
+            case 2: //default
+                bulletIndex = 0; //last bullet so far, goes back to the first bullet in the index
                 ammoDisplay.sprite = bulletList[bulletIndex].GetComponent<SpriteRenderer>().sprite;
-                Ammo = maxAmmo;
                 bulletPrefab = bulletList[bulletIndex];
+
+                if (remainingAmmo[bulletIndex] >= maxAmmo)
+                {
+                    Ammo = maxAmmo;
+                    ammoTotalText.text = "∞";
+                }
+
                 break;
 
             default:
-                bulletIndex = 0;
-                ammoDisplay.sprite = bulletList[bulletIndex].GetComponent<SpriteRenderer>().sprite;
-                Ammo = maxAmmo;
-                bulletPrefab = bulletList[bulletIndex];
+
                 break;
+        }
+    }
+
+    private void ReloadBullets()
+    {
+        switch (bulletIndex)
+        {
+            case 0: //default
+                Ammo = maxAmmo;
+                ammoTotalText.text = "∞"; //just in case
+
+                shotsFired = 0;
+                break;
+
+            case 1: //blue
+                remainingAmmo[bulletIndex] = remainingAmmo[bulletIndex] - shotsFired; //decrements the total rounds left in the "inventory"
+
+                if (remainingAmmo[bulletIndex] >= maxAmmo) //safety check, if the remaining ammo is more than or equal to the maximum possible ammo of (example) 6 then
+                {
+                    Ammo = maxAmmo; //ammo can safely be set to the maximum amount possible for the magazine or chamber
+                    ammoTotalText.text = remainingAmmo[bulletIndex].ToString(); //updates the total remaining bullets left in the UI (after subtracting the shots fired
+                }
+                else if (remainingAmmo[bulletIndex] < maxAmmo) //if the remaining ammo is less than the maximum possible ammo then
+                {
+                    Ammo = maxAmmo;
+                    if (remainingAmmo[bulletIndex] > 0)
+                    {
+                        ammoTotalText.text = remainingAmmo[bulletIndex].ToString();
+                    }
+                    if (remainingAmmo[bulletIndex] < 0) //basically ensures that the ammototal text should never be a negative value
+                    {
+                        ammoTotalText.text = "0";
+                    }
+                }
+
+                shotsFired = 0;
+                break;
+
+            case 2: //red
+                remainingAmmo[bulletIndex] = remainingAmmo[bulletIndex] - shotsFired; //decrements the total rounds left in the "inventory"
+
+                if (remainingAmmo[bulletIndex] >= maxAmmo) //safety check, if the remaining ammo is more than or equal to the maximum possible ammo of (example) 6 then
+                {
+                    Ammo = maxAmmo; //ammo can safely be set to the maximum amount possible for the magazine or chamber
+                    ammoTotalText.text = remainingAmmo[bulletIndex].ToString(); //updates the total remaining bullets left in the UI (after subtracting the shots fired
+                }
+                else if (remainingAmmo[bulletIndex] < maxAmmo) //if the remaining ammo is less than the maximum possible ammo then
+                {
+                    Ammo = maxAmmo;
+                    if (remainingAmmo[bulletIndex] > 0)
+                    {
+                        ammoTotalText.text = remainingAmmo[bulletIndex].ToString();
+                    }
+                    if (remainingAmmo[bulletIndex] < 0) //basically ensures that the ammototal text should never be a negative value
+                    {
+                        ammoTotalText.text = "0";
+                    }
+                }
+
+                shotsFired = 0;
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void WeaponTypeAssign() //Ammo capacity will be assigned depending on what type of gun it is, single shot, burst fire, etc (burst fire has a higher capacity)
+    {
+        //assigns ammo capacity, weapon firing type
+        //if revolver ammo is 6 if smg ammo is 15
+        //also set attack delay here?
+        //needs to be heavily refined
+        remainingAmmo = new int[3];
+
+        //remainingAmmo[0] = bulletlist.Default;
+        remainingAmmo[0] = 9999999; 
+        remainingAmmo[1] = 12;
+        remainingAmmo[2] = 18;
+
+        if (isBurstFire)
+        {
+            shotAmount = 3;
+            maxAmmo = 15; //smg/burstfire guns
+            fireDelay = 0.05f;
+            //bulletPrefab.GetComponent<BulletScript>().bulletSpeed = 1500f;
+            attackDelay = 0.5f;
+        }
+        else
+            return;
+    }
+
+    //Simplified and still worked.
+    private void ShootingBehavior()
+    {
+        if (ammoText.text != null)
+        {
+            ammoText.text = Ammo.ToString();
+
+            if (Input.GetButtonDown("Fire1") && Ammo > 0 && attackElapsedTime >= attackDelay)
+            {
+                if (!isCrouched) animator.Play("GrandpaShoot");
+                for (int i = 0; i < shotAmount; i++)
+                {
+                    Invoke("Shoot", (fireDelay * i));
+                    shotsFired++;
+                    Ammo--;
+                }
+                attackElapsedTime = 0;
+                animator.SetBool("IsShooting", false);
+            }
+
+            else if (Input.GetButtonDown("Fire1") && Ammo == 0)
+            {
+                Debug.Log("No Ammo Left!");//implement affordance, clicking sound or something
+            }
+
+            if (Input.GetKeyDown(KeyCode.R) && remainingAmmo[bulletIndex] > 0)
+            {
+                ReloadBullets();
+            }
+            else if (Input.GetKeyDown(KeyCode.R) && remainingAmmo[bulletIndex] <= 0)
+            {
+                Debug.Log("No more ammo of type" + bulletList[bulletIndex].name);
+            }
         }
     }
 
@@ -135,8 +299,6 @@ public class PlayerController : CharacterBase
         onGround = Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundLength, groundLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundLength, groundLayer);
         if (canMove)
         {
-            //extract out into a method but for the meanwhile
-            //This allows changing bullet types
             if (Input.GetKeyDown(KeyCode.T))
             {
                 ChangeBullets();
@@ -161,12 +323,11 @@ public class PlayerController : CharacterBase
             //This allows crouching
             if (Input.GetKeyDown(KeyCode.S) && onGround)
             {
-                //make it so movement is stopped or forced into crouch walk
                 animator.Play("GrandpaCrouch");
                 animator.SetBool("IsCrouched", true);
                 isCrouched = true;
                 rb.velocity = new Vector2(0f, 0f);
-                if (isCrouched)//imagine using a nested if in the update method loooole
+                if (isCrouched)
                 {
                     tempRevolver.SetActive(true);
                     bulletSpawn.transform.localPosition = new Vector3(0.85f, -0.4f, 0);
@@ -293,56 +454,6 @@ public class PlayerController : CharacterBase
         }
     }
 
-    //Simplified and still worked.
-    private void ShootingBehavior()
-    {
-        if (ammoText.text != null)
-        {
-            ammoText.text = Ammo.ToString();
-
-            if (Input.GetButtonDown("Fire1") && Ammo > 0 && attackElapsedTime >= attackDelay)
-            {
-                if (!isCrouched) animator.Play("GrandpaShoot");
-                for (int i = 0; i < shotAmount; i++)
-                {
-                    Invoke("Shoot", (fireDelay * i));
-                    Ammo--;
-                }
-                attackElapsedTime = 0;
-                animator.SetBool("IsShooting", false);
-            }
-
-            else if (Input.GetButtonDown("Fire1") && Ammo == 0)
-            {
-                Debug.Log("No Ammo Left!");//implement affordance, clicking sound or something
-            }
-
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                Ammo = maxAmmo;
-            }
-        }
-    }
-
-    private void WeaponTypeAssign() //Ammo capacity will be assigned depending on what type of gun it is, single shot, burst fire, etc (burst fire has a higher capacity)
-    {
-        //assigns ammo capacity, weapon firing type
-        //if revolver ammo is 6 if smg ammo is 15
-        //also set attack delay here?
-        //needs to be heavily refined
-
-        if (isBurstFire)
-        {
-            shotAmount = 3;
-            maxAmmo = 15; //smg/burstfire guns
-            fireDelay = 0.05f;
-            //bulletPrefab.GetComponent<BulletScript>().bulletSpeed = 1500f;
-            attackDelay = 0.5f;
-        }
-        else
-            return;
-    }
-
     public override void Shoot()
     {
         FindObjectOfType<SFXManager>().PlayAudio("Gunshot");
@@ -406,9 +517,10 @@ public class PlayerController : CharacterBase
 
         if (collision.CompareTag("ScrewPickUp"))
         {
-            walletValue++; //screws have a default value of 1 anyways
-
-            LM.CheckpointCostCheck(gameObject.GetComponent<PlayerController>());
+            Currency cy = FindObjectOfType<Currency>();
+            cy.WalletProperty += 1; //screws have a default value of 1 anyways
+          
+            LM.CheckpointCostCheck();
         }
     }
 
@@ -423,12 +535,17 @@ public class PlayerController : CharacterBase
     public void Replenish()
     {
         //rb.WakeUp();
-        LM.CheckpointCostCheck(gameObject.GetComponent<PlayerController>());
+        LM.CheckpointCostCheck();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         animator.SetBool("IsDead", false);
         displayedHealth = Health;
         healthBar.SetHealth(displayedHealth);
+
+        bulletIndex = 0; //last bullet so far, goes back to the first bullet in the index
+        ammoDisplay.sprite = bulletList[bulletIndex].GetComponent<SpriteRenderer>().sprite;
+        bulletPrefab = bulletList[bulletIndex];
         Ammo = maxAmmo;
+
         canMove = true;
         GetComponent<CapsuleCollider2D>().enabled = true;
     }

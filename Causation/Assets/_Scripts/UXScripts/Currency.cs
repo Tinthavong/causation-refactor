@@ -12,7 +12,20 @@ public class Currency : MonoBehaviour
     //so we're not over loading the PlayerController script
 
     public static TMP_Text currency;
-    public static int walletValue;
+    public static int walletValue; //this is the walletValue that is going to be used for save data
+
+    private int walletProperty; //this is the walletProperty that is referenced inside of playerController
+
+    public int WalletProperty
+    {
+        get { return walletProperty; }
+
+        set
+        {           
+            walletValue = walletProperty;
+            walletProperty = value;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1647267374}
   - component: {fileID: 1647267373}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: revolver_crouch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 697618782276726973}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Strikezone
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -121,7 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 697618783283838229}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: BulletStart
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 697618783331051722}
   - component: {fileID: 697618783331051717}
   - component: {fileID: 697618783331051716}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Grandpa
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -209,12 +209,11 @@ MonoBehaviour:
   strikeDamage: 1
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 2048
   healthBar: {fileID: 0}
   ammoText: {fileID: 0}
+  ammoTotalText: {fileID: 0}
   ammoDisplay: {fileID: 0}
-  walletValue: 0
-  maxAmmo: 6
   deathScreen: {fileID: 0}
   moveSpeed: 50
   maxSpeed: 7
@@ -230,6 +229,8 @@ MonoBehaviour:
   - {fileID: 2360415090640999253, guid: 8aa89e85b5e1ebc4bb5108e1490eec1e, type: 3}
   - {fileID: 7403371841988002607, guid: f4e2937219e40b8419966c81a6d3d9a1, type: 3}
   bulletIndex: 0
+  maxAmmo: 6
+  remainingAmmo: 
   nearObject: {fileID: 0}
   LM: {fileID: 0}
   isJumping: 0
@@ -375,7 +376,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6277723937894728043}
   - component: {fileID: 175641987912383961}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

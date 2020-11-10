@@ -23,7 +23,7 @@ public class PitScript : MonoBehaviour
         switch(collision.tag)
         {
             case "Enemy":
-                Destroy(gameObject);
+                Destroy(collision.gameObject);
                 break;
             case "Player":
                 player = collision.GetComponent<PlayerController>();
