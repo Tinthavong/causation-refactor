@@ -17704,6 +17704,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1737621286 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3493381887575097624, guid: 1a928fbafddaf4c4091cae797bb281db,
+    type: 3}
+  m_PrefabInstance: {fileID: 2076283157}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1739135439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22218,15 +22230,20 @@ PrefabInstance:
       propertyPath: ammoDisplay
       value: 
       objectReference: {fileID: 1885988930}
+    - target: {fileID: 697618783331051721, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
+        type: 3}
+      propertyPath: ammoTotalText
+      value: 
+      objectReference: {fileID: 1737621286}
     - target: {fileID: 697618783331051726, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 278.4
+      value: -5.0000153
       objectReference: {fileID: 0}
     - target: {fileID: 697618783331051726, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 26.45
+      value: -2.6499987
       objectReference: {fileID: 0}
     - target: {fileID: 697618783331051726, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
         type: 3}
@@ -23184,7 +23201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2606829748631346602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 278.2, y: 30.3, z: -10}
+  m_LocalPosition: {x: -5.2, y: 1.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -23609,6 +23626,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkpoint: {fileID: 5222924329770177207}
   flaggedCheckpoint: 0
+  canRetry: 0
+  checkpointCost: 1
   victoryPoint: {fileID: 5222924328296803293}
   levelLoader: {fileID: 5222924329939031178}
   GameOverPanel: {fileID: 0}

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 552969116}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: PunchZone
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7502115989207228126}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: BulletStart
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 3170384674644724538}
   - component: {fileID: 6927494988432347581}
   - component: {fileID: 840296245}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: GunslingerGuy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ MonoBehaviour:
   strikeDamage: 1
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
   dropValue: 0
   drops:
   - drop: {fileID: 7462346461303034108, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}

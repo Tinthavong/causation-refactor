@@ -7653,6 +7653,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2686942302785526997, guid: 31b12168567cb7c41a5434d410bae653,
         type: 3}
+    - target: {fileID: 697618783331051721, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
+        type: 3}
+      propertyPath: ammoTotalText
+      value: 
+      objectReference: {fileID: 1368384468}
     - target: {fileID: 697618783331051726, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8678,6 +8683,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1346091683}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1368384468 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3493381887575097624, guid: 1a928fbafddaf4c4091cae797bb281db,
+    type: 3}
+  m_PrefabInstance: {fileID: 1252877923}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1376651311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11539,6 +11556,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkpoint: {fileID: 9056316092984607195}
   flaggedCheckpoint: 0
+  canRetry: 0
+  checkpointCost: 0
   victoryPoint: {fileID: 9056316094734825649}
   levelLoader: {fileID: 9056316093159753702}
   GameOverPanel: {fileID: 1252877925}

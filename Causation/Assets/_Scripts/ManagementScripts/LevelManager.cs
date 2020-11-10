@@ -16,10 +16,11 @@ public class LevelManager : MonoBehaviour
     public GameObject GameOverPanel;
     public GameObject victoryPanel;
     private GameObject hudRef;
-
+    private Currency cy;
     // Start is called before the first frame update
     void Start()
     {
+        cy = FindObjectOfType<Currency>();
         hudRef = GameObject.Find("HUDElements");
         GameOverPanel = GameObject.Find("GameOverScreen");
     }
@@ -60,11 +61,9 @@ public class LevelManager : MonoBehaviour
     public void RetryCheckpoint()//Retry from a checkpoint rather than from the beginning
     {
         PlayerController pc = FindObjectOfType<PlayerController>();
-        //the hardcoded "1" should be replaced with a variable for the cost
-
         if (canRetry == true)
         {
-            Currency.walletValue = (Currency.walletValue - checkpointCost); 
+            cy.WalletProperty = (cy.WalletProperty - checkpointCost);
             //A "replenish" function for playercontroller might be best for using checkpoints
             Camera mc = FindObjectOfType<Camera>();
             pc.transform.position = checkpoint.transform.position;
@@ -85,14 +84,16 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void CheckpointCostCheck(PlayerController pc) 
+    public void CheckpointCostCheck()
     {
-        if (pc.walletValue >= checkpointCost)
+        if (cy.WalletProperty >= checkpointCost)
         {
+            Debug.Log(cy.WalletProperty);
             canRetry = true;
         }
-        else if (pc.walletValue < checkpointCost)
+        else if (cy.WalletProperty < checkpointCost)
         {
+            Debug.Log(cy.WalletProperty);
             canRetry = false;
         }
 

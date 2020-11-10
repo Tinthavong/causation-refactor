@@ -59,15 +59,14 @@ public class MissionSelection : MonoBehaviour
         saveMenu.SetActive(false);
         fadeCanvas.gameObject.SetActive(false);
 
-        if (MenuController.isNewGame == true)
+        if (MainMenuController.isNewGame == true)
         {
             SaveManager.instance.gameData.currency = 0;
             SaveManager.instance.gameData.iteration = 0;
-            //SaveManager.instance.DeleteSavedData();
 
             SaveManager.instance.Save();
 
-            MenuController.isNewGame = false;
+            MainMenuController.isNewGame = false;
         }
 
         if (SaveManager.instance.hasLoaded)

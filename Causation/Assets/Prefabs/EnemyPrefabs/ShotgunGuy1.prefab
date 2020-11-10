@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 921435466201895879}
   - component: {fileID: 5060461837252918812}
   - component: {fileID: 373400276}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: ShotgunGuy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -153,7 +153,7 @@ MonoBehaviour:
   strikeDamage: 1
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
   dropValue: 0
   drops:
   - drop: {fileID: 7462346461303034108, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}
@@ -202,7 +202,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4750039129150202043}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: BulletStart2
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -232,7 +232,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2825692918089923425}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: PunchZone
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -262,7 +262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5704440057597396515}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: BulletStart
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -292,7 +292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7397209489149400035}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: BulletStart3
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}

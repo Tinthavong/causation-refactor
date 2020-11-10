@@ -9,17 +9,10 @@ public class Screw : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            Currency.currencyValue += 1;
-            
-            UpdateCurrency();
+            Currency.walletValue += 1;
+
             FindObjectOfType<SFXManager>().PlayAudio("Pickup");
             Destroy(gameObject);
         }  
-    }
-
-    void UpdateCurrency()
-    {
-        Currency.walletValue = Currency.currencyValue;
-        Currency.currency.text = Currency.walletValue.ToString();
     }
 }
