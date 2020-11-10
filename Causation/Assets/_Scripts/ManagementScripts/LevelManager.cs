@@ -8,7 +8,12 @@ public class LevelManager : MonoBehaviour
 {  //game over manager for both player wins and losses
     public GameObject checkpoint; //the last visited checkpoint, a flag is set that allows the player to respawn there
     public bool flaggedCheckpoint = false;
-    public bool canRetry = false;
+
+    //The sloppiest and quickest way to add another checkpoint, works fine because of the small - medium sized levels
+    public GameObject checkpoint2;
+    public bool flaggedCheckpoint2 = false;
+
+    public bool canRetry = false; //can afford the toll/checkpoint cost
     public int checkpointCost;
 
     public GameObject victoryPoint;
@@ -17,7 +22,7 @@ public class LevelManager : MonoBehaviour
     public GameObject victoryPanel;
     private GameObject hudRef;
     private Currency cy;
-    // Start is called before the first frame update
+
     void Start()
     {
         cy = FindObjectOfType<Currency>();
@@ -25,7 +30,6 @@ public class LevelManager : MonoBehaviour
         GameOverPanel = GameObject.Find("GameOverScreen");
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -36,7 +40,7 @@ public class LevelManager : MonoBehaviour
     public void GameOver()
     {
         //Spawn the game over panels or UI game object here
-        //The player script disables movement but if you want to pause the gameworld then i imagine it could be done right here
+        //The player script disables movement, this handles UI
         SetActiveChildren(hudRef.transform, false);
         SetActiveChildren(GameOverPanel.transform, true);
     }
@@ -52,8 +56,8 @@ public class LevelManager : MonoBehaviour
 
     public void VictoryCheck()
     {
-        //Spawn the victory screen here or the transition or whatever you had in mind
-        //The player script disables movement but if you want to pause the gameworld then i imagine it could be done right here
+        //Spawn the victory screen here
+        //The player script disables movement
         SetActiveChildren(hudRef.transform, false);
         victoryPanel.SetActive(true);
     }
@@ -66,9 +70,21 @@ public class LevelManager : MonoBehaviour
             cy.WalletProperty = (cy.WalletProperty - checkpointCost);
             //A "replenish" function for playercontroller might be best for using checkpoints
             Camera mc = FindObjectOfType<Camera>();
-            pc.transform.position = checkpoint.transform.position;
-            Vector3 camerapoint = new Vector3(pc.transform.position.x, pc.transform.position.y, -10);
-            mc.transform.position = camerapoint;
+
+            //Extremely sequential approach that doesn't allow dynamic checkpoints, the first if statement proceeds as long as the second checkpoint isn't flagged but once it is the first if statement is ignored
+            if(flaggedCheckpoint && !flaggedCheckpoint2)
+            {
+                pc.transform.position = checkpoint.transform.position;
+                Vector3 camerapoint = new Vector3(pc.transform.position.x, pc.transform.position.y, -10);
+                mc.transform.position = camerapoint;
+            }
+            else if (flaggedCheckpoint2)
+            {
+                pc.transform.position = checkpoint2.transform.position;
+                Vector3 camerapoint = new Vector3(pc.transform.position.x, pc.transform.position.y, -10);
+                mc.transform.position = camerapoint;
+            }
+
             pc.Replenish();
             SetActiveChildren(hudRef.transform, true);
             SetActiveChildren(GameOverPanel.transform, false);

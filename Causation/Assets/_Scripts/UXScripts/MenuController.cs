@@ -52,7 +52,7 @@ public class MenuController : MonoBehaviour
     public void Retry() //Meant to retry from checkpoint rather than restart/reload the whole scene
     {
         LevelManager LM = FindObjectOfType<LevelManager>();
-        if (LM.flaggedCheckpoint)
+        if (LM.flaggedCheckpoint || LM.flaggedCheckpoint2)
         {
             LM.RetryCheckpoint();
         }

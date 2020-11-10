@@ -25,7 +25,7 @@ public class Interactables : MonoBehaviour
 
     public static bool transitionFlag = false;
     private int hardLock = 1;
-    private int i = 1;
+    private int i = 0;
     private GameObject[] screenTransitions;
 
     private void Start()
@@ -47,7 +47,6 @@ public class Interactables : MonoBehaviour
     {
         Camera mc = FindObjectOfType<Camera>();
 
-        //I don't think this does what you think it does
         //i is increased and compared here and corresponds to which transition the player should be sent to
         switch (i)
         {
@@ -62,7 +61,7 @@ public class Interactables : MonoBehaviour
                 i++;
                 break;
             case 1:
-                gameObject.transform.position = GameObject.Find("ScreenTransitionB").transform.position;
+                gameObject.transform.position = GameObject.Find("ScreenTransitionD").transform.position;
                 dummy = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
                 mc.transform.position = dummy;
                 transitionFlag = false; //no backtracking. also this implementation ain't great huh
@@ -70,7 +69,7 @@ public class Interactables : MonoBehaviour
                 i++;
                 break;
             case 2:
-                gameObject.transform.position = GameObject.Find("ScreenTransition").transform.position;
+                gameObject.transform.position = GameObject.Find("ScreenTransitionF").transform.position;
                 dummy = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
                 mc.transform.position = dummy;
                 transitionFlag = false; //no backtracking. also this implementation ain't great huh

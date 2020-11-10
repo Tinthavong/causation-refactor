@@ -512,7 +512,14 @@ public class PlayerController : CharacterBase
         if (collision.CompareTag("Checkpoint"))
         {
             LM.checkpoint.GetComponent<SpriteRenderer>().color = Color.green;
-            LM.flaggedCheckpoint = true; //be sure to reset all flags when restarting or changing levels
+            LM.flaggedCheckpoint = true;
+        }
+
+        if (collision.CompareTag("Checkpoint2"))
+        {
+            LM.checkpoint2.GetComponent<SpriteRenderer>().color = Color.green;
+            LM.flaggedCheckpoint = false;
+            LM.flaggedCheckpoint2 = true;
         }
 
         if (collision.CompareTag("ScrewPickUp"))
