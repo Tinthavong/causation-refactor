@@ -21670,6 +21670,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1897959549620746824, guid: 1a928fbafddaf4c4091cae797bb281db,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3181024144350290024, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
       propertyPath: m_IsActive
@@ -21898,6 +21903,11 @@ PrefabInstance:
     - target: {fileID: 3493381887826157953, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859306757046551705, guid: 1a928fbafddaf4c4091cae797bb281db,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -23609,6 +23619,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkpoint: {fileID: 5222924329770177207}
   flaggedCheckpoint: 0
+  canRetry: 0
+  checkpointCost: 0
   victoryPoint: {fileID: 5222924328296803293}
   levelLoader: {fileID: 5222924329939031178}
   GameOverPanel: {fileID: 0}

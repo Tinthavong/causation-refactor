@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4967821950883433672}
+  - component: {fileID: 7985236510145882612}
   m_Layer: 0
   m_Name: SaveManager
   m_TagString: Untagged
@@ -30,3 +31,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7985236510145882612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4967821950883433674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20f5687857268b847924cb47f192a55f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData:
+    saveName: save1
+    currency: 0
+    iteration: 0
+  hasLoaded: 0

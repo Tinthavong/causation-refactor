@@ -111,8 +111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c673e7dd4451de4398facfc0a28d24a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  fadeCanvas: {fileID: 0}
 --- !u!1001 &335774554042306082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -123,13 +121,13 @@ PrefabInstance:
     - target: {fileID: 980676529069986326, guid: 78aca9cedd3eac24b9009f2cec6d0c18,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NextLevel
+      value: MissionSelect
       objectReference: {fileID: 0}
     - target: {fileID: 980676529069986326, guid: 78aca9cedd3eac24b9009f2cec6d0c18,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2093030279734727784}
     - target: {fileID: 1104172656754048577, guid: 78aca9cedd3eac24b9009f2cec6d0c18,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -239,11 +237,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 2093030279734727784}
+    - target: {fileID: 1756977645262043494, guid: 78aca9cedd3eac24b9009f2cec6d0c18,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
       objectReference: {fileID: 0}
     - target: {fileID: 1756977645373417282, guid: 78aca9cedd3eac24b9009f2cec6d0c18,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 2093030279734727784}
+    - target: {fileID: 1756977645373417282, guid: 78aca9cedd3eac24b9009f2cec6d0c18,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 1756977645870712536, guid: 78aca9cedd3eac24b9009f2cec6d0c18,
         type: 3}
@@ -376,6 +384,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 2093030279734727784}
+    - target: {fileID: 1756977645949320011, guid: 78aca9cedd3eac24b9009f2cec6d0c18,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartGame
       objectReference: {fileID: 0}
     - target: {fileID: 1756977646652625601, guid: 78aca9cedd3eac24b9009f2cec6d0c18,
         type: 3}
