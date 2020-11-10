@@ -21,6 +21,10 @@ public class MenuController : MonoBehaviour
 
     public void QuitGame()
     {
+        SaveManager.instance.gameData.currency = MissionSelection.currency;
+        SaveManager.instance.gameData.iteration = MissionSelection.iterations;
+        SaveManager.instance.Save();
+
         Debug.Log("Quitting Game");
         Application.Quit();
     }
@@ -32,6 +36,7 @@ public class MenuController : MonoBehaviour
 
     public void RestartGame()
     {
+        Currency.walletValue = 0;
         Time.timeScale = 1f;
         lastLoad = PlayerPrefs.GetInt("SavedScene");
         if (lastLoad != 0)

@@ -15,10 +15,18 @@ public class SaveManager : MonoBehaviour
 
     public bool hasLoaded;
 
-    private void Awake()
+    public bool hasSaved;
+
+    public void Awake()
     {
         instance = this;
-        Load();
+
+        string savePath = Application.persistentDataPath;
+
+        if (File.Exists(savePath + "/" + gameData.saveName + ".dat"))
+        {
+            Load();
+        }
     }
 
     public void Save()
@@ -64,7 +72,7 @@ public class SaveManager : MonoBehaviour
         {
             File.Delete(savePath + "/" + gameData.saveName + ".dat");
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
             Debug.Log("Saved data has been cleared");
         }

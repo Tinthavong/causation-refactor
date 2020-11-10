@@ -51,12 +51,10 @@ public class PauseController : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(1);
-    }
+        SaveManager.instance.gameData.currency = MissionSelection.currency;
+        SaveManager.instance.gameData.iteration = MissionSelection.iterations;
+        SaveManager.instance.Save();
 
-    public void QuitGame()
-    {
-        Debug.Log("Quitting Game");
-        Application.Quit();
+        SceneManager.LoadScene(1);
     }
 }

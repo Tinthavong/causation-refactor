@@ -9,16 +9,25 @@ using TMPro;
 public class MissionSelection : MonoBehaviour
 {
     public static int iterations;
+    public static int currency;
+
+    [Header("TMP_Text Boxes")]
     public TMP_Text eraText;
-    public Image cover;
-    public Button backButton;
     public TMP_Text currencyText;
-    public TMP_Text iterationText;
+    //public TMP_Text iterationText;
     public TMP_Text message;
-    public int currency;
+    
+    [Header("Scene Transition Variables")]
     public Animator anim;
     public Canvas fadeCanvas;
+
+    [Header("Save Menu/UnsaveData Warning Panels")]
     public GameObject saveMenu;
+    public GameObject unsaveDataWarning;
+
+    [Header("Extra Variables")]
+    public Image cover;
+    public Button backButton;
 
     [Header("Grandpa's Missions")]
     public Button era1;
@@ -47,24 +56,28 @@ public class MissionSelection : MonoBehaviour
     {
         anim.SetBool("Transition", false);
 
-        UpdateCurrency();
-        UpdateIteration();
-
         iterations = SaveManager.instance.gameData.iteration;
         currency = SaveManager.instance.gameData.currency;
 
         currencyText.text = currency.ToString();
-        iterationText.text = "Iteration: " + iterations;
+        //iterationText.text = "Iteration: " + iterations;
 
         saveMenu.SetActive(false);
         fadeCanvas.gameObject.SetActive(false);
 
+        if (Currency.walletValue != 0 && iterations != 0)
+        {
+            UpdateCurrency();
+            UpdateIteration();
+        }
+
         if (MainMenuController.isNewGame == true)
         {
-            SaveManager.instance.gameData.currency = 0;
-            SaveManager.instance.gameData.iteration = 0;
+            SaveManager.instance.DeleteSavedData();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
-            SaveManager.instance.Save();
+            currency = SaveManager.instance.gameData.currency;
+            iterations = SaveManager.instance.gameData.iteration;
 
             MainMenuController.isNewGame = false;
         }
@@ -72,10 +85,12 @@ public class MissionSelection : MonoBehaviour
         if (SaveManager.instance.hasLoaded)
         {
             currency = SaveManager.instance.gameData.currency;
+            iterations = SaveManager.instance.gameData.iteration;
         }
         else
         {
             SaveManager.instance.gameData.currency = currency;
+            SaveManager.instance.gameData.iteration = iterations;
         }
 
         //Start of game
@@ -182,8 +197,11 @@ public class MissionSelection : MonoBehaviour
         if (iterations != 6)
         {
             iterations = 1;
+            SaveManager.instance.gameData.iteration = iterations;
+            SaveManager.instance.gameData.currency = currency;
+            SaveManager.instance.Save();
         }
-        Currency.walletValue = SaveManager.instance.gameData.currency;
+
         SceneManager.LoadScene(3);
     }
 
@@ -192,6 +210,9 @@ public class MissionSelection : MonoBehaviour
         if (iterations != 6)
         {
             iterations = 2;
+            SaveManager.instance.gameData.iteration = iterations;
+            SaveManager.instance.gameData.currency = currency;
+            SaveManager.instance.Save();
         }
         
         SceneManager.LoadScene(4);
@@ -202,6 +223,9 @@ public class MissionSelection : MonoBehaviour
         if (iterations != 6)
         {
             iterations = 3;
+            SaveManager.instance.gameData.iteration = iterations;
+            SaveManager.instance.gameData.currency = currency;
+            SaveManager.instance.Save();
         }
         
         SceneManager.LoadScene(5);
@@ -212,6 +236,9 @@ public class MissionSelection : MonoBehaviour
         if (iterations != 6)
         {
             iterations = 4;
+            SaveManager.instance.gameData.iteration = iterations;
+            SaveManager.instance.gameData.currency = currency;
+            SaveManager.instance.Save();
         }
         
         SceneManager.LoadScene(6);
@@ -222,6 +249,9 @@ public class MissionSelection : MonoBehaviour
         if (iterations != 6)
         {
             iterations = 5;
+            SaveManager.instance.gameData.iteration = iterations;
+            SaveManager.instance.gameData.currency = currency;
+            SaveManager.instance.Save();
         }
         
         SceneManager.LoadScene(7);
@@ -232,6 +262,9 @@ public class MissionSelection : MonoBehaviour
         if (iterations != 6)
         {
             iterations = 6;
+            SaveManager.instance.gameData.iteration = iterations;
+            SaveManager.instance.gameData.currency = currency;
+            SaveManager.instance.Save();
         }
 
         SceneManager.LoadScene(8);
@@ -239,16 +272,17 @@ public class MissionSelection : MonoBehaviour
 
     void UpdateCurrency()
     {
-        currency = SaveManager.instance.gameData.currency + Currency.walletValue;
+        SaveManager.instance.gameData.currency = Currency.walletValue;
+        currency = SaveManager.instance.gameData.currency;
 
-        SaveManager.instance.gameData.currency = currency;
-        SaveManager.instance.Save();
+        //SaveManager.instance.Save();
     }
 
     void UpdateIteration()
     {
         SaveManager.instance.gameData.iteration = iterations;
-        SaveManager.instance.Save();
+        
+        //SaveManager.instance.Save();
     }
 
     public void SaveGame()
@@ -258,6 +292,7 @@ public class MissionSelection : MonoBehaviour
         message.text = "Game has been saved";
         SaveManager.instance.Save();
         saveMenu.SetActive(false);
+        SaveManager.instance.hasSaved = true;
     }
 
     public void ClearSaveData()
@@ -269,13 +304,26 @@ public class MissionSelection : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    IEnumerator LoadNextScene(int levelIndex)
+    public void GameSavedToMainMenu()
     {
-        anim.SetBool("Transition", true);
-
-        yield return new WaitForSeconds(5);
-
-        SceneManager.LoadScene(levelIndex);
+        if (SaveManager.instance.hasSaved)
+        {
+            SceneManager.LoadScene(1);
+        }
+        else
+        {
+            unsaveDataWarning.SetActive(true);
+        }
+        
     }
+
+    //IEnumerator LoadNextScene(int levelIndex)
+    //{
+    //    anim.SetBool("Transition", true);
+
+    //    yield return new WaitForSeconds(5);
+
+    //    SceneManager.LoadScene(levelIndex);
+    //}
 
 }
