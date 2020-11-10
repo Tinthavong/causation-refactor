@@ -8,29 +8,10 @@ public class MenuController : MonoBehaviour
 {
     private int lastLoad;
     private int loadNextScene;
-    public static bool isNewGame;
-    public Animator anim;
-    public Canvas fadeCanvas;
 
     private void Start()
     {
         loadNextScene = SceneManager.GetActiveScene().buildIndex + 1;
-        anim.SetBool("Transition", true);
-        isNewGame = false;
-    }
-
-    public void NewGame()
-    {
-        fadeCanvas.gameObject.SetActive(true);
-        Time.timeScale = 1f;
-        PauseController.isPaused = false;
-        isNewGame = true;
-        StartCoroutine(LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1));
-    }
-
-    public void CreditsScreen()
-    {
-        SceneManager.LoadScene(8);
     }
 
     public void MainMenu()
@@ -42,15 +23,6 @@ public class MenuController : MonoBehaviour
     {
         Debug.Log("Quitting Game");
         Application.Quit();
-    }
-
-    public void LoadGame()
-    {
-        fadeCanvas.gameObject.SetActive(true);
-        Time.timeScale = 1f;
-        PauseController.isPaused = false;
-        StartCoroutine(LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1));
-        Debug.Log("Saved Game Loaded");
     }
 
     public void MissionSelect()
@@ -98,14 +70,5 @@ public class MenuController : MonoBehaviour
         //{
         //    return;
         //}
-    }
-
-    IEnumerator LoadNextScene(int levelIndex)
-    {
-        anim.SetBool("Transition", true);
-
-        yield return new WaitForSeconds(5);
-
-        SceneManager.LoadScene(levelIndex);
     }
 }
