@@ -16,6 +16,7 @@ TagManager:
   - Ledge
   - Groundfloor
   - EnProjectile
+  - Checkpoint2
   layers:
   - Default
   - TransparentFX

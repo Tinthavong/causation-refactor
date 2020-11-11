@@ -41,6 +41,8 @@ public class Bossman1 : Enemy
     private Vector3 gatlingCurrentLeft;
     private Vector3 gatlingCurrentRight;
 
+    public bool isAwake = false;
+
     void Start()
     {
         bulletRefSpeed = bulletPrefab.GetComponent<BulletScript>().bulletSpeed;
@@ -55,63 +57,66 @@ public class Bossman1 : Enemy
     // Update is called once per frame
     void Update()
     {
-        firerateWait -= Time.deltaTime;
-
-        //This fires regardless of the phase, bad player no get close
-        if (firerateWait <= 0 && isTooClose())
+        if (isAwake)
         {
-            animator.SetBool("IsMoving", false);
-            animator.SetBool("IsLasering", true);
-            LaserShot();
-            firerateWait = firerate;
-        }
-        
-        if (!isInPhase)
-        {
-            phaseRateWait -= Time.deltaTime;
-            //Minor movement
-            animator.SetBool("IsLasering", false);
-            animator.SetBool("IsShooting", false);
-            animator.SetBool("IsMoving", true);
-            minorMovement();
+            firerateWait -= Time.deltaTime;
 
-        }
-
-        if (phaseRateWait <= 0)
-        {
-            //phase is changed when a bullets fired threshold is met
-            isInPhase = true;
-            phaseRateWait = phaseRate;
-        }
-
-        if (isInPhase)
-        {
-            switch (phase)
+            //This fires regardless of the phase, bad player no get close
+            if (firerateWait <= 0 && isTooClose())
             {
-                case 0:
-                    changeGatlingHeight(1);
-                    gatlingStream();
-                    break;
-                case 1:
-                    changeGatlingHeight(2);
-                    gatlingStream();
-                    break;
-                case 2:
-                    alternatingStream();
-                    break;
+                animator.SetBool("IsMoving", false);
+                animator.SetBool("IsLasering", true);
+                LaserShot();
+                firerateWait = firerate;
             }
-        }
 
-        if (bulletsFired >= bulletsFiredStop)
-        {
-            phase += 1;
-            if (phase >= 3)
+            if (!isInPhase)
             {
-                phase = 0;
-            }
-            isInPhase = false;
-            bulletsFired = 0;
+                phaseRateWait -= Time.deltaTime;
+                //Minor movement
+                animator.SetBool("IsLasering", false);
+                animator.SetBool("IsShooting", false);
+                animator.SetBool("IsMoving", true);
+                minorMovement();
 
+            }
+
+            if (phaseRateWait <= 0)
+            {
+                //phase is changed when a bullets fired threshold is met
+                isInPhase = true;
+                phaseRateWait = phaseRate;
+            }
+
+            if (isInPhase)
+            {
+                switch (phase)
+                {
+                    case 0:
+                        changeGatlingHeight(1);
+                        gatlingStream();
+                        break;
+                    case 1:
+                        changeGatlingHeight(2);
+                        gatlingStream();
+                        break;
+                    case 2:
+                        alternatingStream();
+                        break;
+                }
+            }
+
+            if (bulletsFired >= bulletsFiredStop)
+            {
+                phase += 1;
+                if (phase >= 3)
+                {
+                    phase = 0;
+                }
+                isInPhase = false;
+                bulletsFired = 0;
+
+            }
         }
     }
 
