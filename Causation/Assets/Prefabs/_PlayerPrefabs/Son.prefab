@@ -105,7 +105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3030930682350282829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.85, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0.85, y: 0.811, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3030930682462453143}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 3030930682462453148}
   - component: {fileID: 3030930682462453149}
   m_Layer: 10
-  m_Name: Son 1
+  m_Name: Son
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
   onGround: 0
   groundLength: 1.42
   colliderOffset: {x: 0.49, y: 0, z: 0}
-  bulletPrefab: {fileID: 7364781363387459371, guid: 041c325e3159f3a4495428b9a610563c,
+  bulletPrefab: {fileID: 2686942302785526997, guid: 31b12168567cb7c41a5434d410bae653,
     type: 3}
   bulletSpawn: {fileID: 3030930682350282829}
   StrikeZone: {fileID: 3030930683488462308}
@@ -191,7 +191,7 @@ MonoBehaviour:
   jumpDelay: 0.25
   attackDelay: 0.2
   fireDelay: 1
-  isBurstFire: 0
+  isBurstFire: 1
   bulletList:
   - {fileID: 2686942302785526997, guid: 31b12168567cb7c41a5434d410bae653, type: 3}
   - {fileID: 3784773981510655563, guid: 7876a21c748af864ca77fc10e8fe933d, type: 3}

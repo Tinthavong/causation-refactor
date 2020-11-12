@@ -267,7 +267,7 @@ public class PlayerController : CharacterBase
 
             if (Input.GetButtonDown("Fire1") && Ammo > 0 && attackElapsedTime >= attackDelay)
             {
-                if (!isCrouched) animator.Play("GrandpaShoot");
+                if (!isCrouched) animator.Play("Shoot");
                 for (int i = 0; i < shotAmount; i++)
                 {
                     Invoke("Shoot", (fireDelay * i));
@@ -323,7 +323,7 @@ public class PlayerController : CharacterBase
             //This allows crouching
             if (Input.GetKeyDown(KeyCode.S) && onGround)
             {
-                animator.Play("GrandpaCrouch");
+                animator.Play("Crouch");
                 animator.SetBool("IsCrouched", true);
                 isCrouched = true;
                 rb.velocity = new Vector2(0f, 0f);
@@ -351,7 +351,7 @@ public class PlayerController : CharacterBase
         else if (!canMove && displayedHealth <= 0)
         {
             animator.SetBool("IsDead", true);
-            animator.Play("GrandpaDeath");
+            animator.Play("Death");
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
         }
     }
@@ -403,7 +403,7 @@ public class PlayerController : CharacterBase
 
     void Jump()
     {
-        animator.Play("GrandpaJump");
+        animator.Play("Jump");
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
         jumpTimer = 0;
@@ -440,6 +440,7 @@ public class PlayerController : CharacterBase
         }
     }
 
+    //Cut this
     private void StrikingBehavior()
     {
         if (Input.GetButtonDown("Fire2") && attackElapsedTime >= attackDelay)//and a bool/state check that determines if the player is not already shooting
@@ -480,7 +481,7 @@ public class PlayerController : CharacterBase
         base.DamageCalc(damage);
         healthBar.SetHealth(displayedHealth);
         ElimCharacter();
-        animator.PlayInFixedTime("GrandpaDamage", -1, 1f);
+        animator.PlayInFixedTime("Damage", -1, 1f);
         StartCoroutine(Invinciblity());
     }
 
