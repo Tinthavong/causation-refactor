@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class DestructibleProp : Enemy
 {
+    private void Start()
+    {
+        isBox = true;
+    }
+
     // Update is called once per frame
     void Update()
     {

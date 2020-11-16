@@ -46,6 +46,7 @@ public class Enemy : CharacterBase
     [HideInInspector]
     public bool facingRight;
     public bool isChasing = false;
+    public bool isBox; //sorry
 
     protected PlayerController player; //this can be private, pretty sure this works now
     protected Animator animator;

@@ -161,12 +161,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   dropValue: 0
-  drops: []
+  drops:
+  - drop: {fileID: 7462346461303034108, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}
+    weight: 0
   firerate: 2
   sightRange: 10
   meleeRange: 2
   floorHax: 0
   verticalSight: 2.5
   facingRight: 0
+  isChasing: 0
+  isBox: 1
   enemySpeed: 8
   bulletRefSpeed: 0
