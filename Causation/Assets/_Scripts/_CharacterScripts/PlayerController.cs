@@ -322,6 +322,7 @@ public class PlayerController : CharacterBase
             if (Input.GetKeyDown(KeyCode.R) && remainingAmmo[bulletIndex] > 0)
             {
                 ReloadBullets();
+                FindObjectOfType<SFXManager>().PlayAudio("Reload");
             }
             else if (Input.GetKeyDown(KeyCode.R) && remainingAmmo[bulletIndex] <= 0)
             {
@@ -347,6 +348,7 @@ public class PlayerController : CharacterBase
             if (Input.GetButtonDown("Jump") && !Input.GetKey(KeyCode.S))
             {
                 jumpTimer = Time.time + jumpDelay;
+                FindObjectOfType<SFXManager>().PlayAudio("Jump");
             }
             else if (Input.GetButton("Jump") && Input.GetKey(KeyCode.S))
             {

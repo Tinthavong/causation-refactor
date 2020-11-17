@@ -69,3 +69,13 @@ MonoBehaviour:
     volume: 1
     loop: 0
     source: {fileID: 0}
+  - name: Reload
+    audioClip: {fileID: 8300000, guid: 21e9267b5b435ee468ac536122b5a8da, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jump
+    audioClip: {fileID: 8300000, guid: 8c4df427ff420cf45a8e36e4f3c2bac6, type: 3}
+    volume: 0
+    loop: 0
+    source: {fileID: 0}
