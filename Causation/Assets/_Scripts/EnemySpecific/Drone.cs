@@ -25,6 +25,7 @@ public class Drone : Enemy
     // Update is called once per frame
     void Update()
     {
+        //Does everything when the player is within range, otherwise it just lowers the fireratewait
         if (isClose())
         {
             Flip(0);
@@ -50,6 +51,7 @@ public class Drone : Enemy
         if (transform.position.y < player.transform.position.y)
         {
             Vector2 movement = new Vector2(0.0f, enemySpeed);
+            //Sets velocity to max if the force ever makes it go over
             if (rb.velocity.y > enemySpeed)
             {
                 rb.velocity = movement;
@@ -62,6 +64,7 @@ public class Drone : Enemy
         else if (transform.position.y > player.transform.position.y)
         {
             Vector2 movement = new Vector2(0.0f, -enemySpeed);
+            //Sets velocity to max if the force ever makes it go over
             if (rb.velocity.y < -enemySpeed)
             {
                 rb.velocity = movement;
@@ -73,6 +76,7 @@ public class Drone : Enemy
         }
     }
 
+    //Overriden shoot method to correctly angle the lasers
     public override void Shoot()
     {
         GameObject b = Instantiate(bulletPrefab) as GameObject;
@@ -80,7 +84,6 @@ public class Drone : Enemy
         if (gameObject.transform.localScale.x < 0)
         {
             b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-            //b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletSpeed);
             b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
 
         }

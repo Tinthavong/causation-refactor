@@ -211,7 +211,7 @@ MonoBehaviour:
   sightRange: 10
   meleeRange: 2
   ignoresVerticalSightRestriction: 0
-  verticalSight: 2.5
+  verticalSight: 6
   facingRight: 0
   isChasing: 0
   isBox: 0

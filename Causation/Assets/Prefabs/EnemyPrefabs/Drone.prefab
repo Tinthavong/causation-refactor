@@ -189,7 +189,7 @@ MonoBehaviour:
   staminaActions: 0
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
   onGround: 0
   groundLength: 0.6
   colliderOffset: {x: 0, y: 0, z: 0}
@@ -203,11 +203,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   dropValue: 0
-  drops: []
+  drops:
+  - drop: {fileID: 7462346461303034108, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}
+    weight: 5
   firerate: 1
   sightRange: 10
   meleeRange: 2
-  ignoresVerticalSightRestriction: 0
+  ignoresVerticalSightRestriction: 1
   verticalSight: 2.5
   facingRight: 0
   isChasing: 0

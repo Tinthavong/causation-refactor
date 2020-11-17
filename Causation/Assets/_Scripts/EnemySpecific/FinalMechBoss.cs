@@ -53,17 +53,64 @@ public class FinalMechBoss : Enemy
     // Update is called once per frame
     void Update()
     {
-        switch (phase)
+        if(isAwake)
         {
-            //airborne phase
-            case 0:
-                break;
-            //grounded phase
-            case 1:
-                break;
-            //reflecting phase
-            case 2:
-                break;
+            if(isInPhase)
+            {
+                //This switch is where the boss will do things
+                switch (phase)
+                {
+                    //airborne phase
+                    case 0:
+                        break;
+                    //grounded phase
+                    case 1:
+                        break;
+                    //reflecting phase
+                    case 2:
+                        break;
+                }
+                currentPhaseTime += Time.deltaTime;
+
+                //This switch will check to see if it should end the phase based on the end time of the phase
+                switch(phase)
+                {
+                    //Airborne phase
+                    case 0:
+                        if(currentPhaseTime >= airPhaseEndTime)
+                        {
+                            isInPhase = false;
+                            currentPhaseTime = 0f;
+                        }
+                        break;
+                    //Grounded phase
+                    case 1:
+                        if (currentPhaseTime >= groundPhaseEndTime)
+                        {
+                            isInPhase = false;
+                            currentPhaseTime = 0f;
+                        }
+                        break;
+                    //Reflecting phase
+                    case 2:
+                        if (currentPhaseTime >= reflectPhaseEndTime)
+                        {
+                            isInPhase = false;
+                            currentPhaseTime = 0f;
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                phaseRateWait += Time.deltaTime;
+            }
+
+            if(phaseRateWait >= phaseRate)
+            {
+                isInPhase = true;
+                phaseRateWait = 0f;
+            }
         }
     }
 }
