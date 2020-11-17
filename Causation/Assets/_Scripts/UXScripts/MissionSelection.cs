@@ -14,7 +14,6 @@ public class MissionSelection : MonoBehaviour
     [Header("TMP_Text Boxes")]
     public TMP_Text eraText;
     public TMP_Text currencyText;
-    //public TMP_Text iterationText;
     public TMP_Text message;
     
     [Header("Scene Transition Variables")]
@@ -57,11 +56,10 @@ public class MissionSelection : MonoBehaviour
         anim.SetBool("Transition", false);
 
         //SaveManager.instance.Load();
-        iterations = SaveManager.instance.gameData.iteration;
-        currency = SaveManager.instance.gameData.currency;
+        //iterations = SaveManager.instance.gameData.iteration;
+        //currency = SaveManager.instance.gameData.currency;
 
         currencyText.text = currency.ToString();
-        //iterationText.text = "Iteration: " + iterations;
 
         saveMenu.SetActive(false);
         fadeCanvas.gameObject.SetActive(false);
@@ -70,28 +68,6 @@ public class MissionSelection : MonoBehaviour
         {
             UpdateCurrency();
             UpdateIteration();
-        }
-
-        if (MainMenuController.isNewGame == true)
-        {
-            SaveManager.instance.DeleteSavedData();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-            currency = SaveManager.instance.gameData.currency;
-            iterations = SaveManager.instance.gameData.iteration;
-
-            MainMenuController.isNewGame = false;
-        }
-
-        if (SaveManager.instance.hasLoaded)
-        {
-            currency = SaveManager.instance.gameData.currency;
-            iterations = SaveManager.instance.gameData.iteration;
-        }
-        else
-        {
-            SaveManager.instance.gameData.currency = currency;
-            SaveManager.instance.gameData.iteration = iterations;
         }
 
         //Start of game
