@@ -17,6 +17,9 @@ TagManager:
   - Groundfloor
   - EnProjectile
   - Checkpoint2
+  - RedBulletItem
+  - BlueBulletItem
+  - GreenBulletItem
   layers:
   - Default
   - TransparentFX

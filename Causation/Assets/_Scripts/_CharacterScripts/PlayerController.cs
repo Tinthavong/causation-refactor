@@ -19,16 +19,10 @@ public class PlayerController : CharacterBase
     public HealthBar healthBar; //I don't like the idea of having a type just for healthbar, redo later
     public TMP_Text ammoText; //current ammo
     public TMP_Text ammoTotalText; //available ammo
-
     public Image ammoDisplay; //probably temporary, i have a better idea
-   // public int walletValue;
-
-
-
-
 
     Animator animator;
-    Rigidbody2D rb; //rigidbody used for jumping
+    Rigidbody2D rb;
     public GameObject deathScreen;
 
     [Header("Movement Stats")]
@@ -50,7 +44,7 @@ public class PlayerController : CharacterBase
     public float fireDelay = 1f;
 
     //This is for the temporary bullet swapping system
-    public bool isBurstFire = false; //extremely lazy implementation: false = default revolver true = burst fire SMG
+    public bool isBurstFire = false; //false = default revolver true = burst fire SMG
     private int shotAmount = 1; //shoots 1 bullet by default, changes for burst fire
 
     [Header("Components")]
@@ -60,8 +54,7 @@ public class PlayerController : CharacterBase
     public int maxAmmo = 6; //six-shooter by default, set in inspector otherwise for burstfire
     private int shotsFired = 0;
 
-    public int[] remainingAmmo;
-
+    public int[] remainingAmmo; //need to refactor and fix naming for some of these variables
 
     public GameObject nearObject;
     public LevelManager LM;
@@ -125,7 +118,6 @@ public class PlayerController : CharacterBase
 
                 if (remainingAmmo[bulletIndex] <= 0)
                 {
-                    Debug.Log(remainingAmmo[bulletIndex]);
                     Ammo = 0; //that is to say, 0
                     ammoTotalText.text = "0";
                 }
@@ -144,22 +136,43 @@ public class PlayerController : CharacterBase
 
                 if (remainingAmmo[bulletIndex] <= 0)
                 {
-                    Debug.Log(remainingAmmo[bulletIndex]);
                     Ammo = 0; //that is to say, 0
                     ammoTotalText.text = "0";
                 }
                 break;
 
-            case 2: //default
+            case 2: //green
+                bulletIndex++;
+                ammoDisplay.sprite = bulletList[bulletIndex].GetComponent<SpriteRenderer>().sprite;
+                bulletPrefab = bulletList[bulletIndex];
+                Debug.Log(remainingAmmo[bulletIndex]);
+                if (remainingAmmo[bulletIndex] >= maxAmmo)
+                {
+                    Ammo = maxAmmo;
+                    ammoTotalText.text = remainingAmmo[bulletIndex].ToString();
+                }
+
+                if (remainingAmmo[bulletIndex] <= 0)
+                {
+                    //The basic logic is that once the amount of ammo left is less than zero
+                    //then the ammo and the text will be set to 0 as a safety measure but this doesn't take into
+                    //account if you have one bullet left or whatever
+                    Ammo = 0; //that is to say, 0
+                    ammoTotalText.text = "0";
+                }
+                break;
+
+            case 3: //default
                 bulletIndex = 0; //last bullet so far, goes back to the first bullet in the index
                 ammoDisplay.sprite = bulletList[bulletIndex].GetComponent<SpriteRenderer>().sprite;
                 bulletPrefab = bulletList[bulletIndex];
 
+                /*
                 if (remainingAmmo[bulletIndex] >= maxAmmo)
                 {
                     Ammo = maxAmmo;
-                    ammoTotalText.text = "∞";
-                }
+                    ammoTotalText.text = "0";
+                }*/
 
                 break;
 
@@ -182,7 +195,7 @@ public class PlayerController : CharacterBase
 
             case 1: //blue
                 remainingAmmo[bulletIndex] = remainingAmmo[bulletIndex] - shotsFired; //decrements the total rounds left in the "inventory"
-
+                //right now it only substracts shots fired without taking into account having 0 bullets then picking rounds up
                 if (remainingAmmo[bulletIndex] >= maxAmmo) //safety check, if the remaining ammo is more than or equal to the maximum possible ammo of (example) 6 then
                 {
                     Ammo = maxAmmo; //ammo can safely be set to the maximum amount possible for the magazine or chamber
@@ -228,6 +241,30 @@ public class PlayerController : CharacterBase
                 shotsFired = 0;
                 break;
 
+            case 3: //green
+                remainingAmmo[bulletIndex] = remainingAmmo[bulletIndex] - shotsFired; //decrements the total rounds left in the "inventory"
+
+                if (remainingAmmo[bulletIndex] >= maxAmmo) //safety check, if the remaining ammo is more than or equal to the maximum possible ammo of (example) 6 then
+                {
+                    Ammo = maxAmmo; //ammo can safely be set to the maximum amount possible for the magazine or chamber
+                    ammoTotalText.text = remainingAmmo[bulletIndex].ToString(); //updates the total remaining bullets left in the UI (after subtracting the shots fired
+                }
+                else if (remainingAmmo[bulletIndex] < maxAmmo) //if the remaining ammo is less than the maximum possible ammo then
+                {
+                    Ammo = maxAmmo;
+                    if (remainingAmmo[bulletIndex] > 0)
+                    {
+                        ammoTotalText.text = remainingAmmo[bulletIndex].ToString();
+                    }
+                    if (remainingAmmo[bulletIndex] < 0) //basically ensures that the ammototal text should never be a negative value
+                    {
+                        ammoTotalText.text = "0";
+                    }
+                }
+
+                shotsFired = 0;
+                break;
+
             default:
                 break;
         }
@@ -239,26 +276,25 @@ public class PlayerController : CharacterBase
         //if revolver ammo is 6 if smg ammo is 15
         //also set attack delay here?
         //needs to be heavily refined
-        remainingAmmo = new int[3];
+        //remainingAmmo = new int[4];
+        remainingAmmo = new int[bulletList.Length];
 
-        //remainingAmmo[0] = bulletlist.Default;
-        remainingAmmo[0] = 9999999; 
-        remainingAmmo[1] = 12;
-        remainingAmmo[2] = 18;
+        remainingAmmo[0] = 9999999; //default
+        remainingAmmo[1] = 0; // blue
+        remainingAmmo[2] = 0; // red
+        remainingAmmo[3] = 0; // green
 
         if (isBurstFire)
         {
             shotAmount = 3;
             maxAmmo = 15; //smg/burstfire guns
             fireDelay = 0.05f;
-            //bulletPrefab.GetComponent<BulletScript>().bulletSpeed = 1500f;
             attackDelay = 0.5f;
         }
         else
             return;
     }
 
-    //Simplified and still worked.
     private void ShootingBehavior()
     {
         if (ammoText.text != null)
@@ -505,7 +541,6 @@ public class PlayerController : CharacterBase
         //should use switch/cases but that's for later
         if (collision.CompareTag("FinishLine"))//I think this tag is fine for now
         {
-            //Time.timeScale = 0f; If there are no panels then this is completely useless
             Time.timeScale = 0f;
             LM.VictoryCheck();
         }
@@ -523,12 +558,35 @@ public class PlayerController : CharacterBase
             LM.flaggedCheckpoint2 = true;
         }
 
+        //Have to test further to see if this actually saves
         if (collision.CompareTag("ScrewPickUp"))
         {
             Currency cy = FindObjectOfType<Currency>();
             cy.WalletProperty += 1; //screws have a default value of 1 anyways
           
             LM.CheckpointCostCheck();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.GetComponent<Enemy>() && !collision.gameObject.GetComponent<Enemy>().isBox && !onGround) //if the colliding object has the enemy script, or its children
+        {
+           collision.gameObject.GetComponent<Enemy>().DamageCalc(1); //arbitrary goomba damage
+        }
+
+        //This can't be the best way to do this, gotta go back and fix later.
+        if (collision.gameObject.CompareTag("BlueBulletItem"))
+        {
+            ammoTotalText.text = remainingAmmo[1].ToString();
+        }
+        else if (collision.gameObject.CompareTag("RedBulletItem"))
+        {
+            ammoTotalText.text = remainingAmmo[2].ToString();
+        }
+        else if (collision.gameObject.CompareTag("GreenBulletItem"))
+        {
+            ammoTotalText.text = remainingAmmo[3].ToString();
         }
     }
 
@@ -562,6 +620,5 @@ public class PlayerController : CharacterBase
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position + colliderOffset, transform.position + colliderOffset + Vector3.down * groundLength);
         Gizmos.DrawLine(transform.position - colliderOffset, transform.position - colliderOffset + Vector3.down * groundLength);
-
     }
 }

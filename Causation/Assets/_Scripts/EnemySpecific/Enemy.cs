@@ -40,12 +40,13 @@ public class Enemy : CharacterBase
     protected float firerateWait = 0f;
     public int sightRange = 10;
     public int meleeRange = 2;
-    public bool floorHax = false; //Used to determine if an enemy will react to players if they arent on the same y level
+    public bool ignoresVerticalSightRestriction = false; //Used to determine if an enemy will react to players if they arent on the same y level
     public float verticalSight = 2.5f;
 
     [HideInInspector]
     public bool facingRight;
     public bool isChasing = false;
+    public bool isBox; //sorry
 
     protected PlayerController player; //this can be private, pretty sure this works now
     protected Animator animator;
@@ -90,7 +91,7 @@ public class Enemy : CharacterBase
 
     public bool vertRangeSeesPlayer()
     {
-        if (floorHax)
+        if (ignoresVerticalSightRestriction)
         {
             return true;
         }
@@ -156,7 +157,7 @@ public class Enemy : CharacterBase
     {
         if (animator != null)
         {
-            animator.Play("Damaged");
+            animator.Play("Damaged"); //This assumes that the enemy even has a damage animation, oops
         }
 
         base.DamageCalc(damage);
