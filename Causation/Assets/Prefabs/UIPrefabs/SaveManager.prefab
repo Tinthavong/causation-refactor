@@ -48,3 +48,4 @@ MonoBehaviour:
     currency: 0
     iteration: 0
   hasLoaded: 0
+  hasSaved: 0

@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu Scenes/Main Menu Screen.unity
     guid: 62966aeae372a784e9b8a77a633b0a75
   - enabled: 1
-    path: Assets/Scenes/Menu Scenes/MissionSelectionScreen.unity
-    guid: cdde473f88632c3449e176be0df2732f
+    path: Assets/Scenes/ExtraScenes/Saferoom.unity
+    guid: eacc4b9fb715655489e81a3e79d1543e
   - enabled: 1
     path: Assets/Scenes/Grandpa's Levels/Gpa_LevelOne.unity
     guid: 76a6ecc46f92a62449cfb2b836153101
@@ -35,7 +35,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu Scenes/Credits Screen.unity
     guid: 7d93acec50807bb4d8bca5883a701e0a
+  - enabled: 1
+    path: Assets/Scenes/Menu Scenes/MissionSelectionScreen.unity
+    guid: cdde473f88632c3449e176be0df2732f
   - enabled: 0
-    path: Assets/Scenes/FirstPlayable/Saferoom.unity
-    guid: fd3d3c04a6e72534f982d4d3c7488b47
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

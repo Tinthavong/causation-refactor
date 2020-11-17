@@ -56,6 +56,7 @@ public class MissionSelection : MonoBehaviour
     {
         anim.SetBool("Transition", false);
 
+        //SaveManager.instance.Load();
         iterations = SaveManager.instance.gameData.iteration;
         currency = SaveManager.instance.gameData.currency;
 

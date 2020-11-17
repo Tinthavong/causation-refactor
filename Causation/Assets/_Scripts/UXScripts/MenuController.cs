@@ -31,6 +31,7 @@ public class MenuController : MonoBehaviour
 
     public void MissionSelect()
     {
+        MissionSelection.iterations -= 1;
         SceneManager.LoadScene(2);
     }
 

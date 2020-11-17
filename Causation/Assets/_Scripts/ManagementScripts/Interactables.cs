@@ -108,7 +108,7 @@ public class Interactables : MonoBehaviour
                 isColliding = true;
                 break;
             case "Transition":
-                //If the object has the 'Interact' tag spawn in text above the player to show they can push a button to interact with object
+                //If the object has the 'Transition' tag spawn in text above the player to show they can push a button to interact with object
                 SpawnText(objectPosition);
                 transitionFlag = true;
                 break;
