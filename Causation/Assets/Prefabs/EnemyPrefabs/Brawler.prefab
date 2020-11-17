@@ -210,9 +210,10 @@ MonoBehaviour:
   firerate: 1
   sightRange: 10
   meleeRange: 2
-  floorHax: 1
+  ignoresVerticalSightRestriction: 0
   verticalSight: 2.5
   facingRight: 0
   isChasing: 0
+  isBox: 0
   enemySpeed: 7.5
   bulletRefSpeed: 0
