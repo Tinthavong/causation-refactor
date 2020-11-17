@@ -27094,7 +27094,7 @@ PrefabInstance:
     - target: {fileID: 697618783331051721, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
         type: 3}
       propertyPath: bulletList.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 697618783331051721, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
         type: 3}
@@ -27149,6 +27149,12 @@ PrefabInstance:
       propertyPath: ammoTotalText
       value: 
       objectReference: {fileID: 191006115}
+    - target: {fileID: 697618783331051721, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
+        type: 3}
+      propertyPath: bulletList.Array.data[3]
+      value: 
+      objectReference: {fileID: 7403371841988002607, guid: f4e2937219e40b8419966c81a6d3d9a1,
+        type: 3}
     - target: {fileID: 697618783331051726, guid: 46f6a6380f7478d4ea6ff4e8136667ec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -28293,6 +28299,8 @@ MonoBehaviour:
     sentences:
     - Warehouse Rumble!
     - Make it to the elevator!
+  bossDialogueTrigger: 0
+  bossReference: {fileID: 0}
 --- !u!1 &5222924329128167479
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,15 +7,15 @@ public class MedkitController : MonoBehaviour
     [SerializeField]
     public GameObject[] medkits;
     public HealthBar hb;
-    public CharacterBase chb;
-
+    //public CharacterBase chb;
+    public PlayerController pc;
     
     public int medkitNumber;
     
     // Start is called before the first frame update
     void Start()
     {
-        chb = GameObject.Find("Grandpa").GetComponent<CharacterBase>();
+        pc = FindObjectOfType<PlayerController>();
         for (int i = 0; i <= 2; i++)
         {
             medkits[i].gameObject.SetActive(true);
@@ -27,15 +27,15 @@ public class MedkitController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && medkitNumber > 0 && chb.displayedHealth != chb.Health)
+        if (Input.GetKeyDown(KeyCode.Q) && medkitNumber > 0 && pc.displayedHealth != pc.Health)
         {
             medkitNumber -= 1;
             
             medkits[medkitNumber].gameObject.SetActive(false);
 
-            chb.displayedHealth += 3;
+            pc.displayedHealth += 3;
 
-            hb.SetHealth(chb.displayedHealth);
+            hb.SetHealth(pc.displayedHealth);
 
             //Debug.Log("Current Health: " + chb.displayedHealth);
         }
