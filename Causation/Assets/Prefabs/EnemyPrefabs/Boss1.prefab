@@ -223,7 +223,7 @@ MonoBehaviour:
   firerate: 0.3
   sightRange: 10
   meleeRange: 6
-  floorHax: 1
+  ignoresVerticalSightRestriction: 1
   verticalSight: 3
   facingRight: 0
   isChasing: 0
