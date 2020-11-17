@@ -848,6 +848,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkpoint: {fileID: 1722770086}
   flaggedCheckpoint: 0
+  checkpoint2: {fileID: 0}
+  flaggedCheckpoint2: 0
   canRetry: 0
   checkpointCost: 0
   victoryPoint: {fileID: 389582767}
@@ -1117,6 +1119,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.7457886, y: 2.227067}
   m_EdgeRadius: 0
+--- !u!4 &1657875016 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2606829749327834164, guid: 4bcefde5d6f8d5b4eb7b0e6414682151,
+    type: 3}
+  m_PrefabInstance: {fileID: 832976817}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1722770086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,6 +1271,8 @@ MonoBehaviour:
     sentences:
     - Sewer chase!
     - He went that way!
+  bossDialogueTrigger: 0
+  bossReference: {fileID: 0}
 --- !u!61 &1790221804
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1543,3 +1553,72 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2021650870
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1657875016}
+    m_Modifications:
+    - target: {fileID: 2856430748817272259, guid: bcacf7b34ab87634e872bd4186070042,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856430748817272259, guid: bcacf7b34ab87634e872bd4186070042,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856430748817272259, guid: bcacf7b34ab87634e872bd4186070042,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856430748817272259, guid: bcacf7b34ab87634e872bd4186070042,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856430748817272259, guid: bcacf7b34ab87634e872bd4186070042,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856430748817272259, guid: bcacf7b34ab87634e872bd4186070042,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856430748817272259, guid: bcacf7b34ab87634e872bd4186070042,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856430748817272259, guid: bcacf7b34ab87634e872bd4186070042,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856430748817272259, guid: bcacf7b34ab87634e872bd4186070042,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856430748817272259, guid: bcacf7b34ab87634e872bd4186070042,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856430748817272259, guid: bcacf7b34ab87634e872bd4186070042,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856430748817272261, guid: bcacf7b34ab87634e872bd4186070042,
+        type: 3}
+      propertyPath: m_Name
+      value: City Background2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bcacf7b34ab87634e872bd4186070042, type: 3}
