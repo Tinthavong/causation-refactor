@@ -8,17 +8,18 @@ public class BulletPickUp : MonoBehaviour
 
     private void Start()
     {
-        bulletState = gameObject.tag; //This might seem like a roundabout way to handle this but this stores the tag for the appropriate bullet type used for the switch
+        bulletState = gameObject.tag;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         switch (bulletState)
         {
+            //the getcomponent finds type GrandpaController because that's the only player that should swap bullets
             case "BlueBulletItem":
                 if (collision.gameObject.tag.Equals("Player"))
                 {
-                    collision.gameObject.GetComponent<PlayerController>().remainingAmmo[1] += 6;
+                    collision.gameObject.GetComponent<GrandpaController>().remainingAmmo[1] += 6;
                     FindObjectOfType<SFXManager>().PlayAudio("Pickup");
                     Destroy(gameObject);
                 }
@@ -27,7 +28,7 @@ public class BulletPickUp : MonoBehaviour
             case "RedBulletItem":
                 if (collision.gameObject.tag.Equals("Player"))
                 {
-                    collision.gameObject.GetComponent<PlayerController>().remainingAmmo[2] += 6;
+                    collision.gameObject.GetComponent<GrandpaController>().remainingAmmo[2] += 6;
                     FindObjectOfType<SFXManager>().PlayAudio("Pickup");
                     Destroy(gameObject);
                 }
@@ -37,7 +38,7 @@ public class BulletPickUp : MonoBehaviour
             case "GreenBulletItem":
                 if (collision.gameObject.tag.Equals("Player"))
                 {
-                    collision.gameObject.GetComponent<PlayerController>().remainingAmmo[3] += 6;
+                    collision.gameObject.GetComponent<GrandpaController>().remainingAmmo[3] += 6;
                     FindObjectOfType<SFXManager>().PlayAudio("Pickup");
                     Destroy(gameObject);
                 }
