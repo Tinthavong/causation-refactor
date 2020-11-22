@@ -6,7 +6,7 @@ using TMPro;
 
 public class DialogueController : MonoBehaviour
 {
-    public TMP_Text nameText;
+    //public TMP_Text nameText;
     public TMP_Text dialogueText;
     public Animator anim;
 
@@ -21,7 +21,7 @@ public class DialogueController : MonoBehaviour
     {
         anim.SetBool("IsOpen", true);
 
-        nameText.text = dialogue.name;
+        //nameText.text = dialogue.name;
             
         sentences.Clear();
 
@@ -64,4 +64,5 @@ public class DialogueController : MonoBehaviour
             Time.timeScale = 1f;
         }
     }
+
 }
