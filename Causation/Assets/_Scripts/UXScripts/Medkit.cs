@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 public class Medkit : MonoBehaviour
 {
     public MedkitController mkc;
+
     private void Start()
     {
         mkc = GameObject.Find("MedkitCounter").GetComponent<MedkitController>();
@@ -21,21 +22,21 @@ public class Medkit : MonoBehaviour
                 {
                     case 0:
                         {
-                            mkc.medkitNumber += 1;
+                            mkc.medkitNumber = 1;
                             mkc.medkits[0].SetActive(true);
                             Debug.Log("Number of Medkits: " + mkc.medkitNumber);
                             break;
                         }
                     case 1:
                         {
-                            mkc.medkitNumber += 1;
+                            mkc.medkitNumber = 2;
                             mkc.medkits[1].SetActive(true);
                             Debug.Log("Number of Medkits: " + mkc.medkitNumber);
                             break;
                         }
                     case 2:
                         {
-                            mkc.medkitNumber += 1;
+                            mkc.medkitNumber = 3;
                             mkc.medkits[2].SetActive(true);
                             Debug.Log("Number of Medkits: " + mkc.medkitNumber);
                             break;
@@ -48,6 +49,8 @@ public class Medkit : MonoBehaviour
             }
             else
             {
+                Debug.Log("Number of Medkits: " + mkc.medkitNumber);
+                mkc.medkitNumber = 3;
                 Destroy(gameObject);
             }
         }

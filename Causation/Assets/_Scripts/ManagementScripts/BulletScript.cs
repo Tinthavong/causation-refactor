@@ -47,7 +47,7 @@ public class BulletScript : MonoBehaviour
             case "Player":
                 PlayerController player = collision.gameObject.GetComponent<PlayerController>();
                 player.DamageCalc(damage);
-                Debug.Log("player has been hit");
+                Debug.Log("Player has been hit\nPlayer has : " + player.displayedHealth + " HP left");
 
                 Destroy(gameObject);
                 break;
