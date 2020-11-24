@@ -7,11 +7,11 @@ public class MedkitController : MonoBehaviour
     [SerializeField]
     public GameObject[] medkits;
     public HealthBar hb;
-    public PlayerController pc;
     
+    [HideInInspector]
     public int medkitNumber;
-    
-    // Start is called before the first frame update
+    public PlayerController pc;
+
     void Start()
     {
         pc = FindObjectOfType<PlayerController>();
@@ -24,23 +24,28 @@ public class MedkitController : MonoBehaviour
         medkitNumber = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //When the player presses Q to use a medkit
         if (Input.GetKeyDown(KeyCode.Q) && medkitNumber > 0 && pc.displayedHealth != 15)
         {
             medkitNumber -= 1;
 
+            //Checks what the integer of the medkitNumber variable to 
+            //show what medkit was used in the UI
             switch (medkitNumber)
             {
                 case 0:
                     {
                         medkits[0].gameObject.SetActive(false);
+                        medkits[1].gameObject.SetActive(false);
+                        medkits[2].gameObject.SetActive(false);
                         break;
                     }
                 case 1:
                     {
                         medkits[1].gameObject.SetActive(false);
+                        medkits[2].gameObject.SetActive(false);
                         break;
                     }
                 case 2:
@@ -49,7 +54,10 @@ public class MedkitController : MonoBehaviour
                         break;
                     }
             }
-                
+            
+            //Checks the players current health when using a medkit to not go over 15 HP
+            //Anything over messes with the health bar displaying to the player
+            //Also could mess up the medkits visualy in the UI
             if (pc.displayedHealth < 15 && pc.displayedHealth >= 13)
             {
                 pc.displayedHealth = 15;
@@ -63,7 +71,6 @@ public class MedkitController : MonoBehaviour
 
             Debug.Log("Medkit Used, Counter is at: " + medkitNumber);
             Debug.Log("Player has: " + pc.displayedHealth + " HP left");
-
         }
     }
 
