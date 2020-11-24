@@ -13,7 +13,7 @@ public class PlayerController : CharacterBase
         Health = displayedHealth;
         Stamina = staminaActions;
         Ammo = maxAmmo; //To avoid confusion, the Ammo property is like the previous currentAmmo variable
-       // Currency = walletValue;
+                        // Currency = walletValue;
     }
 
     //consider serializing private
@@ -23,8 +23,8 @@ public class PlayerController : CharacterBase
     public TMP_Text ammoTotalText; //available ammo
     public Image ammoDisplay; //probably temporary, i have a better idea
 
-    Animator animator;
-    Rigidbody2D rb;
+    public Animator animator;
+    public Rigidbody2D rb;
     public GameObject deathScreen;
 
     [Header("Movement Stats")]
@@ -33,33 +33,33 @@ public class PlayerController : CharacterBase
     public float moveSpeed = 10f;
     public float maxSpeed = 7f;
     public Vector2 direction;
-    private bool facingRight = true;
+    public bool facingRight = true;
 
     //Jumping
     public float jumpSpeed = 15f;
-    public float jumpDelay = 0.25f;
-    private float jumpTimer;
+    public float jumpDelay = 0.25f; 
+    public float jumpTimer;
 
     //Attacking
-    float attackElapsedTime = 0;
+    public float attackElapsedTime = 0;
     public float attackDelay = 0.2f;
     public float fireDelay = 1f;
 
     //This is for the temporary bullet swapping system
     public bool isBurstFire = false; //false = default revolver true = burst fire SMG
-    private int shotAmount = 1; //shoots 1 bullet by default, changes for burst fire
+    public int shotAmount = 1; //shoots 1 bullet by default, changes for burst fire
 
     [Header("Components")]
-    public int maxAmmo = 15; //15 round, burst fire SMG by default
+    public int maxAmmo = 15; //15 round, burst fire SMG by default 
 
     public GameObject nearObject;
     public LevelManager LM; //can we get rid of these?
 
     [Header("Player States")]
     public bool isJumping;
-    private bool isCrouched = false;
+    public bool isCrouched = false;
     public bool isShooting;
-    private bool isInvincible = false;
+    public bool isInvincible = false;
     public bool canMove = true;
 
     [Header("Collision and Physics")]
@@ -67,13 +67,14 @@ public class PlayerController : CharacterBase
     public float linearDrag = 4f;
     public float gravity = 1f;
     public float fallMultiplier = 5f;
-    private int playerLayer, platformLayer;
+    public int playerLayer, platformLayer;
     public float jumpDownTime = 2f;
 
     //reworked movement but here's the leftovers
     private float vertical;
 
-    public GameObject tempCrouchShoot; //necessary to show that there is a revolver when crouched or to show that a punch is happening
+    //This shows the gun if the player is crouching so that they can see where bullet is coming from - placeholder
+    //public GameObject tempCrouchShoot;
 
     void Awake()
     {
@@ -168,7 +169,7 @@ public class PlayerController : CharacterBase
                 rb.velocity = new Vector2(0f, 0f);
                 if (isCrouched)
                 {
-                    tempCrouchShoot.SetActive(true);
+                    //tempCrouchShoot.SetActive(true);
                     bulletSpawn.transform.localPosition = new Vector3(0.85f, -0.4f, 0);
                     GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 1.45f);
                     GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, -0.4f);
@@ -178,7 +179,7 @@ public class PlayerController : CharacterBase
             {
                 //bulletspawn goes back to normal
                 //the "exit" time when not pressing the up key is too slow right now
-                tempCrouchShoot.SetActive(false);
+                //tempCrouchShoot.SetActive(false);
                 animator.SetBool("IsCrouched", false);
                 isCrouched = false;
                 bulletSpawn.transform.localPosition = new Vector3(0.85f, 0.5f, 0);
@@ -351,16 +352,17 @@ public class PlayerController : CharacterBase
         {
             Currency cy = FindObjectOfType<Currency>();
             cy.WalletProperty += 1; //screws have a default value of 1 anyways
-          
+
             LM.CheckpointCostCheck();
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponent<Enemy>() && !collision.gameObject.GetComponent<Enemy>().isBox && !onGround) //if the colliding object has the enemy script, or its children
+        if (collision.gameObject.GetComponent<Enemy>() && !collision.gameObject.GetComponent<Enemy>().isBox && !onGround) //if the colliding object has the enemy script, or its children
         {
-           collision.gameObject.GetComponent<Enemy>().DamageCalc(1); //arbitrary goomba damage
+            collision.gameObject.GetComponent<Enemy>().DamageCalc(1); //arbitrary goomba damage
+            collision.gameObject.GetComponent<Enemy>().ElimCharacter(); //jumping on enemies to death
         }
     }
 
@@ -370,6 +372,7 @@ public class PlayerController : CharacterBase
         LM.GameOver();
         canMove = false; //self-explanatory but this turns off the ability to move around with the player. we can pause the gameworld too, but this way still plays enemy animations if they're still around the player
         GetComponent<CapsuleCollider2D>().enabled = false; //Dirty fix right now. The enemy should stop attacking if the player is dead anyways
+        
     }
 
     public virtual void Replenish()

@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 4203190106920490220}
   - component: {fileID: 1273325937600100579}
   - component: {fileID: 4203190106920490219}
+  - component: {fileID: 8776520413330418468}
   m_Layer: 11
   m_Name: Brawler
   m_TagString: Enemy
@@ -212,8 +213,27 @@ MonoBehaviour:
   meleeRange: 2
   ignoresVerticalSightRestriction: 0
   verticalSight: 6
+  startingHealth: 0
   facingRight: 0
-  isChasing: 0
   isBox: 0
+  isChasing: 0
+  startingLocation: {x: 0, y: 0, z: 0}
   enemySpeed: 7.5
   bulletRefSpeed: 0
+  isAwake: 0
+--- !u!58 &8776520413330418468
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4203190106920490221}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.75, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

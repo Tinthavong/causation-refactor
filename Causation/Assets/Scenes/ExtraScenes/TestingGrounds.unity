@@ -21270,7 +21270,6 @@ MonoBehaviour:
   fallMultiplier: 5
   jumpDownTime: 1
   tempCrouchShoot: {fileID: 697618783516097758}
-  facingRight: 1
   bulletList:
   - {fileID: 2686942302785526997, guid: 31b12168567cb7c41a5434d410bae653, type: 3}
   - {fileID: 3784773981510655563, guid: 7876a21c748af864ca77fc10e8fe933d, type: 3}
@@ -28487,12 +28486,12 @@ PrefabInstance:
     - target: {fileID: 5529824715602500332, guid: 8ba23277cde198647b985fcb24afb467,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.46
+      value: 12.41
       objectReference: {fileID: 0}
     - target: {fileID: 5529824715602500332, guid: 8ba23277cde198647b985fcb24afb467,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.92
+      value: 2.69
       objectReference: {fileID: 0}
     - target: {fileID: 5529824715602500332, guid: 8ba23277cde198647b985fcb24afb467,
         type: 3}

@@ -25,6 +25,9 @@ public class Shotgunner : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        startingHealth = displayedHealth;
+        startingLocation = gameObject.transform.localPosition;
+
         bulletRefSpeed = bulletPrefab.GetComponent<BulletScript>().bulletSpeed;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -37,41 +40,54 @@ public class Shotgunner : Enemy
     {
         onGround = (Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundLength, groundLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundLength, groundLayer));
 
-        if (isClose())
+        if (IsClose()) //maybe a proper detection method would work better, right now they stop chasing a little bit too soon
         {
-            Flip(0);
-            if(vertRangeSeesPlayer())
+            isAwake = true;
+        }
+        else if (!IsClose() && displayedHealth > 0) //If the enemy isn't close and is not dead then...
+        {
+            isAwake = false;
+            animator.Play("Idle"); //Idle animation doesn't even exist for most/all enemies, this can probably be left out
+        }
+
+        if(isAwake)
+        {
+            if (IsClose())
             {
-                animator.SetBool("IsChasing", true);
-                isChasing = true;
-                if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) >= fireRange)
+                Flip(0);
+                if (VertRangeSeesPlayer())
                 {
-                    RunTowards();
+                    animator.SetBool("IsChasing", true);
+                    isChasing = true;
+                    if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) >= fireRange)
+                    {
+                        RunTowards();
+                    }
                 }
             }
-        }
 
-        //firerateWait changes based on fps time
-        firerateWait -= Time.deltaTime;
-        if (isCloseEnough() && firerateWait <= 0 && vertRangeSeesPlayer())
-        {
-            animator.SetBool("IsChasing", false);
-            isChasing = false;
-            animator.Play("Attack");
-            Shoot();
-            firerateWait = firerate;
-        }
+            //firerateWait changes based on fps time
+            firerateWait -= Time.deltaTime;
+            if (isCloseEnough() && firerateWait <= 0 && VertRangeSeesPlayer())
+            {
+                animator.SetBool("IsChasing", false);
+                isChasing = false;
+                animator.Play("Attack");
+                Shoot();
+                firerateWait = firerate;
+            }
 
-        if (!isClose() || player.displayedHealth <= 0)
-        {
-            animator.SetBool("IsChasing", false);
-        }
+            if (!IsClose() || player.displayedHealth <= 0)
+            {
+                animator.SetBool("IsChasing", false);
+            }
 
-        //Makes the enemy horizontal speed lower drastically while falling
-        if(!onGround)
-        {
-            Vector2 airBrake = new Vector2(-(rb.velocity.x/4), 0.0f);
-            rb.AddForce(airBrake);
+            //Makes the enemy horizontal speed lower drastically while falling
+            if (!onGround)
+            {
+                Vector2 airBrake = new Vector2(-(rb.velocity.x / 4), 0.0f);
+                rb.AddForce(airBrake);
+            }
         }
     }
 

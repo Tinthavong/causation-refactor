@@ -17,6 +17,7 @@ public class GrandpaController : PlayerController
     }
 
 
+    //TODO: Delete all of this after Tuesday meeting - 11/24/20
     //Might not delete yet, this is for if/when the grandpacontroller inherits from characterbase instead of playercontroller
     /*
     //consider serializing private
@@ -78,36 +79,33 @@ public class GrandpaController : PlayerController
     private GameObject tempRevolver; //necessary to show that there is a revolver when crouched or to show that a punch is happening
     */
 
-    [Header("Movement Stats")]
-    [SerializeField]
+    //[Header("Movement Stats")]
     //Player's running speed
-   // public float moveSpeed = 10f;
+    //public float moveSpeed = 10f;
     //public float maxSpeed = 7f;
     //public Vector2 direction;
-    private bool facingRight = true;
+    //private bool facingRight = true;
 
     //Jumping
     //public float jumpSpeed = 15f;
     //public float jumpDelay = 0.25f;
-    private float jumpTimer;
 
     //Attacking
-    private float attackElapsedTime = 0;
+    //private float attackElapsedTime = 0;
     //public float attackDelay = 0.2f;
     //public float fireDelay = 1f;
 
     //This is for the temporary bullet swapping system
-    private Animator animator;
-    private Rigidbody2D rb;
+    //private Animator animator;
+    //private Rigidbody2D rb;
 
     //public bool isBurstFire = false; //false = default revolver true = burst fire SMG
-    private int shotAmount = 1; //shoots 1 bullet by default, changes for burst fire
+    //private int shotAmount = 1; //shoots 1 bullet by default, changes for burst fire
 
-    [Header("Player States")]
     //public bool isJumping;
-    private bool isCrouched = false;
+    //private bool isCrouched = false;
     //public bool isShooting;
-    private bool isInvincible = false;
+    //private bool isInvincible = false;
     //public bool canMove = true;
 
     [Header("Components")]
@@ -117,14 +115,6 @@ public class GrandpaController : PlayerController
     //public int maxAmmo = 6; //six-shooter by default, set in inspector otherwise for burstfire
     private int shotsFired = 0;
     public int[] remainingAmmo; //need to refactor and fix naming for some of these variables
-
-    [Header("Collision and Physics")]
-    //physics
-    //public float linearDrag = 4f;
-    //public float gravity = 1f;
-    //public float fallMultiplier = 5f;
-    private int playerLayer, platformLayer;
-    //public float jumpDownTime = 2f;
 
     void Awake()
     {
@@ -139,8 +129,10 @@ public class GrandpaController : PlayerController
 
         healthBar.SetHealth(displayedHealth);
         LM = FindObjectOfType<LevelManager>();
+
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
         playerLayer = LayerMask.NameToLayer("Player");
         platformLayer = LayerMask.NameToLayer("Platform");
     }
@@ -392,7 +384,7 @@ public class GrandpaController : PlayerController
 
             attackElapsedTime += Time.deltaTime;
             ShootingBehavior();
-           
+
             if (Input.GetButtonDown("Jump") && !Input.GetKey(KeyCode.S))
             {
                 jumpTimer = Time.time + jumpDelay;
@@ -415,7 +407,7 @@ public class GrandpaController : PlayerController
                 rb.velocity = new Vector2(0f, 0f);
                 if (isCrouched)
                 {
-                    tempCrouchShoot.SetActive(true);
+                    //tempCrouchShoot.SetActive(true);
                     bulletSpawn.transform.localPosition = new Vector3(0.85f, -0.4f, 0);
                     GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 1.45f);
                     GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, -0.4f);
@@ -425,7 +417,7 @@ public class GrandpaController : PlayerController
             {
                 //bulletspawn goes back to normal
                 //the "exit" time when not pressing the up key is too slow right now
-                tempCrouchShoot.SetActive(false);
+                //tempCrouchShoot.SetActive(false);
                 animator.SetBool("IsCrouched", false);
                 isCrouched = false;
                 bulletSpawn.transform.localPosition = new Vector3(0.85f, 0.5f, 0);

@@ -50,7 +50,7 @@ public class BossEngineer : Enemy
     {
         onGround = (Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundLength, groundLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundLength, groundLayer));
 
-        if (isClose())
+        if (IsClose())
         {
             Flip(0);
             //checks closest sight range first
