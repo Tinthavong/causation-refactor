@@ -28250,8 +28250,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     sentences:
-    - 'Grandpa: Warehouse Rumble!'
-    - 'Grandpa: Make it to the elevator!'
+    - 'Grandpa: The engineer in my bounty''s been spotted at this underground fight
+      club lately.'
+    - 'Grandpa: It sounds like they''ve been giving the boxers some illegal Custom
+      enhancements.'
   bossDialogueTrigger: 0
   bossReference: {fileID: 0}
 --- !u!1 &5222924329128167479
