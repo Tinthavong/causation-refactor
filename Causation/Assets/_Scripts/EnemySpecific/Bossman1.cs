@@ -41,8 +41,6 @@ public class Bossman1 : Enemy
     private Vector3 gatlingCurrentLeft;
     private Vector3 gatlingCurrentRight;
 
-    public bool isAwake = false;
-
     void Start()
     {
         bulletRefSpeed = bulletPrefab.GetComponent<BulletScript>().bulletSpeed;

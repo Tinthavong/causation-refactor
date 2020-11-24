@@ -68,7 +68,7 @@ public class Shotgunner : Enemy
 
             //firerateWait changes based on fps time
             firerateWait -= Time.deltaTime;
-            if (isCloseEnough() && firerateWait <= 0 && VertRangeSeesPlayer())
+            if (IsCloseEnough() && firerateWait <= 0 && VertRangeSeesPlayer())
             {
                 animator.SetBool("IsChasing", false);
                 isChasing = false;
@@ -122,7 +122,7 @@ public class Shotgunner : Enemy
         }
     }*/
 
-    private bool isCloseEnough()//Shotguns are never isTooClose() hehehehehe
+    private bool IsCloseEnough()//Shotguns are never isTooClose() hehehehehe
     {
         if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) <= fireRange && player.displayedHealth > 0) 
         {
