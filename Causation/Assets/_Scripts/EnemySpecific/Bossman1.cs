@@ -41,8 +41,6 @@ public class Bossman1 : Enemy
     private Vector3 gatlingCurrentLeft;
     private Vector3 gatlingCurrentRight;
 
-    public bool isAwake = false;
-
     void Start()
     {
         bulletRefSpeed = bulletPrefab.GetComponent<BulletScript>().bulletSpeed;
@@ -62,7 +60,7 @@ public class Bossman1 : Enemy
             firerateWait -= Time.deltaTime;
 
             //This fires regardless of the phase, bad player no get close
-            if (firerateWait <= 0 && isTooClose())
+            if (firerateWait <= 0 && IsTooClose())
             {
                 animator.SetBool("IsMoving", false);
                 animator.SetBool("IsLasering", true);
@@ -77,7 +75,7 @@ public class Bossman1 : Enemy
                 animator.SetBool("IsLasering", false);
                 animator.SetBool("IsShooting", false);
                 animator.SetBool("IsMoving", true);
-                minorMovement();
+                MinorMovement();
 
             }
 
@@ -93,15 +91,15 @@ public class Bossman1 : Enemy
                 switch (phase)
                 {
                     case 0:
-                        changeGatlingHeight(1);
-                        gatlingStream();
+                        ChangeGatlingHeight(1);
+                        GatlingStream();
                         break;
                     case 1:
-                        changeGatlingHeight(2);
-                        gatlingStream();
+                        ChangeGatlingHeight(2);
+                        GatlingStream();
                         break;
                     case 2:
-                        alternatingStream();
+                        AlternatingStream();
                         break;
                 }
             }
@@ -146,7 +144,7 @@ public class Bossman1 : Enemy
         pc.LM.VictoryCheck();
     }
 
-    private void minorMovement()
+    private void MinorMovement()
     {
         if (player.transform.position.x < transform.position.x)
         {
@@ -161,7 +159,7 @@ public class Bossman1 : Enemy
     }
 
     //Shoots a stream of bullets on the level that the guns are on
-    private void gatlingStream()
+    private void GatlingStream()
     {
         //Firerate needs to be set really low for this to work well:  will shoot predetermined amount of bullets then end the phase
         //while(bulletsFired < bulletsFiredStop)
@@ -179,7 +177,7 @@ public class Bossman1 : Enemy
     }
 
     //switches back and forth between high and low shots for a bit
-    private void alternatingStream()
+    private void AlternatingStream()
     {
         //Firerate will be psuedo controlled by the animations ends for switching heights
         if (firerateWait <= 0)
@@ -187,12 +185,12 @@ public class Bossman1 : Enemy
             Shoot();
             bulletsFired += 1;
             firerateWait = firerate;
-            changeGatlingHeight();
+            ChangeGatlingHeight();
         }
     }
 
     //just switches from high to low or vice versa
-    private void changeGatlingHeight()
+    private void ChangeGatlingHeight()
     {
         //basically just the animation as well as moving the gatlingStart's
         if (gatlingCurrentLeft == gatlingStartLeft.transform.position)
@@ -209,7 +207,7 @@ public class Bossman1 : Enemy
         //Need to change the location of the gatlings during this method, as well as animation for the change
 
     }
-    private void changeGatlingHeight(int pos)
+    private void ChangeGatlingHeight(int pos)
     {
         //basically just the animation as well as moving the gatlingStart's
         if (pos == 1)

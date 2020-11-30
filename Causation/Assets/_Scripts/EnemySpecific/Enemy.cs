@@ -42,35 +42,36 @@ public class Enemy : CharacterBase
     public int meleeRange = 2;
     public bool ignoresVerticalSightRestriction = false; //Used to determine if an enemy will react to players if they arent on the same y level
     public float verticalSight = 2.5f;
+    [HideInInspector]
+    public int startingHealth;
+
 
     [HideInInspector]
-    public bool facingRight;
+    public bool facingRight, isBox;
     public bool isChasing = false;
-    public bool isBox; //sorry
 
     protected PlayerController player; //this can be private, pretty sure this works now
     protected Animator animator;
     protected Rigidbody2D rb;
 
+    [Header("Enemy Rerefences")]
+    public Vector3 startingLocation; //the enemies start location is stored here - used for moving them back after the player respawns
     public float enemySpeed = 8f; //This will control how fast an enemy moves, change in prefabs for each enemy type
     public float bulletRefSpeed;
-    // Start is called before the first frame update
+
+    public bool isAwake; //isAwake/isAlive, the function is supposed to make the enemy charracter hard stop after player is dead or otherwise
+
+    //Start method is not inherited, consider deleting this
     void Start()
     {
+        startingHealth = displayedHealth;
         player = FindObjectOfType<PlayerController>();
-        //This should use an actual find method/algorithm instead of just knowing where the player is
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     //isClose and isTooClose are specific to gunslinger enemies, at least currently
 
     //Checks to see if the player object is within a certain distance
-    public bool isClose()//shouldve made these public long time ago, but they are now
+    public bool IsClose()//shouldve made these public long time ago, but they are now
     {
         if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) < sightRange && player.displayedHealth > 0) //Dirty fix. Stop, he's already dead!
         {
@@ -80,7 +81,7 @@ public class Enemy : CharacterBase
     }
 
     //Used for melee support
-    public bool isTooClose()//shouldve made these public long time ago, but they are now
+    public bool IsTooClose()//shouldve made these public long time ago, but they are now
     {
         if (Math.Abs(player.transform.position.x - this.gameObject.transform.position.x) < meleeRange && player.displayedHealth > 0)
         {
@@ -89,7 +90,7 @@ public class Enemy : CharacterBase
         return false;
     }
 
-    public bool vertRangeSeesPlayer()
+    public bool VertRangeSeesPlayer()
     {
         if (ignoresVerticalSightRestriction)
         {
@@ -178,7 +179,6 @@ public class Enemy : CharacterBase
             gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
             gameObject.GetComponent<Enemy>().enabled = false;
-            //Destroy(gameObject); //Commented out for now, destroying the game object is too abrupt.
         }
     }
 
@@ -229,10 +229,5 @@ public class Enemy : CharacterBase
         {
             ElimCharacter();
         }
-    }
-
-    void Death()
-    {
-        Destroy(this.gameObject);
     }
 }

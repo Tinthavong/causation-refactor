@@ -23,16 +23,32 @@ public class LevelManager : MonoBehaviour
     private GameObject hudRef;
     private Currency cy;
 
+    //Enemy mangement
+    Enemy[] enemiesInLevel; //an array that stores all of the enemies inside of them for the specific scene
+
+   
+
     void Start()
     {
+        enemiesInLevel = FindObjectsOfType<Enemy>();
         cy = FindObjectOfType<Currency>();
         hudRef = GameObject.Find("HUDElements");
         GameOverPanel = GameObject.Find("GameOverScreen");
     }
 
-    void Update()
+    //enemies are forced asleep after the player retries from the checkpoint, this seems more like a failsafe than a feature    
+    //enemy's position resets to whatever their starting position was
+    public void EnemyReplenish()
     {
-
+        foreach (Enemy en in enemiesInLevel)
+        {
+            if (!en.isBox && en.displayedHealth > 0)
+            {
+                en.isAwake = false; //enemy behavior reset     
+                en.transform.localPosition = en.startingLocation;
+                en.displayedHealth = en.startingHealth;
+            }
+        }
     }
 
     //called in the player controller class to pause gameplay and remove player controls
@@ -86,9 +102,9 @@ public class LevelManager : MonoBehaviour
             }
 
             pc.Replenish();
+            EnemyReplenish(); //Resets the enemies behaviors
             SetActiveChildren(hudRef.transform, true);
             SetActiveChildren(GameOverPanel.transform, false);
-            //respawn enemies too?
         }
         else
         {

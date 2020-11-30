@@ -20857,7 +20857,7 @@ GameObject:
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1540838419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20872,8 +20872,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     sentences:
-    - Sewer chase!
-    - He went that way!
+    - 'Son: It looks like the politician went into here.'
+    - 'Son: Now, what''s here that''s so special?'
   bossDialogueTrigger: 0
   bossReference: {fileID: 0}
 --- !u!61 &1540838420
@@ -20922,7 +20922,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540838418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.18, y: 1.76, z: 0}
+  m_LocalPosition: {x: -26.32, y: 28.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 561687925}
@@ -28013,7 +28013,7 @@ PrefabInstance:
     - target: {fileID: 3030930682462453143, guid: 93b3b904e8a28b74faa7b2853151e21f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25.44
+      value: 23.69
       objectReference: {fileID: 0}
     - target: {fileID: 3030930682462453143, guid: 93b3b904e8a28b74faa7b2853151e21f,
         type: 3}

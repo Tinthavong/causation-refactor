@@ -18,6 +18,9 @@ public class Gunslinger : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        startingHealth = displayedHealth;
+        startingLocation = gameObject.transform.localPosition;
+
         bulletRefSpeed = bulletPrefab.GetComponent<BulletScript>().bulletSpeed;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -32,65 +35,44 @@ public class Gunslinger : Enemy
 
         //Controls where the enemy is looking
         //First in update to make sure bullet travels in correct direction
-        if (isClose())
+        if (IsClose())
         {
             Flip(0f);
+            isAwake = true;
+        }
+        else if (!IsClose() && displayedHealth > 0) //If the enemy isn't close and is not dead then...
+        {
+            isAwake = false;
+            animator.Play("Idle"); //Idle animation doesn't even exist for most/all enemies, this can probably be left out
         }
 
-        //firerateWait changes based on fps time
-        firerateWait -= Time.deltaTime;
-        //if firerateWait is 0, time to fire and reset the wait
-        if (firerateWait <= 0 && isClose() && !isTooClose() && player.displayedHealth > 0 && vertRangeSeesPlayer() && isCrouched)
+        if(isAwake)
         {
-            animator.Play("Attack");
-            Shoot();
-            firerateWait = firerate;
-            FindObjectOfType<SFXManager>().PlayAudio("Gunshot");
+            //firerateWait changes based on fps time
+            firerateWait -= Time.deltaTime;
+            //if firerateWait is 0, time to fire and reset the wait
+            if (firerateWait <= 0 && IsClose() && !IsTooClose() && player.displayedHealth > 0 && VertRangeSeesPlayer() && isCrouched)
+            {
+                animator.Play("Attack");
+                Shoot();
+                firerateWait = firerate;
+                FindObjectOfType<SFXManager>().PlayAudio("Gunshot");
 
-            //random chance to crouch? but for now"
-            //Invoke("Crouching", 2f);
+                //Changed it so he crouches until he shoots, then crouches again halfway through his firerate
+                CrouchUp();
+            }
 
-            //Changed it so he crouches until he shoots, then crouches again halfway through his firerate
-            CrouchUp();
-        }
-
-        if(!isCrouched && firerateWait < (firerate/2))
-        {
-            Crouching();
-        }
-
-        //this is only necessary if they will move. right now they are all stationary.
-        if (!isClose() || player.displayedHealth <= 0)
-        {
-            animator.SetBool("IsChasing", false);
-        }
-
-        //Can we remove this large comment?
-
-        //Consider making melee animations for the hybrid character
-        /*
-        if (firerateWait <= 0 && isTooClose())
-        {
-            //animation play here
-            //Strike();
-            //Using firerate as the buffer for melee for consistency, might replace later
-            firerateWait = firerate;
-        }*/
-
-        //ElimCharacter();//Want to find some way for elimcharacter to be checked each time damage is taken, not on every frame like it is now
-        /*
-        if (displayedHealth < 0)
-        {
-            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
-            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-        }*/
+            if (!isCrouched && firerateWait < (firerate / 2))
+            {
+                Crouching();
+            }
+        }    
     }
 
     //I don't like having two separate methods, combine them into one later.  It may be better to have them separate in order to have more control of it
     private void Crouching()
     {
         isCrouched = true;
-        //Crouching behavior, just needs to be used
         if (isCrouched)
         {
             tempCrouchIndicator.transform.localPosition = new Vector2(0.75f, 0.0f);

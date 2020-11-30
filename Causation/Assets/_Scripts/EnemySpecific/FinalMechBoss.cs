@@ -5,7 +5,7 @@ using UnityEngine;
 public class FinalMechBoss : Enemy
 {
 
-    //Boss notes:
+    //Boss notes preproduction:
     //Will be a horizontally moving boss, possibly with airborne phases that it cant be touched during (since it will not be able to be shot)
     //Will have a winged melee charge attack, laser shots from the sky, laser shots horizontally (when on ground level), drop attack
     //Phases include: Airborne, Grounded, Reflecting, Charging grounded (possible)
@@ -20,18 +20,24 @@ public class FinalMechBoss : Enemy
     private bool isInPhase = false;
     //current phase timer controls how long the boss stays in its current phase
     private float currentPhaseTime;
+
+    //New speed variable for grounded charging phase
+    public float groundedSpeed = 12f;
+
+    //These variables control how long before each strike, to prevent the player from taking infinite damage when charged
+    private float strikeTimer = 0f;
+    public float strikeCooldown = 1f;
+
     //unique phase end times for each phase in case we want certain ones to last longer
     public float airPhaseEndTime;
     public float groundPhaseEndTime;
     public float reflectPhaseEndTime;
-    //possible use, would be used to determing the number of charging attacks before it gets "tired"
+    //possible use, would be used to determine the number of charging attacks before it gets "tired"
     public float chargesBeforePhaseEnds;
+
     //laserspawns as the boss shoots lasers
     public GameObject laserSpawnleft;
     public GameObject laserSpawnRight;
-
-    //Keeps boss from doing things until it is awoken
-    public bool isAwake = false;
 
     public FinalMechBoss() //constructor
     {
@@ -62,12 +68,18 @@ public class FinalMechBoss : Enemy
                 {
                     //airborne phase
                     case 0:
+                        //Animator uses movement animation
+                        HoverAttack();
                         break;
                     //grounded phase
                     case 1:
+                        //Animator uses general movement animation
+                        GroundedAttack();
                         break;
                     //reflecting phase
                     case 2:
+                        //Animator uses shielding animation
+                        Reflecting();
                         break;
                 }
                 currentPhaseTime += Time.deltaTime;
@@ -103,14 +115,67 @@ public class FinalMechBoss : Enemy
             }
             else
             {
+                Movement(enemySpeed);
                 phaseRateWait += Time.deltaTime;
             }
 
             if(phaseRateWait >= phaseRate)
             {
                 isInPhase = true;
+                phase += 1;
+                if(phase > 2)
+                {
+                    phase = 0;
+                }
                 phaseRateWait = 0f;
             }
+
+            strikeTimer += Time.deltaTime;
         }
     }
+
+    //Basic back and forth movement, speed changes based on the phase
+    private void Movement(float moveSpeed)
+    {
+
+    }
+
+    //Flies at room height; fires down at the player
+    private void HoverAttack()
+    {
+        Movement(enemySpeed);
+    }
+
+    //Idea is he ignores collision with platforms, sweeping side to side dealing melee damage to the player
+    private void GroundedAttack()
+    {
+        Movement(groundedSpeed);
+        if(IsTooClose() && strikeTimer >= strikeCooldown)
+        {
+            Strike();
+        }
+    }
+
+    //Defensive phase, fires back at player
+    private void Reflecting()
+    {
+        
+    }
+
+    //Will be used to deal damage while the boss sweeps the floor
+    //Overridden to have the strike sound only happen when it deals damage
+    //Want to make it so it strikes right when the player is in range, then it has a cooldown
+    public override void Strike()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(StrikeZone.position, strikeRange, enemyLayers);
+
+        //Damage calculations
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<CharacterBase>().DamageCalc(strikeDamage);
+            Debug.Log($"{gameObject.name} hit {enemy.name}");
+            FindObjectOfType<SFXManager>().PlayAudio("Melee");
+        }
+    }
+    
 }

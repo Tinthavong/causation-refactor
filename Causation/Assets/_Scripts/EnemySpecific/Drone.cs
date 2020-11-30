@@ -26,7 +26,7 @@ public class Drone : Enemy
     void Update()
     {
         //Does everything when the player is within range, otherwise it just lowers the fireratewait
-        if (isClose())
+        if (IsClose())
         {
             Flip(0);
             //Drone will move vertically, matching the players y position to act as a wall until killed
