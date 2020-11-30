@@ -51,7 +51,6 @@ public class PauseController : MonoBehaviour
 
     public void MainMenu()
     {
-        //SaveManager.instance.gameData.iteration -= 1;
         MissionSelection.iterations -= 1;
         SaveManager.instance.gameData.currency = MissionSelection.currency;
         SaveManager.instance.gameData.iteration = MissionSelection.iterations;

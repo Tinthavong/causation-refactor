@@ -3,15 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MenuController : MonoBehaviour
 {
+    //Text displaying the current and total points that player has
+    //Only displays in the Victory Screen
+    public TMP_Text currentPointsTXT;
+    public TMP_Text totalGamePointsTXT;
+
+    //Varaible holding the total points that player has
+    public static int totalGamePoints;
+
     private int lastLoad;
     private int loadNextScene;
+    private int currentLevelPoints;
+    
 
     private void Start()
     {
         loadNextScene = SceneManager.GetActiveScene().buildIndex + 1;
+        
+        currentLevelPoints = Currency.walletValue * 100;
+        totalGamePoints = currentLevelPoints + MissionSelection.currency;
+        
+        currentPointsTXT.text = "Points from Level: " + currentLevelPoints.ToString();
+        totalGamePointsTXT.text = "Total Game Points: " + totalGamePoints.ToString();
+
+        SaveManager.instance.gameData.currency = totalGamePoints;
+        SaveManager.instance.Save();
     }
 
     public void MainMenu()
@@ -31,7 +51,6 @@ public class MenuController : MonoBehaviour
 
     public void MissionSelect()
     {
-        MissionSelection.iterations -= 1;
         SceneManager.LoadScene(2);
     }
 

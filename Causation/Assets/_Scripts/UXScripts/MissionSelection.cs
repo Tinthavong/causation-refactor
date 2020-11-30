@@ -53,7 +53,7 @@ public class MissionSelection : MonoBehaviour
 
     private void Start()
     {
-        anim.SetBool("Transition", false);
+        //anim.SetBool("Transition", false);
 
         //SaveManager.instance.Load();
         //iterations = SaveManager.instance.gameData.iteration;
@@ -249,7 +249,7 @@ public class MissionSelection : MonoBehaviour
 
     void UpdateCurrency()
     {
-        SaveManager.instance.gameData.currency = Currency.walletValue;
+        SaveManager.instance.gameData.currency = MenuController.totalGamePoints;
         currency = SaveManager.instance.gameData.currency;
 
         //SaveManager.instance.Save();
