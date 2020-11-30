@@ -78,9 +78,9 @@ SpriteRenderer:
   m_SortingLayerID: -1964901103
   m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Sprite: {fileID: -945750537659689280, guid: 4dc7b0261e4d9b14d95cbf9a28e9687f,
+  m_Sprite: {fileID: -6869379106256096116, guid: 55e413e44a274c44eba778490292934b,
     type: 3}
-  m_Color: {r: 0.6742879, g: 1, b: 0.6367924, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -116,7 +116,7 @@ Animator:
   m_GameObject: {fileID: 921435466201895878}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fdabb3f73348a8647915e2d1a3d2da94, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3366546d30b16f3448fd30e52e31466c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -163,12 +163,16 @@ MonoBehaviour:
   firerate: 2
   sightRange: 10
   meleeRange: 2
-  floorHax: 1
+  ignoresVerticalSightRestriction: 0
   verticalSight: 2.5
+  startingHealth: 0
   facingRight: 0
+  isBox: 0
   isChasing: 0
+  startingLocation: {x: 0, y: 0, z: 0}
   enemySpeed: 6
   bulletRefSpeed: 0
+  isAwake: 0
   fireRange: 5
   bulletSpawn2: {fileID: 1246460070992135536}
   bulletSpawn3: {fileID: 6605001029656808619}

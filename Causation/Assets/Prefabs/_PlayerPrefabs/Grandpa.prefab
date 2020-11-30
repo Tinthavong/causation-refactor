@@ -177,7 +177,7 @@ MonoBehaviour:
   strikeDamage: 1
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 67584
   healthBar: {fileID: 0}
   ammoText: {fileID: 0}
   ammoTotalText: {fileID: 0}

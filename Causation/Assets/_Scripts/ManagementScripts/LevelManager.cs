@@ -20,17 +20,22 @@ public class LevelManager : MonoBehaviour
     public GameObject levelLoader;
     public GameObject GameOverPanel;
     public GameObject victoryPanel;
+    public GameObject dronePrefab;
     private GameObject hudRef;
     private Currency cy;
 
     //Enemy mangement
     Enemy[] enemiesInLevel; //an array that stores all of the enemies inside of them for the specific scene
 
-   
+    public int maxDronesAliveAtOnce = 3;
+    int droneIndex = 0;
+
+
 
     void Start()
     {
         enemiesInLevel = FindObjectsOfType<Enemy>();
+
         cy = FindObjectOfType<Currency>();
         hudRef = GameObject.Find("HUDElements");
         GameOverPanel = GameObject.Find("GameOverScreen");
@@ -40,9 +45,10 @@ public class LevelManager : MonoBehaviour
     //enemy's position resets to whatever their starting position was
     public void EnemyReplenish()
     {
+        //if null or whatever then don't do anything
         foreach (Enemy en in enemiesInLevel)
         {
-            if (!en.isBox && en.displayedHealth > 0)
+            if (!en.isBox && en.displayedHealth > 0 && en != null) //should this ignore bosses too?
             {
                 en.isAwake = false; //enemy behavior reset     
                 en.transform.localPosition = en.startingLocation;
@@ -50,6 +56,30 @@ public class LevelManager : MonoBehaviour
             }
         }
     }
+
+    //WIP drone spawning method
+    public void DroneSpawner()
+    {
+        foreach (Enemy dr in enemiesInLevel)
+        {
+            if (dr.GetComponent<Drone>() && dr.displayedHealth > 0 && dr != null)
+            {
+                droneIndex += 1;
+            }
+        }
+        Debug.Log(droneIndex);
+
+        //right now this spits out a drone one by one ensuring that there are always 3 drones - this number might be too much?
+        if (droneIndex <= (maxDronesAliveAtOnce + 1))
+        {
+            //sound that plays when they spawn
+            GameObject drone = Instantiate(dronePrefab) as GameObject;
+            //            drone.transform.position = (Camera.main.transform.position + );
+
+            droneIndex -= 1;
+        }
+    }
+
 
     //called in the player controller class to pause gameplay and remove player controls
     //also spawns the unity UI object/panel that shows gameover buttons like, retry, restart, quit, mainmenu etc 
@@ -88,7 +118,7 @@ public class LevelManager : MonoBehaviour
             Camera mc = FindObjectOfType<Camera>();
 
             //Extremely sequential approach that doesn't allow dynamic checkpoints, the first if statement proceeds as long as the second checkpoint isn't flagged but once it is the first if statement is ignored
-            if(flaggedCheckpoint && !flaggedCheckpoint2)
+            if (flaggedCheckpoint && !flaggedCheckpoint2)
             {
                 pc.transform.position = checkpoint.transform.position;
                 Vector3 camerapoint = new Vector3(pc.transform.position.x, pc.transform.position.y, -10);

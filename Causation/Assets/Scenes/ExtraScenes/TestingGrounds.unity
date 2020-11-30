@@ -1029,7 +1029,7 @@ GameObject:
   m_Component:
   - component: {fileID: 54773521}
   - component: {fileID: 54773522}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall (7)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -1826,7 +1826,7 @@ GameObject:
   m_Component:
   - component: {fileID: 119630118}
   - component: {fileID: 119630120}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall (3)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -2004,7 +2004,7 @@ Transform:
   - {fileID: 584341489}
   - {fileID: 528027847}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &143995399
 GameObject:
@@ -2167,7 +2167,7 @@ PrefabInstance:
     - target: {fileID: 1659119685461055102, guid: eb3c9fb493c98bb458f67505eb176b91,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1659119685461055102, guid: eb3c9fb493c98bb458f67505eb176b91,
         type: 3}
@@ -2593,7 +2593,7 @@ GameObject:
   m_Component:
   - component: {fileID: 182309471}
   - component: {fileID: 182309472}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall (3)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -3659,7 +3659,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &286480215
 GameObject:
@@ -4522,7 +4522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 345232705}
   - component: {fileID: 345232706}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall (6)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -4603,7 +4603,7 @@ GameObject:
   m_Component:
   - component: {fileID: 346897473}
   - component: {fileID: 346897475}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall (1)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -5059,7 +5059,7 @@ GameObject:
   m_Component:
   - component: {fileID: 383857308}
   - component: {fileID: 383857310}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall (2)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -5420,7 +5420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 430198287}
   - component: {fileID: 430198288}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall (8)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -6981,7 +6981,7 @@ GameObject:
   m_Component:
   - component: {fileID: 522640717}
   - component: {fileID: 522640718}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -7062,7 +7062,7 @@ GameObject:
   m_Component:
   - component: {fileID: 523497285}
   - component: {fileID: 523497286}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall (2)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -7652,7 +7652,7 @@ GameObject:
   m_Component:
   - component: {fileID: 551481929}
   - component: {fileID: 551481930}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -8105,20 +8105,70 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 46542786735944371, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 302499020264982312, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193919196701555201, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: sightRange
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193919196701555201, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: strikeRange
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193919196701555201, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: meleeRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193919196701555201, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: ignoresVerticalSightRestriction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193919196701555201, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: verticalSight
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193919196701555201, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: ignoreLayers.m_Bits
+      value: 51712
+      objectReference: {fileID: 0}
     - target: {fileID: 9063652289831134684, guid: 67a232f373c76fa4ba6331e230c67230,
         type: 3}
       propertyPath: m_Name
       value: Drone
       objectReference: {fileID: 0}
+    - target: {fileID: 9063652289831134684, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063652289831134685, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9063652289831134690, guid: 67a232f373c76fa4ba6331e230c67230,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.48
+      value: 24.1
       objectReference: {fileID: 0}
     - target: {fileID: 9063652289831134690, guid: 67a232f373c76fa4ba6331e230c67230,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.64
+      value: 5.71
       objectReference: {fileID: 0}
     - target: {fileID: 9063652289831134690, guid: 67a232f373c76fa4ba6331e230c67230,
         type: 3}
@@ -8148,7 +8198,7 @@ PrefabInstance:
     - target: {fileID: 9063652289831134690, guid: 67a232f373c76fa4ba6331e230c67230,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9063652289831134690, guid: 67a232f373c76fa4ba6331e230c67230,
         type: 3}
@@ -8427,7 +8477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 599037542}
   - component: {fileID: 599037543}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall (5)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -8508,7 +8558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 602103439}
   - component: {fileID: 602103440}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -9065,7 +9115,7 @@ Transform:
   - {fileID: 984315010}
   - {fileID: 1684103706}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &627750780
 PrefabInstance:
@@ -9378,7 +9428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 639705231}
   - component: {fileID: 639705232}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall (4)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -10209,7 +10259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &675676554
 Transform:
   m_ObjectHideFlags: 0
@@ -12201,7 +12251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 871250685}
   - component: {fileID: 871250686}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Wall of Crates (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13181,7 +13231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 955888137}
   - component: {fileID: 955888138}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall (6)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -13622,6 +13672,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 448755751}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1002571465
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4203190106920490217, guid: 3f6e0c76c6b8f3a4da5e4e029e4131a6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203190106920490217, guid: 3f6e0c76c6b8f3a4da5e4e029e4131a6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203190106920490217, guid: 3f6e0c76c6b8f3a4da5e4e029e4131a6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203190106920490217, guid: 3f6e0c76c6b8f3a4da5e4e029e4131a6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203190106920490217, guid: 3f6e0c76c6b8f3a4da5e4e029e4131a6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203190106920490217, guid: 3f6e0c76c6b8f3a4da5e4e029e4131a6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203190106920490217, guid: 3f6e0c76c6b8f3a4da5e4e029e4131a6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203190106920490217, guid: 3f6e0c76c6b8f3a4da5e4e029e4131a6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203190106920490217, guid: 3f6e0c76c6b8f3a4da5e4e029e4131a6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203190106920490217, guid: 3f6e0c76c6b8f3a4da5e4e029e4131a6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203190106920490217, guid: 3f6e0c76c6b8f3a4da5e4e029e4131a6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203190106920490221, guid: 3f6e0c76c6b8f3a4da5e4e029e4131a6,
+        type: 3}
+      propertyPath: m_Name
+      value: Brawler
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f6e0c76c6b8f3a4da5e4e029e4131a6, type: 3}
 --- !u!1 &1005590325
 GameObject:
   m_ObjectHideFlags: 0
@@ -13749,7 +13868,7 @@ PrefabInstance:
     - target: {fileID: 7462346461303034105, guid: 7df53790b9a5e024f8896dca785cd12b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7462346461303034105, guid: 7df53790b9a5e024f8896dca785cd12b,
         type: 3}
@@ -14332,7 +14451,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1087397550}
   - component: {fileID: 1087397551}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Wall of Crates
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14631,7 +14750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1121498305}
   - component: {fileID: 1121498306}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -16147,7 +16266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1238406013}
   - component: {fileID: 1238406014}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall (5)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -20369,7 +20488,7 @@ PrefabInstance:
     - target: {fileID: 3493381886632224439, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3493381886632224439, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
@@ -21208,14 +21327,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596250677}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.63, y: -3.03, z: 5.188497}
+  m_LocalPosition: {x: 0, y: -3.03, z: 5.188497}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children:
   - {fileID: 697618783516097756}
   - {fileID: 1349996519}
   - {fileID: 470549071}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1596250685
 MonoBehaviour:
@@ -21377,7 +21496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1611602205}
   - component: {fileID: 1611602206}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -22070,7 +22189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1654803026}
   - component: {fileID: 1654803027}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -22157,7 +22276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1666084283}
   - component: {fileID: 1666084284}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall (1)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -22874,7 +22993,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1733117794}
   - component: {fileID: 1733117796}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall (4)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -23634,7 +23753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1794227041}
   - component: {fileID: 1794227042}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -23998,7 +24117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1827678499}
   - component: {fileID: 1827678500}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -24706,6 +24825,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1873694335
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 921435466201895874, guid: 96d72b277360aaf4cb2befc4eb2588cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 921435466201895874, guid: 96d72b277360aaf4cb2befc4eb2588cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 921435466201895874, guid: 96d72b277360aaf4cb2befc4eb2588cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.184465
+      objectReference: {fileID: 0}
+    - target: {fileID: 921435466201895874, guid: 96d72b277360aaf4cb2befc4eb2588cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 921435466201895874, guid: 96d72b277360aaf4cb2befc4eb2588cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 921435466201895874, guid: 96d72b277360aaf4cb2befc4eb2588cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 921435466201895874, guid: 96d72b277360aaf4cb2befc4eb2588cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 921435466201895874, guid: 96d72b277360aaf4cb2befc4eb2588cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 921435466201895874, guid: 96d72b277360aaf4cb2befc4eb2588cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 921435466201895874, guid: 96d72b277360aaf4cb2befc4eb2588cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 921435466201895874, guid: 96d72b277360aaf4cb2befc4eb2588cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 921435466201895878, guid: 96d72b277360aaf4cb2befc4eb2588cd,
+        type: 3}
+      propertyPath: m_Name
+      value: ShotgunGuy1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 96d72b277360aaf4cb2befc4eb2588cd, type: 3}
 --- !u!1 &1875208849
 GameObject:
   m_ObjectHideFlags: 0
@@ -24716,7 +24904,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1875208850}
   - component: {fileID: 1875208851}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall (8)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -25626,6 +25814,125 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1984354801
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 46542786735944371, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 302499020264982312, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193919196701555201, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: sightRange
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193919196701555201, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: strikeRange
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193919196701555201, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: meleeRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193919196701555201, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: ignoresVerticalSightRestriction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193919196701555201, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: verticalSight
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193919196701555201, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: ignoreLayers.m_Bits
+      value: 51712
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063652289831134684, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_Name
+      value: Drone (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063652289831134684, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063652289831134685, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063652289831134690, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 24.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063652289831134690, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063652289831134690, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063652289831134690, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063652289831134690, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063652289831134690, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063652289831134690, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063652289831134690, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063652289831134690, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063652289831134690, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063652289831134690, guid: 67a232f373c76fa4ba6331e230c67230,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 67a232f373c76fa4ba6331e230c67230, type: 3}
 --- !u!1001 &1984730382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26479,7 +26786,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2062241401}
   - component: {fileID: 2062241402}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall (7)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -27506,7 +27813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 358763842000473144}
   - component: {fileID: 358763842000473147}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -27753,7 +28060,7 @@ PrefabInstance:
     - target: {fileID: 125780432412524947, guid: a6b29ff1f64548248bbb99f3db695679,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 125780432412524947, guid: a6b29ff1f64548248bbb99f3db695679,
         type: 3}
@@ -27902,7 +28209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1577799684569312375}
   - component: {fileID: 1577799684569312372}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -28000,7 +28307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2244221722326117770}
   - component: {fileID: 2244221722326117769}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -28259,7 +28566,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2858888395112054437}
   - component: {fileID: 2858888395112054438}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -28276,7 +28583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2858888396111881481}
   - component: {fileID: 2858888396111881482}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -28432,7 +28739,7 @@ PrefabInstance:
     - target: {fileID: 4795119699372634914, guid: 012453b1126c1454e84c8c34ce2dca77,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4795119699372634914, guid: 012453b1126c1454e84c8c34ce2dca77,
         type: 3}
@@ -28468,7 +28775,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4004720124819129085
 PrefabInstance:
@@ -29006,7 +29313,7 @@ Transform:
   - {fileID: 31534681}
   - {fileID: 1882812423871307808}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5222924329825994030
 MonoBehaviour:
@@ -29030,6 +29337,8 @@ MonoBehaviour:
   levelLoader: {fileID: 5222924328955186698}
   GameOverPanel: {fileID: 0}
   victoryPanel: {fileID: 1563056107}
+  dronePrefab: {fileID: 0}
+  maxDronesAliveAtOnce: 3
 --- !u!4 &5475858062357492225
 Transform:
   m_ObjectHideFlags: 0
@@ -29104,7 +29413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5475858062357492225}
   - component: {fileID: 5475858062357492226}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -29207,7 +29516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6035185207458680636}
   - component: {fileID: 6035185207458680639}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -29278,6 +29587,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &6105495164465970609
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5095861219758917616, guid: 0f40de7e0b84e424cbb81a28124e547a,
+        type: 3}
+      propertyPath: m_Name
+      value: BrawlerAlt
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095861219758917620, guid: 0f40de7e0b84e424cbb81a28124e547a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095861219758917620, guid: 0f40de7e0b84e424cbb81a28124e547a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095861219758917620, guid: 0f40de7e0b84e424cbb81a28124e547a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095861219758917620, guid: 0f40de7e0b84e424cbb81a28124e547a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095861219758917620, guid: 0f40de7e0b84e424cbb81a28124e547a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095861219758917620, guid: 0f40de7e0b84e424cbb81a28124e547a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095861219758917620, guid: 0f40de7e0b84e424cbb81a28124e547a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095861219758917620, guid: 0f40de7e0b84e424cbb81a28124e547a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095861219758917620, guid: 0f40de7e0b84e424cbb81a28124e547a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095861219758917620, guid: 0f40de7e0b84e424cbb81a28124e547a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095861219758917620, guid: 0f40de7e0b84e424cbb81a28124e547a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0f40de7e0b84e424cbb81a28124e547a, type: 3}
 --- !u!82 &6126050565398448314
 AudioSource:
   m_ObjectHideFlags: 0
@@ -29531,7 +29909,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7288217273111441128}
   - component: {fileID: 7288217273111441131}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Cratewall
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -29790,7 +30168,7 @@ PrefabInstance:
     - target: {fileID: 8057104445730690897, guid: 06866dc76b34b3440aaafdc3df1b9b26,
         type: 3}
       propertyPath: m_Layer
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06866dc76b34b3440aaafdc3df1b9b26, type: 3}
