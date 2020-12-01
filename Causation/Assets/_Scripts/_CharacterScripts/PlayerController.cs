@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class PlayerController : CharacterBase
 {
     //Controller for the son and granddaughter because they don't have bullet swapping
-
     public PlayerController() //Constructor
     {
         Health = displayedHealth;
