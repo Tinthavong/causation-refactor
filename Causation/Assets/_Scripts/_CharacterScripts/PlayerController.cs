@@ -336,22 +336,19 @@ public class PlayerController : CharacterBase
 
         if (collision.CompareTag("Checkpoint"))
         {
-            LM.checkpoint.GetComponent<SpriteRenderer>().color = Color.green;
-            LM.flaggedCheckpoint = true;
-        }
-
-        if (collision.CompareTag("Checkpoint2"))
-        {
-            LM.checkpoint2.GetComponent<SpriteRenderer>().color = Color.green;
-            LM.flaggedCheckpoint = false;
-            LM.flaggedCheckpoint2 = true;
+            if (LM.checkpointIndex <= 0) LM.checkpointIndex++;
+            LM.checkpoints[LM.checkpointIndex].GetComponent<SpriteRenderer>().color = Color.green;
+            LM.flaggedCheckpoints[LM.checkpointIndex] = true;
+            LM.CheckpointCostCheck();
+            collision.GetComponent<BoxCollider2D>().enabled = false;
         }
 
         //Have to test further to see if this actually saves
         if (collision.CompareTag("ScrewPickUp"))
         {
-            Currency cy = FindObjectOfType<Currency>();
-            cy.WalletProperty += 1; //screws have a default value of 1 anyways
+            //Currency cy = FindObjectOfType<Currency>();
+            LM.currency.WalletProperty += 1;
+            //cy.WalletProperty += 1; //screws have a default value of 1 anyways
 
             LM.CheckpointCostCheck();
         }

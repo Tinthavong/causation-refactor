@@ -18,18 +18,22 @@ public class MenuController : MonoBehaviour
     private int lastLoad;
     private int loadNextScene;
     private int currentLevelPoints;
-    
+
 
     private void Start()
     {
         loadNextScene = SceneManager.GetActiveScene().buildIndex + 1;
-        
+
+        //Find a way to separate these from VictoryScreen and GameOverScreen because there is a null reference error for the points when the gameover screen pops up     
         currentLevelPoints = Currency.walletValue * 100;
         totalGamePoints = currentLevelPoints + MissionSelection.currency;
-        
+
+        //Current "fix" is to make the game over screen reference these like the VictoryScreen does
         currentPointsTXT.text = "Points from Level: " + currentLevelPoints.ToString();
         totalGamePointsTXT.text = "Total Game Points: " + totalGamePoints.ToString();
 
+        //These are also returning a null reference for the game over, I think just finding a way to separate victory and gameover would fix it
+        //Band-aid fix could be, if gameobject.Name == GameWinPanel then so and so, else if gameobject.Name == GameOverPanel then yada yada
         SaveManager.instance.gameData.currency = totalGamePoints;
         SaveManager.instance.Save();
     }
@@ -72,13 +76,9 @@ public class MenuController : MonoBehaviour
     public void Retry() //Meant to retry from checkpoint rather than restart/reload the whole scene
     {
         LevelManager LM = FindObjectOfType<LevelManager>();
-        if (LM.flaggedCheckpoint || LM.flaggedCheckpoint2)
+        if (LM.flaggedCheckpoints[LM.checkpointIndex])
         {
             LM.RetryCheckpoint();
-        }
-        else
-        {
-            RestartGame();//No checkpoint therefore go back to start
         }
     }
 

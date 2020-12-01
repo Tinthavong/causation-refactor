@@ -18,7 +18,7 @@ public class PitScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        LevelManager checkpoint = FindObjectOfType<LevelManager>();
+        LevelManager LM = FindObjectOfType<LevelManager>();
 
         switch(collision.tag)
         {
@@ -28,9 +28,11 @@ public class PitScript : MonoBehaviour
             case "Player":
                 player = collision.GetComponent<PlayerController>();
 
-                if (checkpoint.flaggedCheckpoint == true)
+                if (LM.flaggedCheckpoints[LM.checkpointIndex] == true)
                 {
-                    respawnPOS = checkpoint.checkpoint.transform.position;
+                 //   respawnPOS = LM.checkpoint.transform.position;
+                    respawnPOS = LM.checkpoints[LM.checkpointIndex].transform.position;
+
                 }
 
                 player.transform.position = respawnPOS;
