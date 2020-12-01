@@ -10,29 +10,41 @@ public class PitScript : MonoBehaviour
     PlayerController player;
 
     private Vector2 respawnPOS;
+    private Vector2 startingPos; //absolute beginning of the level before checkpoints are triggered
 
     private void Start()
     {
-
+        player = FindObjectOfType<PlayerController>();
+        startingPos = player.GetComponent<Transform>().position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         LevelManager LM = FindObjectOfType<LevelManager>();
 
-        switch(collision.tag)
+        switch (collision.tag)
         {
             case "Enemy":
                 Destroy(collision.gameObject);
                 break;
             case "Player":
+                //store pit "respawn points" by hand instead of referencing checkpoints?
+                //make an array of pitRestore points then assign those positions equal to each of the checkpoints
                 player = collision.GetComponent<PlayerController>();
 
-                if (LM.flaggedCheckpoints[LM.checkpointIndex] == true)
+                //Sent to the start of the level instead of at a checkpoint because the index is negative one by default (no checkpoints registered)
+                if (LM.checkpointIndex == -1)
                 {
-                 //   respawnPOS = LM.checkpoint.transform.position;
-                    respawnPOS = LM.checkpoints[LM.checkpointIndex].transform.position;
+                    player.transform.position = startingPos;
+                }
 
+                else
+                {
+                    if (LM.flaggedCheckpoints[LM.checkpointIndex])
+                    {
+                        //   respawnPOS = LM.checkpoint.transform.position;
+                        respawnPOS = LM.checkpoints[LM.checkpointIndex].transform.position;
+                    }               
                 }
 
                 player.transform.position = respawnPOS;
