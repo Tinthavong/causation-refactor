@@ -14,6 +14,7 @@ public class PitScript : MonoBehaviour
 
     private void Start()
     {
+        player = FindObjectOfType<PlayerController>();
         startingPos = player.GetComponent<Transform>().position;
     }
 
