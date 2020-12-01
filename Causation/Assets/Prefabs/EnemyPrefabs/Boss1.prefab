@@ -213,7 +213,7 @@ MonoBehaviour:
     type: 3}
   bulletSpawn: {fileID: 0}
   StrikeZone: {fileID: 5682095838689645865}
-  strikeRange: 3.8
+  strikeRange: 4.2
   strikeDamage: 2
   enemyLayers:
     serializedVersion: 2
@@ -225,11 +225,14 @@ MonoBehaviour:
   meleeRange: 6
   ignoresVerticalSightRestriction: 1
   verticalSight: 3
+  startingHealth: 0
   facingRight: 0
-  isChasing: 0
   isBox: 0
+  isChasing: 0
+  startingLocation: {x: 0, y: 0, z: 0}
   enemySpeed: 1
   bulletRefSpeed: 0
+  isAwake: 0
   phase: 0
   phaseRate: 4
   bulletsFiredStop: 5
@@ -241,7 +244,6 @@ MonoBehaviour:
   laserStartRight: {fileID: 3176810633132376498}
   laserBeam: {fileID: 3067972385498588301, guid: 6f10d5468945a3a47a9e73898c5848c9,
     type: 3}
-  isAwake: 0
 --- !u!1 &2423452158960239851
 GameObject:
   m_ObjectHideFlags: 0

@@ -172,7 +172,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 4
 --- !u!114 &1193919196701555201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,8 +211,14 @@ MonoBehaviour:
   meleeRange: 2
   ignoresVerticalSightRestriction: 1
   verticalSight: 2.5
+  startingHealth: 0
   facingRight: 0
-  isChasing: 0
   isBox: 0
+  isChasing: 0
+  startingLocation: {x: 0, y: 0, z: 0}
   enemySpeed: 6
   bulletRefSpeed: 0
+  isAwake: 0
+  ignoreLayers:
+    serializedVersion: 2
+    m_Bits: 0
