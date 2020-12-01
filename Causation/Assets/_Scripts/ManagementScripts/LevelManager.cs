@@ -6,12 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {  //game over manager for both player wins and losses
-    public GameObject checkpoint; //the last visited checkpoint, a flag is set that allows the player to respawn there
-    public bool flaggedCheckpoint = false;
+  //  public GameObject checkpoint; //the last visited checkpoint, a flag is set that allows the player to respawn there
+  //  public bool flaggedCheckpoint = false;
 
     //The sloppiest and quickest way to add another checkpoint, works fine because of the small - medium sized levels
-    public GameObject checkpoint2;
-    public bool flaggedCheckpoint2 = false;
+    //public GameObject checkpoint2;
+//    public bool flaggedCheckpoint2 = false;
+
+    public GameObject[] checkpoints; //Checkpoints in the scene, set in the inspector
+    public bool[] flaggedCheckpoints;
+    public int checkpointIndex; //The current checkpoint that the player can reference, -1 means no checkpoint
 
     public bool canRetry = false; //can afford the toll/checkpoint cost
     public int checkpointCost;
@@ -22,7 +26,7 @@ public class LevelManager : MonoBehaviour
     public GameObject victoryPanel;
     public GameObject dronePrefab;
     private GameObject hudRef;
-    private Currency cy;
+    public Currency currency; //Right now this has to be referenced like this because FindObjectOfType is finicky with how the pause screen disables everything- consider putting currency in LevelManager
 
     //Enemy mangement
     Enemy[] enemiesInLevel; //an array that stores all of the enemies inside of them for the specific scene
@@ -30,13 +34,20 @@ public class LevelManager : MonoBehaviour
     public int maxDronesAliveAtOnce = 3;
     int droneIndex = 0;
 
-
+    public Button retryButton;
 
     void Start()
     {
+        checkpointCost = 5;
+        flaggedCheckpoints = new bool[checkpoints.Length];
+        checkpointIndex = -1;
+
+        currency = FindObjectOfType<Currency>();
+
+        retryButton.interactable = false;
+
         enemiesInLevel = FindObjectsOfType<Enemy>();
 
-        cy = FindObjectOfType<Currency>();
         hudRef = GameObject.Find("HUDElements");
         GameOverPanel = GameObject.Find("GameOverScreen");
     }
@@ -113,10 +124,11 @@ public class LevelManager : MonoBehaviour
         PlayerController pc = FindObjectOfType<PlayerController>();
         if (canRetry == true)
         {
-            cy.WalletProperty = (cy.WalletProperty - checkpointCost);
+            currency.WalletProperty = (currency.WalletProperty - checkpointCost);
             //A "replenish" function for playercontroller might be best for using checkpoints
             Camera mc = FindObjectOfType<Camera>();
 
+            /*
             //Extremely sequential approach that doesn't allow dynamic checkpoints, the first if statement proceeds as long as the second checkpoint isn't flagged but once it is the first if statement is ignored
             if (flaggedCheckpoint && !flaggedCheckpoint2)
             {
@@ -129,6 +141,15 @@ public class LevelManager : MonoBehaviour
                 pc.transform.position = checkpoint2.transform.position;
                 Vector3 camerapoint = new Vector3(pc.transform.position.x, pc.transform.position.y, -10);
                 mc.transform.position = camerapoint;
+            }*/
+
+
+            //using arrays for checkpoints
+            if (flaggedCheckpoints[checkpointIndex])
+            {
+                pc.transform.position = checkpoints[checkpointIndex].transform.position;
+                Vector3 camerapoint = new Vector3(pc.transform.position.x, pc.transform.position.y, -10);
+                mc.transform.position = camerapoint;
             }
 
             pc.Replenish();
@@ -136,28 +157,23 @@ public class LevelManager : MonoBehaviour
             SetActiveChildren(hudRef.transform, true);
             SetActiveChildren(GameOverPanel.transform, false);
         }
-        else
-        {
-            canRetry = false;//can't afford to retry anymore
-                             //Grey this out or tell the player that they can't afford it?
-                             //will finish this logic later and change the gameover UI, for now will use the restarygame logic
-            MenuController mc = new MenuController();
-            mc.RestartGame();
-        }
     }
 
     public void CheckpointCostCheck()
     {
-        if (cy.WalletProperty >= checkpointCost)
+        if (currency.WalletProperty >= checkpointCost)
         {
-            Debug.Log(cy.WalletProperty);
             canRetry = true;
+
+            if (checkpointIndex >= 0)
+            {
+                if (flaggedCheckpoints[checkpointIndex]) retryButton.interactable = true;
+            }
         }
-        else if (cy.WalletProperty < checkpointCost)
+        else if (currency.WalletProperty < checkpointCost)
         {
-            Debug.Log(cy.WalletProperty);
+            retryButton.interactable = false;
             canRetry = false;
         }
-
     }
 }

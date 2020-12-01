@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class Bossman1 : Enemy
 {
-
     //Special Notes:
     //This boss will not move, it will be stationary with the ability to shoot both ways
     //This boss has 3 phases, high gatling, low gatling, and an alternating fire phase
@@ -41,15 +41,22 @@ public class Bossman1 : Enemy
     private Vector3 gatlingCurrentLeft;
     private Vector3 gatlingCurrentRight;
 
+    //Boss HP Bar
+    public HealthBar bossHealthBar;
+    public Text bossName;
+
     void Start()
     {
+        //Boss HP Bar
+        bossHealthBar.SetHealth(displayedHealth);
+
         bulletRefSpeed = bulletPrefab.GetComponent<BulletScript>().bulletSpeed;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerController>();
         //Gets initial position for the bullets
         gatlingCurrentLeft = gatlingStartLeft.transform.position;
-        gatlingCurrentRight = gatlingStartRight.transform.position;
+        gatlingCurrentRight = gatlingStartRight.transform.position;  
     }
 
     // Update is called once per frame
@@ -76,7 +83,6 @@ public class Bossman1 : Enemy
                 animator.SetBool("IsShooting", false);
                 animator.SetBool("IsMoving", true);
                 MinorMovement();
-
             }
 
             if (phaseRateWait <= 0)
@@ -113,7 +119,6 @@ public class Bossman1 : Enemy
                 }
                 isInPhase = false;
                 bulletsFired = 0;
-
             }
         }
     }
@@ -273,5 +278,13 @@ public class Bossman1 : Enemy
             enemy.GetComponent<CharacterBase>().DamageCalc(strikeDamage);
             Debug.Log($"{gameObject.name} hit {enemy.name}");
         }
+    }
+
+    //Boss HP Bar
+    public override void DamageCalc(int damage)
+    {
+
+        bossHealthBar.SetHealth(displayedHealth);
+        base.DamageCalc(damage);
     }
 }

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5095861219758917617}
   - component: {fileID: 7874362355561540606}
   - component: {fileID: 5095861219758917622}
-  - component: {fileID: 369558188317734969}
   m_Layer: 11
   m_Name: BrawlerAlt
   m_TagString: Enemy
@@ -190,22 +189,6 @@ MonoBehaviour:
   enemySpeed: 7.5
   bulletRefSpeed: 0
   isAwake: 0
---- !u!58 &369558188317734969
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5095861219758917616}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.75, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!1 &7874362355244887888
 GameObject:
   m_ObjectHideFlags: 0
