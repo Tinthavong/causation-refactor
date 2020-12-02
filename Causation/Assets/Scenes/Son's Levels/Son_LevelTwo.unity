@@ -12032,6 +12032,17 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3493381887846697232, guid: 1a928fbafddaf4c4091cae797bb281db,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5758117517181831683, guid: d3556f0245e24c241bbe7d801a4f3184,
+        type: 3}
+    - target: {fileID: 3493381887846697233, guid: 1a928fbafddaf4c4091cae797bb281db,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5493396955820468972, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
       propertyPath: m_IsActive
@@ -21461,6 +21472,7 @@ MonoBehaviour:
     - 'Son: Now, what''s here that''s so special?'
   bossDialogueTrigger: 0
   bossReference: {fileID: 0}
+  bossHP: {fileID: 0}
 --- !u!61 &1540838420
 BoxCollider2D:
   m_ObjectHideFlags: 0

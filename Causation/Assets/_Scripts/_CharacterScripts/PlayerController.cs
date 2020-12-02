@@ -289,12 +289,12 @@ public class PlayerController : CharacterBase
         //Bullet object shifts position and rotation based on direction
         if (!facingRight)
         {
-            b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90f);
+            b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -180.0f);
             b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
         }
         else if (facingRight)
         {
-            b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90f);
+            b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -0.0f);
             b.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
         }
     }
