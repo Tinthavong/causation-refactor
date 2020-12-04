@@ -5,7 +5,7 @@ using UnityEngine;
 public class PitScript : MonoBehaviour
 {
     [SerializeField]
-    private int damage;
+    private int damage = 3;
 
     PlayerController player;
 
