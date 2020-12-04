@@ -6,7 +6,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     [SerializeField]
-    private int damage;
+    private int damage = 1;
 
     [SerializeField]
     public float knockBackAmount;

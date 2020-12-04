@@ -17,11 +17,8 @@ public class Interactables : MonoBehaviour
     Vector3 objectPosition;
 
     //Set these in inspector with appropriate prefabs of the same names
-    [SerializeField] private GameObject indicatorText;
+    [SerializeField] private GameObject indicatorText = null;
     [SerializeField] private TextMeshProUGUI signText;
-
-    //mean for the update check when player is pushing the W key
-    private bool isColliding;
 
     public static bool transitionFlag = false;
     private int hardLock = 1;
@@ -99,13 +96,11 @@ public class Interactables : MonoBehaviour
         {
             case "Object":
                 Debug.Log("Object player is at is " + nearObject.tag);
-                isColliding = true;
                 break;
             case "Interact":
                 //If the object has the 'Interact' tag spawn in text above the player to show they can push a button to interact with object
                 SpawnText(objectPosition);
                 Debug.Log("Object player is at is " + nearObject.tag);
-                isColliding = true;
                 break;
             case "Transition":
                 //If the object has the 'Transition' tag spawn in text above the player to show they can push a button to interact with object
@@ -114,7 +109,6 @@ public class Interactables : MonoBehaviour
                 break;
             default:
                 Debug.Log("Not colliding with tagged object");
-                isColliding = true;
                 break;
         }
     }
@@ -131,7 +125,6 @@ public class Interactables : MonoBehaviour
         }
 
         nearObject = null;
-        isColliding = false;
     }
 
     public void SpawnText(Vector3 objectPosition)
