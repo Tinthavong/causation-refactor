@@ -24,8 +24,8 @@ public class LevelManager : MonoBehaviour
     public GameObject levelLoader;
     public GameObject GameOverPanel;
     public GameObject victoryPanel;
-    public GameObject cutsceneTimeline;
-
+    public GameObject victoryCutscene;
+    public GameObject timelineManager;
 
     public GameObject dronePrefab;
     private GameObject hudRef;
@@ -69,6 +69,7 @@ public class LevelManager : MonoBehaviour
                 en.transform.localPosition = en.startingLocation;
                 en.displayedHealth = en.startingHealth;
             }
+            //consider cleaning up the dead bodies
         }
     }
 
@@ -115,6 +116,8 @@ public class LevelManager : MonoBehaviour
     {
         //Spawn the game over panels or UI game object here
         //The player script disables movement, this handles UI
+        timelineManager.GetComponent<TimelineManager>().hasCutscenePlayed = false;
+        CheckpointCostCheck();
         SetActiveChildren(hudRef.transform, false);
         SetActiveChildren(GameOverPanel.transform, true);
     }
@@ -133,10 +136,10 @@ public class LevelManager : MonoBehaviour
     {
         //Spawn the victory screen here
         //The player script disables movement
-        EnemyDestruction(); //simply destroys the enemy component
-        if (cutsceneTimeline != null)
+        EnemyDestruction(); //simply destroys the enemy component for now
+        if (victoryCutscene != null)
         {
-            cutsceneTimeline.SetActive(true);
+            victoryCutscene.SetActive(true);
         }
     }
 
@@ -165,6 +168,7 @@ public class LevelManager : MonoBehaviour
             }
 
             pc.Replenish();
+            CheckpointCostCheck();
             EnemyReplenish(); //Resets the enemies behaviors
             SetActiveChildren(hudRef.transform, true);
             SetActiveChildren(GameOverPanel.transform, false);

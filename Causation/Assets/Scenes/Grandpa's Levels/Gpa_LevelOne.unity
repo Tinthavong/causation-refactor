@@ -5528,6 +5528,8 @@ PlayableDirector:
     value: {fileID: 1541366962}
   - key: {fileID: -8101199400067267782, guid: a5e4e19e9c21d464f8dea0e829775f1f, type: 2}
     value: {fileID: 1563056107}
+  - key: {fileID: -7512254607798219523, guid: a5e4e19e9c21d464f8dea0e829775f1f, type: 2}
+    value: {fileID: 1275003490}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &401847748
@@ -5544,6 +5546,7 @@ Transform:
   - {fileID: 3694000665684932098}
   - {fileID: 4562528775053679573}
   - {fileID: 1590325160}
+  - {fileID: 1275003493}
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17083,6 +17086,74 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1275003490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1275003493}
+  - component: {fileID: 1275003492}
+  - component: {fileID: 1275003491}
+  m_Layer: 0
+  m_Name: Cutscene Dialogue (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1275003491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275003490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25b4e72b66b7c3344bfc78df156401ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    sentences:
+    - Heh nothin personnel kiddo
+  bossDialogueTrigger: 0
+  bossReference: {fileID: 0}
+  bossHP: {fileID: 0}
+--- !u!114 &1275003492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275003490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e6643ad31d0cc4988c65550f0a5942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    sentences:
+    - Heh nothin personnel kiddo
+  bossDialogueTrigger: 0
+  bossReference: {fileID: 0}
+  bossHP: {fileID: 0}
+--- !u!4 &1275003493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275003490}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -30.03, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 401847748}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1278733568 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2858888395390309262, guid: ac681a69b2f08434e96a1f3b03b2ebcf,
