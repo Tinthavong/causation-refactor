@@ -24,9 +24,13 @@ public class LevelManager : MonoBehaviour
     public GameObject levelLoader;
     public GameObject GameOverPanel;
     public GameObject victoryPanel;
+    public GameObject cutsceneTimeline;
+
+
     public GameObject dronePrefab;
     private GameObject hudRef;
     public Currency currency; //Right now this has to be referenced like this because FindObjectOfType is finicky with how the pause screen disables everything- consider putting currency in LevelManager
+
 
     //Enemy mangement
     Enemy[] enemiesInLevel; //an array that stores all of the enemies inside of them for the specific scene
@@ -64,6 +68,19 @@ public class LevelManager : MonoBehaviour
                 en.isAwake = false; //enemy behavior reset     
                 en.transform.localPosition = en.startingLocation;
                 en.displayedHealth = en.startingHealth;
+            }
+        }
+    }
+
+    
+    public void EnemyDestruction() //Destroys all enemy game objects at the end of the level
+    {
+        //if null or whatever then don't do anything
+        foreach (Enemy en in enemiesInLevel)
+        {
+            if (!en.isBox && en.displayedHealth > 0 && en != null) //should this ignore bosses too?
+            {
+                Destroy(en);
             }
         }
     }
@@ -111,10 +128,21 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    //Overall victory logic
     public void VictoryCheck()
     {
         //Spawn the victory screen here
         //The player script disables movement
+        EnemyDestruction(); //simply destroys the enemy component
+        if (cutsceneTimeline != null)
+        {
+            cutsceneTimeline.SetActive(true);
+        }
+    }
+
+
+    private void ShowVictoryPanels()
+    {
         SetActiveChildren(hudRef.transform, false);
         victoryPanel.SetActive(true);
     }
@@ -127,22 +155,6 @@ public class LevelManager : MonoBehaviour
             currency.WalletProperty = (currency.WalletProperty - checkpointCost);
             //A "replenish" function for playercontroller might be best for using checkpoints
             Camera mc = FindObjectOfType<Camera>();
-
-            /*
-            //Extremely sequential approach that doesn't allow dynamic checkpoints, the first if statement proceeds as long as the second checkpoint isn't flagged but once it is the first if statement is ignored
-            if (flaggedCheckpoint && !flaggedCheckpoint2)
-            {
-                pc.transform.position = checkpoint.transform.position;
-                Vector3 camerapoint = new Vector3(pc.transform.position.x, pc.transform.position.y, -10);
-                mc.transform.position = camerapoint;
-            }
-            else if (flaggedCheckpoint2)
-            {
-                pc.transform.position = checkpoint2.transform.position;
-                Vector3 camerapoint = new Vector3(pc.transform.position.x, pc.transform.position.y, -10);
-                mc.transform.position = camerapoint;
-            }*/
-
 
             //using arrays for checkpoints
             if (flaggedCheckpoints[checkpointIndex])

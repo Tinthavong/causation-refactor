@@ -447,7 +447,7 @@ public class GrandpaController : PlayerController
     {
         if (!isCrouched)
         {
-            moveCharacter(direction.x);
+            MoveCharacter(direction.x);
         }
 
         if (jumpTimer > Time.time && onGround && !isCrouched)
@@ -455,10 +455,10 @@ public class GrandpaController : PlayerController
             Jump();
         }
 
-        modifyPhysics();
+        ModifyPhysics();
     }
 
-    void moveCharacter(float horizontal)
+    void MoveCharacter(float horizontal)
     {
         rb.AddForce(Vector2.right * horizontal * moveSpeed);
         if ((horizontal > 0 && !facingRight) || (horizontal < 0 && facingRight))
@@ -487,7 +487,7 @@ public class GrandpaController : PlayerController
         jumpTimer = 0;
     }
 
-    void modifyPhysics()
+    void ModifyPhysics()
     {
         bool changingDirection = (direction.x > 0 && rb.velocity.x < 0) || (direction.x < 0 && rb.velocity.x > 0);
 
@@ -568,7 +568,7 @@ public class GrandpaController : PlayerController
         //should use switch/cases but that's for later
         if (collision.CompareTag("FinishLine"))//I think this tag is fine for now
         {
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
             LM.VictoryCheck();
         }
 
