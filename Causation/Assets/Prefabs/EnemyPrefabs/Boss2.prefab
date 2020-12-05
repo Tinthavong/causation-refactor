@@ -192,20 +192,20 @@ MonoBehaviour:
   bulletRefSpeed: 0
   isAwake: 0
   phase: 0
-  phaseRate: 4
+  phaseRate: 2
   groundedSpeed: 15
   strikeCooldown: 1
   chargeCooldown: 1
   chargeTime: 1
-  airPhaseEndTime: 6
-  reflectPhaseEndTime: 4
+  airPhaseEndTime: 10
+  reflectPhaseEndTime: 5
   moveTime: 2.5
   chargesBeforePhaseEnds: 3
   laserSpawnleft: {fileID: 1626365847268026267}
   laserSpawnRight: {fileID: 6546092642855802760}
   laserReflectLeft: {fileID: 2130570881742128239}
   laserReflectRight: {fileID: 2087866641209885477}
-  heightAbovePlayer: 8
+  heightAbovePlayer: 13
 --- !u!1 &1626365847268026267
 GameObject:
   m_ObjectHideFlags: 0

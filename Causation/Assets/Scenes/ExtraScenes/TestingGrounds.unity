@@ -1206,46 +1206,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8933197423137974936, guid: 3ec51d96ae3bd6248b92772458253030,
-        type: 3}
-      propertyPath: isAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8933197423137974936, guid: 3ec51d96ae3bd6248b92772458253030,
-        type: 3}
-      propertyPath: phase
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: -8933197423137974936, guid: 3ec51d96ae3bd6248b92772458253030,
-        type: 3}
-      propertyPath: groundedSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: -8933197423137974936, guid: 3ec51d96ae3bd6248b92772458253030,
-        type: 3}
-      propertyPath: heightAbovePlayer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: -8933197423137974936, guid: 3ec51d96ae3bd6248b92772458253030,
-        type: 3}
-      propertyPath: airPhaseEndTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -8933197423137974936, guid: 3ec51d96ae3bd6248b92772458253030,
-        type: 3}
-      propertyPath: reflectPhaseEndTime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8933197423137974936, guid: 3ec51d96ae3bd6248b92772458253030,
-        type: 3}
-      propertyPath: phaseRate
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -8933197423137974936, guid: 3ec51d96ae3bd6248b92772458253030,
-        type: 3}
-      propertyPath: moveTime
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 181202460529672724, guid: 3ec51d96ae3bd6248b92772458253030,
         type: 3}
       propertyPath: m_Name
