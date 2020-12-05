@@ -141,6 +141,10 @@ public class LevelManager : MonoBehaviour
         {
             victoryCutscene.SetActive(true);
         }
+        else
+        {
+            ShowVictoryPanels();
+        }
     }
 
 
@@ -148,6 +152,7 @@ public class LevelManager : MonoBehaviour
     {
         SetActiveChildren(hudRef.transform, false);
         victoryPanel.SetActive(true);
+        //freeze player controls here
     }
 
     public void RetryCheckpoint()//Retry from a checkpoint rather than from the beginning
