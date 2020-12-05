@@ -1214,12 +1214,37 @@ PrefabInstance:
     - target: {fileID: -8933197423137974936, guid: 3ec51d96ae3bd6248b92772458253030,
         type: 3}
       propertyPath: phase
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8933197423137974936, guid: 3ec51d96ae3bd6248b92772458253030,
         type: 3}
       propertyPath: groundedSpeed
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: -8933197423137974936, guid: 3ec51d96ae3bd6248b92772458253030,
+        type: 3}
+      propertyPath: heightAbovePlayer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -8933197423137974936, guid: 3ec51d96ae3bd6248b92772458253030,
+        type: 3}
+      propertyPath: airPhaseEndTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8933197423137974936, guid: 3ec51d96ae3bd6248b92772458253030,
+        type: 3}
+      propertyPath: reflectPhaseEndTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8933197423137974936, guid: 3ec51d96ae3bd6248b92772458253030,
+        type: 3}
+      propertyPath: phaseRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8933197423137974936, guid: 3ec51d96ae3bd6248b92772458253030,
+        type: 3}
+      propertyPath: moveTime
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 181202460529672724, guid: 3ec51d96ae3bd6248b92772458253030,
         type: 3}
@@ -1229,12 +1254,12 @@ PrefabInstance:
     - target: {fileID: 2468080858422897831, guid: 3ec51d96ae3bd6248b92772458253030,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.06
+      value: 3.65
       objectReference: {fileID: 0}
     - target: {fileID: 2468080858422897831, guid: 3ec51d96ae3bd6248b92772458253030,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.91
+      value: 7.44
       objectReference: {fileID: 0}
     - target: {fileID: 2468080858422897831, guid: 3ec51d96ae3bd6248b92772458253030,
         type: 3}
@@ -29229,9 +29254,6 @@ MonoBehaviour:
     sentences:
     - Warehouse Rumble!
     - Make it to the elevator!
-  bossDialogueTrigger: 0
-  bossReference: {fileID: 0}
-  bossHP: {fileID: 0}
 --- !u!1 &5222924329128167479
 GameObject:
   m_ObjectHideFlags: 0
@@ -29412,6 +29434,8 @@ MonoBehaviour:
   levelLoader: {fileID: 5222924328955186698}
   GameOverPanel: {fileID: 0}
   victoryPanel: {fileID: 1563056107}
+  victoryCutscene: {fileID: 0}
+  timelineManager: {fileID: 0}
   dronePrefab: {fileID: 0}
   currency: {fileID: 0}
   maxDronesAliveAtOnce: 3
