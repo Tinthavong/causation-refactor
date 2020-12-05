@@ -63,17 +63,15 @@ public class LevelManager : MonoBehaviour
         //if null or whatever then don't do anything
         foreach (Enemy en in enemiesInLevel)
         {
-            if (!en.isBox && en.displayedHealth > 0 && en != null) //should this ignore bosses too?
+            if (!en.isBox && en.displayedHealth > 0 && en != null && !en.isRestrictedFromRespawning) //should this ignore bosses too?
             {
                 en.isAwake = false; //enemy behavior reset     
                 en.transform.localPosition = en.startingLocation;
                 en.displayedHealth = en.startingHealth;
             }
-            //consider cleaning up the dead bodies
         }
     }
 
-    
     public void EnemyDestruction() //Destroys all enemy game objects at the end of the level
     {
         //if null or whatever then don't do anything

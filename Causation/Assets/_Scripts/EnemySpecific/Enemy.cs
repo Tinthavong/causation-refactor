@@ -49,6 +49,7 @@ public class Enemy : CharacterBase
     [HideInInspector]
     public bool facingRight, isBox;
     public bool isChasing = false;
+    public bool isRestrictedFromRespawning; //Figure out how the bosses should properly respawn
 
     protected PlayerController player; //this can be private, pretty sure this works now
     protected Animator animator;
