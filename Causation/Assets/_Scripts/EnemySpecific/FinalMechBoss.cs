@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FinalMechBoss : Enemy
 {
@@ -20,7 +21,7 @@ public class FinalMechBoss : Enemy
     private float phaseRateWait = 0f;
     public float phaseRate = 2f;
     //Phase bool to make sure timer doesnt go down while  he is in a phase, possibly starting a new one while in a phase (which is bad)
-    private bool isInPhase = false;
+    private bool isInPhase = true;
     //current phase timer controls how long the boss stays in its current phase
     private float currentPhaseTime;
 
@@ -60,6 +61,13 @@ public class FinalMechBoss : Enemy
     //This determines how high above the player the boss will fly during the airborne phase
     public float heightAbovePlayer = 13f;
 
+    //Boss HP Bar
+    public HealthBar bossHealthBar;
+    public Text bossName;
+
+    //Test variables, may need
+    private BulletScript bullet;
+
 
     public FinalMechBoss() //constructor
     {
@@ -84,6 +92,9 @@ public class FinalMechBoss : Enemy
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerController>();
+
+        //Boss HP Bar
+        bossHealthBar.SetHealth(displayedHealth);
     }
 
     // Update is called once per frame
@@ -159,7 +170,7 @@ public class FinalMechBoss : Enemy
                 }
                 currentPhaseTime += Time.deltaTime;
             }
-            //If not in a phase, do normal movement
+            //If not in a phase, slow down
             else
             {
                 AntiMovement();
@@ -183,7 +194,7 @@ public class FinalMechBoss : Enemy
         }
     }
 
-    //Basic movement, speed changes based on the phase
+    //Braking system to prevent it from keeping its velocity when out of a phase
     private void AntiMovement()
     {
         Vector2 airBrakeX = new Vector2(-(rb.velocity.x), 0.0f);
@@ -366,7 +377,7 @@ public class FinalMechBoss : Enemy
         
     }
 
-    //Will be used to deal damage while the boss sweeps the floor
+    //Used to deal damage while the boss sweeps the floor
     //Overridden to have the strike sound only happen when it deals damage
     //Want to make it so it strikes right when the player is in range, then it has a cooldown
     public override void Strike()
@@ -396,6 +407,46 @@ public class FinalMechBoss : Enemy
         c.GetComponent<Rigidbody2D>().AddForce(Vector2.down * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
     }
 
+    public void Reflect()
+    {
+        GameObject b = Instantiate(bulletPrefab) as GameObject;
+        b.transform.position = laserReflectLeft.transform.position;
+        GameObject c = Instantiate(bulletPrefab) as GameObject;
+        c.transform.position = laserReflectRight.transform.position;
+
+        b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
+        c.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180f);
+        c.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
+    }
+
+    //Boss HP Bar
+    public override void DamageCalc(int damage)
+    {
+        //bossHealthBar.SetHealth(displayedHealth);  This throws errors since bossHealthBar is not set
+        base.DamageCalc(damage);
+    }
+
+    public new void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.tag)
+        {
+            case "Projectile":
+                bullet = collision.GetComponent<BulletScript>();
+                if(phase != 3)
+                {
+                    DamageCalc(bullet.GetDamage());
+                    FindObjectOfType<SFXManager>().PlayAudio("Damage");
+                }
+                else
+                {
+                    Reflect();
+                }
+                break;
+        }
+
+        
+    }
 
     //WHEN THIS DIES: set the gravity to something so it will hit the floor and explode
 
