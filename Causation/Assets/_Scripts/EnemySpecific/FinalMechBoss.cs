@@ -82,11 +82,12 @@ public class FinalMechBoss : Enemy
     {
         //copied from drone code to mimic ability to ignore everything, added player for ability to pass through it during charging phase
         Physics2D.IgnoreLayerCollision(gameObject.layer, 9, true);
-        Physics2D.IgnoreLayerCollision(gameObject.layer, 10, true);
+        Physics2D.IgnoreLayerCollision(gameObject.layer, 10, true); //This causes other enemies to also ignore the player for some reason
         Physics2D.IgnoreLayerCollision(gameObject.layer, 11, true);
         Physics2D.IgnoreLayerCollision(gameObject.layer, 14, true);
         Physics2D.IgnoreLayerCollision(gameObject.layer, 15, true);
         Physics2D.IgnoreLayerCollision(gameObject.layer, 16, true);
+        
 
         bulletRefSpeed = bulletPrefab.GetComponent<BulletScript>().bulletSpeed;
         rb = GetComponent<Rigidbody2D>();
@@ -94,7 +95,7 @@ public class FinalMechBoss : Enemy
         player = FindObjectOfType<PlayerController>();
 
         //Boss HP Bar
-        bossHealthBar.SetHealth(displayedHealth);
+        //bossHealthBar.SetHealth(displayedHealth); //This throws errors since bossHealthBar is not set
     }
 
     // Update is called once per frame

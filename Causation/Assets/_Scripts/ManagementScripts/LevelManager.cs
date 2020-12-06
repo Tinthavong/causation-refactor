@@ -136,7 +136,7 @@ public class LevelManager : MonoBehaviour
     {
         //Spawn the victory screen here
         //The player script disables movement
-        EnemyDestruction(); //simply destroys the enemy component for now
+        //EnemyDestruction(); //simply destroys the enemy component for now
         if (victoryCutscene != null)
         {
             victoryCutscene.SetActive(true);

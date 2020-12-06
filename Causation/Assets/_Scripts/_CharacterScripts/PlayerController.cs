@@ -329,7 +329,7 @@ public class PlayerController : CharacterBase
         //should use switch/cases but that's for later
         if (collision.CompareTag("FinishLine"))//I think this tag is fine for now
         {
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
             LM.VictoryCheck();
         }
 
