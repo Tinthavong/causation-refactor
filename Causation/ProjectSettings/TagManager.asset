@@ -16,10 +16,10 @@ TagManager:
   - Ledge
   - Groundfloor
   - EnProjectile
-  - Checkpoint2
   - RedBulletItem
   - BlueBulletItem
   - GreenBulletItem
+  - BossTransition
   layers:
   - Default
   - TransparentFX

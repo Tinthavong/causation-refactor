@@ -367,8 +367,10 @@ public class PlayerController : CharacterBase
     {
         LM.GameOver();
         canMove = false; //self-explanatory but this turns off the ability to move around with the player. we can pause the gameworld too, but this way still plays enemy animations if they're still around the player
-        GetComponent<CapsuleCollider2D>().enabled = false; //Dirty fix right now. The enemy should stop attacking if the player is dead anyways
-        
+        GetComponent<CapsuleCollider2D>().enabled = false;
+        Interactables interactable = FindObjectOfType<Interactables>();
+        interactable.screenLock = 1;
+        interactable.screenDestination--;
     }
 
     public virtual void Replenish()

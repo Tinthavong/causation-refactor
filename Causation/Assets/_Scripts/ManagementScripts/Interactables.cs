@@ -21,9 +21,15 @@ public class Interactables : MonoBehaviour
     [SerializeField] private TextMeshProUGUI signText;
 
     public static bool transitionFlag = false;
-    private int hardLock = 1;
-    private int i = 0;
-    private GameObject[] screenTransitions;
+
+    [HideInInspector]
+    public bool bossFlag;
+
+    public int screenLock = 1;
+    public int screenDestination = 0;
+
+    [HideInInspector]
+    public GameObject[] screenTransitions;
 
     private void Start()
     {
@@ -33,9 +39,13 @@ public class Interactables : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && transitionFlag && hardLock > 0)
+        if (Input.GetKeyDown(KeyCode.W) && transitionFlag && screenLock > 0)
         {
             Invoke("TeleportTransition", 1f);
+        }
+        else if (Input.GetKeyDown(KeyCode.W) && bossFlag && screenLock > 0)
+        {
+            Invoke("BossRoomTeleportation", 1f);
         }
     }
 
@@ -45,41 +55,51 @@ public class Interactables : MonoBehaviour
         Camera mc = FindObjectOfType<Camera>();
 
         //i is increased and compared here and corresponds to which transition the player should be sent to
-        switch (i)
+        switch (screenDestination)
         {
             case 0:
                 //When duplicating transitions the second transition of the two (in this case between A & B) should be chosen
                 gameObject.transform.position = GameObject.Find("ScreenTransitionB").transform.position;
-                Vector3 dummy = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
-                mc.transform.position = dummy;
+                Vector3 newCameraPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
+                mc.transform.position = newCameraPosition;
                 transitionFlag = false; //no backtracking. also this implementation ain't great huh
 
                 //Always increase i
-                i++;
+                screenDestination++;
                 break;
             case 1:
                 gameObject.transform.position = GameObject.Find("ScreenTransitionD").transform.position;
-                dummy = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
-                mc.transform.position = dummy;
+                newCameraPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
+                mc.transform.position = newCameraPosition;
                 transitionFlag = false; //no backtracking. also this implementation ain't great huh
 
-                i++;
+                screenDestination++;
                 break;
             case 2:
                 gameObject.transform.position = GameObject.Find("ScreenTransitionF").transform.position;
-                dummy = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
-                mc.transform.position = dummy;
+                newCameraPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
+                mc.transform.position = newCameraPosition;
                 transitionFlag = false; //no backtracking. also this implementation ain't great huh
 
-                i++;
+                screenDestination++;
                 break;
         }
 
-        if (i == screenTransitions.Length)
+        if (screenDestination == screenTransitions.Length)
         {
-            hardLock--;
-            i = 0;
+            screenLock--;
+            screenDestination = 0;
         }
+    }
+
+    private void BossRoomTeleportation()
+    {
+        Camera mc = FindObjectOfType<Camera>();
+
+        gameObject.transform.position = GameObject.Find("ScreenTransitionF").transform.position;
+        Vector3 newCameraPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
+        mc.transform.position = newCameraPosition;
+        screenLock--;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -106,6 +126,10 @@ public class Interactables : MonoBehaviour
                 //If the object has the 'Transition' tag spawn in text above the player to show they can push a button to interact with object
                 SpawnText(objectPosition);
                 transitionFlag = true;
+                break;
+            case "BossTransition":
+                SpawnText(objectPosition);
+                bossFlag = true;
                 break;
             default:
                 Debug.Log("Not colliding with tagged object");

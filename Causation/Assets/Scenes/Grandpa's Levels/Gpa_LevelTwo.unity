@@ -21719,7 +21719,7 @@ GameObject:
   - component: {fileID: 1786944369}
   m_Layer: 0
   m_Name: ScreenTransitionE
-  m_TagString: Transition
+  m_TagString: BossTransition
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26910,7 +26910,7 @@ GameObject:
   - component: {fileID: 2059570134574156856}
   m_Layer: 13
   m_Name: SewerFloor
-  m_TagString: Untagged
+  m_TagString: Groundfloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

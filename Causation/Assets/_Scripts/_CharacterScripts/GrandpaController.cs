@@ -529,6 +529,12 @@ public class GrandpaController : PlayerController
         LM.GameOver();
         canMove = false; //self-explanatory but this turns off the ability to move around with the player. we can pause the gameworld too, but this way still plays enemy animations if they're still around the player
         GetComponent<CapsuleCollider2D>().enabled = false; //Dirty fix right now. The enemy should stop attacking if the player is dead anyways
+        Interactables interactable = FindObjectOfType<Interactables>();
+        if(interactable.screenTransitions.Length > 0)
+        {
+            interactable.screenLock = 1;
+            interactable.bossFlag = false;
+        }
     }
 
     public override void Replenish()

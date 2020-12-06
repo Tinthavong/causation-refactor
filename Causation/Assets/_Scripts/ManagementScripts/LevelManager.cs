@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
     public GameObject dronePrefab;
     private GameObject hudRef;
     public Currency currency; //Right now this has to be referenced like this because FindObjectOfType is finicky with how the pause screen disables everything- consider putting currency in LevelManager
-
+    private PlayerController pc;
 
     //Enemy mangement
     Enemy[] enemiesInLevel; //an array that stores all of the enemies inside of them for the specific scene
@@ -42,6 +42,8 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        pc = FindObjectOfType<PlayerController>();
+
         checkpointCost = 5;
         flaggedCheckpoints = new bool[checkpoints.Length];
         checkpointIndex = -1;
@@ -138,6 +140,9 @@ public class LevelManager : MonoBehaviour
         if (victoryCutscene != null)
         {
             victoryCutscene.SetActive(true);
+            pc.canMove = false; //prevents player from moving when cutscene is playing (also means they can't shoot)
+            pc.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            pc.GetComponent<SpriteRenderer>().enabled = false;
         }
         else
         {
@@ -155,7 +160,7 @@ public class LevelManager : MonoBehaviour
 
     public void RetryCheckpoint()//Retry from a checkpoint rather than from the beginning
     {
-        PlayerController pc = FindObjectOfType<PlayerController>();
+        //PlayerController pc = FindObjectOfType<PlayerController>();
         if (canRetry == true)
         {
             currency.WalletProperty = (currency.WalletProperty - checkpointCost);
