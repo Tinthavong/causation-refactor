@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 931165795630167132}
   - component: {fileID: 931165795630167075}
   m_Layer: 11
-  m_Name: Engineer (Cutscene Actor2)
+  m_Name: Engineer (Cutscene Actor)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ Animator:
   m_GameObject: {fileID: 931165795630167073}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 76564621a4251a048bb5100dd7302e70, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
