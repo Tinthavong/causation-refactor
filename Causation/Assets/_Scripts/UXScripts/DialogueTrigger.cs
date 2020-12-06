@@ -7,11 +7,6 @@ public class DialogueTrigger : MonoBehaviour
     public Dialogue dialogue;
     private bool hasPlayed = false;
 
-    [Header("Boss Components")]
-    public bool bossDialogueTrigger = false;
-    public Bossman1 bossReference; //the boss object that will be activated after dialogue is finished
-    public GameObject bossHP; //only necessary for boss triggers
-
     public void TriggerDialogue()
     {
         FindObjectOfType<DialogueController>().StartDialogue(dialogue);
@@ -19,18 +14,9 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!hasPlayed && collision.CompareTag("Player") && !bossDialogueTrigger)
+        if (!hasPlayed && collision.CompareTag("Player"))
         {
             TriggerDialogue();
-            Time.timeScale = 0f;
-            hasPlayed = true;
-        }
-
-        if (!hasPlayed && collision.CompareTag("Player") && bossDialogueTrigger)
-        {
-            TriggerDialogue();
-            bossReference.isAwake = true;
-            bossHP.SetActive(true);
             Time.timeScale = 0f;
             hasPlayed = true;
         }

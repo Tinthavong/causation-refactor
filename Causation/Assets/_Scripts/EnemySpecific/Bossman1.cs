@@ -147,6 +147,7 @@ public class Bossman1 : Enemy
     {
         PlayerController pc = FindObjectOfType<PlayerController>();
         pc.LM.VictoryCheck();
+        Debug.Log(pc);
     }
 
     private void MinorMovement()

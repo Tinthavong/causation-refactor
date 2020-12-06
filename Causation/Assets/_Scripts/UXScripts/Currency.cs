@@ -31,6 +31,6 @@ public class Currency : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currency.text = walletValue.ToString();
+        currency.text = walletProperty.ToString();
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5530855661195620871}
   m_Layer: 13
   m_Name: Skull Barrel
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

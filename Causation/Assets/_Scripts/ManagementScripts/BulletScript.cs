@@ -6,7 +6,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     [SerializeField]
-    private int damage;
+    private int damage = 1;
 
     [SerializeField]
     public float knockBackAmount;
@@ -26,7 +26,8 @@ public class BulletScript : MonoBehaviour
         switch (collision.tag)
         {
             case "Enemy":
-                if (isPlayerBullet)
+                //Need to check if the collision is the final boss to allow for its reflecting phase to take effect
+                if (isPlayerBullet && collision.GetComponent<FinalMechBoss>() == null)
                 {
                     enemy = collision.GetComponent<Enemy>();
 
@@ -41,6 +42,7 @@ public class BulletScript : MonoBehaviour
                         enemy.DamageCalc(damage);
                         Debug.Log("Enemy has been hit");
                     }
+                    FindObjectOfType<SFXManager>().PlayAudio("Damage");
                 }
                 Destroy(gameObject);
                 break;
@@ -49,19 +51,27 @@ public class BulletScript : MonoBehaviour
                 player.DamageCalc(damage);
                 Debug.Log("Player has been hit\nPlayer has : " + player.displayedHealth + " HP left");
 
+                FindObjectOfType<SFXManager>().PlayAudio("Damage");
                 Destroy(gameObject);
                 break;
             case "Object":
+                FindObjectOfType<SFXManager>().PlayAudio("Damage");
                 Destroy(gameObject);
                 break;
         }
 
-        FindObjectOfType<SFXManager>().PlayAudio("Damage");
+        
     }
 
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
+    }
+
+    //Need this for final boss to have its own collision detection in its reflection phase
+    public int GetDamage()
+    {
+        return damage;
     }
 
     private void Knockback()

@@ -289,12 +289,12 @@ public class PlayerController : CharacterBase
         //Bullet object shifts position and rotation based on direction
         if (!facingRight)
         {
-            b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90f);
+            b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -180.0f);
             b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
         }
         else if (facingRight)
         {
-            b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90f);
+            b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -0.0f);
             b.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
         }
     }
@@ -367,8 +367,10 @@ public class PlayerController : CharacterBase
     {
         LM.GameOver();
         canMove = false; //self-explanatory but this turns off the ability to move around with the player. we can pause the gameworld too, but this way still plays enemy animations if they're still around the player
-        GetComponent<CapsuleCollider2D>().enabled = false; //Dirty fix right now. The enemy should stop attacking if the player is dead anyways
-        
+        GetComponent<CapsuleCollider2D>().enabled = false;
+        Interactables interactable = FindObjectOfType<Interactables>();
+        interactable.screenLock = 1;
+        interactable.screenDestination--;
     }
 
     public virtual void Replenish()

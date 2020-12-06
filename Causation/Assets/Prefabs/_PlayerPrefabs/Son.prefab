@@ -169,7 +169,7 @@ MonoBehaviour:
   onGround: 0
   groundLength: 1.42
   colliderOffset: {x: 0.49, y: 0, z: 0}
-  bulletPrefab: {fileID: 2686942302785526997, guid: 31b12168567cb7c41a5434d410bae653,
+  bulletPrefab: {fileID: 5045021698758990194, guid: 12b3a0376a1bb4a4b805be306fd0cad3,
     type: 3}
   bulletSpawn: {fileID: 3030930682350282829}
   StrikeZone: {fileID: 0}

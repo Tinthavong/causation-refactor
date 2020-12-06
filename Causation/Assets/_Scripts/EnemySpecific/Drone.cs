@@ -49,7 +49,7 @@ public class Drone : Enemy
         {
             if (!IsClose())
             {
-                Flip(0);        
+                Flip(0);
                 DroneMovement();
             }
             else if (IsClose())
@@ -77,18 +77,36 @@ public class Drone : Enemy
         //playerPos.X needs to be multiplied by something or subtracted/added so that it is not so huggy
         if (facingRight)
         {
-            var playerPos = player.transform.position;
-            Vector2 playerPositionDifference = new Vector2(-playerPos.x, playerPos.y);
+            //var playerPos = player.transform.position;
+            // playerPositionDifference = new Vector2(-playerPos.x, playerPos.y);
+            Vector2 movement = new Vector2(-enemySpeed, 0.0f);
             rb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
-            rb.AddForce(playerPositionDifference);
+
+            if (rb.velocity.x <= -enemySpeed)
+            {
+                rb.velocity = movement;
+            }
+            else if (rb.velocity.x >= -enemySpeed)
+            {
+                rb.AddForce(movement);
+            }
         }
         else
         {
 
-            var playerPos = player.transform.position;
-            Vector2 playerPositionDifference = new Vector2(playerPos.x, playerPos.y);
+            // var playerPos = player.transform.position;
+            // Vector2 playerPositionDifference = new Vector2(playerPos.x, playerPos.y);
+            Vector2 movement = new Vector2(enemySpeed, 0.0f);
             rb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
-            rb.AddForce(playerPositionDifference);
+
+            if (rb.velocity.x >= -enemySpeed)
+            {
+                rb.velocity = movement;
+            }
+            else if (rb.velocity.x <= enemySpeed)
+            {
+                rb.AddForce(movement);
+            }
         }
     }
 
@@ -146,5 +164,6 @@ public class Drone : Enemy
         //When a drone dies another one will spawn and take its place, this isn't immediately necessary (11/29/20)
         //FindObjectOfType<LevelManager>().DroneSpawner();
         base.PostDeath();
+        Destroy(gameObject);
     }
 }

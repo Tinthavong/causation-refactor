@@ -16,98 +16,6 @@ public class GrandpaController : PlayerController
                         // Currency = walletValue;
     }
 
-
-    //TODO: Delete all of this after Tuesday meeting - 11/24/20
-    //Might not delete yet, this is for if/when the grandpacontroller inherits from characterbase instead of playercontroller
-    /*
-    //consider serializing private
-    [Header("UI References")]
-    public HealthBar healthBar; //I don't like the idea of having a type just for healthbar, redo later
-    public TMP_Text ammoText; //current ammo
-    public TMP_Text ammoTotalText; //available ammo
-    public Image ammoDisplay; //probably temporary, i have a better idea
-
-    Animator animator;
-    Rigidbody2D rb;
-    public GameObject deathScreen;
-
-    [Header("Movement Stats")]
-    [SerializeField]
-    //Player's running speed
-    public float moveSpeed = 10f;
-    public float maxSpeed = 7f;
-    public Vector2 direction;
-    private bool facingRight = true;
-
-    //Jumping
-    public float jumpSpeed = 15f;
-    public float jumpDelay = 0.25f;
-    private float jumpTimer;
-
-    //Attacking
-    float attackElapsedTime = 0;
-    public float attackDelay = 0.2f;
-    public float fireDelay = 1f;
-
-    //This is for the temporary bullet swapping system
-    public bool isBurstFire = false; //false = default revolver true = burst fire SMG
-    private int shotAmount = 1; //shoots 1 bullet by default, changes for burst fire
-
-
-    public GameObject nearObject;
-    public LevelManager LM;
-
-    [Header("Player States")]
-    public bool isJumping;
-    private bool isCrouched = false;
-    public bool isShooting;
-    private bool isInvincible = false;
-    public bool canMove = true;
-    public bool isGrandpa; //Simple way to quickly limit bullet changing, no point making separate classes right now
-
-    [Header("Collision and Physics")]
-    //physics
-    public float linearDrag = 4f;
-    public float gravity = 1f;
-    public float fallMultiplier = 5f;
-    private int playerLayer, platformLayer;
-    public float jumpDownTime = 2f;
-
-    //reworked movement but here's the leftovers
-    private float vertical;
-    [SerializeField]
-    private GameObject tempRevolver; //necessary to show that there is a revolver when crouched or to show that a punch is happening
-    */
-
-    //[Header("Movement Stats")]
-    //Player's running speed
-    //public float moveSpeed = 10f;
-    //public float maxSpeed = 7f;
-    //public Vector2 direction;
-    //private bool facingRight = true;
-
-    //Jumping
-    //public float jumpSpeed = 15f;
-    //public float jumpDelay = 0.25f;
-
-    //Attacking
-    //private float attackElapsedTime = 0;
-    //public float attackDelay = 0.2f;
-    //public float fireDelay = 1f;
-
-    //This is for the temporary bullet swapping system
-    //private Animator animator;
-    //private Rigidbody2D rb;
-
-    //public bool isBurstFire = false; //false = default revolver true = burst fire SMG
-    //private int shotAmount = 1; //shoots 1 bullet by default, changes for burst fire
-
-    //public bool isJumping;
-    //private bool isCrouched = false;
-    //public bool isShooting;
-    //private bool isInvincible = false;
-    //public bool canMove = true;
-
     [Header("Components")]
     public GameObject[] bulletList;
     private int bulletTypeCount;
@@ -317,6 +225,7 @@ public class GrandpaController : PlayerController
         //needs to be heavily refined
         maxAmmo = 6;
         Ammo = maxAmmo;
+        ammoText.text = Ammo.ToString();
         remainingAmmo = new int[bulletList.Length];
 
         remainingAmmo[0] = 9999999; //default
@@ -447,7 +356,7 @@ public class GrandpaController : PlayerController
     {
         if (!isCrouched)
         {
-            moveCharacter(direction.x);
+            MoveCharacter(direction.x);
         }
 
         if (jumpTimer > Time.time && onGround && !isCrouched)
@@ -455,10 +364,10 @@ public class GrandpaController : PlayerController
             Jump();
         }
 
-        modifyPhysics();
+        ModifyPhysics();
     }
 
-    void moveCharacter(float horizontal)
+    void MoveCharacter(float horizontal)
     {
         rb.AddForce(Vector2.right * horizontal * moveSpeed);
         if ((horizontal > 0 && !facingRight) || (horizontal < 0 && facingRight))
@@ -487,7 +396,7 @@ public class GrandpaController : PlayerController
         jumpTimer = 0;
     }
 
-    void modifyPhysics()
+    void ModifyPhysics()
     {
         bool changingDirection = (direction.x > 0 && rb.velocity.x < 0) || (direction.x < 0 && rb.velocity.x > 0);
 
@@ -568,7 +477,7 @@ public class GrandpaController : PlayerController
         //should use switch/cases but that's for later
         if (collision.CompareTag("FinishLine"))//I think this tag is fine for now
         {
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
             LM.VictoryCheck();
         }
 
@@ -620,6 +529,12 @@ public class GrandpaController : PlayerController
         LM.GameOver();
         canMove = false; //self-explanatory but this turns off the ability to move around with the player. we can pause the gameworld too, but this way still plays enemy animations if they're still around the player
         GetComponent<CapsuleCollider2D>().enabled = false; //Dirty fix right now. The enemy should stop attacking if the player is dead anyways
+        Interactables interactable = FindObjectOfType<Interactables>();
+        if(interactable.screenTransitions.Length > 0)
+        {
+            interactable.screenLock = 1;
+            interactable.bossFlag = false;
+        }
     }
 
     public override void Replenish()

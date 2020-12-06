@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 6827381233743747041
     second: dealerapartment_0
+  - first:
+      213: -1407856680500440589
+    second: building_balcony
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -170,7 +173,7 @@ TextureImporter:
         width: 2808
         height: 2752
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -178,6 +181,27 @@ TextureImporter:
       bones: []
       spriteID: 1e7d67f1f0bbfbe50800000000000000
       internalID: 6827381233743747041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: building_balcony
+      rect:
+        serializedVersion: 2
+        x: 2764
+        y: 2028
+        width: 284
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f15c18eec9467ce0800000000000000
+      internalID: -1407856680500440589
       vertices: []
       indices: 
       edges: []
