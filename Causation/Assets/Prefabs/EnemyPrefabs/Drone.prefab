@@ -104,7 +104,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1964901103
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7106927628778736672, guid: fd347e2ae3c158745ad0cc8851c15d4b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -215,6 +215,7 @@ MonoBehaviour:
   facingRight: 0
   isBox: 0
   isChasing: 0
+  isRestrictedFromRespawning: 0
   startingLocation: {x: 0, y: 0, z: 0}
   enemySpeed: 6
   bulletRefSpeed: 0
