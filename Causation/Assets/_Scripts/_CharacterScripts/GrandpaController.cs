@@ -253,7 +253,15 @@ public class GrandpaController : PlayerController
 
             if (Input.GetButtonDown("Fire1") && Ammo > 0 && attackElapsedTime >= attackDelay)
             {
-                if (!isCrouched) animator.Play("Shoot");
+                if (!isCrouched)
+                {
+                    animator.Play("Shoot");
+                }
+                else if (isCrouched)
+                {
+                    animator.Play("CrouchShoot");
+                }
+
                 for (int i = 0; i < shotAmount; i++)
                 {
                     Invoke("Shoot", (fireDelay * i));
@@ -483,7 +491,7 @@ public class GrandpaController : PlayerController
 
         if (collision.CompareTag("Checkpoint"))
         {
-            if (LM.checkpointIndex <= 0) LM.checkpointIndex++;
+            if (LM.checkpointIndex <= 0 || LM.checkpointIndex == 1) LM.checkpointIndex++;
             LM.checkpoints[LM.checkpointIndex].GetComponent<SpriteRenderer>().color = Color.green;
             LM.flaggedCheckpoints[LM.checkpointIndex] = true;
             LM.CheckpointCostCheck();
@@ -507,6 +515,7 @@ public class GrandpaController : PlayerController
         if (collision.gameObject.GetComponent<Enemy>() && !collision.gameObject.GetComponent<Enemy>().isBox && !onGround) //if the colliding object has the enemy script, or its children
         {
             collision.gameObject.GetComponent<Enemy>().DamageCalc(1); //arbitrary goomba damage
+            collision.gameObject.GetComponent<Enemy>().ElimCharacter(); //jumping on enemies to death
         }
 
         //This can't be the best way to do this, gotta go back and fix later.

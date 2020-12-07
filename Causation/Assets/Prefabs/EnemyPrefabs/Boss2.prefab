@@ -187,6 +187,8 @@ MonoBehaviour:
   facingRight: 0
   isBox: 0
   isChasing: 0
+  isBossCharacter1: 0
+  isBossCharacter2: 1
   startingLocation: {x: 0, y: 0, z: 0}
   enemySpeed: 8
   bulletRefSpeed: 0
@@ -206,6 +208,8 @@ MonoBehaviour:
   laserReflectLeft: {fileID: 2130570881742128239}
   laserReflectRight: {fileID: 2087866641209885477}
   heightAbovePlayer: 13
+  bossHealthBar: {fileID: 0}
+  bossName: {fileID: 0}
 --- !u!1 &1626365847268026267
 GameObject:
   m_ObjectHideFlags: 0

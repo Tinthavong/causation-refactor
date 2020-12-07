@@ -24,6 +24,8 @@ public class Drone : Enemy
         Physics2D.IgnoreLayerCollision(gameObject.layer, 15, true);
         Physics2D.IgnoreLayerCollision(gameObject.layer, 16, true);
 
+        startingHealth = displayedHealth;
+        startingLocation = gameObject.transform.localPosition;
 
         onGround = true; //This is necessary because RunTowards checks if the enemy is on the ground before being able to move
         rb = GetComponent<Rigidbody2D>();

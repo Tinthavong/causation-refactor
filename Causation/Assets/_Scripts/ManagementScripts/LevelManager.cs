@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {  //game over manager for both player wins and losses
-  //  public GameObject checkpoint; //the last visited checkpoint, a flag is set that allows the player to respawn there
-  //  public bool flaggedCheckpoint = false;
+   //  public GameObject checkpoint; //the last visited checkpoint, a flag is set that allows the player to respawn there
+   //  public bool flaggedCheckpoint = false;
 
     //The sloppiest and quickest way to add another checkpoint, works fine because of the small - medium sized levels
     //public GameObject checkpoint2;
-//    public bool flaggedCheckpoint2 = false;
+    //    public bool flaggedCheckpoint2 = false;
 
     public GameObject[] checkpoints; //Checkpoints in the scene, set in the inspector
     public bool[] flaggedCheckpoints;
@@ -25,18 +25,14 @@ public class LevelManager : MonoBehaviour
     public GameObject GameOverPanel;
     public GameObject victoryPanel;
     public GameObject victoryCutscene;
-    public GameObject timelineManager;
+    public GameObject[] timelineManagers;
 
-    public GameObject dronePrefab;
     private GameObject hudRef;
     public Currency currency; //Right now this has to be referenced like this because FindObjectOfType is finicky with how the pause screen disables everything- consider putting currency in LevelManager
     private PlayerController pc;
 
     //Enemy mangement
     Enemy[] enemiesInLevel; //an array that stores all of the enemies inside of them for the specific scene
-
-    public int maxDronesAliveAtOnce = 3;
-    int droneIndex = 0;
 
     public Button retryButton;
 
@@ -65,11 +61,20 @@ public class LevelManager : MonoBehaviour
         //if null or whatever then don't do anything
         foreach (Enemy en in enemiesInLevel)
         {
-            if (!en.isBox && en.displayedHealth > 0 && en != null && !en.isRestrictedFromRespawning) //should this ignore bosses too?
+            if (!en.isBox && en.displayedHealth > 0 && en != null) //should this ignore bosses too?
             {
                 en.isAwake = false; //enemy behavior reset     
                 en.transform.localPosition = en.startingLocation;
                 en.displayedHealth = en.startingHealth;
+
+                if (en.isBossCharacter1)
+                {
+                    en.GetComponent<Bossman1>().bossHealthBar.SetHealth(en.displayedHealth);
+                }
+                else if (en.isBossCharacter2)
+                {
+                    en.GetComponent<FinalMechBoss>().bossHealthBar.SetHealth(en.displayedHealth);
+                }
             }
         }
     }
@@ -86,37 +91,20 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    //WIP drone spawning method
-    public void DroneSpawner()
-    {
-        foreach (Enemy dr in enemiesInLevel)
-        {
-            if (dr.GetComponent<Drone>() && dr.displayedHealth > 0 && dr != null)
-            {
-                droneIndex += 1;
-            }
-        }
-        Debug.Log(droneIndex);
-
-        //right now this spits out a drone one by one ensuring that there are always 3 drones - this number might be too much?
-        if (droneIndex <= (maxDronesAliveAtOnce + 1))
-        {
-            //sound that plays when they spawn
-            GameObject drone = Instantiate(dronePrefab) as GameObject;
-            //            drone.transform.position = (Camera.main.transform.position + );
-
-            droneIndex -= 1;
-        }
-    }
-
-
     //called in the player controller class to pause gameplay and remove player controls
     //also spawns the unity UI object/panel that shows gameover buttons like, retry, restart, quit, mainmenu etc 
     public void GameOver()
     {
         //Spawn the game over panels or UI game object here
         //The player script disables movement, this handles UI
-        timelineManager.GetComponent<TimelineManager>().hasCutscenePlayed = false;
+        //timelineManager.GetComponent<TimelineManager>().hasCutscenePlayed = false;
+
+        //This loop is to reset the timeline manager and have them be replayable
+        for(int i = 0; i < timelineManagers.Length; i++)
+        {
+            timelineManagers[i].GetComponent<TimelineManager>().hasCutscenePlayed = false;
+        }
+
         CheckpointCostCheck();
         SetActiveChildren(hudRef.transform, false);
         SetActiveChildren(GameOverPanel.transform, true);
@@ -136,7 +124,7 @@ public class LevelManager : MonoBehaviour
     {
         //Spawn the victory screen here
         //The player script disables movement
-        //EnemyDestruction(); //simply destroys the enemy component for now
+        EnemyDestruction(); //simply destroys the enemy component for now
         if (victoryCutscene != null)
         {
             victoryCutscene.SetActive(true);

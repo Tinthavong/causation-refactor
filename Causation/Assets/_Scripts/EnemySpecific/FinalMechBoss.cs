@@ -87,7 +87,9 @@ public class FinalMechBoss : Enemy
         Physics2D.IgnoreLayerCollision(gameObject.layer, 14, true);
         Physics2D.IgnoreLayerCollision(gameObject.layer, 15, true);
         Physics2D.IgnoreLayerCollision(gameObject.layer, 16, true);
-        
+
+        startingHealth = displayedHealth;
+        startingLocation = gameObject.transform.localPosition;
 
         bulletRefSpeed = bulletPrefab.GetComponent<BulletScript>().bulletSpeed;
         rb = GetComponent<Rigidbody2D>();
@@ -95,7 +97,7 @@ public class FinalMechBoss : Enemy
         player = FindObjectOfType<PlayerController>();
 
         //Boss HP Bar
-        //bossHealthBar.SetHealth(displayedHealth); //This throws errors since bossHealthBar is not set
+        bossHealthBar.SetHealth(displayedHealth);
     }
 
     // Update is called once per frame
@@ -424,7 +426,7 @@ public class FinalMechBoss : Enemy
     //Boss HP Bar
     public override void DamageCalc(int damage)
     {
-        //bossHealthBar.SetHealth(displayedHealth);  This throws errors since bossHealthBar is not set
+        bossHealthBar.SetHealth(displayedHealth);  //This throws errors since bossHealthBar is not set
         base.DamageCalc(damage);
     }
 

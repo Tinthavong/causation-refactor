@@ -6,7 +6,6 @@ using System;
 public class Gunslinger : Enemy
 {
     public bool isCrouched;
-    public GameObject tempCrouchIndicator;
 
     public Gunslinger() //constructor
     {
@@ -72,10 +71,10 @@ public class Gunslinger : Enemy
     //I don't like having two separate methods, combine them into one later.  It may be better to have them separate in order to have more control of it
     private void Crouching()
     {
+        animator.SetBool("IsCrouched", true);
         isCrouched = true;
         if (isCrouched)
         {
-            tempCrouchIndicator.transform.localPosition = new Vector2(0.75f, 0.0f);
             GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 1.55f);
             GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, -0.5f);
         }
@@ -84,10 +83,10 @@ public class Gunslinger : Enemy
 
     private void CrouchUp()
     {
+        animator.SetBool("IsCrouched", false);
         isCrouched = false;
         if (!isCrouched)
         {
-            tempCrouchIndicator.transform.localPosition = new Vector2(0.75f, 0.75f);
             GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 2.4f);
             GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, 0f);
         }

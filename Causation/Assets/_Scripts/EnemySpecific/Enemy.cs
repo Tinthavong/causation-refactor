@@ -49,7 +49,11 @@ public class Enemy : CharacterBase
     [HideInInspector]
     public bool facingRight, isBox;
     public bool isChasing = false;
-    public bool isRestrictedFromRespawning; //Figure out how the bosses should properly respawn
+
+    //This is because the boss enemies reference the healthbar 
+    public bool isBossCharacter1; //The first boss in grandpa's level
+    public bool isBossCharacter2; //Final boss in daughter's level
+
 
     protected PlayerController player; //this can be private, pretty sure this works now
     protected Animator animator;

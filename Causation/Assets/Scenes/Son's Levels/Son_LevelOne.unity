@@ -23793,7 +23793,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645209634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 456.01517, y: -18.88, z: 0}
+  m_LocalPosition: {x: 456.56, y: -18.88, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 2082493753}
@@ -28900,6 +28900,10 @@ MonoBehaviour:
     type: 3}
   signText: {fileID: 3875309981128641206, guid: 0a0182fd2cab5c546bdd2c33855663e7,
     type: 3}
+  bossFlag: 0
+  screenLock: 1
+  screenDestination: 0
+  screenTransitions: []
 --- !u!4 &3030930682437701925
 Transform:
   m_ObjectHideFlags: 0
@@ -29020,6 +29024,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOverScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 641002167373003419, guid: 666372dc4667d0b43a05ca554c954e0b,
+        type: 3}
+      propertyPath: currentPointsTXT
+      value: 
+      objectReference: {fileID: 1763535094}
+    - target: {fileID: 641002167373003419, guid: 666372dc4667d0b43a05ca554c954e0b,
+        type: 3}
+      propertyPath: totalGamePointsTXT
+      value: 
+      objectReference: {fileID: 875657268}
     - target: {fileID: 4798825393373623262, guid: 666372dc4667d0b43a05ca554c954e0b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31714,7 +31728,8 @@ MonoBehaviour:
   GameOverPanel: {fileID: 1252877925}
   victoryPanel: {fileID: 600499764}
   victoryCutscene: {fileID: 2082493752}
-  timelineManager: {fileID: 356160599}
+  timelineManagers:
+  - {fileID: 356160599}
   dronePrefab: {fileID: 0}
   currency: {fileID: 0}
   maxDronesAliveAtOnce: 3

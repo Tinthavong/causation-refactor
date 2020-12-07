@@ -115,7 +115,15 @@ public class PlayerController : CharacterBase
 
             if (Input.GetButtonDown("Fire1") && Ammo > 0 && attackElapsedTime >= attackDelay)
             {
-                if (!isCrouched) animator.Play("Shoot");
+                if (!isCrouched)
+                {
+                    animator.Play("Shoot");
+                }
+                else if(isCrouched)
+                {
+                    animator.Play("CrouchShoot");
+                }
+
                 for (int i = 0; i < shotAmount; i++)
                 {
                     Invoke("Shoot", (fireDelay * i));
@@ -168,7 +176,6 @@ public class PlayerController : CharacterBase
                 rb.velocity = new Vector2(0f, 0f);
                 if (isCrouched)
                 {
-                    //tempCrouchShoot.SetActive(true);
                     bulletSpawn.transform.localPosition = new Vector3(0.85f, -0.4f, 0);
                     GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 1.45f);
                     GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, -0.4f);
@@ -335,7 +342,7 @@ public class PlayerController : CharacterBase
 
         if (collision.CompareTag("Checkpoint"))
         {
-            if (LM.checkpointIndex <= 0) LM.checkpointIndex++;
+            if (LM.checkpointIndex <= 0 || LM.checkpointIndex == 1) LM.checkpointIndex++;
             LM.checkpoints[LM.checkpointIndex].GetComponent<SpriteRenderer>().color = Color.green;
             LM.flaggedCheckpoints[LM.checkpointIndex] = true;
             LM.CheckpointCostCheck();

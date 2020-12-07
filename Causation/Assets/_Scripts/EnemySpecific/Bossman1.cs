@@ -50,6 +50,9 @@ public class Bossman1 : Enemy
         //Boss HP Bar
         bossHealthBar.SetHealth(displayedHealth);
 
+        startingHealth = displayedHealth;
+        startingLocation = gameObject.transform.localPosition;
+
         bulletRefSpeed = bulletPrefab.GetComponent<BulletScript>().bulletSpeed;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();

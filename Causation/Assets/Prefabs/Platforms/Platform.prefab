@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8113370127342094953}
   - component: {fileID: 8113370127342094952}
   - component: {fileID: 8113370127342094955}
-  m_Layer: 14
+  m_Layer: 13
   m_Name: Platform
-  m_TagString: Object
+  m_TagString: Ledge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

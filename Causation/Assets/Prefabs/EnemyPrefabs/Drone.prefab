@@ -208,7 +208,7 @@ MonoBehaviour:
     weight: 5
   firerate: 1
   sightRange: 10
-  meleeRange: 2
+  meleeRange: 7
   ignoresVerticalSightRestriction: 1
   verticalSight: 2.5
   startingHealth: 0

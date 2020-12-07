@@ -7594,6 +7594,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f3faa64e439764468336ad12f1f720e, type: 3}
+--- !u!1001 &804333797
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4967821950883433672, guid: ec168d0b947b5424c9872a907593b74d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967821950883433672, guid: ec168d0b947b5424c9872a907593b74d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967821950883433672, guid: ec168d0b947b5424c9872a907593b74d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967821950883433672, guid: ec168d0b947b5424c9872a907593b74d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967821950883433672, guid: ec168d0b947b5424c9872a907593b74d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967821950883433672, guid: ec168d0b947b5424c9872a907593b74d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967821950883433672, guid: ec168d0b947b5424c9872a907593b74d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967821950883433672, guid: ec168d0b947b5424c9872a907593b74d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967821950883433672, guid: ec168d0b947b5424c9872a907593b74d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967821950883433672, guid: ec168d0b947b5424c9872a907593b74d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967821950883433672, guid: ec168d0b947b5424c9872a907593b74d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967821950883433674, guid: ec168d0b947b5424c9872a907593b74d,
+        type: 3}
+      propertyPath: m_Name
+      value: SaveManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec168d0b947b5424c9872a907593b74d, type: 3}
 --- !u!1001 &809305435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18131,7 +18200,7 @@ MonoBehaviour:
   GameOverPanel: {fileID: 1647463448}
   victoryPanel: {fileID: 1844763858}
   victoryCutscene: {fileID: 270664919}
-  timelineManager: {fileID: 967574059}
+  timelineManagers: []
   dronePrefab: {fileID: 0}
   currency: {fileID: 0}
   maxDronesAliveAtOnce: 3
@@ -21785,6 +21854,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOverScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 641002167373003419, guid: 666372dc4667d0b43a05ca554c954e0b,
+        type: 3}
+      propertyPath: currentPointsTXT
+      value: 
+      objectReference: {fileID: 1099055750}
+    - target: {fileID: 641002167373003419, guid: 666372dc4667d0b43a05ca554c954e0b,
+        type: 3}
+      propertyPath: totalGamePointsTXT
+      value: 
+      objectReference: {fileID: 481186372}
     - target: {fileID: 4798825393373623262, guid: 666372dc4667d0b43a05ca554c954e0b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24296,14 +24375,15 @@ MonoBehaviour:
     weight: 5
   firerate: 1
   sightRange: 10
-  meleeRange: 0
+  meleeRange: 3
   ignoresVerticalSightRestriction: 0
   verticalSight: 2.5
   startingHealth: 0
   facingRight: 0
   isBox: 0
   isChasing: 0
-  isRestrictedFromRespawning: 0
+  isBossCharacter1: 0
+  isBossCharacter2: 0
   startingLocation: {x: 0, y: 0, z: 0}
   enemySpeed: 6
   bulletRefSpeed: 0
