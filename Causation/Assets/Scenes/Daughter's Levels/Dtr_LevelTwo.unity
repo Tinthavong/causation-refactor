@@ -3753,6 +3753,55 @@ Transform:
   m_Father: {fileID: 1431345162}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &246164690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 246164691}
+  - component: {fileID: 246164692}
+  m_Layer: 0
+  m_Name: CutsceneDialogue_Boss (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &246164691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246164690}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 772661164}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &246164692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246164690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25b4e72b66b7c3344bfc78df156401ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    sentences:
+    - 'Daughter: Neither do you.'
+  bossDialogueTrigger: 0
+  bossReference: {fileID: 0}
+  bossHP: {fileID: 0}
 --- !u!4 &247418719 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 599223075572012491, guid: 3ff8e2c928b6fed42a99918ee7da2c58,
@@ -12557,6 +12606,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1175030089}
+  - {fileID: 246164691}
   - {fileID: 1771642026}
   m_Father: {fileID: 1559397333}
   m_RootOrder: 0
@@ -12586,6 +12636,10 @@ PlayableDirector:
     value: {fileID: 1159845513}
   - key: {fileID: 4203150992630102242, guid: 4cc427c7f94640d4b811f480e1a3e08f, type: 2}
     value: {fileID: 1175030088}
+  - key: {fileID: -8081385603749578751, guid: 4cc427c7f94640d4b811f480e1a3e08f, type: 2}
+    value: {fileID: 832976819}
+  - key: {fileID: -3333213028865208853, guid: 4cc427c7f94640d4b811f480e1a3e08f, type: 2}
+    value: {fileID: 246164690}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &782092447 stripped
@@ -13109,12 +13163,12 @@ PrefabInstance:
     - target: {fileID: 2606829749327834164, guid: 4bcefde5d6f8d5b4eb7b0e6414682151,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.96
       objectReference: {fileID: 0}
     - target: {fileID: 2606829749327834164, guid: 4bcefde5d6f8d5b4eb7b0e6414682151,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.37
       objectReference: {fileID: 0}
     - target: {fileID: 2606829749327834164, guid: 4bcefde5d6f8d5b4eb7b0e6414682151,
         type: 3}
@@ -13124,17 +13178,17 @@ PrefabInstance:
     - target: {fileID: 2606829749327834164, guid: 4bcefde5d6f8d5b4eb7b0e6414682151,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2606829749327834164, guid: 4bcefde5d6f8d5b4eb7b0e6414682151,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2606829749327834164, guid: 4bcefde5d6f8d5b4eb7b0e6414682151,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2606829749327834164, guid: 4bcefde5d6f8d5b4eb7b0e6414682151,
         type: 3}
@@ -13183,6 +13237,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bcefde5d6f8d5b4eb7b0e6414682151, type: 3}
+--- !u!1 &832976818 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2606829749327834161, guid: 4bcefde5d6f8d5b4eb7b0e6414682151,
+    type: 3}
+  m_PrefabInstance: {fileID: 832976817}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &832976819
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832976818}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &834834747 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1275847099204439674, guid: 9519bca7198ed7a49b3314a0ee2c0b17,
@@ -14618,7 +14697,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce8bc1bfccf204b49806f4f91e36d29d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpoints: []
+  checkpoints:
+  - {fileID: 1722770086}
   flaggedCheckpoints: 
   checkpointIndex: 0
   canRetry: 0
@@ -18060,8 +18140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     sentences:
+    - 'Engineer: So you''re the one causing all that commotion!'
     - 'Engineer: You have no idea who you''re messing with kid!'
-    - 'Daughter: Neither do you.'
   bossDialogueTrigger: 0
   bossReference: {fileID: 0}
   bossHP: {fileID: 0}
@@ -27673,7 +27753,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 772661164}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1771642027
 MonoBehaviour:
