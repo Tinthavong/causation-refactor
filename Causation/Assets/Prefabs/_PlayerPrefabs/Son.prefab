@@ -165,7 +165,7 @@ MonoBehaviour:
   staminaActions: 0
   groundLayer:
     serializedVersion: 2
-    m_Bits: 57344
+    m_Bits: 124928
   onGround: 0
   groundLength: 1.42
   colliderOffset: {x: 0.49, y: 0, z: 0}
@@ -228,6 +228,10 @@ MonoBehaviour:
     type: 3}
   signText: {fileID: 3875309981128641206, guid: 0a0182fd2cab5c546bdd2c33855663e7,
     type: 3}
+  bossFlag: 0
+  screenLock: 1
+  screenDestination: 0
+  screenTransitions: []
 --- !u!70 &3030930682462453138
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

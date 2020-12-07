@@ -18201,9 +18201,7 @@ MonoBehaviour:
   victoryPanel: {fileID: 1844763858}
   victoryCutscene: {fileID: 270664919}
   timelineManagers: []
-  dronePrefab: {fileID: 0}
   currency: {fileID: 0}
-  maxDronesAliveAtOnce: 3
   retryButton: {fileID: 732832803}
 --- !u!4 &1812439590
 Transform:
@@ -20108,12 +20106,12 @@ PrefabInstance:
     - target: {fileID: 921435466201895874, guid: 96d72b277360aaf4cb2befc4eb2588cd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.307976
+      value: 24.725
       objectReference: {fileID: 0}
     - target: {fileID: 921435466201895874, guid: 96d72b277360aaf4cb2befc4eb2588cd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.5169818
+      value: -3.187
       objectReference: {fileID: 0}
     - target: {fileID: 921435466201895874, guid: 96d72b277360aaf4cb2befc4eb2588cd,
         type: 3}
