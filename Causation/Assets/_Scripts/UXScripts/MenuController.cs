@@ -25,17 +25,30 @@ public class MenuController : MonoBehaviour
         loadNextScene = SceneManager.GetActiveScene().buildIndex + 1;
 
         //Find a way to separate these from VictoryScreen and GameOverScreen because there is a null reference error for the points when the gameover screen pops up     
-        currentLevelPoints = Currency.walletValue * 100;
-        totalGamePoints = currentLevelPoints + MissionSelection.currency;
+ 
 
         //Current "fix" is to make the game over screen reference these like the VictoryScreen does
-        currentPointsTXT.text = "Points from Level: " + currentLevelPoints.ToString();
-        totalGamePointsTXT.text = "Total Game Points: " + totalGamePoints.ToString();
+        
 
         //These are also returning a null reference for the game over, I think just finding a way to separate victory and gameover would fix it
         //Band-aid fix could be, if gameobject.Name == GameWinPanel then so and so, else if gameobject.Name == GameOverPanel then yada yada
-        SaveManager.instance.gameData.currency = totalGamePoints;
-        SaveManager.instance.Save();
+        if (this.gameObject.name == "GameWinPanel")
+        {
+            currentLevelPoints = Currency.walletValue * 100;
+            totalGamePoints = currentLevelPoints + MissionSelection.currency;
+
+            currentPointsTXT.text = "Points from Level: " + currentLevelPoints.ToString();
+            totalGamePointsTXT.text = "Total Game Points: " + totalGamePoints.ToString();
+
+            SaveManager.instance.gameData.currency = totalGamePoints;
+            SaveManager.instance.gameData.iteration = MissionSelection.iterations;
+            SaveManager.instance.Save();
+        }
+        if (this.gameObject.name == "GameOverPanel")
+        {
+            totalGamePoints = SaveManager.instance.gameData.currency;
+            totalGamePointsTXT.text = "Total Game Points: " + totalGamePoints.ToString();
+        }
     }
 
     public void MainMenu()
@@ -45,7 +58,7 @@ public class MenuController : MonoBehaviour
 
     public void QuitGame()
     {
-        SaveManager.instance.gameData.currency = MissionSelection.currency;
+        SaveManager.instance.gameData.currency = totalGamePoints;
         SaveManager.instance.gameData.iteration = MissionSelection.iterations;
         SaveManager.instance.Save();
 

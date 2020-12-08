@@ -19,12 +19,10 @@ public class MissionSelectionController : MonoBehaviour
 
         if (MainMenuController.isNewGame == true)
         {
-            //SaveManager.instance.DeleteSavedData();
 
             MissionSelection.currency = SaveManager.instance.gameData.currency;
             MissionSelection.iterations = SaveManager.instance.gameData.iteration;
 
-            //SceneManager.LoadScene(2);
 
             MainMenuController.isNewGame = false;
         }

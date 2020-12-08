@@ -174,9 +174,6 @@ public class MissionSelection : MonoBehaviour
         if (iterations != 6)
         {
             iterations = 1;
-            SaveManager.instance.gameData.iteration = iterations;
-            SaveManager.instance.gameData.currency = currency;
-            SaveManager.instance.Save();
         }
 
         SceneManager.LoadScene(3);
@@ -187,9 +184,6 @@ public class MissionSelection : MonoBehaviour
         if (iterations != 6)
         {
             iterations = 2;
-            SaveManager.instance.gameData.iteration = iterations;
-            SaveManager.instance.gameData.currency = currency;
-            SaveManager.instance.Save();
         }
         
         SceneManager.LoadScene(4);
@@ -200,9 +194,6 @@ public class MissionSelection : MonoBehaviour
         if (iterations != 6)
         {
             iterations = 3;
-            SaveManager.instance.gameData.iteration = iterations;
-            SaveManager.instance.gameData.currency = currency;
-            SaveManager.instance.Save();
         }
         
         SceneManager.LoadScene(5);
@@ -213,9 +204,6 @@ public class MissionSelection : MonoBehaviour
         if (iterations != 6)
         {
             iterations = 4;
-            SaveManager.instance.gameData.iteration = iterations;
-            SaveManager.instance.gameData.currency = currency;
-            SaveManager.instance.Save();
         }
         
         SceneManager.LoadScene(6);
@@ -226,9 +214,6 @@ public class MissionSelection : MonoBehaviour
         if (iterations != 6)
         {
             iterations = 5;
-            SaveManager.instance.gameData.iteration = iterations;
-            SaveManager.instance.gameData.currency = currency;
-            SaveManager.instance.Save();
         }
         
         SceneManager.LoadScene(7);
@@ -239,9 +224,6 @@ public class MissionSelection : MonoBehaviour
         if (iterations != 6)
         {
             iterations = 6;
-            SaveManager.instance.gameData.iteration = iterations;
-            SaveManager.instance.gameData.currency = currency;
-            SaveManager.instance.Save();
         }
 
         SceneManager.LoadScene(8);
@@ -252,14 +234,14 @@ public class MissionSelection : MonoBehaviour
         SaveManager.instance.gameData.currency = MenuController.totalGamePoints;
         currency = SaveManager.instance.gameData.currency;
 
-        //SaveManager.instance.Save();
+        SaveManager.instance.Save();
     }
 
     void UpdateIteration()
     {
         SaveManager.instance.gameData.iteration = iterations;
         
-        //SaveManager.instance.Save();
+        SaveManager.instance.Save();
     }
 
     public void SaveGame()
@@ -293,14 +275,4 @@ public class MissionSelection : MonoBehaviour
         }
         
     }
-
-    //IEnumerator LoadNextScene(int levelIndex)
-    //{
-    //    anim.SetBool("Transition", true);
-
-    //    yield return new WaitForSeconds(5);
-
-    //    SceneManager.LoadScene(levelIndex);
-    //}
-
 }

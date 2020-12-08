@@ -18669,6 +18669,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1530666606}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1417792739 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8580685525800044605, guid: 1a928fbafddaf4c4091cae797bb281db,
+    type: 3}
+  m_PrefabInstance: {fileID: 1563056104}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1419559858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21109,6 +21121,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2124160598, guid: 1a928fbafddaf4c4091cae797bb281db, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2128013282, guid: 1a928fbafddaf4c4091cae797bb281db, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -21118,11 +21134,26 @@ PrefabInstance:
       propertyPath: m_Interactable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 841827587893387559, guid: 1a928fbafddaf4c4091cae797bb281db,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 841827587893387559, guid: 1a928fbafddaf4c4091cae797bb281db,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 205.71436
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062089293302159800, guid: 1a928fbafddaf4c4091cae797bb281db,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 513
+      objectReference: {fileID: 0}
     - target: {fileID: 2607670657482356611, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
       propertyPath: totalGamePointsTXT
       value: 
-      objectReference: {fileID: 1727372295}
+      objectReference: {fileID: 1417792739}
     - target: {fileID: 2607670657482356611, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
       propertyPath: currentPointsTXT
@@ -21261,6 +21292,11 @@ PrefabInstance:
     - target: {fileID: 3493381886632224439, guid: 1a928fbafddaf4c4091cae797bb281db,
         type: 3}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859306757046551705, guid: 1a928fbafddaf4c4091cae797bb281db,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -23524,18 +23560,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}
---- !u!114 &1727372295 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2124160599, guid: 1a928fbafddaf4c4091cae797bb281db,
-    type: 3}
-  m_PrefabInstance: {fileID: 1563056104}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1729974193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30153,9 +30177,7 @@ MonoBehaviour:
   victoryCutscene: {fileID: 401847746}
   timelineManagers:
   - {fileID: 2145534707}
-  dronePrefab: {fileID: 0}
   currency: {fileID: 1759553306}
-  maxDronesAliveAtOnce: 3
   retryButton: {fileID: 186046879}
 --- !u!114 &5222924329825994031
 MonoBehaviour:
