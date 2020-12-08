@@ -105,6 +105,14 @@ public class FinalMechBoss : Enemy
     {
         if(isAwake)
         {
+            //Testing code, needs to be deleted
+            /*if(firerateWait <= 0)
+            {
+                Shoot();
+                firerateWait = firerate;
+            }
+            firerateWait -= Time.deltaTime;
+            */
 
             if(isInPhase)
             {
@@ -113,8 +121,7 @@ public class FinalMechBoss : Enemy
                 {
                     //airborne phase
                     case 0:
-                        animator.SetBool("isFlying", false); //Idle animation
-                        animator.SetBool("isShooting", true); //Shooting animation
+                        //Animator uses firing animation
                         HoverAttack();
                         MoveToAbovePlayer();
                         if (currentPhaseTime >= airPhaseEndTime)
@@ -126,14 +133,11 @@ public class FinalMechBoss : Enemy
                         break;
                     //Small phase that moves the boss for the next phase
                     case 1:
-                        animator.SetBool("isShooting", false); //Shooting animation
-                        animator.SetBool("isFlying", true); //Idle animation
                         MoveToPlayerY();
                         break;
                     //grounded phase
                     case 2:
-                        animator.SetBool("isFlying", false); //Idle animation
-                        animator.SetBool("isShooting", true); //Shooting animation
+                        //Animator uses firing animation to signify danger
                         GroundedAttack();
                         HoverAttack();
 
@@ -146,9 +150,7 @@ public class FinalMechBoss : Enemy
                         break;
                     //reflecting phase
                     case 3:
-                        animator.SetBool("isFlying", false); //Idle animation
-                        animator.SetBool("isShooting", false); //Shooting animation
-                        animator.SetBool("isDefense", true); //Defense animation
+                        //Animator uses shielding animation
                         Reflecting();
 
                         if (currentPhaseTime >= reflectPhaseEndTime)
@@ -159,9 +161,6 @@ public class FinalMechBoss : Enemy
                         break;
                     //small phase to move the boss back into the air
                     case 4:
-                        animator.SetBool("isDefense", false); //Defense animation
-                        animator.SetBool("isShooting", false); //Shooting animation
-                        animator.SetBool("isFlying", true); //Idle animation
                         MoveToAbovePlayer();
                         if (moveTimer >= moveTime)
                         {
@@ -427,9 +426,8 @@ public class FinalMechBoss : Enemy
     //Boss HP Bar
     public override void DamageCalc(int damage)
     {
+        bossHealthBar.SetHealth(displayedHealth);  //This throws errors since bossHealthBar is not set
         base.DamageCalc(damage);
-        bossHealthBar.SetHealth(displayedHealth);  //This throws many errors if bossHealthBar is not set
-        
     }
 
     public new void OnTriggerEnter2D(Collider2D collision)
@@ -441,6 +439,7 @@ public class FinalMechBoss : Enemy
                 if(phase != 3)
                 {
                     DamageCalc(bullet.GetDamage());
+                    FindObjectOfType<SFXManager>().PlayAudio("Damage");
                 }
                 else
                 {

@@ -232,6 +232,17 @@ public class GrandpaController : PlayerController
         remainingAmmo[1] = 0; // blue
         remainingAmmo[2] = 0; // red
         remainingAmmo[3] = 0; // green
+
+        //get rid of this
+        if (isBurstFire)
+        {
+            shotAmount = 3;
+            maxAmmo = 15; //smg/burstfire guns
+            fireDelay = 0.05f;
+            attackDelay = 0.5f;
+        }
+        else
+            return;
     }
 
     private void ShootingBehavior()
@@ -428,39 +439,19 @@ public class GrandpaController : PlayerController
     {
         FindObjectOfType<SFXManager>().PlayAudio("Gunshot");
         //switch cases for firing modes
-        //This block of code is why we should use raycasts
-
-        if (!isCrouched)
+        //This block of code is why we should use raycasts 
+        GameObject b = Instantiate(bulletPrefab) as GameObject;
+        b.transform.position = bulletSpawn.transform.position;
+        //Bullet object shifts position and rotation based on direction
+        if (!facingRight)
         {
-            GameObject b = Instantiate(bulletPrefab) as GameObject;
-            b.transform.position = bulletSpawn.transform.position;
-            //Bullet object shifts position and rotation based on direction
-            if (!facingRight)
-            {
-                b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90f);
-                b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
-            }
-            else if (facingRight)
-            {
-                b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90f);
-                b.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
-            }
+            b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90f);
+            b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
         }
-        else
+        else if (facingRight)
         {
-            GameObject b = Instantiate(bulletPrefab) as GameObject;
-            b.transform.position = bulletSpawnCrouch.transform.position;
-            //Bullet object shifts position and rotation based on direction
-            if (!facingRight)
-            {
-                b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90f);
-                b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
-            }
-            else if (facingRight)
-            {
-                b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90f);
-                b.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
-            }
+            b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90f);
+            b.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
         }
     }
 
@@ -548,7 +539,7 @@ public class GrandpaController : PlayerController
         canMove = false; //self-explanatory but this turns off the ability to move around with the player. we can pause the gameworld too, but this way still plays enemy animations if they're still around the player
         GetComponent<CapsuleCollider2D>().enabled = false; //Dirty fix right now. The enemy should stop attacking if the player is dead anyways
         Interactables interactable = FindObjectOfType<Interactables>();
-        if (interactable.screenTransitions.Length > 0)
+        if(interactable.screenTransitions.Length > 0)
         {
             interactable.screenLock = 1;
             interactable.bossFlag = false;
