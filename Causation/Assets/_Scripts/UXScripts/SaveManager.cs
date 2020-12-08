@@ -72,7 +72,9 @@ public class SaveManager : MonoBehaviour
         {
             File.Delete(savePath + "/" + gameData.saveName + ".dat");
 
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            instance.gameData.iteration = 0;
+            instance.gameData.currency = 0;
+            
 
             Debug.Log("Saved data has been cleared");
         }

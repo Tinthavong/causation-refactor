@@ -29,6 +29,8 @@ public class MainMenuController : MonoBehaviour
         fadeCanvas.gameObject.SetActive(true);
         Time.timeScale = 1f;
         PauseController.isPaused = false;
+        SaveManager.instance.DeleteSavedData();
+        SaveManager.instance.Save();
         isNewGame = true;
         message.text = "Thank you for playing\nEnjoy the game\n\nAuto Saving New Game...";
         StartCoroutine(LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1));
