@@ -20,7 +20,6 @@ TagManager:
   - BlueBulletItem
   - GreenBulletItem
   - BossTransition
-  - FinalBoss
   layers:
   - Default
   - TransparentFX
