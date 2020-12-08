@@ -161,11 +161,16 @@ MonoBehaviour:
   meleeRange: 2
   ignoresVerticalSightRestriction: 0
   verticalSight: 6
+  startingHealth: 0
   facingRight: 0
-  isChasing: 0
   isBox: 0
-  enemySpeed: 7.5
+  isChasing: 0
+  isBossCharacter1: 0
+  isBossCharacter2: 0
+  startingLocation: {x: 0, y: 0, z: 0}
+  enemySpeed: 6
   bulletRefSpeed: 0
+  isAwake: 0
 --- !u!50 &2679115818621372631
 Rigidbody2D:
   serializedVersion: 4

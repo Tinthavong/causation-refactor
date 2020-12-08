@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8664dfaec10c2347ac3cce7cbe825e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayedHealth: 50
+  displayedHealth: 30
   staminaActions: 0
   groundLayer:
     serializedVersion: 2

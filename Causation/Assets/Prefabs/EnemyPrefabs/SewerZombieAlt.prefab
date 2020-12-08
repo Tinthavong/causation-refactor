@@ -195,8 +195,10 @@ MonoBehaviour:
   facingRight: 0
   isBox: 0
   isChasing: 0
+  isBossCharacter1: 0
+  isBossCharacter2: 0
   startingLocation: {x: 0, y: 0, z: 0}
-  enemySpeed: 7.5
+  enemySpeed: 6
   bulletRefSpeed: 0
   isAwake: 0
 --- !u!50 &5108529011574957070
