@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 125780432412524958}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 29.28, y: 2.16, z: -1.4335938}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8042469741929352532}
   m_Father: {fileID: 0}
@@ -168,13 +168,18 @@ MonoBehaviour:
   firerate: 2
   sightRange: 10
   meleeRange: 2
-  floorHax: 0
+  ignoresVerticalSightRestriction: 0
   verticalSight: 2.5
+  startingHealth: 0
   facingRight: 0
-  isChasing: 0
   isBox: 0
+  isChasing: 0
+  isBossCharacter1: 0
+  isBossCharacter2: 0
+  startingLocation: {x: 0, y: 0, z: 0}
   enemySpeed: 8
   bulletRefSpeed: 0
+  isAwake: 0
 --- !u!1 &8042469741929352528
 GameObject:
   m_ObjectHideFlags: 0
