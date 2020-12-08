@@ -198,7 +198,7 @@ MonoBehaviour:
   bulletSpawn: {fileID: 302499020264982312}
   StrikeZone: {fileID: 0}
   strikeRange: 0.5
-  strikeDamage: 1
+  strikeDamage: 4
   enemyLayers:
     serializedVersion: 2
     m_Bits: 1024
@@ -206,7 +206,7 @@ MonoBehaviour:
   drops:
   - drop: {fileID: 7462346461303034108, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}
     weight: 5
-  firerate: 1
+  firerate: 2
   sightRange: 10
   meleeRange: 10
   ignoresVerticalSightRestriction: 1
