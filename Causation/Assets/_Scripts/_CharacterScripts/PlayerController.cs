@@ -36,7 +36,7 @@ public class PlayerController : CharacterBase
 
     //Jumping
     public float jumpSpeed = 15f;
-    public float jumpDelay = 0.25f; 
+    public float jumpDelay = 0.25f;
     public float jumpTimer;
 
     //Attacking
@@ -49,10 +49,11 @@ public class PlayerController : CharacterBase
     public int shotAmount = 1; //shoots 1 bullet by default, changes for burst fire
 
     [Header("Components")]
-    public int maxAmmo = 15; //15 round, burst fire SMG by default 
+    public int maxAmmo; //15 round, burst fire SMG by default 
 
     public GameObject nearObject;
     public LevelManager LM; //can we get rid of these?
+    public GameObject bulletSpawnCrouch; //the spawner for when the player is crouching and shooting
 
     [Header("Player States")]
     public bool isJumping;
@@ -94,8 +95,6 @@ public class PlayerController : CharacterBase
 
     private void WeaponTypeAssign() //Might still be useful for differentiating between son and granddaughter?
     {
-        //Assign remaining ammo here?
-
         if (isBurstFire)
         {
             shotAmount = 3;
@@ -103,8 +102,14 @@ public class PlayerController : CharacterBase
             fireDelay = 0.05f;
             attackDelay = 0.5f;
         }
-        else
-            return;
+        else if(!isBurstFire)
+        {
+            shotAmount = 1;
+            maxAmmo = 6;
+        }
+        Ammo = maxAmmo;
+        ammoText.text = Ammo.ToString();
+        return;
     }
 
     private void ShootingBehavior()
@@ -119,7 +124,7 @@ public class PlayerController : CharacterBase
                 {
                     animator.Play("Shoot");
                 }
-                else if(isCrouched)
+                else if (isCrouched)
                 {
                     animator.Play("CrouchShoot");
                 }
@@ -176,7 +181,7 @@ public class PlayerController : CharacterBase
                 rb.velocity = new Vector2(0f, 0f);
                 if (isCrouched)
                 {
-                    bulletSpawn.transform.localPosition = new Vector3(0.85f, -0.4f, 0);
+                    //bulletSpawn.transform.localPosition = new Vector3(0.85f, -0.4f, 0);
                     GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 1.45f);
                     GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, -0.4f);
                 }
@@ -188,7 +193,7 @@ public class PlayerController : CharacterBase
                 //tempCrouchShoot.SetActive(false);
                 animator.SetBool("IsCrouched", false);
                 isCrouched = false;
-                bulletSpawn.transform.localPosition = new Vector3(0.85f, 0.5f, 0);
+                //bulletSpawn.transform.localPosition = new Vector3(0.85f, 0.5f, 0);
                 GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 2.3f);
                 GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, 0f);
             }
@@ -291,18 +296,38 @@ public class PlayerController : CharacterBase
         FindObjectOfType<SFXManager>().PlayAudio("Gunshot");
         //switch cases for firing modes
         //This block of code is why we should use raycasts 
-        GameObject b = Instantiate(bulletPrefab) as GameObject;
-        b.transform.position = bulletSpawn.transform.position;
-        //Bullet object shifts position and rotation based on direction
-        if (!facingRight)
+
+        if (!isCrouched)
         {
-            b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -180.0f);
-            b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
+            GameObject b = Instantiate(bulletPrefab) as GameObject;
+            b.transform.position = bulletSpawn.transform.position;
+            //Bullet object shifts position and rotation based on direction
+            if (!facingRight)
+            {
+                b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -180.0f);
+                b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
+            }
+            else if (facingRight)
+            {
+                b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -0.0f);
+                b.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
+            }
         }
-        else if (facingRight)
+        else
         {
-            b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -0.0f);
-            b.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
+            GameObject b = Instantiate(bulletPrefab) as GameObject;
+            b.transform.position = bulletSpawnCrouch.transform.position;
+            //Bullet object shifts position and rotation based on direction
+            if (!facingRight)
+            {
+                b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -180.0f);
+                b.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
+            }
+            else if (facingRight)
+            {
+                b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -0.0f);
+                b.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletPrefab.GetComponent<BulletScript>().bulletSpeed);
+            }
         }
     }
 
