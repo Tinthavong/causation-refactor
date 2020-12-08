@@ -462,10 +462,10 @@ public class FinalMechBoss : Enemy
             PostDeath(); //might override and display the victory screen instead
             //should avoid outright destroying the characters bc it should do an animation or whatever first, should use coroutine to delay this but for now:
 
-            gameObject.GetComponent<Animator>().SetBool("IsFlying", false);
-            gameObject.GetComponent<Animator>().SetBool("IsShooting", false);
-            gameObject.GetComponent<Animator>().SetBool("IsDefense", false);
-            gameObject.GetComponent<Animator>().SetTrigger("IsDead");
+            gameObject.GetComponent<Animator>().SetBool("isFlying", false);
+            gameObject.GetComponent<Animator>().SetBool("isShooting", false);
+            gameObject.GetComponent<Animator>().SetBool("isDefense", false);
+            gameObject.GetComponent<Animator>().SetTrigger("isDead");
             gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
             //gameObject.GetComponent<BoxCollider2D>().enabled = false;
             isAwake = false;
