@@ -477,4 +477,10 @@ public class FinalMechBoss : Enemy
 
     //WHEN THIS DIES: set the gravity to something so it will hit the floor and explode
 
+    public override void PostDeath()
+    {
+        PlayerController pc = FindObjectOfType<PlayerController>();
+        pc.LM.VictoryCheck();
+        Debug.Log(pc);
+    }
 }
