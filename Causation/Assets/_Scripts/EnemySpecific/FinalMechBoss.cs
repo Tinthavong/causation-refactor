@@ -428,6 +428,7 @@ public class FinalMechBoss : Enemy
     public override void DamageCalc(int damage)
     {
         base.DamageCalc(damage);
+        ElimCharacter();
         bossHealthBar.SetHealth(displayedHealth);  //This throws many errors if bossHealthBar is not set
         
     }
@@ -450,6 +451,28 @@ public class FinalMechBoss : Enemy
         }
 
         
+    }
+
+    //Overridden elimcharacter method to account for unique animation names - can be standardized to allow for inheritance
+    public override void ElimCharacter()
+    {
+        //this might be too simple but for now checking if the health is at or below 0 might be enough
+        if (displayedHealth <= 0)
+        {
+            PostDeath(); //might override and display the victory screen instead
+            //should avoid outright destroying the characters bc it should do an animation or whatever first, should use coroutine to delay this but for now:
+
+            gameObject.GetComponent<Animator>().SetBool("IsFlying", false);
+            gameObject.GetComponent<Animator>().SetBool("IsShooting", false);
+            gameObject.GetComponent<Animator>().SetBool("IsDefense", false);
+            gameObject.GetComponent<Animator>().SetTrigger("IsDead");
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
+            //gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            isAwake = false;
+            gameObject.GetComponent<Enemy>().enabled = false;
+            rb.gravityScale = .5f;
+            //Destroy(gameObject); //Commented out for now, destroying the game object is too abrupt.
+        }
     }
 
     //WHEN THIS DIES: set the gravity to something so it will hit the floor and explode
