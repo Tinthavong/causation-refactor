@@ -27,7 +27,7 @@ public class BulletScript : MonoBehaviour
         {
             case "Enemy":
                 //Need to check if the collision is the final boss to allow for its reflecting phase to take effect
-                if (isPlayerBullet)
+                if (isPlayerBullet && collision.GetComponent<FinalMechBoss>() == null)
                 {
                     enemy = collision.GetComponent<Enemy>();
 
@@ -55,10 +55,6 @@ public class BulletScript : MonoBehaviour
                 Destroy(gameObject);
                 break;
             case "Object":
-                FindObjectOfType<SFXManager>().PlayAudio("Damage");
-                Destroy(gameObject);
-                break;
-            case "FinalBoss":
                 FindObjectOfType<SFXManager>().PlayAudio("Damage");
                 Destroy(gameObject);
                 break;
