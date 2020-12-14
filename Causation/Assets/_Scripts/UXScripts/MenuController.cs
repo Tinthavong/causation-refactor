@@ -24,12 +24,6 @@ public class MenuController : MonoBehaviour
     {
         loadNextScene = SceneManager.GetActiveScene().buildIndex + 1;
 
-        //Find a way to separate these from VictoryScreen and GameOverScreen because there is a null reference error for the points when the gameover screen pops up     
- 
-
-        //Current "fix" is to make the game over screen reference these like the VictoryScreen does
-        
-
         //These are also returning a null reference for the game over, I think just finding a way to separate victory and gameover would fix it
         //Band-aid fix could be, if gameobject.Name == GameWinPanel then so and so, else if gameobject.Name == GameOverPanel then yada yada
         if (this.gameObject.name == "GameWinPanel")
@@ -39,6 +33,40 @@ public class MenuController : MonoBehaviour
 
             currentPointsTXT.text = "Points from Level: " + currentLevelPoints.ToString();
             totalGamePointsTXT.text = "Total Game Points: " + totalGamePoints.ToString();
+
+            switch (MissionSelection.iterations)
+            {
+                case 0:
+                    {
+                        MissionSelection.iterations = 1;
+                        break;
+                    }
+                case 1:
+                    {
+                        MissionSelection.iterations = 2;
+                        break;
+                    }
+                case 2:
+                    {
+                        MissionSelection.iterations = 3;
+                        break;
+                    }
+                case 3:
+                    {
+                        MissionSelection.iterations = 4;
+                        break;
+                    }
+                case 4:
+                    {
+                        MissionSelection.iterations = 5;
+                        break;
+                    }
+                case 5:
+                    {
+                        MissionSelection.iterations = 6;
+                        break;
+                    }
+            }
 
             SaveManager.instance.gameData.currency = totalGamePoints;
             SaveManager.instance.gameData.iteration = MissionSelection.iterations;

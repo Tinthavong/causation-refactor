@@ -53,12 +53,6 @@ public class MissionSelection : MonoBehaviour
 
     private void Start()
     {
-        //anim.SetBool("Transition", false);
-
-        //SaveManager.instance.Load();
-        //iterations = SaveManager.instance.gameData.iteration;
-        //currency = SaveManager.instance.gameData.currency;
-
         currencyText.text = currency.ToString();
 
         saveMenu.SetActive(false);
@@ -151,6 +145,9 @@ public class MissionSelection : MonoBehaviour
         //After Daughter Level 2/Post Game
         else
         {
+            level1.GetComponentInChildren<TMP_Text>().color = Color.white;
+            level3.GetComponentInChildren<TMP_Text>().color = Color.white;
+            level5.GetComponentInChildren<TMP_Text>().color = Color.white;
             era1.enabled = true;
             era2.enabled = true;
             era3.enabled = true;
@@ -171,61 +168,31 @@ public class MissionSelection : MonoBehaviour
 
     public void Mission1()
     {
-        if (iterations != 6)
-        {
-            iterations = 1;
-        }
-
         SceneManager.LoadScene(3);
     }
 
     public void Mission2()
     {
-        if (iterations != 6)
-        {
-            iterations = 2;
-        }
-        
         SceneManager.LoadScene(4);
     }
 
     public void Mission3()
     {
-        if (iterations != 6)
-        {
-            iterations = 3;
-        }
-        
         SceneManager.LoadScene(5);
     }
 
     public void Mission4()
     {
-        if (iterations != 6)
-        {
-            iterations = 4;
-        }
-        
         SceneManager.LoadScene(6);
     }
 
     public void Mission5()
     {
-        if (iterations != 6)
-        {
-            iterations = 5;
-        }
-        
         SceneManager.LoadScene(7);
     }
 
     public void Mission6()
     {
-        if (iterations != 6)
-        {
-            iterations = 6;
-        }
-
         SceneManager.LoadScene(8);
     }
 
@@ -233,15 +200,11 @@ public class MissionSelection : MonoBehaviour
     {
         SaveManager.instance.gameData.currency = MenuController.totalGamePoints;
         currency = SaveManager.instance.gameData.currency;
-
-        SaveManager.instance.Save();
     }
 
     void UpdateIteration()
     {
         SaveManager.instance.gameData.iteration = iterations;
-        
-        SaveManager.instance.Save();
     }
 
     public void SaveGame()

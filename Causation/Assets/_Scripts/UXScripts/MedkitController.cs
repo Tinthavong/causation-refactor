@@ -16,10 +16,10 @@ public class MedkitController : MonoBehaviour
     {
         pc = FindObjectOfType<PlayerController>();
 
-        //for (int i = 0; i <= 2; i++)
-        //{
-        //    medkits[i].gameObject.SetActive(true);
-        //}
+        for (int i = 0; i <= 2; i++)
+        {
+            medkits[i].gameObject.SetActive(false);
+        }
 
         medkitNumber = 0;
     }
