@@ -114,15 +114,9 @@ public class GrandpaController : PlayerController
                 ammoDisplay.sprite = bulletList[bulletIndex].GetComponent<SpriteRenderer>().sprite;
                 bulletPrefab = bulletList[bulletIndex];
 
-                /*
-                if (remainingAmmo[bulletIndex] >= maxAmmo)
-                {
-                    Ammo = maxAmmo;
-                    ammoTotalText.text = "0";
-                }*/
-
+                Ammo = maxAmmo;
+                ammoTotalText.text = "∞";
                 break;
-
             default:
 
                 break;
@@ -527,16 +521,15 @@ public class GrandpaController : PlayerController
             collision.gameObject.GetComponent<Enemy>().ElimCharacter(); //jumping on enemies to death
         }
 
-        //This can't be the best way to do this, gotta go back and fix later.
-        if (collision.gameObject.CompareTag("BlueBulletItem"))
+        if (collision.gameObject.CompareTag("BlueBulletItem") && bulletIndex != 0)
         {
             ammoTotalText.text = remainingAmmo[1].ToString();
         }
-        else if (collision.gameObject.CompareTag("RedBulletItem"))
+        else if (collision.gameObject.CompareTag("RedBulletItem") && bulletIndex != 0)
         {
             ammoTotalText.text = remainingAmmo[2].ToString();
         }
-        else if (collision.gameObject.CompareTag("GreenBulletItem"))
+        else if (collision.gameObject.CompareTag("GreenBulletItem") && bulletIndex != 0)
         {
             ammoTotalText.text = remainingAmmo[3].ToString();
         }
