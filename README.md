@@ -16,7 +16,7 @@ Code that takes the path of least resistance to achieve its goal. Basically, the
 
 This repo is an attempt to rein in the code and clean it up. Objects and functions that are too tightly wound up could be decoupled, certain game components might need complete reworking, polishing and adjusting the gameplay elements, etc.
 
-Why? As someone who's passionate about game development and programming in general, I love being able to program. So this is a chance for me to be able to keep programming while also practicing and exercising SOLID (literally and figuratively) design principles or utilize new and possibly smarter design patterns in this student project.
+Why? As someone who's passionate about game development and programming in general, I love being able to program and... well, make games. So this is a chance for me to be able to keep programming while also practicing and exercising SOLID (literally and figuratively) design principles. Or utilize new and possibly smarter design patterns to improvise this student project.
 
 As a warning: This is an attempt to fix the programming and code that I had some control over, not the entire project. Nor is this an attempt to re-design the entire game (meant to be a team project) alone and from the ground-up!
 
