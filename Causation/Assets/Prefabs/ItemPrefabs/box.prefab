@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2858888395390309261}
   - component: {fileID: 2858888395390309260}
   - component: {fileID: 2858888395390309263}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: box
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009059608, y: 0.004530072}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -107,7 +107,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9076873, y: 1.9148657}
+  m_Size: {x: 1.92, y: 1.92}
   m_EdgeRadius: 0
 --- !u!50 &2858888395390309263
 Rigidbody2D:
@@ -121,9 +121,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0

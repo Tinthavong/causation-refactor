@@ -10,6 +10,21 @@ TagManager:
   - Interact
   - Text
   - ScrewPickUp
+  - Transition
+  - Checkpoint
+  - FinishLine
+  - Ledge
+  - Groundfloor
+  - RedBulletItem
+  - BlueBulletItem
+  - GreenBulletItem
+  - BossTransition
+  - FinalBoss
+  - PlayerProjectile
+  - Boss
+  - EnProjectile
+  - Destructible
+  - Bounds
   layers:
   - Default
   - TransparentFX
@@ -20,15 +35,15 @@ TagManager:
   - 
   - 
   - Background
-  - Character
-  - Foreground
   - PickUp
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Foreground
+  - Ground
+  - Platform
+  - Props
+  - SpecialEnemy
+  - EnemyProjectile
   - 
   - 
   - 

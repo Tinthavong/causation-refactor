@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
+    public Animator anim;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))

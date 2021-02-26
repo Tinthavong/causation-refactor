@@ -19,7 +19,7 @@ public class HealthBar : MonoBehaviour
         HP.color = healthIndicator.Evaluate(1f);
     }
 
-    public void SetHealth(int health)
+    public void UpdateHealthBar(int health)
     {
         fill.value = health;
 

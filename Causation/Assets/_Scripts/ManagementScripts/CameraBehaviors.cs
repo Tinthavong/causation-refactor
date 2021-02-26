@@ -9,33 +9,49 @@ public class CameraBehaviors : MonoBehaviour
     public float speed = 3f;
     private Vector2 threshold;
     private Rigidbody2D rb;
-
+    public float verticalOffset;
+    private float defaultVert;
 
     // Start is called before the first frame update
     void Start()
     {
+        defaultVert = verticalOffset;
+        followObject = FindObjectOfType<PlayerStateManager>().gameObject;
         threshold = CalculateThreshold();
         rb = followObject.GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        Vector2 follow = followObject.transform.position;
-        float xDifference = Vector2.Distance(Vector2.right * transform.position.x, Vector2.right * follow.x);
-        float yDifference = Vector2.Distance(Vector2.up * transform.position.y, Vector2.up * follow.y);
+    private void Update()
+    {//Vector2 follow = Vector2(followObject.transform.position.x, followObject.transform.position.y + verticalOffset);
+        float followX = followObject.transform.position.x;
+        float followY = followObject.transform.position.y + verticalOffset;
+        //Vector2 follow = followObject.transform.position;
+        float xDifference = Vector2.Distance(Vector2.right * transform.position.x, Vector2.right * followX);
+        float yDifference = Vector2.Distance(Vector2.up * transform.position.y, Vector2.up * followY);
 
         Vector3 newPosition = transform.position;
-        if(Mathf.Abs(xDifference) <= threshold.x)
+        if (Mathf.Abs(xDifference) >= threshold.x)
         {
-            newPosition.x = follow.x;
+            newPosition.x = followX;
         }
-        if (Mathf.Abs(xDifference) <= threshold.x)
+
+        if (Mathf.Abs(yDifference) >= threshold.y)
         {
-            newPosition.y = follow.y;
+            newPosition.y = followY;
         }
         float moveSpeed = rb.velocity.magnitude > speed ? rb.velocity.magnitude : speed;
         transform.position = Vector3.MoveTowards(transform.position, newPosition, moveSpeed * Time.deltaTime);
+
+        if (followObject.GetComponent<PlayerStateManager>().isControlling) {
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                verticalOffset -= 2f;
+            }
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                verticalOffset = defaultVert;
+            }
+        }
     }
 
     private Vector3 CalculateThreshold()

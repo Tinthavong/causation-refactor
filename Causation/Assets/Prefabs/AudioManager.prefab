@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7631253265669696943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7631253265669696941}
+  - component: {fileID: 7631253265669696942}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7631253265669696941
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7631253265669696943}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.7912319, y: -26.75304, z: 16.353516}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7631253265669696942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7631253265669696943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fdd5cf44f5ab384c97052f365951eec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxSounds:
+  - name: Gunshot
+    audioClip: {fileID: 8300000, guid: 194193998f927704ab6e78f4dc9133f7, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Damage
+    audioClip: {fileID: 8300000, guid: ffcd90b08bf933446ab78bf474c567cf, type: 3}
+    volume: 0.6
+    loop: 0
+    source: {fileID: 0}
+  - name: Step
+    audioClip: {fileID: 8300000, guid: 1b882701bbb76b441b2fb9bbfe51cd34, type: 3}
+    volume: 0.75
+    loop: 1
+    source: {fileID: 0}
+  - name: Melee
+    audioClip: {fileID: 8300000, guid: a5ae7a2fda86d70449cb7d06ccd56bb5, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Pickup
+    audioClip: {fileID: 8300000, guid: 47cc3bf377590754685229dfdfb674d4, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Reload
+    audioClip: {fileID: 8300000, guid: 21e9267b5b435ee468ac536122b5a8da, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jump
+    audioClip: {fileID: 8300000, guid: 8c4df427ff420cf45a8e36e4f3c2bac6, type: 3}
+    volume: 0
+    loop: 0
+    source: {fileID: 0}

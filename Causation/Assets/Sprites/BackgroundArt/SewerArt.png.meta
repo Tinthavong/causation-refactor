@@ -1,0 +1,509 @@
+fileFormatVersion: 2
+guid: c283ec130c544eb43a20fbc4e20063ba
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3308330963089907122
+    second: Wall1
+  - first:
+      213: -2960564518449105090
+    second: Wall2
+  - first:
+      213: 129696547509241732
+    second: ShortLadder
+  - first:
+      213: -8490058816055817580
+    second: Wall3
+  - first:
+      213: -5798651101220429581
+    second: SewerBlock
+  - first:
+      213: 6267805742554756825
+    second: SewerFloor3
+  - first:
+      213: 5633496576443440656
+    second: Deco3
+  - first:
+      213: 810989755870555856
+    second: SewerArt_7
+  - first:
+      213: 6070721157089508218
+    second: SewerArt_8
+  - first:
+      213: 3763183334607863719
+    second: SewerArt_9
+  - first:
+      213: -7199225684202895153
+    second: Deco2
+  - first:
+      213: 7027583871564552462
+    second: SewerArt_11
+  - first:
+      213: -7271122316842077048
+    second: SewerPlatform
+  - first:
+      213: -4935471266365324732
+    second: SewerArt_13
+  - first:
+      213: 1361182620347736038
+    second: Deco1
+  - first:
+      213: 608726237370025370
+    second: SewerArt_15
+  - first:
+      213: -5236079319921974838
+    second: SewerArt_16
+  - first:
+      213: 4323410159550454156
+    second: SewerArt_17
+  - first:
+      213: -8860367217510550228
+    second: SewerArt_18
+  - first:
+      213: -3167076365473456640
+    second: SewerArt_19
+  - first:
+      213: -554464518316087062
+    second: LongLadder
+  - first:
+      213: 4094807246835199536
+    second: Deco4
+  - first:
+      213: -7349070093709707104
+    second: Deco5
+  - first:
+      213: -5836749000301435971
+    second: SewerFloor
+  - first:
+      213: 4629500115553951374
+    second: SewerArt_24
+  - first:
+      213: -5798651101220429581
+    second: SewerFloor2
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Wall1
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 1231
+        width: 1476
+        height: 303
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bd566e8b7d89ed20800000000000000
+      internalID: 3308330963089907122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 872
+        width: 1476
+        height: 302
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3737379146f9e6d0800000000000000
+      internalID: -2960564518449105090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco3
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 688
+        width: 512
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01e5a4ae9433e2e40800000000000000
+      internalID: 5633496576443440656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco2
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 536
+        width: 512
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc8c7332266371c90800000000000000
+      internalID: -7199225684202895153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SewerPlatform
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 512
+        width: 440
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8847632e6c8c71b90800000000000000
+      internalID: -7271122316842077048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco1
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 370
+        width: 628
+        height: 166
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ef1340a164e3e210800000000000000
+      internalID: 1361182620347736038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LongLadder
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 360
+        width: 160
+        height: 312
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae8263155752e48f0800000000000000
+      internalID: -554464518316087062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco4
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 96
+        width: 228
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03eae4bee7da3d830800000000000000
+      internalID: 4094807246835199536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco5
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 124
+        width: 228
+        height: 212
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a87cf2dfabd20a90800000000000000
+      internalID: -7349070093709707104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SewerFloor
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 240
+        width: 216
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db3aae965b3bffea0800000000000000
+      internalID: -5836749000301435971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SewerArt_24
+      rect:
+        serializedVersion: 2
+        x: 1028
+        y: 136
+        width: 288
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8e1933b3d94f3040800000000000000
+      internalID: 4629500115553951374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShortLadder
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 680
+        width: 160
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48702e2a256ccc100800000000000000
+      internalID: 129696547509241732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall3
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 1309
+        width: 1476
+        height: 263
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49ac1d23d704d2a80800000000000000
+      internalID: -8490058816055817580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SewerFloor2
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 240
+        width: 216
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f02457cb8d078fa0800000000000000
+      internalID: -5798651101220429581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SewerFloor3
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 240
+        width: 216
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d631265d18bbf650800000000000000
+      internalID: 6267805742554756825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
