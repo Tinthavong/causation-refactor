@@ -1,5 +1,5 @@
 # causation-game
-A minor refactor of the 2D game project for the Collaborative Game Development Davenport University class made in the 2019.4.9f1 version of Unity. 
+A minor refactor of the 2D game project for the Collaborative Game Development Davenport University class made in Unity version 2020.1.2f1 (version 2019.4.9f1 of Unity was used for the class, but an upgrade was necessary for some bugs.)
 PS. Previous teammates your names are still in the in-game credits but if you want credits here at the top, please reach out to me and let me know :)
 
 Postmortem and Reflection:
