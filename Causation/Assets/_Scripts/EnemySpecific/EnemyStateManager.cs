@@ -31,9 +31,6 @@ public class EnemyStateManager : MonoBehaviour, ICharacterStatesCalculations
         throw new System.NotImplementedException();
     }
 
-    //UI Reference, hopefully this counts as a manager and a calculation and isn't out of place
-    //HealthBar healthbar; 
-
     public void DamageCalculation(int damageValue)
     {
         if(gameObject.CompareTag("Boss"))
@@ -52,7 +49,7 @@ public class EnemyStateManager : MonoBehaviour, ICharacterStatesCalculations
         }
     }
 
-
+    //Extension for if the enemy should ever need to heal
     public void HealCalculation(int healValue)
     {
 
@@ -72,7 +69,6 @@ public class EnemyStateManager : MonoBehaviour, ICharacterStatesCalculations
 
     private void RecoverFromDamageAnimation()
     {
-        //gameObject.GetComponent<Animator>().SetBool("IsChasing", true);
         gameObject.GetComponent<Animator>().SetBool("IsDamaged", false);
     }
 
@@ -84,11 +80,5 @@ public class EnemyStateManager : MonoBehaviour, ICharacterStatesCalculations
         {
             bossHealthBar.SetMaxHealth(enemyBaseStats.CharacterHealth);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

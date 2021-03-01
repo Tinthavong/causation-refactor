@@ -84,7 +84,7 @@ public class FinalMechBoss : EnemyBaseCombatController
         Physics2D.IgnoreLayerCollision(gameObject.layer, 16, true);
 
         //bulletRefSpeed = bulletPrefab.GetComponent<ProjectileProperties>().projectileSpeed;
-        enemyBase = GetComponent<EnemyBase>();
+        enemyBase = GetComponent<EnemyBaseMovement>();
         enemyBaseStats = GetComponent<EnemyBaseStats>();
         enemyDetection = GetComponent<EnemyDetection>();
         animator = GetComponent<Animator>();
@@ -419,6 +419,20 @@ public class FinalMechBoss : EnemyBaseCombatController
     {
         switch (collision.tag)
         {
+            case "PlayerProjectile":
+                bullet = collision.GetComponent<ProjectileProperties>();
+                if(phase == 3)
+                {
+                    //DamageCalc(bullet.GetDamage());
+                    Reflect();
+                } 
+                break;
+        }
+
+        //Previous implementation for the sake of posterity
+        /*
+           switch (collision.tag)
+        {
             case "Projectile":
                 bullet = collision.GetComponent<ProjectileProperties>();
                 if(phase != 3)
@@ -431,5 +445,7 @@ public class FinalMechBoss : EnemyBaseCombatController
                 }
                 break;
         }      
+         
+         */
     }
 }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
-    //Top reference; the controller can handle: Player input, physics/collision, and gizmos alongside typical actions.
+    //Note to self while refactoring; the controller should handle: Player input, physics/collision, and gizmos alongside typical actions.
     [Header("Controller Stats")]
-    public bool isFacingRight = true; //Not really a state, just a movement value
+    public bool isFacingRight = true;
     //Player's running speed
     public float moveSpeed = 10f;
     public float maxSpeed = 7f;
@@ -28,19 +28,12 @@ public class PlayerMovementController : MonoBehaviour
     public float gravity = 1f;
     public float fallMultiplier = 5f;
 
-    //Controller can/should use states to control gameplay loop
-    //[Header("Player States")]
-
-
-
-    //CharacterBaseStats charBaseStats;
     PlayerStateManager psm;
     public Animator animator;
     Rigidbody2D rb;
 
     private void Start()
     {
-        //charBaseStats = GetComponent<CharacterBaseStats>();
         psm = GetComponent<PlayerStateManager>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -60,34 +53,13 @@ public class PlayerMovementController : MonoBehaviour
             direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
 
-            //This allows crouching
-            if (Input.GetKeyDown(KeyCode.S) && onGround)
-            {
-                animator.Play("Crouch");
-                animator.SetBool("IsCrouched", true);
-                psm.isCrouched = true;
-                rb.velocity = new Vector2(0f, 0f);
-                if (psm.isCrouched)
-                {
-                    GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 1.45f);
-                    GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, -0.4f);
-                }
-            }
-            else if (Input.GetKeyUp(KeyCode.S))
-            {
-                animator.SetBool("IsCrouched", false);
-                psm.isCrouched = false;
-                GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 2.3f);
-                GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, 0f);
-            }
+            CrouchDown();
         }
         else
         {
-            //animator.Play("Idle");
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
-
     private void FixedUpdate()
     {
         if (!psm.isCrouched)
@@ -100,6 +72,29 @@ public class PlayerMovementController : MonoBehaviour
             Jump();
         }
         ModifyPhysics();
+    }
+
+    void CrouchDown()
+    {
+        if (Input.GetKeyDown(KeyCode.S) && onGround)
+        {
+            animator.Play("Crouch");
+            animator.SetBool("IsCrouched", true);
+            psm.isCrouched = true;
+            rb.velocity = new Vector2(0f, 0f);
+            if (psm.isCrouched)
+            {
+                GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 1.45f);
+                GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, -0.4f);
+            }
+        }
+        else if (Input.GetKeyUp(KeyCode.S))
+        {
+            animator.SetBool("IsCrouched", false);
+            psm.isCrouched = false;
+            GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 2.3f);
+            GetComponent<CapsuleCollider2D>().offset = new Vector2(0f, 0f);
+        }
     }
 
     void MoveCharacter(float horizontal)
@@ -116,6 +111,7 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
+    //Flips character sprite
     public void Flip()
     {
         isFacingRight = !isFacingRight;
@@ -130,6 +126,7 @@ public class PlayerMovementController : MonoBehaviour
         jumpTimer = 0;
     }
 
+    //Utilizes parameters in the inspector to modify player character movement
     void ModifyPhysics()
     {
         bool changingDirection = (direction.x > 0 && rb.velocity.x < 0) || (direction.x < 0 && rb.velocity.x > 0);
@@ -161,10 +158,6 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-
-    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

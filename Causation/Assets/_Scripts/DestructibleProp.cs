@@ -6,6 +6,12 @@ using System;
 
 public class DestructibleProp : MonoBehaviour
 {
+	[Header("Item Drops")]
+	public int dropValue;
+	//List of EnemyDrops (explained above) to allow for multiple drops
+	public List<ItemDrops> drops;
+	private int dropOnce = 1; //Quick bandaid fix for making sure items are only dropped once
+
 	[Serializable]
 	public class ItemDrops
 	{
@@ -18,23 +24,7 @@ public class DestructibleProp : MonoBehaviour
 		}
 	}
 
-	[Header("Item Drops")]
-	//Consider making these private and serialized
-	public int dropValue;
-	//List of EnemyDrops (explained above) to allow for multiple drops
-	public List<ItemDrops> drops;
-	private int dropOnce = 1; //Quick bandaid fix for making sure items are only dropped once
-
-	private void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+	//Upon collision with player projectile, drops items
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("PlayerProjectile"))
@@ -43,7 +33,7 @@ public class DestructibleProp : MonoBehaviour
             DropItems();
 
             Destroy(collision.gameObject);
-            Destroy(gameObject); //Commented out for now, destroying the game object is too abrupt.
+            Destroy(gameObject);
         }
     }
 

@@ -6,25 +6,24 @@ public class PlayerStateManager : MonoBehaviour, ICharacterStatesCalculations
 {
     [Header("Player States")]
     //Movement states
-    public bool isJumping;
     public bool isCrouched = false;
 
     //Player combat states
-    public bool isShooting;
     public bool isOutOfAmmo;
 
     //Player gameplay loop states
-    public bool isInvincible = false; //Can be a state, player is damaged therefore is temp invincible
-    public bool isControlling = true; //Is a state, player is able to control their character out of cutscenes
+    //Utilized when the player resumes gameplay after dialogue, pausing, game overs.
+    public bool isControlling = true;
 
-    PlayerBaseStats charBaseStats;
-
-    //UI Reference, hopefully this counts as a manager and a calculation and isn't out of place
-    public HealthBar healthbar;
-
+    //Statemanager communicates with stats to do calculations then sends information to the levelmanager to indicate game progress (IE, game over, game win, etc)
+    PlayerBaseStats charBaseStats; //Player's current character and its stats
     LevelManager LM;
 
-    [Header("Player Damage References")]
+    //The healthbar UI game object that will display the player's heatlh
+    public HealthBar healthbar;
+
+
+    [Header("Player Contact Damage References")]
     SpriteRenderer render;
     Color c;
     public float invulnerabilityTime = 1f;
@@ -37,7 +36,7 @@ public class PlayerStateManager : MonoBehaviour, ICharacterStatesCalculations
         {
             Time.timeScale = 1f;
         }
-        //healthbar = FindObjectOfType<HealthBar>(); //What if enemies have a different healthbar?
+
         isControlling = true; //For now set it true at the top
         charBaseStats = GetComponent<PlayerBaseStats>();
         healthbar.SetMaxHealth(charBaseStats.CharacterHealth);
@@ -46,12 +45,7 @@ public class PlayerStateManager : MonoBehaviour, ICharacterStatesCalculations
         LM = FindObjectOfType<LevelManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    
     public void AmmoState()
     {
         if (charBaseStats.CharacterAmmo <= 0)
@@ -69,7 +63,6 @@ public class PlayerStateManager : MonoBehaviour, ICharacterStatesCalculations
         if (charBaseStats.CharacterAmmo < charBaseStats.maxCharacterAmmo)
         {
             charBaseStats.CharacterAmmo += charBaseStats.shotsFired;
-            //Debug.Log(charBaseStats.CharacterAmmo + charBaseStats.shotsFired);
             charBaseStats.shotsFired = 0;
             AmmoState();
         }
@@ -97,7 +90,6 @@ public class PlayerStateManager : MonoBehaviour, ICharacterStatesCalculations
     {
         StartCoroutine("GetInvulnerable");
         charBaseStats.CharacterHealth -= damageValue;
-        //gameObject.GetComponent<Animator>().Play("Damage");
         healthbar.UpdateHealthBar(charBaseStats.CharacterHealth);
     }
 
@@ -106,7 +98,6 @@ public class PlayerStateManager : MonoBehaviour, ICharacterStatesCalculations
         StartCoroutine("GetInvulnerable");
         charBaseStats.CharacterHealth -= touchDamageValue;
        // gameObject.GetComponent<Animator>().Play("Damage");
-        healthbar.UpdateHealthBar(charBaseStats.CharacterHealth);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -133,7 +124,6 @@ public class PlayerStateManager : MonoBehaviour, ICharacterStatesCalculations
             isControlling = false;
             GetComponent<Animator>().SetBool("IsDead", true);
             LM.GameOver();
-            //gameObject.GetComponent<Animator>().Play("Death");
             return true;
         }
         else
@@ -142,6 +132,8 @@ public class PlayerStateManager : MonoBehaviour, ICharacterStatesCalculations
             return false;
         }
     }
+
+    //Enumerator to be used with coroutines to trigger damage and invulnerability periods.
     IEnumerator GetInvulnerable()
     {
         Physics2D.IgnoreLayerCollision(10, 11, true); //player and enemy
@@ -157,6 +149,7 @@ public class PlayerStateManager : MonoBehaviour, ICharacterStatesCalculations
         render.material.color = c;
     }
 
+    //Planned function for extended healing actions
     public void HealCalculation(int healValue)
     {
         /*
@@ -167,6 +160,8 @@ public class PlayerStateManager : MonoBehaviour, ICharacterStatesCalculations
         */
     }
 
+    //This functions replenishes the player to restore them to a point before game over
+    //The ability to replenish is determined by the player's score
     public void Replenish()
     {
         LM.CheckpointCostCheck();

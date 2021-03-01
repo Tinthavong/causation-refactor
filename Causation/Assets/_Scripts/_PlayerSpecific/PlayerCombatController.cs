@@ -5,18 +5,15 @@ using UnityEngine;
 public class PlayerCombatController : MonoBehaviour, ICombatActions
 {
     [Header("Combat Object References")]
-    //Combat mechanics region
-    //I think bullet damage should be defined here as well, it would make asset creation faster for enemies
-    //then IF the player has unique bullets with different damage then you can use the prefab damage values...
-
-    public GameObject projectilePrefab; //should really just use raycasts and bullet sprites tbh
+    public GameObject projectilePrefab;
     public GameObject projectileStandingSpawn;
     public GameObject projetileCrouchSpawn;
 
-    public Transform meleeDamageZone; //The collision area that has the player's melee weapon.
+    //References to a melee combat component that was cut out of the final game
+    public Transform meleeDamageZone;
     public float meleeAttackRange = 0.5f;
     public int meleeDamage = 1;
-    public LayerMask enemyLayers; //Player is the NPC's enemy and the enemy NPC is the player's... enemy
+    public LayerMask enemyLayers;
 
     [Header("Combat Values")]
     //Attacking
@@ -25,12 +22,11 @@ public class PlayerCombatController : MonoBehaviour, ICombatActions
     public float fireDelay = 1f;
 
     [Header("Ranged Weapon Values")]
-    public bool isBurstFire = false; //false = default revolver true = burst fire SMG
-    public int shotAmount = 1; //shoots 1 bullet by default, changes for burst fire
+    public bool isBurstFire = false; //Firing mode of the player's current weapon
+    public int shotAmount = 1; //The amount of bullets to fire
 
     PlayerStateManager psm;
     PlayerMovementController pmc;
-    PlayerBaseStats charBaseStats; //Make this reference the interface not the class? //Also, this is used for referencing player ammo
     Animator animator;
     Rigidbody2D rb; //Might not be necessary for combat controls
 
@@ -40,7 +36,6 @@ public class PlayerCombatController : MonoBehaviour, ICombatActions
         psm = GetComponent<PlayerStateManager>();
         pmc = GetComponent<PlayerMovementController>();
 
-        charBaseStats = GetComponent<PlayerBaseStats>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -69,12 +64,11 @@ public class PlayerCombatController : MonoBehaviour, ICombatActions
             shotAmount = 1;
             //Set the new max ammohere
         }
-        //Ammo = maxAmmo;
-        //Send data to the UI? Would prefer not to have ANY UI references outside of the UI Manager/State manager
+        //Communicate with the statemanager to update the UI and correct ammo value
         return;
     }
 
-    //Not fully designed because it was cut out for players
+    //Not designed because it was cut out for players
     public void MeleeAtack()
     {
      
@@ -82,7 +76,7 @@ public class PlayerCombatController : MonoBehaviour, ICombatActions
 
     public void RangeAttack()
     {
-        if (Input.GetButtonDown("Fire1") && !psm.isOutOfAmmo && attackElapsedTime >= attackDelay && Time.timeScale > 0) //Not good, but for now
+        if (Input.GetButtonDown("Fire1") && !psm.isOutOfAmmo && attackElapsedTime >= attackDelay && Time.timeScale > 0)
         {
             if (!psm.isCrouched)
             {
@@ -103,7 +97,7 @@ public class PlayerCombatController : MonoBehaviour, ICombatActions
             Debug.Log("No Ammo Left!");//implement affordance, clicking sound or something
         }
 
-        //Reloading must be its own function, but in the interest of making this not TOO simple  make it encompass changing ammo as well.
+        //Reloading could be its own function
         if (Input.GetKeyDown(KeyCode.R))
         {
             psm.AmmoReloadCalulcation();
@@ -146,7 +140,7 @@ public class PlayerCombatController : MonoBehaviour, ICombatActions
         }
     }
 
-    //Not yet designed
+    //Not designed, cut out of game. Could potentially utilize for additional polish
     public void SpecialAttack()
     {
         //Switching fire lets player shoot 3 bullets or whatever

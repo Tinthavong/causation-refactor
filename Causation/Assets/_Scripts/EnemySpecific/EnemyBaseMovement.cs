@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour
+public class EnemyBaseMovement : MonoBehaviour
 {
 	//This internal class controls each droppable item set in the inspector (Set in prefabs unless it's a special enemy)
 	[Serializable]
@@ -202,8 +202,6 @@ public class EnemyBase : MonoBehaviour
 		LM.VictoryCheck();
 		//Turn off HUD stuff like healthbar
 	}
-
-
 
 	public void EnemyDropItem()
 	{

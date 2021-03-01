@@ -22,10 +22,9 @@ public class CameraBehaviors : MonoBehaviour
     }
 
     private void Update()
-    {//Vector2 follow = Vector2(followObject.transform.position.x, followObject.transform.position.y + verticalOffset);
+    {
         float followX = followObject.transform.position.x;
         float followY = followObject.transform.position.y + verticalOffset;
-        //Vector2 follow = followObject.transform.position;
         float xDifference = Vector2.Distance(Vector2.right * transform.position.x, Vector2.right * followX);
         float yDifference = Vector2.Distance(Vector2.up * transform.position.y, Vector2.up * followY);
 

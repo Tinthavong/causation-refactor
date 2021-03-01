@@ -13,10 +13,9 @@ public class EnemyDetection : MonoBehaviour
 
     public int fireRange = 5; //Shotgunner and drones
 
-
     private PlayerStateManager player; //this can be private, pretty sure this works now
 
-    EnemyBase enemyBase;
+    EnemyBaseMovement enemyBase;
 
     [Header("Enemy States")]
     //Combat states
@@ -27,13 +26,7 @@ public class EnemyDetection : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<PlayerStateManager>();
-        enemyBase = GetComponent<EnemyBase>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        enemyBase = GetComponent<EnemyBaseMovement>();
     }
 
     //Checks to see if the player object is within a certain distance

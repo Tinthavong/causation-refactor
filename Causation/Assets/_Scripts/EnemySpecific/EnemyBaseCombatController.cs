@@ -25,7 +25,7 @@ public abstract class EnemyBaseCombatController : MonoBehaviour, IActions
 	public bool isChasing = false;
 
 
-	public EnemyBase enemyBase;
+	public EnemyBaseMovement enemyBase;
 	public EnemyBaseStats enemyBaseStats;
 	public EnemyDetection enemyDetection;
 
@@ -77,7 +77,7 @@ public abstract class EnemyBaseCombatController : MonoBehaviour, IActions
 		if(bulletPrefab != null)
         {
 			bulletPrefabSpeed = bulletPrefab.GetComponent<ProjectileProperties>().projectileSpeed;
-			enemyBase = GetComponent<EnemyBase>();
+			enemyBase = GetComponent<EnemyBaseMovement>();
 			enemyBaseStats = GetComponent<EnemyBaseStats>();
 			enemyDetection = GetComponent<EnemyDetection>();
 			animator = GetComponent<Animator>();
@@ -85,7 +85,7 @@ public abstract class EnemyBaseCombatController : MonoBehaviour, IActions
 		}
 		else
         {
-			enemyBase = GetComponent<EnemyBase>();
+			enemyBase = GetComponent<EnemyBaseMovement>();
 			enemyBaseStats = GetComponent<EnemyBaseStats>();
 			enemyDetection = GetComponent<EnemyDetection>();
 			animator = GetComponent<Animator>();

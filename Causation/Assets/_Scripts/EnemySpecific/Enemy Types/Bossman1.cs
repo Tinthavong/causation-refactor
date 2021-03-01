@@ -43,7 +43,7 @@ public class Bossman1 : EnemyBaseCombatController
         //Boss HP Bar
 
         bossBulletSpeed = bulletPrefab.GetComponent<ProjectileProperties>().projectileSpeed;
-        enemyBase = GetComponent<EnemyBase>();
+        enemyBase = GetComponent<EnemyBaseMovement>();
         enemyBaseStats = GetComponent<EnemyBaseStats>();
         enemyDetection = GetComponent<EnemyDetection>();
         animator = GetComponent<Animator>();

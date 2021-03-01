@@ -35,16 +35,14 @@ public class LevelManager : MonoBehaviour
 
         flaggedCheckpoints = new bool[checkpoints.Length];
         checkpointIndex = -1;
+        retryButton.interactable = false;
 
         hudRef = GameObject.Find("HUDElements");
         GameOverPanel = GameObject.Find("GameOverScreen");
-
         currency = FindObjectOfType<Currency>();
-
-        retryButton.interactable = false;
-
     }
 
+    //Game over logic
     public void GameOver()
     {
         for(int i = 0; i < timelineManagers.Length; i++)
@@ -57,6 +55,7 @@ public class LevelManager : MonoBehaviour
         SetActiveChildren(GameOverPanel.transform, true);
     }
 
+    //Sets the children of UI objects inactive
     private void SetActiveChildren(Transform transform, bool value)
     {
         foreach (Transform child in transform)
@@ -90,7 +89,10 @@ public class LevelManager : MonoBehaviour
         victoryPanel.SetActive(true);
     }
 
-    public void RetryCheckpoint()//Retry from a checkpoint rather than from the beginning
+    //Retry from a checkpoint rather than from the beginning if the player meets the necessary requirements:
+    //flagged checkpoints
+    //Can afford the cost of the checkpoint (set in the inspector as 5)
+    public void RetryCheckpoint()
     {
         if (canRetry == true)
         {
@@ -112,6 +114,8 @@ public class LevelManager : MonoBehaviour
 
     }
 
+    //Checkpoint cost is set in the inspector but could ideally scale with different difficulty settings
+    //Checks to ensure that the player is eligble to retry from a checkpoint
     public void CheckpointCostCheck()
     {
         if (currency.WalletProperty >= checkpointCost)
