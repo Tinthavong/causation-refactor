@@ -43,35 +43,68 @@ public class PlayerCombatController : MonoBehaviour, ICombatActions
     // Update is called once per frame
     void Update()
     {
-        if(psm.isControlling)
+        if (psm.isControlling)
         {
             attackElapsedTime += Time.deltaTime;
-            RangeAttack();
+
+            //Maybe switching firing modes and reloading could be its own function
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                psm.AmmoReloadCalulcation();
+                AssignFiringMode();
+            }
+
+            //Reloading could be its own function
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                psm.AmmoReloadCalulcation();
+            }
+
+            if (!isBurstFire)
+            {
+                RangeAttack();
+            }
+            else
+            {
+                AlternateRangeAttack();
+            }
         }
     }
 
-    private void AssignFiringMode()
+
+    //There are only two firing modes so a bool is fine
+    private bool AssignFiringMode()
     {
+        if (!isBurstFire)
+        {
+            isBurstFire = true;
+        }
+        else
+        {
+            isBurstFire = false;
+        }
+
         if (isBurstFire)
         {
             shotAmount = 3;
-            //Set the new max ammo here
             fireDelay = 0.05f;
             attackDelay = 0.5f;
+            return true;
         }
-        else if (!isBurstFire)
+        else
         {
             shotAmount = 1;
-            //Set the new max ammohere
+            attackDelay = 0.2f;
+            fireDelay = 1f;
+            return false;
         }
         //Communicate with the statemanager to update the UI and correct ammo value
-        return;
     }
 
     //Not designed because it was cut out for players
     public void MeleeAtack()
     {
-     
+
     }
 
     public void RangeAttack()
@@ -88,19 +121,39 @@ public class PlayerCombatController : MonoBehaviour, ICombatActions
             }
             psm.AmmoUsageCalculation();
             RangeProjectileSpawn();
-
             attackElapsedTime = 0;
             animator.SetBool("IsShooting", false);
         }
         else if (Input.GetButtonDown("Fire1") && psm.isOutOfAmmo)
         {
             Debug.Log("No Ammo Left!");//implement affordance, clicking sound or something
-        }
+        }  
+    }
 
-        //Reloading could be its own function
-        if (Input.GetKeyDown(KeyCode.R))
+    public void AlternateRangeAttack()
+    {
+        if (Input.GetButtonDown("Fire1") && !psm.isOutOfAmmo && attackElapsedTime >= attackDelay && Time.timeScale > 0)
         {
-            psm.AmmoReloadCalulcation();
+            if (!psm.isCrouched)
+            {
+                animator.Play("Shoot");
+            }
+            else if (psm.isCrouched)
+            {
+                animator.Play("CrouchShoot");
+            }
+
+            for (int i = 0; i < shotAmount; i++)
+            {
+                Invoke("RangeProjectileSpawn", (fireDelay * i));
+                psm.AmmoUsageCalculation();
+            }
+            attackElapsedTime = 0;
+            animator.SetBool("IsShooting", false);
+        }
+        else if (Input.GetButtonDown("Fire1") && psm.isOutOfAmmo)
+        {
+            Debug.Log("No Ammo Left!");//implement affordance, clicking sound or something
         }     
     }
 

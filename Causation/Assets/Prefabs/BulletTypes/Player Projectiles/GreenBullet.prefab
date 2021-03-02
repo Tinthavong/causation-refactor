@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1959563470337618517}
   - component: {fileID: 1601577354715792013}
   - component: {fileID: 5306674767042725742}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: GreenBullet
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
@@ -49,6 +49,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -144,8 +145,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9559646edad233b43b25919df6b621ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  knockBackAmount: 0
-  bulletSpeed: 1000
-  isExplosive: 0
-  isPlayerBullet: 1

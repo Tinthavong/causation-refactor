@@ -13466,7 +13466,7 @@ GameObject:
   - component: {fileID: 1099393064}
   - component: {fileID: 1099393063}
   - component: {fileID: 1099393065}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Checkpoint (1)
   m_TagString: Checkpoint
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -22432,7 +22432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1841698907}
   - component: {fileID: 1841698908}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: checkpoint_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25661,7 +25661,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3197590375942885447}
   - component: {fileID: 1427820707703613638}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: checkpoint_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25869,7 +25869,7 @@ PrefabInstance:
     - target: {fileID: 6198130647951596526, guid: 57a7bd79c89052c4ebd2e755f1065bca,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7563243123642802624, guid: 57a7bd79c89052c4ebd2e755f1065bca,
         type: 3}
@@ -27121,7 +27121,7 @@ GameObject:
   - component: {fileID: 5222924328955186699}
   - component: {fileID: 5222924328955186701}
   - component: {fileID: 5222924328955186702}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: LevelStart(DialogueTrigger)
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -27208,7 +27208,7 @@ GameObject:
   - component: {fileID: 5222924329128167481}
   - component: {fileID: 1722826692200865298}
   - component: {fileID: 5222924329128167482}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Checkpoint (2)
   m_TagString: Checkpoint
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}

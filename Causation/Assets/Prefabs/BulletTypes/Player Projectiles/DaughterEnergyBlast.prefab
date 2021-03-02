@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4007263715061280855}
   - component: {fileID: 7403588095663228514}
   - component: {fileID: 6010832259297767398}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: DaughterEnergyBlast
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
@@ -50,6 +50,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

@@ -42,9 +42,9 @@ TagManager:
   - Ground
   - Platform
   - Props
-  - SpecialEnemy
+  - PlayerProjectile
   - EnemyProjectile
-  - 
+  - Trigger
   - 
   - 
   - 

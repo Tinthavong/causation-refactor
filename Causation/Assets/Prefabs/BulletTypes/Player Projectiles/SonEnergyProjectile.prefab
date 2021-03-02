@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1666887918229237944}
   - component: {fileID: 5045021698758985357}
   - component: {fileID: 8822948871554603074}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: SonEnergyProjectile
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
