@@ -28,6 +28,8 @@ public class PlayerStateManager : MonoBehaviour, ICharacterStatesCalculations
     Color c;
     public float invulnerabilityTime = 1f;
 
+    public int currentAmmoIndex = 0; //default
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,9 +47,21 @@ public class PlayerStateManager : MonoBehaviour, ICharacterStatesCalculations
         LM = FindObjectOfType<LevelManager>();
     }
 
-    
+    /*
+     void AmmoTypeAssign()
+    if ammo type is == 0
+    ammotypeindex++
+     -----------------------
+
+
+    if ammo type is >= characterammo.length
+    ammotypeindex = 0
+     
+     */
+
     public void AmmoState()
     {
+        //With the ammo array it would be charBaseStats.CharacterAmmo[ammoTypeIndex]
         if (charBaseStats.CharacterAmmo <= 0)
         {
             isOutOfAmmo = true;
