@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7935988222781147202}
   - component: {fileID: 7935988222781147201}
   - component: {fileID: 7935988222781147212}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Breakable Box
-  m_TagString: Enemy
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,6 +49,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -144,38 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cba1722046cb7439ac6bc8e1a159bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayedHealth: 1
-  staminaActions: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8192
-  onGround: 0
-  groundLength: 0.6
-  colliderOffset: {x: 0, y: 0, z: 0}
-  bulletPrefab: {fileID: 0}
-  bulletSpawn: {fileID: 0}
-  StrikeZone: {fileID: 0}
-  strikeRange: 0.5
-  strikeDamage: 1
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 0
   dropValue: 0
   drops:
   - drop: {fileID: 7462346461303034108, guid: 7df53790b9a5e024f8896dca785cd12b, type: 3}
     weight: 0
-  firerate: 2
-  sightRange: 10
-  meleeRange: 2
-  ignoresVerticalSightRestriction: 0
-  verticalSight: 2.5
-  startingHealth: 0
-  facingRight: 0
-  isBox: 0
-  isChasing: 0
-  isBossCharacter1: 0
-  isBossCharacter2: 0
-  startingLocation: {x: 0, y: 0, z: 0}
-  enemySpeed: 8
-  bulletRefSpeed: 0
-  isAwake: 0

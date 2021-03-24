@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5397269520471359597}
-  m_Layer: 16
+  m_Layer: 11
   m_Name: bulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 5705622488557966143}
   - component: {fileID: 5705622488557966128}
   - component: {fileID: 5705622488557966129}
-  m_Layer: 16
+  m_Layer: 11
   m_Name: Drone
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -263,6 +263,7 @@ MonoBehaviour:
   isCrouched: 0
   isFacingRight: 1
   recoveryTime: 0.25
+  bossHealthBar: {fileID: 0}
 --- !u!114 &5705622488557966129
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ public class PoliceDrone : EnemyBaseCombatController
         Physics2D.IgnoreLayerCollision(gameObject.layer, 11, true);
         Physics2D.IgnoreLayerCollision(gameObject.layer, 14, true);
         Physics2D.IgnoreLayerCollision(gameObject.layer, 15, true);
-        Physics2D.IgnoreLayerCollision(gameObject.layer, 16, true);
+        Physics2D.IgnoreLayerCollision(gameObject.layer, 17, true);
 
         //onGround = true; //This is necessary because RunTowards checks if the enemy is on the ground before being able to move
         base.Start();

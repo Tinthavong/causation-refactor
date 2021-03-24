@@ -13330,6 +13330,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af8a5fa7d1ce35b419605b0ac12f2efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &825202726 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7504726547344266385, guid: bcb8f0cca7ee73d43b690eb7a5d18347,
+    type: 3}
+  m_PrefabInstance: {fileID: 825202724}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &865574690
 GameObject:
   m_ObjectHideFlags: 0
@@ -19173,6 +19185,9 @@ MonoBehaviour:
   - {fileID: 176024637}
   flaggedCheckpoints: 
   checkpointIndex: 0
+  canRetry: 0
+  checkpointCost: 0
+  retryButton: {fileID: 825202726}
 --- !u!61 &9056316094467803784
 BoxCollider2D:
   m_ObjectHideFlags: 0

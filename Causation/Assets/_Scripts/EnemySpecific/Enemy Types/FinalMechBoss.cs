@@ -81,7 +81,7 @@ public class FinalMechBoss : EnemyBaseCombatController
         Physics2D.IgnoreLayerCollision(gameObject.layer, 11, true);
         Physics2D.IgnoreLayerCollision(gameObject.layer, 14, true);
         Physics2D.IgnoreLayerCollision(gameObject.layer, 15, true);
-        Physics2D.IgnoreLayerCollision(gameObject.layer, 16, true);
+        Physics2D.IgnoreLayerCollision(gameObject.layer, 17, true);
 
         //bulletRefSpeed = bulletPrefab.GetComponent<ProjectileProperties>().projectileSpeed;
         enemyBase = GetComponent<EnemyBaseMovement>();

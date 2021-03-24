@@ -1516,7 +1516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 81058719}
   - component: {fileID: 81058720}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: checkpoint_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4801,7 +4801,7 @@ GameObject:
   m_Component:
   - component: {fileID: 336601908}
   - component: {fileID: 336601909}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: LevelBounds_Right (3)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -5838,7 +5838,7 @@ GameObject:
   - component: {fileID: 407254969}
   - component: {fileID: 407254968}
   - component: {fileID: 407254967}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Dialogue(DialogueTrigger) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -6747,7 +6747,7 @@ GameObject:
   - component: {fileID: 527768740}
   - component: {fileID: 527768739}
   - component: {fileID: 527768738}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Dialogue(DialogueTrigger)
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -7317,7 +7317,7 @@ GameObject:
   - component: {fileID: 565312440}
   - component: {fileID: 565312442}
   - component: {fileID: 565312441}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: TimelineManager_Sewers
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
@@ -7460,7 +7460,7 @@ GameObject:
   m_Component:
   - component: {fileID: 588256763}
   - component: {fileID: 588256762}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Timeline_Sewers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11115,7 +11115,7 @@ GameObject:
   - component: {fileID: 930629789}
   - component: {fileID: 930629788}
   - component: {fileID: 930629791}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Checkpoint (1)
   m_TagString: Checkpoint
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -11722,7 +11722,7 @@ GameObject:
   m_Component:
   - component: {fileID: 993883353}
   - component: {fileID: 993883358}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: LevelBounds_Left (1)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -12034,7 +12034,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1004223098}
   - component: {fileID: 1004223099}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: LevelBounds_Left (2)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -13008,7 +13008,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1080411191}
   - component: {fileID: 1080411192}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: CutsceneDialogue2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14092,7 +14092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1152079659}
   - component: {fileID: 1152079660}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: LevelBounds_Right (2)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -14380,7 +14380,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1188696462}
   - component: {fileID: 1188696463}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: LevelBounds_Left (3)
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -14933,7 +14933,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1240422404}
   - component: {fileID: 1240422403}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: CutsceneDialogue1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15581,7 +15581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1265776348}
   - component: {fileID: 1265776349}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ScreenTransitionD
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
@@ -16037,7 +16037,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1310387625}
   - component: {fileID: 1310387626}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ScreenTransitionF
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
@@ -16209,7 +16209,7 @@ GameObject:
   - component: {fileID: 1318045834}
   - component: {fileID: 1318045833}
   - component: {fileID: 1318045835}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Checkpoint (2)
   m_TagString: Checkpoint
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -17665,6 +17665,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af8a5fa7d1ce35b419605b0ac12f2efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1424404022 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7504726547344266385, guid: bcb8f0cca7ee73d43b690eb7a5d18347,
+    type: 3}
+  m_PrefabInstance: {fileID: 1424404019}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1426698466
 GameObject:
   m_ObjectHideFlags: 0
@@ -18962,7 +18974,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1551312948}
   - component: {fileID: 1551312949}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ScreenTransitionC
   m_TagString: Transition
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
@@ -19968,7 +19980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1635774510}
   - component: {fileID: 1635774511}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: checkpoint_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22158,7 +22170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1786944368}
   - component: {fileID: 1786944369}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ScreenTransitionE
   m_TagString: BossTransition
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
@@ -22286,7 +22298,7 @@ GameObject:
   - component: {fileID: 1803465379}
   - component: {fileID: 1803465376}
   - component: {fileID: 1803465377}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: Engineer (Cutscene Actor)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -24917,7 +24929,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983308717}
   - component: {fileID: 1983308716}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: CutsceneDialogue2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27038,7 +27050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3197590376048544455}
   - component: {fileID: 1427820707596907078}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: checkpoint_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27326,7 +27338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5186378365503893071}
   - component: {fileID: 3093649868213065840}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ScreenTransitionA
   m_TagString: Transition
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
@@ -27900,7 +27912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5222924328027953635}
   - component: {fileID: 5222924328027953636}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: LevelBounds_Left
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -27957,7 +27969,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5222924328296803295}
   - component: {fileID: 5222924328296803294}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Finish Line (Victory)
   m_TagString: FinishLine
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -28014,7 +28026,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5222924328933941165}
   - component: {fileID: 5222924328933941166}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: LevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28084,6 +28096,9 @@ MonoBehaviour:
   - {fileID: 1318045831}
   flaggedCheckpoints: 
   checkpointIndex: 0
+  canRetry: 0
+  checkpointCost: 0
+  retryButton: {fileID: 1424404022}
 --- !u!1 &5222924329563383686
 GameObject:
   m_ObjectHideFlags: 0
@@ -28094,7 +28109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5222924329563383687}
   - component: {fileID: 5222924329563383688}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: LevelBounds_Right
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -28153,7 +28168,7 @@ GameObject:
   - component: {fileID: 5222924329770177209}
   - component: {fileID: 1722826692045423762}
   - component: {fileID: 5222924329770177210}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Checkpoint
   m_TagString: Checkpoint
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -28225,7 +28240,7 @@ GameObject:
   - component: {fileID: 5222924329939031179}
   - component: {fileID: 5222924329939031181}
   - component: {fileID: 5222924329939031182}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: LevelStart(DialogueTrigger)
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -28324,7 +28339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2269485639914171353}
   - component: {fileID: 8455690580794966635}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ScreenTransitionB
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
@@ -28341,7 +28356,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1882812424773892768}
   - component: {fileID: 7182383642258817717}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: LevelBounds_Right (1)
   m_TagString: Object
   m_Icon: {fileID: 0}
